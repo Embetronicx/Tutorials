@@ -5,6 +5,8 @@
  
 #include <reg51.h>
 
+#define NUMBER 0123456789         //Here insert your number where you want to send message
+
 void ser_init();
 void tx(unsigned char send);
 void tx_str(unsigned char *s);
