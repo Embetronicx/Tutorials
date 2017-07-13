@@ -1,0 +1,4 @@
+Dependencies for Project 'project', Target 'Target 1': (DO NOT MODIFY !)
+F (.\Startup.s)(0x4BB1C90E)(--cpu ARM7TDMI -g --apcs=interwork -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\Philips --list "Startup.lst" --xref -o "Startup.o" --depend "Startup.d")
+F (.\code.c)(0x59676BB5)(-c --cpu ARM7TDMI -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\Philips -o "code.o" --omf_browse "code.crf" --depend "code.d")
+I (C:\Keil\ARM\INC\Philips\lpc214x.h)(0x4F585AA4)
