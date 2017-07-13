@@ -1,0 +1,2 @@
+In this code LED will Blink with 1 second delay. I'm using Timer 0 in this code. LEDs are connected to Port 0. Here My PCLK is 60MHz.
+If you want to see the explanation of this program please visit this site - http://www.embetronicx.com/tutorials/microcontrollers/lpc2148/arm7-lpc2148-timer-tutorial/ 
