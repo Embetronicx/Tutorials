@@ -1,0 +1,170 @@
+C51 COMPILER V8.05a   MAIN                                                                 07/13/2017 23:32:18 PAGE 1   
+
+
+C51 COMPILER V8.05a, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          
+   3          #define adc_data P0
+   4          #define lcd     P1
+   5          
+   6          unsigned char temp, gas;
+   7          
+   8          sbit rs=P1^0;
+   9          sbit en=P1^1;
+  10          
+  11          sbit OE   =P2^0;
+  12          sbit EOC  =P2^1;
+  13          sbit START  =P2^2;
+  14          sbit AA   =P2^4;
+  15          sbit BB   =P2^5;
+  16          sbit CC   =P2^6;
+  17          sbit ALE  =P2^7;
+  18          
+  19          unsigned char adc_val;
+  20          
+  21          void lcd_init();
+  22          void cmd(unsigned char a);
+  23          void dat(unsigned char b);
+  24          void show(unsigned char *s);
+  25          void lcd_delay();
+  26          
+  27          unsigned char adc(unsigned int ch);
+  28          void ch_sel(unsigned int sel);
+  29          
+  30          void  main()
+  31          {
+  32   1        lcd_init();
+  33   1        show("TEMP: ");
+  34   1        cmd(0xc0);
+  35   1        show("GAS : ");
+  36   1        while(1) {
+  37   2          cmd(0x86);
+  38   2          temp=adc(0);                    //Reading Value from ADC Channel 0
+  39   2          dat((temp/100)%10 +0x30);
+  40   2          dat((temp/10)%10 +0x30);
+  41   2          dat(temp%10 +0x30);
+  42   2          
+  43   2          cmd(0xc6);
+  44   2          gas=adc(1);                     //Reading Value from ADC Channel 1
+  45   2          dat((gas/100)%10 +0x30);
+  46   2          dat((gas/10)%10 +0x30);
+  47   2          dat(gas%10 +0x30);
+  48   2        }
+  49   1      }
+  50          
+  51          void lcd_init()
+  52          {
+  53   1        cmd(0x02);
+  54   1        cmd(0x28);
+  55   1        cmd(0x0e);
+C51 COMPILER V8.05a   MAIN                                                                 07/13/2017 23:32:18 PAGE 2   
+
+  56   1        cmd(0x06);
+  57   1        cmd(0x80);
+  58   1      }
+  59          
+  60          void cmd(unsigned char a)
+  61          {
+  62   1        rs=0; 
+  63   1        lcd&=0x0F;
+  64   1        P1|=(a&0xf0);
+  65   1        en=1;
+  66   1        lcd_delay();
+  67   1        en=0;
+  68   1        lcd_delay();
+  69   1        lcd&=0x0f;
+  70   1        lcd|=(a<<4&0xf0);
+  71   1        en=1;
+  72   1        lcd_delay();
+  73   1        en=0;
+  74   1        lcd_delay();
+  75   1      }
+  76          
+  77          void dat(unsigned char b)
+  78          {
+  79   1        rs=1; 
+  80   1        lcd&=0x0F;
+  81   1        lcd|=(b&0xf0);
+  82   1        en=1;
+  83   1        lcd_delay();
+  84   1        en=0;
+  85   1        lcd_delay();
+  86   1        lcd&=0x0f;
+  87   1        lcd|=(b<<4&0xf0);
+  88   1        en=1;
+  89   1        lcd_delay();
+  90   1        en=0;
+  91   1        lcd_delay();
+  92   1      }
+  93          
+  94          void show(unsigned char *s)
+  95          {
+  96   1        while(*s) {
+  97   2          dat(*s++);
+  98   2        }
+  99   1      }
+ 100          
+ 101          void lcd_delay()
+ 102          {
+ 103   1        unsigned int lcd_delay;
+ 104   1        for(lcd_delay=0;lcd_delay<=1000;lcd_delay++);
+ 105   1      }
+ 106          
+ 107          unsigned char adc(unsigned int ch)
+ 108          {
+ 109   1        adc_data=0xff;
+ 110   1      
+ 111   1        ALE=START=OE=AA=BB=CC=0;
+ 112   1        EOC=1;
+ 113   1      
+ 114   1        ch_sel(ch);
+ 115   1      
+ 116   1        ALE=1;
+ 117   1        START=1;
+C51 COMPILER V8.05a   MAIN                                                                 07/13/2017 23:32:18 PAGE 3   
+
+ 118   1        ALE=0;
+ 119   1        START=0;
+ 120   1        while(EOC==1);
+ 121   1        while(EOC==0);
+ 122   1        OE=1;
+ 123   1        adc_val=adc_data;
+ 124   1        OE=0;
+ 125   1        return adc_val;
+ 126   1      }
+ 127          
+ 128          void ch_sel(unsigned int sel)
+ 129          {
+ 130   1        switch(sel) {
+ 131   2          case 0: CC=0;BB=0;AA=0; break;      //000
+ 132   2          case 1: CC=0;BB=0;AA=1; break;      //001
+ 133   2          case 2: CC=0;BB=1;AA=0; break;      //010
+ 134   2          case 3: CC=0;BB=1;AA=1; break;      //011
+ 135   2          case 4: CC=1;BB=0;AA=0; break;      //100
+ 136   2          case 5: CC=1;BB=0;AA=1; break;      //101
+ 137   2          case 6: CC=1;BB=1;AA=0; break;      //110
+ 138   2          case 7: CC=1;BB=1;AA=1; break;      //111
+ 139   2        }
+ 140   1      }
+ 141          
+ 142          
+ 143          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    377    ----
+   CONSTANT SIZE    =     14    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      3       5
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
