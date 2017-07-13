@@ -1,0 +1,4 @@
+--cpu ARM7TDMI "startup.o" "code.o" 
+--ro-base 0x00000000 --entry 0x00000000 --rw-base 0x40000000 --strict --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\project.map" -o project.axf
