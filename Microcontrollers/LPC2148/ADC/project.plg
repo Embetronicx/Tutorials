@@ -1,0 +1,306 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+D:\SLR\Interlogicx\codes\Practise\ARM\ADC\project.uvproj
+Project File Date:  06/15/2015
+
+<h2>Output:</h2>
+Rebuild target 'Target 1'
+assembling Startup.s...
+compiling code.c...
+code.c(8): warning:  #1295-D: Deprecated declaration lcd_int - give arg types
+code.c(13): warning:  #1295-D: Deprecated declaration adc - give arg types
+code.c(31): error:  #147: declaration is incompatible with "unsigned char adc()" (declared at line 13)
+code.c(37): warning:  #61-D: integer operation result is out of range
+code.c(37): warning:  #68-D: integer conversion resulted in a change of sign
+code.c(43): warning:  #61-D: integer operation result is out of range
+code.c(43): warning:  #68-D: integer conversion resulted in a change of sign
+code.c(55): warning:  #940-D: missing return statement at end of non-void function "adc"
+Target not created
+Rebuild target 'Target 1'
+assembling Startup.s...
+compiling code.c...
+code.c(8): warning:  #1295-D: Deprecated declaration lcd_int - give arg types
+code.c(13): warning:  #1295-D: Deprecated declaration adc - give arg types
+code.c(31): error:  #147: declaration is incompatible with "unsigned char adc()" (declared at line 13)
+code.c(37): warning:  #61-D: integer operation result is out of range
+code.c(37): warning:  #68-D: integer conversion resulted in a change of sign
+code.c(43): warning:  #61-D: integer operation result is out of range
+code.c(43): warning:  #68-D: integer conversion resulted in a change of sign
+code.c(55): warning:  #940-D: missing return statement at end of non-void function "adc"
+Target not created
+Rebuild target 'Target 1'
+assembling Startup.s...
+compiling code.c...
+code.c(8): warning:  #1295-D: Deprecated declaration lcd_int - give arg types
+code.c(37): warning:  #61-D: integer operation result is out of range
+code.c(37): warning:  #68-D: integer conversion resulted in a change of sign
+code.c(43): warning:  #61-D: integer operation result is out of range
+code.c(43): warning:  #68-D: integer conversion resulted in a change of sign
+code.c(55): warning:  #940-D: missing return statement at end of non-void function "adc"
+linking...
+Program Size: Code=1824 RO-data=32 RW-data=8 ZI-data=1256  
+FromELF: creating hex file...
+"project.axf" - 0 Error(s), 6 Warning(s).
+Rebuild target 'Target 1'
+assembling Startup.s...
+compiling code.c...
+code.c(7): warning:  #1295-D: Deprecated declaration lcd_int - give arg types
+code.c(36): warning:  #61-D: integer operation result is out of range
+code.c(36): warning:  #68-D: integer conversion resulted in a change of sign
+code.c(42): warning:  #61-D: integer operation result is out of range
+code.c(42): warning:  #68-D: integer conversion resulted in a change of sign
+code.c(54): warning:  #940-D: missing return statement at end of non-void function "adc"
+linking...
+Program Size: Code=1824 RO-data=32 RW-data=8 ZI-data=1256  
+FromELF: creating hex file...
+"project.axf" - 0 Error(s), 6 Warning(s).
+Rebuild target 'Target 1'
+assembling Startup.s...
+compiling code.c...
+code.c(7): warning:  #1295-D: Deprecated declaration lcd_int - give arg types
+code.c(36): warning:  #61-D: integer operation result is out of range
+code.c(36): warning:  #68-D: integer conversion resulted in a change of sign
+code.c(42): warning:  #61-D: integer operation result is out of range
+code.c(42): warning:  #68-D: integer conversion resulted in a change of sign
+code.c(54): warning:  #940-D: missing return statement at end of non-void function "adc"
+linking...
+Program Size: Code=1796 RO-data=32 RW-data=8 ZI-data=1256  
+FromELF: creating hex file...
+"project.axf" - 0 Error(s), 6 Warning(s).
+Rebuild target 'Target 1'
+assembling Startup.s...
+compiling code.c...
+code.c(2): error:  #5: cannot open source input file "LCD.h": No such file or directory
+Target not created
+Rebuild target 'Target 1'
+assembling Startup.s...
+compiling code.c...
+LCD.h(53): warning:  #1-D: last line of file ends without a newline
+ADC.h(12): warning:  #61-D: integer operation result is out of range
+ADC.h(12): warning:  #68-D: integer conversion resulted in a change of sign
+ADC.h(18): warning:  #61-D: integer operation result is out of range
+ADC.h(18): warning:  #68-D: integer conversion resulted in a change of sign
+ADC.h(25): warning:  #223-D: function "tx" declared implicitly
+ADC.h(29): warning:  #940-D: missing return statement at end of non-void function "adc"
+code.c(5): warning:  #1295-D: Deprecated declaration lcd_int - give arg types
+linking...
+project.axf: Error: L6218E: Undefined symbol lcd_int (referred from code.o).
+project.axf: Error: L6218E: Undefined symbol tx (referred from code.o).
+Target not created
+Rebuild target 'Target 1'
+assembling Startup.s...
+compiling code.c...
+LCD.h(53): warning:  #1-D: last line of file ends without a newline
+ADC.h(12): warning:  #61-D: integer operation result is out of range
+ADC.h(12): warning:  #68-D: integer conversion resulted in a change of sign
+ADC.h(18): warning:  #61-D: integer operation result is out of range
+ADC.h(18): warning:  #68-D: integer conversion resulted in a change of sign
+ADC.h(25): warning:  #223-D: function "tx" declared implicitly
+ADC.h(29): warning:  #940-D: missing return statement at end of non-void function "adc"
+code.c(5): warning:  #1295-D: Deprecated declaration lcd_int - give arg types
+linking...
+project.axf: Error: L6218E: Undefined symbol tx (referred from code.o).
+Target not created
+Rebuild target 'Target 1'
+assembling Startup.s...
+compiling code.c...
+LCD.h(53): warning:  #1-D: last line of file ends without a newline
+ADC.h(12): warning:  #61-D: integer operation result is out of range
+ADC.h(12): warning:  #68-D: integer conversion resulted in a change of sign
+ADC.h(18): warning:  #61-D: integer operation result is out of range
+ADC.h(18): warning:  #68-D: integer conversion resulted in a change of sign
+ADC.h(25): warning:  #223-D: function "tx" declared implicitly
+ADC.h(29): warning:  #940-D: missing return statement at end of non-void function "adc"
+code.c(5): warning:  #1295-D: Deprecated declaration lcd_int - give arg types
+linking...
+project.axf: Error: L6218E: Undefined symbol tx (referred from code.o).
+Target not created
+Rebuild target 'Target 1'
+assembling Startup.s...
+compiling code.c...
+LCD.h(53): warning:  #1-D: last line of file ends without a newline
+ADC.h(12): warning:  #61-D: integer operation result is out of range
+ADC.h(12): warning:  #68-D: integer conversion resulted in a change of sign
+ADC.h(18): warning:  #61-D: integer operation result is out of range
+ADC.h(18): warning:  #68-D: integer conversion resulted in a change of sign
+code.c(5): warning:  #1295-D: Deprecated declaration lcd_int - give arg types
+linking...
+Program Size: Code=1640 RO-data=32 RW-data=4 ZI-data=1260  
+FromELF: creating hex file...
+"project.axf" - 0 Error(s), 6 Warning(s).
+Rebuild target 'Target 1'
+assembling Startup.s...
+compiling code.c...
+LCD.h(53): warning:  #1-D: last line of file ends without a newline
+ADC.h(12): warning:  #223-D: function "U" declared implicitly
+ADC.h(12): warning:  #61-D: integer operation result is out of range
+ADC.h(18): warning:  #61-D: integer operation result is out of range
+ADC.h(18): warning:  #68-D: integer conversion resulted in a change of sign
+code.c(5): warning:  #1295-D: Deprecated declaration lcd_int - give arg types
+linking...
+project.axf: Error: L6218E: Undefined symbol U (referred from code.o).
+Target not created
+Rebuild target 'Target 1'
+assembling Startup.s...
+compiling code.c...
+LCD.h(53): warning:  #1-D: last line of file ends without a newline
+ADC.h(12): error:  #20: identifier "U31" is undefined
+ADC.h(18): warning:  #61-D: integer operation result is out of range
+ADC.h(18): warning:  #68-D: integer conversion resulted in a change of sign
+code.c(5): warning:  #1295-D: Deprecated declaration lcd_int - give arg types
+Target not created
+Rebuild target 'Target 1'
+assembling Startup.s...
+compiling code.c...
+LCD.h(53): warning:  #1-D: last line of file ends without a newline
+ADC.h(12): warning:  #61-D: integer operation result is out of range
+ADC.h(12): warning:  #68-D: integer conversion resulted in a change of sign
+ADC.h(18): warning:  #61-D: integer operation result is out of range
+ADC.h(18): warning:  #68-D: integer conversion resulted in a change of sign
+code.c(5): warning:  #1295-D: Deprecated declaration lcd_int - give arg types
+linking...
+Program Size: Code=1640 RO-data=32 RW-data=4 ZI-data=1260  
+FromELF: creating hex file...
+"project.axf" - 0 Error(s), 6 Warning(s).
+Rebuild target 'Target 1'
+assembling Startup.s...
+compiling code.c...
+LCD.h(53): warning:  #1-D: last line of file ends without a newline
+ADC.h(12): error:  #20: identifier "u31" is undefined
+ADC.h(18): warning:  #61-D: integer operation result is out of range
+ADC.h(18): warning:  #68-D: integer conversion resulted in a change of sign
+code.c(5): warning:  #1295-D: Deprecated declaration lcd_int - give arg types
+Target not created
+Rebuild target 'Target 1'
+assembling Startup.s...
+compiling code.c...
+LCD.h(53): warning:  #1-D: last line of file ends without a newline
+ADC.h(12): warning:  #61-D: integer operation result is out of range
+ADC.h(12): warning:  #68-D: integer conversion resulted in a change of sign
+ADC.h(18): warning:  #61-D: integer operation result is out of range
+ADC.h(18): warning:  #68-D: integer conversion resulted in a change of sign
+code.c(5): warning:  #1295-D: Deprecated declaration lcd_int - give arg types
+linking...
+Program Size: Code=1640 RO-data=32 RW-data=4 ZI-data=1260  
+FromELF: creating hex file...
+"project.axf" - 0 Error(s), 6 Warning(s).
+Rebuild target 'Target 1'
+assembling Startup.s...
+compiling code.c...
+LCD.h(53): warning:  #1-D: last line of file ends without a newline
+ADC.h(12): warning:  #61-D: integer operation result is out of range
+ADC.h(12): warning:  #68-D: integer conversion resulted in a change of sign
+ADC.h(18): warning:  #61-D: integer operation result is out of range
+ADC.h(18): warning:  #68-D: integer conversion resulted in a change of sign
+linking...
+Program Size: Code=1640 RO-data=32 RW-data=4 ZI-data=1260  
+FromELF: creating hex file...
+"project.axf" - 0 Error(s), 5 Warning(s).
+Rebuild target 'Target 1'
+assembling Startup.s...
+compiling code.c...
+LCD.h(53): warning:  #1-D: last line of file ends without a newline
+ADC.h(12): warning:  #61-D: integer operation result is out of range
+ADC.h(12): warning:  #68-D: integer conversion resulted in a change of sign
+ADC.h(18): warning:  #61-D: integer operation result is out of range
+ADC.h(18): warning:  #68-D: integer conversion resulted in a change of sign
+linking...
+Program Size: Code=1640 RO-data=32 RW-data=4 ZI-data=1260  
+FromELF: creating hex file...
+"project.axf" - 0 Error(s), 5 Warning(s).
+Rebuild target 'Target 1'
+assembling Startup.s...
+compiling code.c...
+LCD.h(53): warning:  #1-D: last line of file ends without a newline
+ADC.h(12): warning:  #61-D: integer operation result is out of range
+ADC.h(12): warning:  #68-D: integer conversion resulted in a change of sign
+ADC.h(18): warning:  #61-D: integer operation result is out of range
+ADC.h(18): warning:  #68-D: integer conversion resulted in a change of sign
+linking...
+Program Size: Code=1640 RO-data=32 RW-data=4 ZI-data=1260  
+FromELF: creating hex file...
+"project.axf" - 0 Error(s), 5 Warning(s).
+Rebuild target 'Target 1'
+assembling Startup.s...
+compiling code.c...
+ADC.h(12): warning:  #61-D: integer operation result is out of range
+ADC.h(12): warning:  #68-D: integer conversion resulted in a change of sign
+ADC.h(18): warning:  #61-D: integer operation result is out of range
+ADC.h(18): warning:  #68-D: integer conversion resulted in a change of sign
+linking...
+Program Size: Code=1640 RO-data=32 RW-data=4 ZI-data=1260  
+FromELF: creating hex file...
+"project.axf" - 0 Error(s), 4 Warning(s).
+Rebuild target 'Target 1'
+assembling Startup.s...
+compiling code.c...
+ADC.h(12): warning:  #61-D: integer operation result is out of range
+ADC.h(12): warning:  #68-D: integer conversion resulted in a change of sign
+ADC.h(18): warning:  #61-D: integer operation result is out of range
+ADC.h(18): warning:  #68-D: integer conversion resulted in a change of sign
+linking...
+Program Size: Code=1640 RO-data=32 RW-data=4 ZI-data=1260  
+FromELF: creating hex file...
+"project.axf" - 0 Error(s), 4 Warning(s).
+Rebuild target 'Target 1'
+assembling Startup.s...
+compiling code.c...
+ADC.h(12): warning:  #61-D: integer operation result is out of range
+ADC.h(12): warning:  #68-D: integer conversion resulted in a change of sign
+ADC.h(18): warning:  #61-D: integer operation result is out of range
+ADC.h(18): warning:  #68-D: integer conversion resulted in a change of sign
+linking...
+Program Size: Code=1648 RO-data=32 RW-data=4 ZI-data=1260  
+FromELF: creating hex file...
+"project.axf" - 0 Error(s), 4 Warning(s).
+Rebuild target 'Target 1'
+assembling Startup.s...
+compiling code.c...
+LCD.h(53): warning:  #1-D: last line of file ends without a newline
+ADC.h(12): warning:  #61-D: integer operation result is out of range
+ADC.h(12): warning:  #68-D: integer conversion resulted in a change of sign
+ADC.h(18): warning:  #61-D: integer operation result is out of range
+ADC.h(18): warning:  #68-D: integer conversion resulted in a change of sign
+linking...
+Program Size: Code=1648 RO-data=32 RW-data=4 ZI-data=1260  
+FromELF: creating hex file...
+"project.axf" - 0 Error(s), 5 Warning(s).
+Rebuild target 'Target 1'
+assembling Startup.s...
+compiling code.c...
+LCD.h(53): warning:  #1-D: last line of file ends without a newline
+ADC.h(12): warning:  #61-D: integer operation result is out of range
+ADC.h(12): warning:  #68-D: integer conversion resulted in a change of sign
+ADC.h(18): warning:  #61-D: integer operation result is out of range
+ADC.h(18): warning:  #68-D: integer conversion resulted in a change of sign
+linking...
+Program Size: Code=1660 RO-data=32 RW-data=4 ZI-data=1260  
+FromELF: creating hex file...
+"project.axf" - 0 Error(s), 5 Warning(s).
+Rebuild target 'Target 1'
+assembling Startup.s...
+compiling code.c...
+LCD.h(52): warning:  #1-D: last line of file ends without a newline
+ADC.h(12): warning:  #61-D: integer operation result is out of range
+ADC.h(12): warning:  #68-D: integer conversion resulted in a change of sign
+ADC.h(18): warning:  #61-D: integer operation result is out of range
+ADC.h(18): warning:  #68-D: integer conversion resulted in a change of sign
+linking...
+Program Size: Code=1660 RO-data=32 RW-data=4 ZI-data=1260  
+FromELF: creating hex file...
+"project.axf" - 0 Error(s), 5 Warning(s).
+Rebuild target 'Target 1'
+assembling Startup.s...
+compiling code.c...
+LCD.h(52): warning:  #1-D: last line of file ends without a newline
+ADC.h(12): warning:  #61-D: integer operation result is out of range
+ADC.h(12): warning:  #68-D: integer conversion resulted in a change of sign
+ADC.h(18): warning:  #61-D: integer operation result is out of range
+ADC.h(18): warning:  #68-D: integer conversion resulted in a change of sign
+linking...
+Program Size: Code=1660 RO-data=32 RW-data=4 ZI-data=1260  
+FromELF: creating hex file...
+"project.axf" - 0 Error(s), 5 Warning(s).
