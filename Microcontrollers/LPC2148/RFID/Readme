@@ -1,0 +1,3 @@
+This is the LPC2148 RFID interfacing Tutorial. 
+In this code i’m reading the unique id number using polling method and printing that to LCD. You can also try using serial interrupt.
+If you want to see the explanation of theis project please visit Here : http://www.embetronicx.com/tutorials/microcontrollers/lpc2148/rfid-interfacing-with-lpc2148/
