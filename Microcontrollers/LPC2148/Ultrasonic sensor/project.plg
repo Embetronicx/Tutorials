@@ -1,0 +1,61 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+F:\SLR\Practise\ARM\Ultrasonic\project.uvproj
+Project File Date:  10/14/2015
+
+<h2>Output:</h2>
+Build target 'Target 1'
+assembling Startup.s...
+compiling main.c...
+ULTRASONIC.H(4): warning:  #1295-D: Deprecated declaration ultrasonic_init - give arg types
+ULTRASONIC.H:   void ultrasonic_init();
+ULTRASONIC.H:        ^
+ULTRASONIC.H(5): warning:  #1295-D: Deprecated declaration send_pulse - give arg types
+ULTRASONIC.H:   void send_pulse();
+ULTRASONIC.H:        ^
+ULTRASONIC.H(6): warning:  #1295-D: Deprecated declaration get_range - give arg types
+ULTRASONIC.H:   unsigned int get_range();
+ULTRASONIC.H:                ^
+ULTRASONIC.H(41): warning:  #1-D: last line of file ends without a newline
+ULTRASONIC.H:           
+ULTRASONIC.H:           ^
+LCD.H(3): warning:  #1295-D: Deprecated declaration lcd_init - give arg types
+LCD.H:   void lcd_init();
+LCD.H:        ^
+LCD.H(7): warning:  #1295-D: Deprecated declaration lcd_delay - give arg types
+LCD.H:   void lcd_delay();
+LCD.H:        ^
+LCD.H: main.c: 6 warnings, 0 errors
+linking...
+Program Size: Code=2332 RO-data=32 RW-data=8 ZI-data=1256  
+FromELF: creating hex file...
+"project.axf" - 0 Error(s), 6 Warning(s).
+Build target 'Target 1'
+assembling Startup.s...
+compiling main.c...
+ULTRASONIC.H(4): warning:  #1295-D: Deprecated declaration ultrasonic_init - give arg types
+ULTRASONIC.H:   void ultrasonic_init();
+ULTRASONIC.H:        ^
+ULTRASONIC.H(5): warning:  #1295-D: Deprecated declaration send_pulse - give arg types
+ULTRASONIC.H:   void send_pulse();
+ULTRASONIC.H:        ^
+ULTRASONIC.H(6): warning:  #1295-D: Deprecated declaration get_range - give arg types
+ULTRASONIC.H:   unsigned int get_range();
+ULTRASONIC.H:                ^
+ULTRASONIC.H(41): warning:  #1-D: last line of file ends without a newline
+ULTRASONIC.H:           
+ULTRASONIC.H:           ^
+LCD.H(3): warning:  #1295-D: Deprecated declaration lcd_init - give arg types
+LCD.H:   void lcd_init();
+LCD.H:        ^
+LCD.H(7): warning:  #1295-D: Deprecated declaration lcd_delay - give arg types
+LCD.H:   void lcd_delay();
+LCD.H:        ^
+LCD.H: main.c: 6 warnings, 0 errors
+linking...
+Program Size: Code=2332 RO-data=32 RW-data=8 ZI-data=1256  
+FromELF: creating hex file...
+"project.axf" - 0 Error(s), 6 Warning(s).
