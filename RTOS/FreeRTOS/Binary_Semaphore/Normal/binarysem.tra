@@ -1,0 +1,27 @@
+*** Creating Trace Output File 'binarysem.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '"startup.o"'
+### List of Objects: adding '"binarysem.o"'
+### List of Objects: adding '"list.o"'
+### List of Objects: adding '"queue.o"'
+### List of Objects: adding '"tasks.o"'
+### List of Objects: adding '"port.o"'
+### List of Objects: adding '".\portasm.o"'
+### List of Objects: adding '"heap_2.o"'
+### ADS-LD Command completed:
+--cpu ARM7TDMI "startup.o" "binarysem.o" "list.o" "queue.o" "tasks.o" "port.o" ".\portasm.o" "heap_2.o" 
+--strict --scatter "binarysem.sct" 
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\binarysem.map" -o binarysem.axf### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: 'binarysem.axf'
+### ADS-LD Command File: 'binarysem.lnp'
+### Checking for dirty Components...
+### Creating CmdFile 'binarysem.lnp', Handle=0x00000364
+### Writing '.lnp' file
+### ADS-LD Command file 'binarysem.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.
