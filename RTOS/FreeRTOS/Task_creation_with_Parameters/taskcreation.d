@@ -1,0 +1,15 @@
+taskcreation.o: taskcreation.c
+taskcreation.o: C:\Keil\ARM\ARMCC\bin\..\include\stdlib.h
+taskcreation.o: C:\Keil\FreeRTOSV8.2.3\FreeRTOS\Source\include\FreeRTOS.h
+taskcreation.o: C:\Keil\ARM\ARMCC\bin\..\include\stddef.h
+taskcreation.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+taskcreation.o: C:\Keil\FreeRTOSV8.2.3\FreeRTOS\Source\include\FreeRTOSConfig.h
+taskcreation.o: C:\Keil\ARM\Inc\Philips\lpc214x.h
+taskcreation.o: C:\Keil\FreeRTOSV8.2.3\FreeRTOS\Source\include\projdefs.h
+taskcreation.o: C:\Keil\FreeRTOSV8.2.3\FreeRTOS\Source\include\portable.h
+taskcreation.o: C:\Keil\FreeRTOSV8.2.3\FreeRTOS\Source\include\deprecated_definitions.h
+taskcreation.o: C:\Keil\FreeRTOSV8.2.3\FreeRTOS\Source\include\..\..\Source\portable\RVDS\ARM7_LPC21xx\portmacro.h
+taskcreation.o: C:\Keil\FreeRTOSV8.2.3\FreeRTOS\Source\include\mpu_wrappers.h
+taskcreation.o: C:\Keil\FreeRTOSV8.2.3\FreeRTOS\Source\include\task.h
+taskcreation.o: C:\Keil\FreeRTOSV8.2.3\FreeRTOS\Source\include\list.h
+taskcreation.o: uart0.h
