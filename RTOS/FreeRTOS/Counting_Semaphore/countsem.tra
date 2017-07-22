@@ -1,0 +1,27 @@
+*** Creating Trace Output File 'countsem.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '"startup.o"'
+### List of Objects: adding '"countsem.o"'
+### List of Objects: adding '"list.o"'
+### List of Objects: adding '"queue.o"'
+### List of Objects: adding '"tasks.o"'
+### List of Objects: adding '"heap_2.o"'
+### List of Objects: adding '"port.o"'
+### List of Objects: adding '".\portasm.o"'
+### ADS-LD Command completed:
+--cpu ARM7TDMI "startup.o" "countsem.o" "list.o" "queue.o" "tasks.o" "heap_2.o" "port.o" ".\portasm.o" 
+--strict --scatter "countsem.sct" 
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\countsem.map" -o countsem.axf### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: 'countsem.axf'
+### ADS-LD Command File: 'countsem.lnp'
+### Checking for dirty Components...
+### Creating CmdFile 'countsem.lnp', Handle=0x00000254
+### Writing '.lnp' file
+### ADS-LD Command file 'countsem.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.

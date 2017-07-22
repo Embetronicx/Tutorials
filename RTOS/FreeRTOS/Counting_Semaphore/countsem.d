@@ -1,0 +1,17 @@
+countsem.o: countsem.c
+countsem.o: C:\Keil\ARM\ARMCC\bin\..\include\stdlib.h
+countsem.o: C:\Keil\FreeRTOSV8.2.3\FreeRTOS\Source\include\FreeRTOS.h
+countsem.o: C:\Keil\ARM\ARMCC\bin\..\include\stddef.h
+countsem.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+countsem.o: C:\Keil\FreeRTOSV8.2.3\FreeRTOS\Source\include\FreeRTOSConfig.h
+countsem.o: C:\Keil\ARM\Inc\Philips\lpc214x.h
+countsem.o: C:\Keil\FreeRTOSV8.2.3\FreeRTOS\Source\include\projdefs.h
+countsem.o: C:\Keil\FreeRTOSV8.2.3\FreeRTOS\Source\include\portable.h
+countsem.o: C:\Keil\FreeRTOSV8.2.3\FreeRTOS\Source\include\deprecated_definitions.h
+countsem.o: C:\Keil\FreeRTOSV8.2.3\FreeRTOS\Source\include\..\..\Source\portable\RVDS\ARM7_LPC21xx\portmacro.h
+countsem.o: C:\Keil\FreeRTOSV8.2.3\FreeRTOS\Source\include\mpu_wrappers.h
+countsem.o: C:\Keil\FreeRTOSV8.2.3\FreeRTOS\Source\include\task.h
+countsem.o: C:\Keil\FreeRTOSV8.2.3\FreeRTOS\Source\include\list.h
+countsem.o: serial.h
+countsem.o: C:\Keil\FreeRTOSV8.2.3\FreeRTOS\Source\include\semphr.h
+countsem.o: C:\Keil\FreeRTOSV8.2.3\FreeRTOS\Source\include\queue.h

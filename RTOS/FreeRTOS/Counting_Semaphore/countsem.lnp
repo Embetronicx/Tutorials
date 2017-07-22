@@ -1,0 +1,5 @@
+--cpu ARM7TDMI "startup.o" "countsem.o" "list.o" "queue.o" "tasks.o" "heap_2.o" "port.o" ".\portasm.o" 
+--strict --scatter "countsem.sct" 
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\countsem.map" -o countsem.axf
