@@ -1,0 +1,1938 @@
+
+
+HI-TECH Software PIC LITE Macro Assembler V9.83 build 10920 
+                                                                                               Sat Jul 29 16:38:25 2017
+
+HI-TECH Software Omniscient Code Generator (Lite mode) build 10920
+     1  0000                     opt subtitle "HI-TECH Software Omniscient Code Generator (Lite mode) build 10920"
+     2                           
+     3                           opt pagewidth 120
+     4                           
+     5                           	opt lm
+     6                           
+     7                           	processor	16F877A
+     8                           clrc	macro
+     9                           	bcf	3,0
+    10  0000                     	endm
+    11                           clrz	macro
+    12                           	bcf	3,2
+    13  0000                     	endm
+    14                           setc	macro
+    15                           	bsf	3,0
+    16  0000                     	endm
+    17                           setz	macro
+    18                           	bsf	3,2
+    19  0000                     	endm
+    20                           skipc	macro
+    21                           	btfss	3,0
+    22  0000                     	endm
+    23                           skipz	macro
+    24                           	btfss	3,2
+    25  0000                     	endm
+    26                           skipnc	macro
+    27                           	btfsc	3,0
+    28  0000                     	endm
+    29                           skipnz	macro
+    30                           	btfsc	3,2
+    31  0000                     	endm
+    32  0000                     indf	equ	0
+    33  0000                     indf0	equ	0
+    34  0002                     pc	equ	2
+    35  0002                     pcl	equ	2
+    36  0003                     status	equ	3
+    37  0004                     fsr	equ	4
+    38  0004                     fsr0	equ	4
+    39  0001                     c	equ	1
+    40  0000                     z	equ	0
+    41  000A                     pclath	equ	10
+    42                           # 3 "D:\SLR\Interlogicx\codes\Others\PIC\PIC16F pgms\KEYPAD\key.c"
+    43                           	psect config,class=CONFIG,delta=2 ;#
+    44                           # 3 "D:\SLR\Interlogicx\codes\Others\PIC\PIC16F pgms\KEYPAD\key.c"
+    45  2007  FF7A               	dw 0xFFFE & 0xFFFB & 0xFFFF & 0xFFFF & 0xFFFF & 0xFF7F & 0xFFFF & 0xFFFF & 0xFFFF ;#
+    46                           	FNCALL	_main,_lcd_init
+    47                           	FNCALL	_main,_keyinit
+    48                           	FNCALL	_main,_cmd
+    49                           	FNCALL	_main,_show
+    50                           	FNCALL	_main,_key
+    51                           	FNCALL	_main,_dat
+    52                           	FNCALL	_show,_dat
+    53                           	FNCALL	_lcd_init,_cmd
+    54                           	FNCALL	_dat,_lcd_delay
+    55                           	FNCALL	_cmd,_lcd_delay
+    56                           	FNROOT	_main
+    57                           	global	_keypad
+    58                           psect	idataBANK0,class=CODE,space=0,delta=2
+    59                           global __pidataBANK0
+    60  05AD                     __pidataBANK0:
+    61                           	file	"D:\SLR\Interlogicx\codes\Others\PIC\PIC16F pgms\KEYPAD\key.c"
+    62                           	line	27
+    63                           
+    64                           ;initializer for _keypad
+    65  05AD  3437               	retlw	037h
+    66  05AE  3438               	retlw	038h
+    67  05AF  3439               	retlw	039h
+    68  05B0  342F               	retlw	02Fh
+    69  05B1  3434               	retlw	034h
+    70  05B2  3435               	retlw	035h
+    71  05B3  3436               	retlw	036h
+    72  05B4  342A               	retlw	02Ah
+    73  05B5  3431               	retlw	031h
+    74  05B6  3432               	retlw	032h
+    75  05B7  3433               	retlw	033h
+    76  05B8  342D               	retlw	02Dh
+    77  05B9  3443               	retlw	043h
+    78  05BA  3430               	retlw	030h
+    79  05BB  343D               	retlw	03Dh
+    80  05BC  342B               	retlw	02Bh
+    81                           	global	_colloc
+    82                           	global	_rowloc
+    83                           	global	_PORTB
+    84  0006                     _PORTB	set	6
+    85                           	global	_PORTD
+    86  0008                     _PORTD	set	8
+    87                           	global	_CARRY
+    88  0018                     _CARRY	set	24
+    89                           	global	_GIE
+    90  005F                     _GIE	set	95
+    91                           	global	_RB0
+    92  0030                     _RB0	set	48
+    93                           	global	_RB1
+    94  0031                     _RB1	set	49
+    95                           	global	_RB2
+    96  0032                     _RB2	set	50
+    97                           	global	_RB3
+    98  0033                     _RB3	set	51
+    99                           	global	_RB4
+   100  0034                     _RB4	set	52
+   101                           	global	_RB5
+   102  0035                     _RB5	set	53
+   103                           	global	_RB6
+   104  0036                     _RB6	set	54
+   105                           	global	_RB7
+   106  0037                     _RB7	set	55
+   107                           	global	_RD2
+   108  0042                     _RD2	set	66
+   109                           	global	_RD3
+   110  0043                     _RD3	set	67
+   111                           	global	_OPTION_REG
+   112  0081                     _OPTION_REG	set	129
+   113                           	global	_TRISB
+   114  0086                     _TRISB	set	134
+   115                           	global	_TRISD
+   116  0088                     _TRISD	set	136
+   117                           	global	_EEADR
+   118  010D                     _EEADR	set	269
+   119                           	global	_EEDATA
+   120  010C                     _EEDATA	set	268
+   121                           	global	_EECON1
+   122  018C                     _EECON1	set	396
+   123                           	global	_EECON2
+   124  018D                     _EECON2	set	397
+   125                           	global	_RD
+   126  0C60                     _RD	set	3168
+   127                           	global	_WR
+   128  0C61                     _WR	set	3169
+   129                           	global	_WREN
+   130  0C62                     _WREN	set	3170
+   131                           psect	strings,class=STRING,delta=2
+   132                           global __pstrings
+   133  0003                     __pstrings:
+   134                           ;	global	stringdir,stringtab,__stringbase
+   135  0003                     stringtab:
+   136                           ;	String table - string pointers are 1 byte each
+   137  0003                     stringcode:stringdir:
+      + 0003                     stringdir:	
+   138  0003  3000               movlw high(stringdir)
+   139  0004  008A               movwf pclath
+   140  0005  0804               movf fsr,w
+   141  0006  0A84               incf fsr
+   142  0007  0782               	addwf pc
+   143  0008                     __stringbase:
+   144  0008  3400               	retlw	0
+   145                           psect	strings
+   146                           	
+   147  0009                     STR_1:	
+   148  0009  3420               	retlw	32	;' '
+   149  000A  3420               	retlw	32	;' '
+   150  000B  3445               	retlw	69	;'E'
+   151  000C  346E               	retlw	110	;'n'
+   152  000D  3474               	retlw	116	;'t'
+   153  000E  3465               	retlw	101	;'e'
+   154  000F  3472               	retlw	114	;'r'
+   155  0010  3420               	retlw	32	;' '
+   156  0011  3474               	retlw	116	;'t'
+   157  0012  3468               	retlw	104	;'h'
+   158  0013  3465               	retlw	101	;'e'
+   159  0014  3420               	retlw	32	;' '
+   160  0015  344B               	retlw	75	;'K'
+   161  0016  3465               	retlw	101	;'e'
+   162  0017  3479               	retlw	121	;'y'
+   163  0018  3420               	retlw	32	;' '
+   164  0019  3400               	retlw	0
+   165                           psect	strings
+   166                           	file	"keypad.as"
+   167                           	line	#
+   168                           psect cinit,class=CODE,delta=2
+   169                           global start_initialization
+   170  05D0                     start_initialization:
+   171                           
+   172                           psect	bssCOMMON,class=COMMON,space=1
+   173                           global __pbssCOMMON
+   174  0079                     __pbssCOMMON:
+   175  0079                     _colloc:
+   176  0079                            ds      1
+   177                           
+   178  007A                     _rowloc:
+   179  007A                            ds      1
+   180                           
+   181                           psect	dataBANK0,class=BANK0,space=1
+   182                           global __pdataBANK0
+   183  0020                     __pdataBANK0:
+   184                           	file	"D:\SLR\Interlogicx\codes\Others\PIC\PIC16F pgms\KEYPAD\key.c"
+   185  0020                     _keypad:
+   186  0020                            ds      16
+   187                           
+   188                           ; Clear objects allocated to COMMON
+   189                           psect cinit,class=CODE,delta=2
+   190  05D0  01F9               	clrf	((__pbssCOMMON)+0)&07Fh
+   191  05D1  01FA               	clrf	((__pbssCOMMON)+1)&07Fh
+   192                           global btemp
+   193                           psect inittext,class=CODE,delta=2
+   194                           global init_fetch,btemp
+   195                           ;	Called with low address in FSR and high address in W
+   196  05BD                     init_fetch:
+   197  05BD  087E               	movf btemp,w
+   198  05BE  008A               	movwf pclath
+   199  05BF  087F               	movf btemp+1,w
+   200  05C0  0082               	movwf pc
+   201                           global init_ram
+   202                           ;Called with:
+   203                           ;	high address of idata address in btemp 
+   204                           ;	low address of idata address in btemp+1 
+   205                           ;	low address of data in FSR
+   206                           ;	high address + 1 of data in btemp-1
+   207  05C1                     init_ram:
+   208  05C1  120A  118A  25BD   	fcall init_fetch
+              120A  118A         
+   209  05C6  0080               	movwf indf,f
+   210  05C7  0A84               	incf fsr,f
+   211  05C8  0804               	movf fsr,w
+   212  05C9  067D               	xorwf btemp-1,w
+   213  05CA  1903               	btfsc status,2
+   214  05CB  3400               	retlw 0
+   215  05CC  0AFF               	incf btemp+1,f
+   216  05CD  1903               	btfsc status,2
+   217  05CE  0AFE               	incf btemp,f
+   218  05CF  2DC1               	goto init_ram
+   219                           ; Initialize objects allocated to BANK0
+   220                           psect cinit,class=CODE,delta=2
+   221                           global init_ram, __pidataBANK0
+   222  05D2  1383               	bcf	status, 7	;select IRP bank0
+   223  05D3  3030               	movlw low(__pdataBANK0+16)
+   224  05D4  00FD               	movwf btemp-1,f
+   225  05D5  3005               	movlw high(__pidataBANK0)
+   226  05D6  00FE               	movwf btemp,f
+   227  05D7  30AD               	movlw low(__pidataBANK0)
+   228  05D8  00FF               	movwf btemp+1,f
+   229  05D9  3020               	movlw low(__pdataBANK0)
+   230  05DA  0084               	movwf fsr,f
+   231  05DB  120A  118A  25C1   	fcall init_ram
+              120A  118A         
+   232                           psect cinit,class=CODE,delta=2
+   233                           global end_of_initialization
+   234                           
+   235                           ;End of C runtime variable initialization code
+   236                           
+   237  05E0                     end_of_initialization:
+   238  05E0  0183               clrf status
+   239  05E1  120A  118A  2E42   ljmp _main	;jump to C main() function
+   240                           psect	cstackCOMMON,class=COMMON,space=1
+   241                           global __pcstackCOMMON
+   242  0070                     __pcstackCOMMON:
+   243                           	global	?_lcd_init
+   244  0070                     ?_lcd_init:	; 0 bytes @ 0x0
+   245                           	global	?_keyinit
+   246  0070                     ?_keyinit:	; 0 bytes @ 0x0
+   247                           	global	??_keyinit
+   248  0070                     ??_keyinit:	; 0 bytes @ 0x0
+   249                           	global	?_cmd
+   250  0070                     ?_cmd:	; 0 bytes @ 0x0
+   251                           	global	?_show
+   252  0070                     ?_show:	; 0 bytes @ 0x0
+   253                           	global	??_key
+   254  0070                     ??_key:	; 0 bytes @ 0x0
+   255                           	global	?_dat
+   256  0070                     ?_dat:	; 0 bytes @ 0x0
+   257                           	global	?_lcd_delay
+   258  0070                     ?_lcd_delay:	; 0 bytes @ 0x0
+   259                           	global	??_lcd_delay
+   260  0070                     ??_lcd_delay:	; 0 bytes @ 0x0
+   261                           	global	?_main
+   262  0070                     ?_main:	; 0 bytes @ 0x0
+   263                           	global	?_key
+   264  0070                     ?_key:	; 1 bytes @ 0x0
+   265                           	global	lcd_delay@lcd_delay
+   266  0070                     lcd_delay@lcd_delay:	; 2 bytes @ 0x0
+   267  0070                     	ds	2
+   268                           	global	??_cmd
+   269  0072                     ??_cmd:	; 0 bytes @ 0x2
+   270                           	global	??_dat
+   271  0072                     ??_dat:	; 0 bytes @ 0x2
+   272  0072                     	ds	2
+   273                           	global	cmd@a
+   274  0074                     cmd@a:	; 1 bytes @ 0x4
+   275                           	global	dat@b
+   276  0074                     dat@b:	; 1 bytes @ 0x4
+   277  0074                     	ds	1
+   278                           	global	??_lcd_init
+   279  0075                     ??_lcd_init:	; 0 bytes @ 0x5
+   280                           	global	??_show
+   281  0075                     ??_show:	; 0 bytes @ 0x5
+   282  0075                     	ds	1
+   283                           	global	show@s
+   284  0076                     show@s:	; 1 bytes @ 0x6
+   285  0076                     	ds	1
+   286                           	global	??_main
+   287  0077                     ??_main:	; 0 bytes @ 0x7
+   288  0077                     	ds	1
+   289                           	global	main@b
+   290  0078                     main@b:	; 1 bytes @ 0x8
+   291  0078                     	ds	1
+   292 ;;Data sizes: Strings 17, constant 0, data 16, bss 2, persistent 0 stack 0
+   293 ;;Auto spaces:   Size  Autos    Used
+   294 ;; COMMON          14      9      11
+   295 ;; BANK0           80      0      16
+   296 ;; BANK1           80      0       0
+   297 ;; BANK3           96      0       0
+   298 ;; BANK2           96      0       0
+   299                           
+   300 ;;
+   301 ;; Pointer list with targets:
+   302                           
+   303 ;; show@s	PTR unsigned char  size(1) Largest target is 17
+   304 ;;		 -> STR_1(CODE[17]), 
+   305 ;;
+   306                           
+   307                           
+   308 ;;
+   309 ;; Critical Paths under _main in COMMON
+   310 ;;
+   311 ;;   _main->_show
+   312 ;;   _show->_dat
+   313 ;;   _lcd_init->_cmd
+   314 ;;   _dat->_lcd_delay
+   315 ;;   _cmd->_lcd_delay
+   316 ;;
+   317 ;; Critical Paths under _main in BANK0
+   318 ;;
+   319 ;;   None.
+   320 ;;
+   321 ;; Critical Paths under _main in BANK1
+   322 ;;
+   323 ;;   None.
+   324 ;;
+   325 ;; Critical Paths under _main in BANK3
+   326 ;;
+   327 ;;   None.
+   328 ;;
+   329 ;; Critical Paths under _main in BANK2
+   330 ;;
+   331 ;;   None.
+   332                           
+   333 ;;
+   334 ;;Main: autosize = 0, tempsize = 1, incstack = 0, save=0
+   335 ;;
+   336                           
+   337 ;;
+   338 ;;Call Graph Tables:
+   339 ;;
+   340 ;; ---------------------------------------------------------------------------------
+   341 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   342 ;; ---------------------------------------------------------------------------------
+   343 ;; (0) _main                                                 4     4      0     285
+   344 ;;                                              7 COMMON     2     2      0
+   345 ;;                           _lcd_init
+   346 ;;                            _keyinit
+   347 ;;                                _cmd
+   348 ;;                               _show
+   349 ;;                                _key
+   350 ;;                                _dat
+   351 ;; ---------------------------------------------------------------------------------
+   352 ;; (1) _show                                                 2     2      0      90
+   353 ;;                                              5 COMMON     2     2      0
+   354 ;;                                _dat
+   355 ;; ---------------------------------------------------------------------------------
+   356 ;; (1) _lcd_init                                             0     0      0      60
+   357 ;;                                _cmd
+   358 ;; ---------------------------------------------------------------------------------
+   359 ;; (1) _dat                                                  3     3      0      60
+   360 ;;                                              2 COMMON     3     3      0
+   361 ;;                          _lcd_delay
+   362 ;; ---------------------------------------------------------------------------------
+   363 ;; (1) _cmd                                                  3     3      0      60
+   364 ;;                                              2 COMMON     3     3      0
+   365 ;;                          _lcd_delay
+   366 ;; ---------------------------------------------------------------------------------
+   367 ;; (2) _lcd_delay                                            2     2      0      30
+   368 ;;                                              0 COMMON     2     2      0
+   369 ;; ---------------------------------------------------------------------------------
+   370 ;; (1) _key                                                  3     3      0       0
+   371 ;;                                              0 COMMON     3     3      0
+   372 ;; ---------------------------------------------------------------------------------
+   373 ;; (1) _keyinit                                              1     1      0       0
+   374 ;;                                              0 COMMON     1     1      0
+   375 ;; ---------------------------------------------------------------------------------
+   376 ;; Estimated maximum stack depth 2
+   377 ;; ---------------------------------------------------------------------------------
+   378                           
+   379 ;; Call Graph Graphs:
+   380                           
+   381 ;; _main (ROOT)
+   382 ;;   _lcd_init
+   383 ;;     _cmd
+   384 ;;       _lcd_delay
+   385 ;;   _keyinit
+   386 ;;   _cmd
+   387 ;;     _lcd_delay
+   388 ;;   _show
+   389 ;;     _dat
+   390 ;;       _lcd_delay
+   391 ;;   _key
+   392 ;;   _dat
+   393 ;;     _lcd_delay
+   394 ;;
+   395                           
+   396 ;; Address spaces:
+   397                           
+   398 ;;Name               Size   Autos  Total    Cost      Usage
+   399 ;;BANK3               60      0       0       9        0.0%
+   400 ;;BITBANK3            60      0       0       8        0.0%
+   401 ;;SFR3                 0      0       0       4        0.0%
+   402 ;;BITSFR3              0      0       0       4        0.0%
+   403 ;;BANK2               60      0       0      11        0.0%
+   404 ;;BITBANK2            60      0       0      10        0.0%
+   405 ;;SFR2                 0      0       0       5        0.0%
+   406 ;;BITSFR2              0      0       0       5        0.0%
+   407 ;;SFR1                 0      0       0       2        0.0%
+   408 ;;BITSFR1              0      0       0       2        0.0%
+   409 ;;BANK1               50      0       0       7        0.0%
+   410 ;;BITBANK1            50      0       0       6        0.0%
+   411 ;;CODE                 0      0       0       0        0.0%
+   412 ;;DATA                 0      0      1E      12        0.0%
+   413 ;;ABS                  0      0      1B       3        0.0%
+   414 ;;NULL                 0      0       0       0        0.0%
+   415 ;;STACK                0      0       3       2        0.0%
+   416 ;;BANK0               50      0      10       5       20.0%
+   417 ;;BITBANK0            50      0       0       4        0.0%
+   418 ;;SFR0                 0      0       0       1        0.0%
+   419 ;;BITSFR0              0      0       0       1        0.0%
+   420 ;;COMMON               E      9       B       1       78.6%
+   421 ;;BITCOMMON            E      0       0       0        0.0%
+   422 ;;EEDATA             100      0       0       0        0.0%
+   423                           
+   424                           	global	_main
+   425                           psect	maintext,global,class=CODE,delta=2
+   426                           global __pmaintext
+   427  0642                     __pmaintext:
+   428                           
+   429 ;; *************** function _main *****************
+   430 ;; Defined at:
+   431 ;;		line 31 in file "D:\SLR\Interlogicx\codes\Others\PIC\PIC16F pgms\KEYPAD\key.c"
+   432 ;; Parameters:    Size  Location     Type
+   433 ;;		None
+   434 ;; Auto vars:     Size  Location     Type
+   435 ;;  i               2    0        unsigned int 
+   436 ;;  b               1    8[COMMON] unsigned char 
+   437 ;; Return value:  Size  Location     Type
+   438 ;;		None               void
+   439 ;; Registers used:
+   440 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   441 ;; Tracked objects:
+   442 ;;		On entry : 17F/0
+   443 ;;		On exit  : 0/0
+   444 ;;		Unchanged: 0/0
+   445 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   446 ;;      Params:         0       0       0       0       0
+   447 ;;      Locals:         1       0       0       0       0
+   448 ;;      Temps:          1       0       0       0       0
+   449 ;;      Totals:         2       0       0       0       0
+   450 ;;Total ram usage:        2 bytes
+   451 ;; Hardware stack levels required when called:    3
+   452 ;; This function calls:
+   453 ;;		_lcd_init
+   454 ;;		_keyinit
+   455 ;;		_cmd
+   456 ;;		_show
+   457 ;;		_key
+   458 ;;		_dat
+   459 ;; This function is called by:
+   460 ;;		Startup code after reset
+   461 ;; This function uses a non-reentrant model
+   462 ;;
+   463                           psect	maintext
+   464                           	file	"D:\SLR\Interlogicx\codes\Others\PIC\PIC16F pgms\KEYPAD\key.c"
+   465                           	line	31
+   466                           	global	__size_of_main
+   467  0033                     	__size_of_main	equ	__end_of_main-_main
+   468                           	
+   469  0642                     _main:	
+   470                           	opt	stack 5
+   471                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   472                           	line	33
+   473                           	
+   474  0642                     l2817:	
+   475                           ;key.c: 32: unsigned int i;
+   476                           ;key.c: 33: TRISD=0;
+   477  0642  1683               	bsf	status, 5	;RP0=1, select bank1
+   478  0643  1303               	bcf	status, 6	;RP1=0, select bank1
+   479  0644  0188               	clrf	(136)^080h	;volatile
+   480                           	line	34
+   481                           	
+   482  0645                     l2819:	
+   483                           ;key.c: 34: lcd_init();
+   484  0645  120A  118A  2602   	fcall	_lcd_init
+              120A  118A         
+   485                           	line	35
+   486                           	
+   487  064A                     l2821:	
+   488                           ;key.c: 35: keyinit();
+   489  064A  120A  118A  25A4   	fcall	_keyinit
+              120A  118A         
+   490                           	line	37
+   491                           	
+   492  064F                     l2823:	
+   493                           ;key.c: 36: unsigned char b;
+   494                           ;key.c: 37: cmd(0x80);
+   495  064F  3080               	movlw	(080h)
+   496  0650  120A  118A  2675   	fcall	_cmd
+              120A  118A         
+   497                           	line	38
+   498                           	
+   499  0655                     l2825:	
+   500                           ;key.c: 38: show("  Enter the Key ");
+   501  0655  3001               	movlw	((STR_1-__stringbase))&0ffh
+   502  0656  120A  118A  2621   	fcall	_show
+              120A  118A         
+   503  065B  2E5C               	goto	l2827
+   504                           	line	39
+   505                           ;key.c: 39: while(1)
+   506                           	
+   507  065C                     l705:	
+   508                           	line	41
+   509                           	
+   510  065C                     l2827:	
+   511                           ;key.c: 40: {
+   512                           ;key.c: 41: cmd(0xc7);
+   513  065C  30C7               	movlw	(0C7h)
+   514  065D  120A  118A  2675   	fcall	_cmd
+              120A  118A         
+   515                           	line	42
+   516                           	
+   517  0662                     l2829:	
+   518                           ;key.c: 42: b=key();
+   519  0662  120A  118A  26F1   	fcall	_key
+              120A  118A         
+   520  0667  00F7               	movwf	(??_main+0)+0
+   521  0668  0877               	movf	(??_main+0)+0,w
+   522  0669  00F8               	movwf	(main@b)
+   523                           	line	43
+   524                           	
+   525  066A                     l2831:	
+   526                           ;key.c: 43: dat(b);
+   527  066A  0878               	movf	(main@b),w
+   528  066B  120A  118A  26B3   	fcall	_dat
+              120A  118A         
+   529  0670  2E5C               	goto	l2827
+   530                           	line	45
+   531                           	
+   532  0671                     l706:	
+   533                           	line	39
+   534  0671  2E5C               	goto	l2827
+   535                           	
+   536  0672                     l707:	
+   537                           	line	46
+   538                           	
+   539  0672                     l708:	
+   540                           	global	start
+   541  0672  120A  118A  2800   	ljmp	start
+   542                           	opt stack 0
+   543                           GLOBAL	__end_of_main
+   544  0675                     	__end_of_main:
+   545 ;; =============== function _main ends ============
+   546                           
+   547                           	signat	_main,88
+   548                           	global	_show
+   549                           psect	text131,local,class=CODE,delta=2
+   550                           global __ptext131
+   551  0621                     __ptext131:
+   552                           
+   553 ;; *************** function _show *****************
+   554 ;; Defined at:
+   555 ;;		line 92 in file "D:\SLR\Interlogicx\codes\Others\PIC\PIC16F pgms\KEYPAD\key.c"
+   556 ;; Parameters:    Size  Location     Type
+   557 ;;  s               1    wreg     PTR unsigned char 
+   558 ;;		 -> STR_1(17), 
+   559 ;; Auto vars:     Size  Location     Type
+   560 ;;  s               1    6[COMMON] PTR unsigned char 
+   561 ;;		 -> STR_1(17), 
+   562 ;; Return value:  Size  Location     Type
+   563 ;;		None               void
+   564 ;; Registers used:
+   565 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   566 ;; Tracked objects:
+   567 ;;		On entry : 0/0
+   568 ;;		On exit  : 0/0
+   569 ;;		Unchanged: 0/0
+   570 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   571 ;;      Params:         0       0       0       0       0
+   572 ;;      Locals:         1       0       0       0       0
+   573 ;;      Temps:          1       0       0       0       0
+   574 ;;      Totals:         2       0       0       0       0
+   575 ;;Total ram usage:        2 bytes
+   576 ;; Hardware stack levels used:    1
+   577 ;; Hardware stack levels required when called:    2
+   578 ;; This function calls:
+   579 ;;		_dat
+   580 ;; This function is called by:
+   581 ;;		_main
+   582 ;; This function uses a non-reentrant model
+   583 ;;
+   584                           psect	text131
+   585                           	file	"D:\SLR\Interlogicx\codes\Others\PIC\PIC16F pgms\KEYPAD\key.c"
+   586                           	line	92
+   587                           	global	__size_of_show
+   588  0021                     	__size_of_show	equ	__end_of_show-_show
+   589                           	
+   590  0621                     _show:	
+   591                           	opt	stack 5
+   592                           ; Regs used in _show: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   593                           ;show@s stored from wreg
+   594  0621  00F6               	movwf	(show@s)
+   595                           	line	93
+   596                           	
+   597  0622                     l2809:	
+   598                           ;key.c: 93: while(*s) {
+   599  0622  2E34               	goto	l2815
+   600                           	
+   601  0623                     l721:	
+   602                           	line	94
+   603                           	
+   604  0623                     l2811:	
+   605                           ;key.c: 94: dat(*s++);
+   606  0623  0876               	movf	(show@s),w
+   607  0624  0084               	movwf	fsr0
+   608  0625  120A  118A  2003   	fcall	stringdir
+              120A  118A         
+   609  062A  120A  118A  26B3   	fcall	_dat
+              120A  118A         
+   610                           	
+   611  062F                     l2813:	
+   612  062F  3001               	movlw	(01h)
+   613  0630  00F5               	movwf	(??_show+0)+0
+   614  0631  0875               	movf	(??_show+0)+0,w
+   615  0632  07F6               	addwf	(show@s),f
+   616  0633  2E34               	goto	l2815
+   617                           	line	95
+   618                           	
+   619  0634                     l720:	
+   620                           	line	93
+   621                           	
+   622  0634                     l2815:	
+   623  0634  0876               	movf	(show@s),w
+   624  0635  0084               	movwf	fsr0
+   625  0636  120A  118A  2003   	fcall	stringdir
+              120A  118A         
+   626  063B  3800               	iorlw	0
+   627  063C  1D03               	skipz
+   628  063D  2E3F               	goto	u2741
+   629  063E  2E40               	goto	u2740
+   630  063F                     u2741:
+   631  063F  2E23               	goto	l2811
+   632  0640                     u2740:
+   633  0640  2E41               	goto	l723
+   634                           	
+   635  0641                     l722:	
+   636                           	line	96
+   637                           	
+   638  0641                     l723:	
+   639  0641  0008               	return
+   640                           	opt stack 0
+   641                           GLOBAL	__end_of_show
+   642  0642                     	__end_of_show:
+   643 ;; =============== function _show ends ============
+   644                           
+   645                           	signat	_show,4216
+   646                           	global	_lcd_init
+   647                           psect	text132,local,class=CODE,delta=2
+   648                           global __ptext132
+   649  0602                     __ptext132:
+   650                           
+   651 ;; *************** function _lcd_init *****************
+   652 ;; Defined at:
+   653 ;;		line 49 in file "D:\SLR\Interlogicx\codes\Others\PIC\PIC16F pgms\KEYPAD\key.c"
+   654 ;; Parameters:    Size  Location     Type
+   655 ;;		None
+   656 ;; Auto vars:     Size  Location     Type
+   657 ;;		None
+   658 ;; Return value:  Size  Location     Type
+   659 ;;		None               void
+   660 ;; Registers used:
+   661 ;;		wreg, status,2, status,0, pclath, cstack
+   662 ;; Tracked objects:
+   663 ;;		On entry : 0/0
+   664 ;;		On exit  : 0/0
+   665 ;;		Unchanged: 0/0
+   666 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   667 ;;      Params:         0       0       0       0       0
+   668 ;;      Locals:         0       0       0       0       0
+   669 ;;      Temps:          0       0       0       0       0
+   670 ;;      Totals:         0       0       0       0       0
+   671 ;;Total ram usage:        0 bytes
+   672 ;; Hardware stack levels used:    1
+   673 ;; Hardware stack levels required when called:    2
+   674 ;; This function calls:
+   675 ;;		_cmd
+   676 ;; This function is called by:
+   677 ;;		_main
+   678 ;; This function uses a non-reentrant model
+   679 ;;
+   680                           psect	text132
+   681                           	file	"D:\SLR\Interlogicx\codes\Others\PIC\PIC16F pgms\KEYPAD\key.c"
+   682                           	line	49
+   683                           	global	__size_of_lcd_init
+   684  001F                     	__size_of_lcd_init	equ	__end_of_lcd_init-_lcd_init
+   685                           	
+   686  0602                     _lcd_init:	
+   687                           	opt	stack 5
+   688                           ; Regs used in _lcd_init: [wreg+status,2+status,0+pclath+cstack]
+   689                           	line	50
+   690                           	
+   691  0602                     l2807:	
+   692                           ;key.c: 50: cmd(0x02);
+   693  0602  3002               	movlw	(02h)
+   694  0603  120A  118A  2675   	fcall	_cmd
+              120A  118A         
+   695                           	line	51
+   696                           ;key.c: 51: cmd(0x28);
+   697  0608  3028               	movlw	(028h)
+   698  0609  120A  118A  2675   	fcall	_cmd
+              120A  118A         
+   699                           	line	52
+   700                           ;key.c: 52: cmd(0x0e);
+   701  060E  300E               	movlw	(0Eh)
+   702  060F  120A  118A  2675   	fcall	_cmd
+              120A  118A         
+   703                           	line	53
+   704                           ;key.c: 53: cmd(0x06);
+   705  0614  3006               	movlw	(06h)
+   706  0615  120A  118A  2675   	fcall	_cmd
+              120A  118A         
+   707                           	line	54
+   708                           ;key.c: 54: cmd(0x80);
+   709  061A  3080               	movlw	(080h)
+   710  061B  120A  118A  2675   	fcall	_cmd
+              120A  118A         
+   711                           	line	55
+   712                           	
+   713  0620                     l711:	
+   714  0620  0008               	return
+   715                           	opt stack 0
+   716                           GLOBAL	__end_of_lcd_init
+   717  0621                     	__end_of_lcd_init:
+   718 ;; =============== function _lcd_init ends ============
+   719                           
+   720                           	signat	_lcd_init,88
+   721                           	global	_dat
+   722                           psect	text133,local,class=CODE,delta=2
+   723                           global __ptext133
+   724  06B3                     __ptext133:
+   725                           
+   726 ;; *************** function _dat *****************
+   727 ;; Defined at:
+   728 ;;		line 75 in file "D:\SLR\Interlogicx\codes\Others\PIC\PIC16F pgms\KEYPAD\key.c"
+   729 ;; Parameters:    Size  Location     Type
+   730 ;;  b               1    wreg     unsigned char 
+   731 ;; Auto vars:     Size  Location     Type
+   732 ;;  b               1    4[COMMON] unsigned char 
+   733 ;; Return value:  Size  Location     Type
+   734 ;;		None               void
+   735 ;; Registers used:
+   736 ;;		wreg, status,2, status,0, pclath, cstack
+   737 ;; Tracked objects:
+   738 ;;		On entry : 0/0
+   739 ;;		On exit  : 0/0
+   740 ;;		Unchanged: 0/0
+   741 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   742 ;;      Params:         0       0       0       0       0
+   743 ;;      Locals:         1       0       0       0       0
+   744 ;;      Temps:          2       0       0       0       0
+   745 ;;      Totals:         3       0       0       0       0
+   746 ;;Total ram usage:        3 bytes
+   747 ;; Hardware stack levels used:    1
+   748 ;; Hardware stack levels required when called:    1
+   749 ;; This function calls:
+   750 ;;		_lcd_delay
+   751 ;; This function is called by:
+   752 ;;		_main
+   753 ;;		_show
+   754 ;; This function uses a non-reentrant model
+   755 ;;
+   756                           psect	text133
+   757                           	file	"D:\SLR\Interlogicx\codes\Others\PIC\PIC16F pgms\KEYPAD\key.c"
+   758                           	line	75
+   759                           	global	__size_of_dat
+   760  003E                     	__size_of_dat	equ	__end_of_dat-_dat
+   761                           	
+   762  06B3                     _dat:	
+   763                           	opt	stack 6
+   764                           ; Regs used in _dat: [wreg+status,2+status,0+pclath+cstack]
+   765                           ;dat@b stored from wreg
+   766  06B3  00F4               	movwf	(dat@b)
+   767                           	line	76
+   768                           	
+   769  06B4                     l2787:	
+   770                           ;key.c: 76: RD2=1;
+   771  06B4  1283               	bcf	status, 5	;RP0=0, select bank0
+   772  06B5  1303               	bcf	status, 6	;RP1=0, select bank0
+   773  06B6  1508               	bsf	(66/8),(66)&7
+   774                           	line	77
+   775                           	
+   776  06B7                     l2789:	
+   777                           ;key.c: 77: PORTD&=0x0F;
+   778  06B7  300F               	movlw	(0Fh)
+   779  06B8  00F2               	movwf	(??_dat+0)+0
+   780  06B9  0872               	movf	(??_dat+0)+0,w
+   781  06BA  0588               	andwf	(8),f	;volatile
+   782                           	line	78
+   783                           ;key.c: 78: PORTD|=(b&0xf0);
+   784  06BB  0874               	movf	(dat@b),w
+   785  06BC  39F0               	andlw	0F0h
+   786  06BD  00F2               	movwf	(??_dat+0)+0
+   787  06BE  0872               	movf	(??_dat+0)+0,w
+   788  06BF  0488               	iorwf	(8),f	;volatile
+   789                           	line	79
+   790                           	
+   791  06C0                     l2791:	
+   792                           ;key.c: 79: RD3=1;
+   793  06C0  1588               	bsf	(67/8),(67)&7
+   794                           	line	80
+   795                           	
+   796  06C1                     l2793:	
+   797                           ;key.c: 80: lcd_delay();
+   798  06C1  120A  118A  25E4   	fcall	_lcd_delay
+              120A  118A         
+   799                           	line	81
+   800                           	
+   801  06C6                     l2795:	
+   802                           ;key.c: 81: RD3=0;
+   803  06C6  1283               	bcf	status, 5	;RP0=0, select bank0
+   804  06C7  1303               	bcf	status, 6	;RP1=0, select bank0
+   805  06C8  1188               	bcf	(67/8),(67)&7
+   806                           	line	82
+   807                           	
+   808  06C9                     l2797:	
+   809                           ;key.c: 82: lcd_delay();
+   810  06C9  120A  118A  25E4   	fcall	_lcd_delay
+              120A  118A         
+   811                           	line	83
+   812                           ;key.c: 83: PORTD&=0x0f;
+   813  06CE  300F               	movlw	(0Fh)
+   814  06CF  00F2               	movwf	(??_dat+0)+0
+   815  06D0  0872               	movf	(??_dat+0)+0,w
+   816  06D1  1283               	bcf	status, 5	;RP0=0, select bank0
+   817  06D2  1303               	bcf	status, 6	;RP1=0, select bank0
+   818  06D3  0588               	andwf	(8),f	;volatile
+   819                           	line	84
+   820                           ;key.c: 84: PORTD|=(b<<4&0xf0);
+   821  06D4  0874               	movf	(dat@b),w
+   822  06D5  00F2               	movwf	(??_dat+0)+0
+   823  06D6  3003               	movlw	(04h)-1
+   824  06D7                     u2735:
+   825  06D7  1003               	clrc
+   826  06D8  0DF2               	rlf	(??_dat+0)+0,f
+   827  06D9  3EFF               	addlw	-1
+   828  06DA  1D03               	skipz
+   829  06DB  2ED7               	goto	u2735
+   830  06DC  1003               	clrc
+   831  06DD  0D72               	rlf	(??_dat+0)+0,w
+   832  06DE  39F0               	andlw	0F0h
+   833  06DF  00F3               	movwf	(??_dat+1)+0
+   834  06E0  0873               	movf	(??_dat+1)+0,w
+   835  06E1  0488               	iorwf	(8),f	;volatile
+   836                           	line	85
+   837                           	
+   838  06E2                     l2799:	
+   839                           ;key.c: 85: RD3=1;
+   840  06E2  1588               	bsf	(67/8),(67)&7
+   841                           	line	86
+   842                           	
+   843  06E3                     l2801:	
+   844                           ;key.c: 86: lcd_delay();
+   845  06E3  120A  118A  25E4   	fcall	_lcd_delay
+              120A  118A         
+   846                           	line	87
+   847                           	
+   848  06E8                     l2803:	
+   849                           ;key.c: 87: RD3=0;
+   850  06E8  1283               	bcf	status, 5	;RP0=0, select bank0
+   851  06E9  1303               	bcf	status, 6	;RP1=0, select bank0
+   852  06EA  1188               	bcf	(67/8),(67)&7
+   853                           	line	88
+   854                           	
+   855  06EB                     l2805:	
+   856                           ;key.c: 88: lcd_delay();
+   857  06EB  120A  118A  25E4   	fcall	_lcd_delay
+              120A  118A         
+   858                           	line	89
+   859                           	
+   860  06F0                     l717:	
+   861  06F0  0008               	return
+   862                           	opt stack 0
+   863                           GLOBAL	__end_of_dat
+   864  06F1                     	__end_of_dat:
+   865 ;; =============== function _dat ends ============
+   866                           
+   867                           	signat	_dat,4216
+   868                           	global	_cmd
+   869                           psect	text134,local,class=CODE,delta=2
+   870                           global __ptext134
+   871  0675                     __ptext134:
+   872                           
+   873 ;; *************** function _cmd *****************
+   874 ;; Defined at:
+   875 ;;		line 58 in file "D:\SLR\Interlogicx\codes\Others\PIC\PIC16F pgms\KEYPAD\key.c"
+   876 ;; Parameters:    Size  Location     Type
+   877 ;;  a               1    wreg     unsigned char 
+   878 ;; Auto vars:     Size  Location     Type
+   879 ;;  a               1    4[COMMON] unsigned char 
+   880 ;; Return value:  Size  Location     Type
+   881 ;;		None               void
+   882 ;; Registers used:
+   883 ;;		wreg, status,2, status,0, pclath, cstack
+   884 ;; Tracked objects:
+   885 ;;		On entry : 0/0
+   886 ;;		On exit  : 0/0
+   887 ;;		Unchanged: 0/0
+   888 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   889 ;;      Params:         0       0       0       0       0
+   890 ;;      Locals:         1       0       0       0       0
+   891 ;;      Temps:          2       0       0       0       0
+   892 ;;      Totals:         3       0       0       0       0
+   893 ;;Total ram usage:        3 bytes
+   894 ;; Hardware stack levels used:    1
+   895 ;; Hardware stack levels required when called:    1
+   896 ;; This function calls:
+   897 ;;		_lcd_delay
+   898 ;; This function is called by:
+   899 ;;		_main
+   900 ;;		_lcd_init
+   901 ;; This function uses a non-reentrant model
+   902 ;;
+   903                           psect	text134
+   904                           	file	"D:\SLR\Interlogicx\codes\Others\PIC\PIC16F pgms\KEYPAD\key.c"
+   905                           	line	58
+   906                           	global	__size_of_cmd
+   907  003E                     	__size_of_cmd	equ	__end_of_cmd-_cmd
+   908                           	
+   909  0675                     _cmd:	
+   910                           	opt	stack 6
+   911                           ; Regs used in _cmd: [wreg+status,2+status,0+pclath+cstack]
+   912                           ;cmd@a stored from wreg
+   913  0675  00F4               	movwf	(cmd@a)
+   914                           	line	59
+   915                           	
+   916  0676                     l2767:	
+   917                           ;key.c: 59: RD2=0;
+   918  0676  1283               	bcf	status, 5	;RP0=0, select bank0
+   919  0677  1303               	bcf	status, 6	;RP1=0, select bank0
+   920  0678  1108               	bcf	(66/8),(66)&7
+   921                           	line	60
+   922                           	
+   923  0679                     l2769:	
+   924                           ;key.c: 60: PORTD&=0x0F;
+   925  0679  300F               	movlw	(0Fh)
+   926  067A  00F2               	movwf	(??_cmd+0)+0
+   927  067B  0872               	movf	(??_cmd+0)+0,w
+   928  067C  0588               	andwf	(8),f	;volatile
+   929                           	line	61
+   930                           ;key.c: 61: PORTD|=(a&0xf0);
+   931  067D  0874               	movf	(cmd@a),w
+   932  067E  39F0               	andlw	0F0h
+   933  067F  00F2               	movwf	(??_cmd+0)+0
+   934  0680  0872               	movf	(??_cmd+0)+0,w
+   935  0681  0488               	iorwf	(8),f	;volatile
+   936                           	line	62
+   937                           	
+   938  0682                     l2771:	
+   939                           ;key.c: 62: RD3=1;
+   940  0682  1588               	bsf	(67/8),(67)&7
+   941                           	line	63
+   942                           	
+   943  0683                     l2773:	
+   944                           ;key.c: 63: lcd_delay();
+   945  0683  120A  118A  25E4   	fcall	_lcd_delay
+              120A  118A         
+   946                           	line	64
+   947                           	
+   948  0688                     l2775:	
+   949                           ;key.c: 64: RD3=0;
+   950  0688  1283               	bcf	status, 5	;RP0=0, select bank0
+   951  0689  1303               	bcf	status, 6	;RP1=0, select bank0
+   952  068A  1188               	bcf	(67/8),(67)&7
+   953                           	line	65
+   954                           	
+   955  068B                     l2777:	
+   956                           ;key.c: 65: lcd_delay();
+   957  068B  120A  118A  25E4   	fcall	_lcd_delay
+              120A  118A         
+   958                           	line	66
+   959                           ;key.c: 66: PORTD&=0x0f;
+   960  0690  300F               	movlw	(0Fh)
+   961  0691  00F2               	movwf	(??_cmd+0)+0
+   962  0692  0872               	movf	(??_cmd+0)+0,w
+   963  0693  1283               	bcf	status, 5	;RP0=0, select bank0
+   964  0694  1303               	bcf	status, 6	;RP1=0, select bank0
+   965  0695  0588               	andwf	(8),f	;volatile
+   966                           	line	67
+   967                           ;key.c: 67: PORTD|=(a<<4&0xf0);
+   968  0696  0874               	movf	(cmd@a),w
+   969  0697  00F2               	movwf	(??_cmd+0)+0
+   970  0698  3003               	movlw	(04h)-1
+   971  0699                     u2725:
+   972  0699  1003               	clrc
+   973  069A  0DF2               	rlf	(??_cmd+0)+0,f
+   974  069B  3EFF               	addlw	-1
+   975  069C  1D03               	skipz
+   976  069D  2E99               	goto	u2725
+   977  069E  1003               	clrc
+   978  069F  0D72               	rlf	(??_cmd+0)+0,w
+   979  06A0  39F0               	andlw	0F0h
+   980  06A1  00F3               	movwf	(??_cmd+1)+0
+   981  06A2  0873               	movf	(??_cmd+1)+0,w
+   982  06A3  0488               	iorwf	(8),f	;volatile
+   983                           	line	68
+   984                           	
+   985  06A4                     l2779:	
+   986                           ;key.c: 68: RD3=1;
+   987  06A4  1588               	bsf	(67/8),(67)&7
+   988                           	line	69
+   989                           	
+   990  06A5                     l2781:	
+   991                           ;key.c: 69: lcd_delay();
+   992  06A5  120A  118A  25E4   	fcall	_lcd_delay
+              120A  118A         
+   993                           	line	70
+   994                           	
+   995  06AA                     l2783:	
+   996                           ;key.c: 70: RD3=0;
+   997  06AA  1283               	bcf	status, 5	;RP0=0, select bank0
+   998  06AB  1303               	bcf	status, 6	;RP1=0, select bank0
+   999  06AC  1188               	bcf	(67/8),(67)&7
+  1000                           	line	71
+  1001                           	
+  1002  06AD                     l2785:	
+  1003                           ;key.c: 71: lcd_delay();
+  1004  06AD  120A  118A  25E4   	fcall	_lcd_delay
+              120A  118A         
+  1005                           	line	72
+  1006                           	
+  1007  06B2                     l714:	
+  1008  06B2  0008               	return
+  1009                           	opt stack 0
+  1010                           GLOBAL	__end_of_cmd
+  1011  06B3                     	__end_of_cmd:
+  1012 ;; =============== function _cmd ends ============
+  1013                           
+  1014                           	signat	_cmd,4216
+  1015                           	global	_lcd_delay
+  1016                           psect	text135,local,class=CODE,delta=2
+  1017                           global __ptext135
+  1018  05E4                     __ptext135:
+  1019                           
+  1020 ;; *************** function _lcd_delay *****************
+  1021 ;; Defined at:
+  1022 ;;		line 99 in file "D:\SLR\Interlogicx\codes\Others\PIC\PIC16F pgms\KEYPAD\key.c"
+  1023 ;; Parameters:    Size  Location     Type
+  1024 ;;		None
+  1025 ;; Auto vars:     Size  Location     Type
+  1026 ;;  lcd_delay       2    0[COMMON] unsigned int 
+  1027 ;; Return value:  Size  Location     Type
+  1028 ;;		None               void
+  1029 ;; Registers used:
+  1030 ;;		wreg, status,2
+  1031 ;; Tracked objects:
+  1032 ;;		On entry : 0/0
+  1033 ;;		On exit  : 0/0
+  1034 ;;		Unchanged: 0/0
+  1035 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1036 ;;      Params:         0       0       0       0       0
+  1037 ;;      Locals:         2       0       0       0       0
+  1038 ;;      Temps:          0       0       0       0       0
+  1039 ;;      Totals:         2       0       0       0       0
+  1040 ;;Total ram usage:        2 bytes
+  1041 ;; Hardware stack levels used:    1
+  1042 ;; This function calls:
+  1043 ;;		Nothing
+  1044 ;; This function is called by:
+  1045 ;;		_cmd
+  1046 ;;		_dat
+  1047 ;; This function uses a non-reentrant model
+  1048 ;;
+  1049                           psect	text135
+  1050                           	file	"D:\SLR\Interlogicx\codes\Others\PIC\PIC16F pgms\KEYPAD\key.c"
+  1051                           	line	99
+  1052                           	global	__size_of_lcd_delay
+  1053  001E                     	__size_of_lcd_delay	equ	__end_of_lcd_delay-_lcd_delay
+  1054                           	
+  1055  05E4                     _lcd_delay:	
+  1056                           	opt	stack 6
+  1057                           ; Regs used in _lcd_delay: [wreg+status,2]
+  1058                           	line	101
+  1059                           	
+  1060  05E4                     l1901:	
+  1061                           ;key.c: 100: unsigned int lcd_delay;
+  1062                           ;key.c: 101: for(lcd_delay=0;lcd_delay<=1000;lcd_delay++);
+  1063  05E4  01F0               	clrf	(lcd_delay@lcd_delay)
+  1064  05E5  01F1               	clrf	(lcd_delay@lcd_delay+1)
+  1065                           	
+  1066  05E6                     l1903:	
+  1067  05E6  3003               	movlw	high(03E9h)
+  1068  05E7  0271               	subwf	(lcd_delay@lcd_delay+1),w
+  1069  05E8  30E9               	movlw	low(03E9h)
+  1070  05E9  1903               	skipnz
+  1071  05EA  0270               	subwf	(lcd_delay@lcd_delay),w
+  1072  05EB  1C03               	skipc
+  1073  05EC  2DEE               	goto	u491
+  1074  05ED  2DEF               	goto	u490
+  1075  05EE                     u491:
+  1076  05EE  2DF1               	goto	l1907
+  1077  05EF                     u490:
+  1078  05EF  2E01               	goto	l728
+  1079                           	
+  1080  05F0                     l1905:	
+  1081  05F0  2E01               	goto	l728
+  1082                           	
+  1083  05F1                     l726:	
+  1084                           	
+  1085  05F1                     l1907:	
+  1086  05F1  3001               	movlw	low(01h)
+  1087  05F2  07F0               	addwf	(lcd_delay@lcd_delay),f
+  1088  05F3  1803               	skipnc
+  1089  05F4  0AF1               	incf	(lcd_delay@lcd_delay+1),f
+  1090  05F5  3000               	movlw	high(01h)
+  1091  05F6  07F1               	addwf	(lcd_delay@lcd_delay+1),f
+  1092  05F7  3003               	movlw	high(03E9h)
+  1093  05F8  0271               	subwf	(lcd_delay@lcd_delay+1),w
+  1094  05F9  30E9               	movlw	low(03E9h)
+  1095  05FA  1903               	skipnz
+  1096  05FB  0270               	subwf	(lcd_delay@lcd_delay),w
+  1097  05FC  1C03               	skipc
+  1098  05FD  2DFF               	goto	u501
+  1099  05FE  2E00               	goto	u500
+  1100  05FF                     u501:
+  1101  05FF  2DF1               	goto	l1907
+  1102  0600                     u500:
+  1103  0600  2E01               	goto	l728
+  1104                           	
+  1105  0601                     l727:	
+  1106                           	line	102
+  1107                           	
+  1108  0601                     l728:	
+  1109  0601  0008               	return
+  1110                           	opt stack 0
+  1111                           GLOBAL	__end_of_lcd_delay
+  1112  0602                     	__end_of_lcd_delay:
+  1113 ;; =============== function _lcd_delay ends ============
+  1114                           
+  1115                           	signat	_lcd_delay,88
+  1116                           	global	_key
+  1117                           psect	text136,local,class=CODE,delta=2
+  1118                           global __ptext136
+  1119  06F1                     __ptext136:
+  1120                           
+  1121 ;; *************** function _key *****************
+  1122 ;; Defined at:
+  1123 ;;		line 111 in file "D:\SLR\Interlogicx\codes\Others\PIC\PIC16F pgms\KEYPAD\key.c"
+  1124 ;; Parameters:    Size  Location     Type
+  1125 ;;		None
+  1126 ;; Auto vars:     Size  Location     Type
+  1127 ;;		None
+  1128 ;; Return value:  Size  Location     Type
+  1129 ;;                  1    wreg      unsigned char 
+  1130 ;; Registers used:
+  1131 ;;		wreg, fsr0l, fsr0h, status,2, status,0
+  1132 ;; Tracked objects:
+  1133 ;;		On entry : 0/0
+  1134 ;;		On exit  : 0/0
+  1135 ;;		Unchanged: 0/0
+  1136 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1137 ;;      Params:         0       0       0       0       0
+  1138 ;;      Locals:         0       0       0       0       0
+  1139 ;;      Temps:          3       0       0       0       0
+  1140 ;;      Totals:         3       0       0       0       0
+  1141 ;;Total ram usage:        3 bytes
+  1142 ;; Hardware stack levels used:    1
+  1143 ;; This function calls:
+  1144 ;;		Nothing
+  1145 ;; This function is called by:
+  1146 ;;		_main
+  1147 ;; This function uses a non-reentrant model
+  1148 ;;
+  1149                           psect	text136
+  1150                           	file	"D:\SLR\Interlogicx\codes\Others\PIC\PIC16F pgms\KEYPAD\key.c"
+  1151                           	line	111
+  1152                           	global	__size_of_key
+  1153  010F                     	__size_of_key	equ	__end_of_key-_key
+  1154                           	
+  1155  06F1                     _key:	
+  1156                           	opt	stack 7
+  1157                           ; Regs used in _key: [wreg-fsr0h+status,2+status,0]
+  1158                           	line	112
+  1159                           	
+  1160  06F1                     l1815:	
+  1161                           ;key.c: 112: PORTB=0X00;
+  1162  06F1  1283               	bcf	status, 5	;RP0=0, select bank0
+  1163  06F2  1303               	bcf	status, 6	;RP1=0, select bank0
+  1164  06F3  0186               	clrf	(6)	;volatile
+  1165                           	line	113
+  1166                           ;key.c: 113: while(RB4&&RB5&&RB6&&RB7);
+  1167  06F4  2EF5               	goto	l734
+  1168                           	
+  1169  06F5                     l735:	
+  1170                           	
+  1171  06F5                     l734:	
+  1172  06F5  1E06               	btfss	(52/8),(52)&7
+  1173  06F6  2EF8               	goto	u11
+  1174  06F7  2EF9               	goto	u10
+  1175  06F8                     u11:
+  1176  06F8  2F77               	goto	l739
+  1177  06F9                     u10:
+  1178                           	
+  1179  06F9                     l1817:	
+  1180  06F9  1E86               	btfss	(53/8),(53)&7
+  1181  06FA  2EFC               	goto	u21
+  1182  06FB  2EFD               	goto	u20
+  1183  06FC                     u21:
+  1184  06FC  2F77               	goto	l739
+  1185  06FD                     u20:
+  1186                           	
+  1187  06FD                     l1819:	
+  1188  06FD  1F06               	btfss	(54/8),(54)&7
+  1189  06FE  2F00               	goto	u31
+  1190  06FF  2F01               	goto	u30
+  1191  0700                     u31:
+  1192  0700  2F77               	goto	l739
+  1193  0701                     u30:
+  1194                           	
+  1195  0701                     l1821:	
+  1196  0701  1B86               	btfsc	(55/8),(55)&7
+  1197  0702  2F04               	goto	u41
+  1198  0703  2F05               	goto	u40
+  1199  0704                     u41:
+  1200  0704  2EF5               	goto	l734
+  1201  0705                     u40:
+  1202  0705  2F77               	goto	l739
+  1203                           	
+  1204  0706                     l737:	
+  1205  0706  2F77               	goto	l739
+  1206                           	
+  1207  0707                     l738:	
+  1208                           	line	114
+  1209                           ;key.c: 114: while(!RB4||!RB5||!RB6||!RB7) {
+  1210  0707  2F77               	goto	l739
+  1211                           	
+  1212  0708                     l740:	
+  1213                           	line	115
+  1214                           ;key.c: 115: RB0=0;
+  1215  0708  1006               	bcf	(48/8),(48)&7
+  1216                           	line	116
+  1217                           ;key.c: 116: RB1=RB2=RB3=1;
+  1218  0709  1586               	bsf	(51/8),(51)&7
+  1219  070A  1986               	btfsc	(51/8),(51)&7
+  1220  070B  2F0D               	goto	u51
+  1221  070C  2F11               	goto	u50
+  1222                           	
+  1223  070D                     u51:
+  1224  070D  1283               	bcf	status, 5	;RP0=0, select bank0
+  1225  070E  1303               	bcf	status, 6	;RP1=0, select bank0
+  1226  070F  1506               	bsf	(50/8),(50)&7
+  1227  0710  2F14               	goto	u64
+  1228  0711                     u50:
+  1229  0711  1283               	bcf	status, 5	;RP0=0, select bank0
+  1230  0712  1303               	bcf	status, 6	;RP1=0, select bank0
+  1231  0713  1106               	bcf	(50/8),(50)&7
+  1232  0714                     u64:
+  1233  0714  1906               	btfsc	(50/8),(50)&7
+  1234  0715  2F17               	goto	u61
+  1235  0716  2F1B               	goto	u60
+  1236                           	
+  1237  0717                     u61:
+  1238  0717  1283               	bcf	status, 5	;RP0=0, select bank0
+  1239  0718  1303               	bcf	status, 6	;RP1=0, select bank0
+  1240  0719  1486               	bsf	(49/8),(49)&7
+  1241  071A  2F1E               	goto	u74
+  1242  071B                     u60:
+  1243  071B  1283               	bcf	status, 5	;RP0=0, select bank0
+  1244  071C  1303               	bcf	status, 6	;RP1=0, select bank0
+  1245  071D  1086               	bcf	(49/8),(49)&7
+  1246  071E                     u74:
+  1247                           	line	117
+  1248                           ;key.c: 117: if(!RB4||!RB5||!RB6||!RB7) {
+  1249  071E  1E06               	btfss	(52/8),(52)&7
+  1250  071F  2F21               	goto	u81
+  1251  0720  2F22               	goto	u80
+  1252  0721                     u81:
+  1253  0721  2F2E               	goto	l743
+  1254  0722                     u80:
+  1255                           	
+  1256  0722                     l1823:	
+  1257  0722  1E86               	btfss	(53/8),(53)&7
+  1258  0723  2F25               	goto	u91
+  1259  0724  2F26               	goto	u90
+  1260  0725                     u91:
+  1261  0725  2F2E               	goto	l743
+  1262  0726                     u90:
+  1263                           	
+  1264  0726                     l1825:	
+  1265  0726  1F06               	btfss	(54/8),(54)&7
+  1266  0727  2F29               	goto	u101
+  1267  0728  2F2A               	goto	u100
+  1268  0729                     u101:
+  1269  0729  2F2E               	goto	l743
+  1270  072A                     u100:
+  1271                           	
+  1272  072A                     l1827:	
+  1273  072A  1B86               	btfsc	(55/8),(55)&7
+  1274  072B  2F2D               	goto	u111
+  1275  072C  2F2E               	goto	u110
+  1276  072D                     u111:
+  1277  072D  2F30               	goto	l741
+  1278  072E                     u110:
+  1279                           	
+  1280  072E                     l743:	
+  1281                           	line	118
+  1282                           ;key.c: 118: rowloc=0;
+  1283  072E  01FA               	clrf	(_rowloc)
+  1284                           	line	119
+  1285                           ;key.c: 119: break;
+  1286  072F  2F87               	goto	l744
+  1287                           	line	120
+  1288                           	
+  1289  0730                     l741:	
+  1290                           	line	121
+  1291                           ;key.c: 120: }
+  1292                           ;key.c: 121: RB1=0;RB0=1;
+  1293  0730  1086               	bcf	(49/8),(49)&7
+  1294  0731  1406               	bsf	(48/8),(48)&7
+  1295                           	line	122
+  1296                           ;key.c: 122: if(!RB4||!RB5||!RB6||!RB7) {
+  1297  0732  1E06               	btfss	(52/8),(52)&7
+  1298  0733  2F35               	goto	u121
+  1299  0734  2F36               	goto	u120
+  1300  0735                     u121:
+  1301  0735  2F43               	goto	l1835
+  1302  0736                     u120:
+  1303                           	
+  1304  0736                     l1829:	
+  1305  0736  1E86               	btfss	(53/8),(53)&7
+  1306  0737  2F39               	goto	u131
+  1307  0738  2F3A               	goto	u130
+  1308  0739                     u131:
+  1309  0739  2F43               	goto	l1835
+  1310  073A                     u130:
+  1311                           	
+  1312  073A                     l1831:	
+  1313  073A  1F06               	btfss	(54/8),(54)&7
+  1314  073B  2F3D               	goto	u141
+  1315  073C  2F3E               	goto	u140
+  1316  073D                     u141:
+  1317  073D  2F43               	goto	l1835
+  1318  073E                     u140:
+  1319                           	
+  1320  073E                     l1833:	
+  1321  073E  1B86               	btfsc	(55/8),(55)&7
+  1322  073F  2F41               	goto	u151
+  1323  0740  2F42               	goto	u150
+  1324  0741                     u151:
+  1325  0741  2F47               	goto	l745
+  1326  0742                     u150:
+  1327  0742  2F43               	goto	l1835
+  1328                           	
+  1329  0743                     l747:	
+  1330                           	line	123
+  1331                           	
+  1332  0743                     l1835:	
+  1333                           ;key.c: 123: rowloc=1;
+  1334  0743  01FA               	clrf	(_rowloc)
+  1335  0744  1403               	bsf	status,0
+  1336  0745  0DFA               	rlf	(_rowloc),f
+  1337                           	line	124
+  1338                           ;key.c: 124: break;
+  1339  0746  2F87               	goto	l744
+  1340                           	line	125
+  1341                           	
+  1342  0747                     l745:	
+  1343                           	line	126
+  1344                           ;key.c: 125: }
+  1345                           ;key.c: 126: RB2=0;RB1=1;
+  1346  0747  1106               	bcf	(50/8),(50)&7
+  1347  0748  1486               	bsf	(49/8),(49)&7
+  1348                           	line	127
+  1349                           ;key.c: 127: if(!RB4||!RB5||!RB6||!RB7) {
+  1350  0749  1E06               	btfss	(52/8),(52)&7
+  1351  074A  2F4C               	goto	u161
+  1352  074B  2F4D               	goto	u160
+  1353  074C                     u161:
+  1354  074C  2F5A               	goto	l1843
+  1355  074D                     u160:
+  1356                           	
+  1357  074D                     l1837:	
+  1358  074D  1E86               	btfss	(53/8),(53)&7
+  1359  074E  2F50               	goto	u171
+  1360  074F  2F51               	goto	u170
+  1361  0750                     u171:
+  1362  0750  2F5A               	goto	l1843
+  1363  0751                     u170:
+  1364                           	
+  1365  0751                     l1839:	
+  1366  0751  1F06               	btfss	(54/8),(54)&7
+  1367  0752  2F54               	goto	u181
+  1368  0753  2F55               	goto	u180
+  1369  0754                     u181:
+  1370  0754  2F5A               	goto	l1843
+  1371  0755                     u180:
+  1372                           	
+  1373  0755                     l1841:	
+  1374  0755  1B86               	btfsc	(55/8),(55)&7
+  1375  0756  2F58               	goto	u191
+  1376  0757  2F59               	goto	u190
+  1377  0758                     u191:
+  1378  0758  2F5F               	goto	l748
+  1379  0759                     u190:
+  1380  0759  2F5A               	goto	l1843
+  1381                           	
+  1382  075A                     l750:	
+  1383                           	line	128
+  1384                           	
+  1385  075A                     l1843:	
+  1386                           ;key.c: 128: rowloc=2;
+  1387  075A  3002               	movlw	(02h)
+  1388  075B  00F0               	movwf	(??_key+0)+0
+  1389  075C  0870               	movf	(??_key+0)+0,w
+  1390  075D  00FA               	movwf	(_rowloc)
+  1391                           	line	129
+  1392                           ;key.c: 129: break;
+  1393  075E  2F87               	goto	l744
+  1394                           	line	130
+  1395                           	
+  1396  075F                     l748:	
+  1397                           	line	131
+  1398                           ;key.c: 130: }
+  1399                           ;key.c: 131: RB3=0; RB2=1;
+  1400  075F  1186               	bcf	(51/8),(51)&7
+  1401  0760  1506               	bsf	(50/8),(50)&7
+  1402                           	line	132
+  1403                           ;key.c: 132: if(!RB4||!RB5||!RB6||!RB7){
+  1404  0761  1E06               	btfss	(52/8),(52)&7
+  1405  0762  2F64               	goto	u201
+  1406  0763  2F65               	goto	u200
+  1407  0764                     u201:
+  1408  0764  2F72               	goto	l1851
+  1409  0765                     u200:
+  1410                           	
+  1411  0765                     l1845:	
+  1412  0765  1E86               	btfss	(53/8),(53)&7
+  1413  0766  2F68               	goto	u211
+  1414  0767  2F69               	goto	u210
+  1415  0768                     u211:
+  1416  0768  2F72               	goto	l1851
+  1417  0769                     u210:
+  1418                           	
+  1419  0769                     l1847:	
+  1420  0769  1F06               	btfss	(54/8),(54)&7
+  1421  076A  2F6C               	goto	u221
+  1422  076B  2F6D               	goto	u220
+  1423  076C                     u221:
+  1424  076C  2F72               	goto	l1851
+  1425  076D                     u220:
+  1426                           	
+  1427  076D                     l1849:	
+  1428  076D  1B86               	btfsc	(55/8),(55)&7
+  1429  076E  2F70               	goto	u231
+  1430  076F  2F71               	goto	u230
+  1431  0770                     u231:
+  1432  0770  2F77               	goto	l739
+  1433  0771                     u230:
+  1434  0771  2F72               	goto	l1851
+  1435                           	
+  1436  0772                     l753:	
+  1437                           	line	133
+  1438                           	
+  1439  0772                     l1851:	
+  1440                           ;key.c: 133: rowloc=3;
+  1441  0772  3003               	movlw	(03h)
+  1442  0773  00F0               	movwf	(??_key+0)+0
+  1443  0774  0870               	movf	(??_key+0)+0,w
+  1444  0775  00FA               	movwf	(_rowloc)
+  1445                           	line	134
+  1446                           ;key.c: 134: break;
+  1447  0776  2F87               	goto	l744
+  1448                           	line	135
+  1449                           	
+  1450  0777                     l751:	
+  1451                           	line	136
+  1452                           	
+  1453  0777                     l739:	
+  1454                           	line	114
+  1455  0777  1E06               	btfss	(52/8),(52)&7
+  1456  0778  2F7A               	goto	u241
+  1457  0779  2F7B               	goto	u240
+  1458  077A                     u241:
+  1459  077A  2F08               	goto	l740
+  1460  077B                     u240:
+  1461                           	
+  1462  077B                     l1853:	
+  1463  077B  1E86               	btfss	(53/8),(53)&7
+  1464  077C  2F7E               	goto	u251
+  1465  077D  2F7F               	goto	u250
+  1466  077E                     u251:
+  1467  077E  2F08               	goto	l740
+  1468  077F                     u250:
+  1469                           	
+  1470  077F                     l1855:	
+  1471  077F  1F06               	btfss	(54/8),(54)&7
+  1472  0780  2F82               	goto	u261
+  1473  0781  2F83               	goto	u260
+  1474  0782                     u261:
+  1475  0782  2F08               	goto	l740
+  1476  0783                     u260:
+  1477                           	
+  1478  0783                     l1857:	
+  1479  0783  1F86               	btfss	(55/8),(55)&7
+  1480  0784  2F86               	goto	u271
+  1481  0785  2F87               	goto	u270
+  1482  0786                     u271:
+  1483  0786  2F08               	goto	l740
+  1484  0787                     u270:
+  1485                           	
+  1486  0787                     l744:	
+  1487                           	line	137
+  1488                           ;key.c: 135: }
+  1489                           ;key.c: 136: }
+  1490                           ;key.c: 137: if(RB4==0&&RB5!=0&&RB6!=0&&RB7!=0)
+  1491  0787  1A06               	btfsc	(52/8),(52)&7
+  1492  0788  2F8A               	goto	u281
+  1493  0789  2F8B               	goto	u280
+  1494  078A                     u281:
+  1495  078A  2F99               	goto	l754
+  1496  078B                     u280:
+  1497                           	
+  1498  078B                     l1859:	
+  1499  078B  1E86               	btfss	(53/8),(53)&7
+  1500  078C  2F8E               	goto	u291
+  1501  078D  2F8F               	goto	u290
+  1502  078E                     u291:
+  1503  078E  2F99               	goto	l754
+  1504  078F                     u290:
+  1505                           	
+  1506  078F                     l1861:	
+  1507  078F  1F06               	btfss	(54/8),(54)&7
+  1508  0790  2F92               	goto	u301
+  1509  0791  2F93               	goto	u300
+  1510  0792                     u301:
+  1511  0792  2F99               	goto	l754
+  1512  0793                     u300:
+  1513                           	
+  1514  0793                     l1863:	
+  1515  0793  1F86               	btfss	(55/8),(55)&7
+  1516  0794  2F96               	goto	u311
+  1517  0795  2F97               	goto	u310
+  1518  0796                     u311:
+  1519  0796  2F99               	goto	l754
+  1520  0797                     u310:
+  1521                           	line	138
+  1522                           	
+  1523  0797                     l1865:	
+  1524                           ;key.c: 138: colloc=0;
+  1525  0797  01F9               	clrf	(_colloc)
+  1526  0798  2FDB               	goto	l761
+  1527                           	line	139
+  1528                           	
+  1529  0799                     l754:	
+  1530                           ;key.c: 139: else if(RB4!=0&&RB5==0&&RB6!=0&&RB7!=0)
+  1531  0799  1E06               	btfss	(52/8),(52)&7
+  1532  079A  2F9C               	goto	u321
+  1533  079B  2F9D               	goto	u320
+  1534  079C                     u321:
+  1535  079C  2FAD               	goto	l756
+  1536  079D                     u320:
+  1537                           	
+  1538  079D                     l1867:	
+  1539  079D  1A86               	btfsc	(53/8),(53)&7
+  1540  079E  2FA0               	goto	u331
+  1541  079F  2FA1               	goto	u330
+  1542  07A0                     u331:
+  1543  07A0  2FAD               	goto	l756
+  1544  07A1                     u330:
+  1545                           	
+  1546  07A1                     l1869:	
+  1547  07A1  1F06               	btfss	(54/8),(54)&7
+  1548  07A2  2FA4               	goto	u341
+  1549  07A3  2FA5               	goto	u340
+  1550  07A4                     u341:
+  1551  07A4  2FAD               	goto	l756
+  1552  07A5                     u340:
+  1553                           	
+  1554  07A5                     l1871:	
+  1555  07A5  1F86               	btfss	(55/8),(55)&7
+  1556  07A6  2FA8               	goto	u351
+  1557  07A7  2FA9               	goto	u350
+  1558  07A8                     u351:
+  1559  07A8  2FAD               	goto	l756
+  1560  07A9                     u350:
+  1561                           	line	140
+  1562                           	
+  1563  07A9                     l1873:	
+  1564                           ;key.c: 140: colloc=1;
+  1565  07A9  01F9               	clrf	(_colloc)
+  1566  07AA  1403               	bsf	status,0
+  1567  07AB  0DF9               	rlf	(_colloc),f
+  1568  07AC  2FDB               	goto	l761
+  1569                           	line	141
+  1570                           	
+  1571  07AD                     l756:	
+  1572                           ;key.c: 141: else if(RB4!=0&&RB5!=0&&RB6==0&&RB7!=0)
+  1573  07AD  1E06               	btfss	(52/8),(52)&7
+  1574  07AE  2FB0               	goto	u361
+  1575  07AF  2FB1               	goto	u360
+  1576  07B0                     u361:
+  1577  07B0  2FC2               	goto	l758
+  1578  07B1                     u360:
+  1579                           	
+  1580  07B1                     l1875:	
+  1581  07B1  1E86               	btfss	(53/8),(53)&7
+  1582  07B2  2FB4               	goto	u371
+  1583  07B3  2FB5               	goto	u370
+  1584  07B4                     u371:
+  1585  07B4  2FC2               	goto	l758
+  1586  07B5                     u370:
+  1587                           	
+  1588  07B5                     l1877:	
+  1589  07B5  1B06               	btfsc	(54/8),(54)&7
+  1590  07B6  2FB8               	goto	u381
+  1591  07B7  2FB9               	goto	u380
+  1592  07B8                     u381:
+  1593  07B8  2FC2               	goto	l758
+  1594  07B9                     u380:
+  1595                           	
+  1596  07B9                     l1879:	
+  1597  07B9  1F86               	btfss	(55/8),(55)&7
+  1598  07BA  2FBC               	goto	u391
+  1599  07BB  2FBD               	goto	u390
+  1600  07BC                     u391:
+  1601  07BC  2FC2               	goto	l758
+  1602  07BD                     u390:
+  1603                           	line	142
+  1604                           	
+  1605  07BD                     l1881:	
+  1606                           ;key.c: 142: colloc=2;
+  1607  07BD  3002               	movlw	(02h)
+  1608  07BE  00F0               	movwf	(??_key+0)+0
+  1609  07BF  0870               	movf	(??_key+0)+0,w
+  1610  07C0  00F9               	movwf	(_colloc)
+  1611  07C1  2FDB               	goto	l761
+  1612                           	line	143
+  1613                           	
+  1614  07C2                     l758:	
+  1615                           ;key.c: 143: else if(RB4!=0&&RB5!=0&&RB6!=0&&RB7==0)
+  1616  07C2  1E06               	btfss	(52/8),(52)&7
+  1617  07C3  2FC5               	goto	u401
+  1618  07C4  2FC6               	goto	u400
+  1619  07C5                     u401:
+  1620  07C5  2FDB               	goto	l761
+  1621  07C6                     u400:
+  1622                           	
+  1623  07C6                     l1883:	
+  1624  07C6  1E86               	btfss	(53/8),(53)&7
+  1625  07C7  2FC9               	goto	u411
+  1626  07C8  2FCA               	goto	u410
+  1627  07C9                     u411:
+  1628  07C9  2FDB               	goto	l761
+  1629  07CA                     u410:
+  1630                           	
+  1631  07CA                     l1885:	
+  1632  07CA  1F06               	btfss	(54/8),(54)&7
+  1633  07CB  2FCD               	goto	u421
+  1634  07CC  2FCE               	goto	u420
+  1635  07CD                     u421:
+  1636  07CD  2FDB               	goto	l761
+  1637  07CE                     u420:
+  1638                           	
+  1639  07CE                     l1887:	
+  1640  07CE  1B86               	btfsc	(55/8),(55)&7
+  1641  07CF  2FD1               	goto	u431
+  1642  07D0  2FD2               	goto	u430
+  1643  07D1                     u431:
+  1644  07D1  2FDB               	goto	l761
+  1645  07D2                     u430:
+  1646                           	line	144
+  1647                           	
+  1648  07D2                     l1889:	
+  1649                           ;key.c: 144: colloc=3;
+  1650  07D2  3003               	movlw	(03h)
+  1651  07D3  00F0               	movwf	(??_key+0)+0
+  1652  07D4  0870               	movf	(??_key+0)+0,w
+  1653  07D5  00F9               	movwf	(_colloc)
+  1654  07D6  2FDB               	goto	l761
+  1655                           	
+  1656  07D7                     l760:	
+  1657  07D7  2FDB               	goto	l761
+  1658                           	line	145
+  1659                           	
+  1660  07D8                     l759:	
+  1661  07D8  2FDB               	goto	l761
+  1662                           	
+  1663  07D9                     l757:	
+  1664  07D9  2FDB               	goto	l761
+  1665                           	
+  1666  07DA                     l755:	
+  1667                           ;key.c: 145: while(RB4==0||RB5==0||RB6==0||RB7==0);
+  1668  07DA  2FDB               	goto	l761
+  1669                           	
+  1670  07DB                     l762:	
+  1671                           	
+  1672  07DB                     l761:	
+  1673  07DB  1E06               	btfss	(52/8),(52)&7
+  1674  07DC  2FDE               	goto	u441
+  1675  07DD  2FDF               	goto	u440
+  1676  07DE                     u441:
+  1677  07DE  2FDB               	goto	l761
+  1678  07DF                     u440:
+  1679                           	
+  1680  07DF                     l1891:	
+  1681  07DF  1E86               	btfss	(53/8),(53)&7
+  1682  07E0  2FE2               	goto	u451
+  1683  07E1  2FE3               	goto	u450
+  1684  07E2                     u451:
+  1685  07E2  2FDB               	goto	l761
+  1686  07E3                     u450:
+  1687                           	
+  1688  07E3                     l1893:	
+  1689  07E3  1F06               	btfss	(54/8),(54)&7
+  1690  07E4  2FE6               	goto	u461
+  1691  07E5  2FE7               	goto	u460
+  1692  07E6                     u461:
+  1693  07E6  2FDB               	goto	l761
+  1694  07E7                     u460:
+  1695                           	
+  1696  07E7                     l1895:	
+  1697  07E7  1F86               	btfss	(55/8),(55)&7
+  1698  07E8  2FEA               	goto	u471
+  1699  07E9  2FEB               	goto	u470
+  1700  07EA                     u471:
+  1701  07EA  2FDB               	goto	l761
+  1702  07EB                     u470:
+  1703  07EB  2FEC               	goto	l1897
+  1704                           	
+  1705  07EC                     l763:	
+  1706                           	line	146
+  1707                           	
+  1708  07EC                     l1897:	
+  1709                           ;key.c: 146: return (keypad[rowloc][colloc]);
+  1710  07EC  087A               	movf	(_rowloc),w
+  1711  07ED  00F0               	movwf	(??_key+0)+0
+  1712  07EE  3002               	movlw	02h
+  1713  07EF                     u485:
+  1714  07EF  1003               	clrc
+  1715  07F0  0DF0               	rlf	(??_key+0)+0,f
+  1716  07F1  3EFF               	addlw	-1
+  1717  07F2  1D03               	skipz
+  1718  07F3  2FEF               	goto	u485
+  1719  07F4  3020               	movlw	(_keypad)&0ffh
+  1720  07F5  0770               	addwf	0+(??_key+0)+0,w
+  1721  07F6  00F1               	movwf	(??_key+1)+0
+  1722  07F7  0879               	movf	(_colloc),w
+  1723  07F8  0771               	addwf	0+(??_key+1)+0,w
+  1724  07F9  00F2               	movwf	(??_key+2)+0
+  1725  07FA  0872               	movf	0+(??_key+2)+0,w
+  1726  07FB  0084               	movwf	fsr0
+  1727  07FC  1383               	bcf	status, 7	;select IRP bank0
+  1728  07FD  0800               	movf	indf,w
+  1729  07FE  2FFF               	goto	l764
+  1730                           	
+  1731  07FF                     l1899:	
+  1732                           	line	147
+  1733                           	
+  1734  07FF                     l764:	
+  1735  07FF  0008               	return
+  1736                           	opt stack 0
+  1737                           GLOBAL	__end_of_key
+  1738  0800                     	__end_of_key:
+  1739 ;; =============== function _key ends ============
+  1740                           
+  1741                           	signat	_key,89
+  1742                           	global	_keyinit
+  1743                           psect	text137,local,class=CODE,delta=2
+  1744                           global __ptext137
+  1745  05A4                     __ptext137:
+  1746                           
+  1747 ;; *************** function _keyinit *****************
+  1748 ;; Defined at:
+  1749 ;;		line 105 in file "D:\SLR\Interlogicx\codes\Others\PIC\PIC16F pgms\KEYPAD\key.c"
+  1750 ;; Parameters:    Size  Location     Type
+  1751 ;;		None
+  1752 ;; Auto vars:     Size  Location     Type
+  1753 ;;		None
+  1754 ;; Return value:  Size  Location     Type
+  1755 ;;		None               void
+  1756 ;; Registers used:
+  1757 ;;		wreg, status,2, status,0
+  1758 ;; Tracked objects:
+  1759 ;;		On entry : 0/0
+  1760 ;;		On exit  : 0/0
+  1761 ;;		Unchanged: 0/0
+  1762 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1763 ;;      Params:         0       0       0       0       0
+  1764 ;;      Locals:         0       0       0       0       0
+  1765 ;;      Temps:          1       0       0       0       0
+  1766 ;;      Totals:         1       0       0       0       0
+  1767 ;;Total ram usage:        1 bytes
+  1768 ;; Hardware stack levels used:    1
+  1769 ;; This function calls:
+  1770 ;;		Nothing
+  1771 ;; This function is called by:
+  1772 ;;		_main
+  1773 ;; This function uses a non-reentrant model
+  1774 ;;
+  1775                           psect	text137
+  1776                           	file	"D:\SLR\Interlogicx\codes\Others\PIC\PIC16F pgms\KEYPAD\key.c"
+  1777                           	line	105
+  1778                           	global	__size_of_keyinit
+  1779  0009                     	__size_of_keyinit	equ	__end_of_keyinit-_keyinit
+  1780                           	
+  1781  05A4                     _keyinit:	
+  1782                           	opt	stack 7
+  1783                           ; Regs used in _keyinit: [wreg+status,2+status,0]
+  1784                           	line	106
+  1785                           	
+  1786  05A4                     l1811:	
+  1787                           ;key.c: 106: TRISB=0XF0;
+  1788  05A4  30F0               	movlw	(0F0h)
+  1789  05A5  1683               	bsf	status, 5	;RP0=1, select bank1
+  1790  05A6  1303               	bcf	status, 6	;RP1=0, select bank1
+  1791  05A7  0086               	movwf	(134)^080h	;volatile
+  1792                           	line	107
+  1793                           	
+  1794  05A8                     l1813:	
+  1795                           ;key.c: 107: OPTION_REG&=0X7F;
+  1796  05A8  307F               	movlw	(07Fh)
+  1797  05A9  00F0               	movwf	(??_keyinit+0)+0
+  1798  05AA  0870               	movf	(??_keyinit+0)+0,w
+  1799  05AB  0581               	andwf	(129)^080h,f	;volatile
+  1800                           	line	108
+  1801                           	
+  1802  05AC                     l731:	
+  1803  05AC  0008               	return
+  1804                           	opt stack 0
+  1805                           GLOBAL	__end_of_keyinit
+  1806  05AD                     	__end_of_keyinit:
+  1807 ;; =============== function _keyinit ends ============
+  1808                           
+  1809                           	signat	_keyinit,88
+  1810                           psect	text138,local,class=CODE,delta=2
+  1811                           global __ptext138
+  1812  0000                     __ptext138:
+  1813                           	global	btemp
+  1814  007E                     	btemp set 07Eh
+  1815                           
+  1816                           	DABS	1,126,2	;btemp
+  1817                           	global	wtemp0
+  1818  007E                     	wtemp0 set btemp
+
+
+HI-TECH Software PICC Macro Assembler V9.83 build 10920 
+Symbol Table                                                                                   Sat Jul 29 16:38:25 2017
+
+                   pc 0002                    _RD 0C60                    u10 06F9                    u11 06F8  
+                  u20 06FD                    u21 06FC                    u30 0701                    u31 0700  
+                  u40 0705                    u41 0704                    u50 0711                    u51 070D  
+                  u60 071B                    u61 0717                    u80 0722                    u64 0714  
+                  u81 0721                    u90 0726                    u74 071E                    u91 0725  
+                  _WR 0C61                    fsr 0004                   l711 0620                   l720 0634  
+                 l721 0623                   l705 065C                   l714 06B2                   l722 0641  
+                 l706 0671                   l731 05AC                   l723 0641                   l707 0672  
+                 l740 0708                   l708 0672                   l741 0730                   l717 06F0  
+                 l750 075A                   l734 06F5                   l726 05F1                   l751 0777  
+                 l743 072E                   l735 06F5                   l727 0601                   l760 07D7  
+                 l744 0787                   l728 0601                   l761 07DB                   l753 0772  
+                 l745 0747                   l737 0706                   l762 07DB                   l754 0799  
+                 l738 0707                   l763 07EC                   l755 07DA                   l747 0743  
+                 l739 0777                   l764 07FF                   l756 07AD                   l748 075F  
+                 l757 07D9                   l758 07C2                   l759 07D8                   _GIE 005F  
+                 _RB0 0030                   _RB1 0031                   _RB2 0032                   _RB3 0033  
+                 _RB4 0034                   _RB5 0035                   _RD2 0042                   _RB6 0036  
+                 _RD3 0043                   _RB7 0037                   u100 072A                   u101 0729  
+                 u110 072E                   u111 072D                   u200 0765                   u120 0736  
+                 u201 0764                   u121 0735                   u210 0769                   u130 073A  
+                 u211 0768                   u131 0739                   u300 0793                   u220 076D  
+                 u140 073E                   u301 0792                   u221 076C                   u141 073D  
+                 u310 0797                   u230 0771                   u150 0742                   u311 0796  
+                 u231 0770                   u151 0741                   u400 07C6                   u320 079D  
+                 u240 077B                   u160 074D                   u401 07C5                   u321 079C  
+                 u241 077A                   u161 074C                   u410 07CA                   u330 07A1  
+                 u250 077F                   u170 0751                   u411 07C9                   u331 07A0  
+                 u251 077E                   u171 0750                   u420 07CE                   u340 07A5  
+                 u260 0783                   u180 0755                   u500 0600                   u421 07CD  
+                 u341 07A4                   u261 0782                   u181 0754                   u501 05FF  
+                 u430 07D2                   u350 07A9                   u270 0787                   u190 0759  
+                 u431 07D1                   u351 07A8                   u271 0786                   u191 0758  
+                 u440 07DF                   u360 07B1                   u280 078B                   u441 07DE  
+                 u361 07B0                   u281 078A                   u450 07E3                   u370 07B5  
+                 u290 078F                   u451 07E2                   u371 07B4                   u291 078E  
+                 u460 07E7                   u380 07B9                   u461 07E6                   u381 07B8  
+                 u470 07EB                   u390 07BD                   u471 07EA                   u391 07BC  
+                 u490 05EF                   u491 05EE                   u485 07EF                   _dat 06B3  
+                 _cmd 0675                   _key 06F1                   fsr0 0004                   indf 0000  
+                ?_dat 0070                  ?_cmd 0070                  l1811 05A4                  l1813 05A8  
+                l1821 0701                  l1901 05E4                  l1831 073A                  l1823 0722  
+                l1815 06F1                  l1903 05E6                  l1841 0755                  l1833 073E  
+                l1825 0726                  l1817 06F9                  l1905 05F0                  l2801 06E3  
+                l1851 0772                  l1843 075A                  l1835 0743                  l1827 072A  
+                l1819 06FD                  l1907 05F1                  l2803 06E8                  l2811 0623  
+                l1861 078F                  l1853 077B                  l1845 0765                  l1837 074D  
+                l1829 0736                  l2805 06EB                  l2813 062F                  l2821 064A  
+                l1871 07A5                  l1863 0793                  l1855 077F                  l1847 0769  
+                l1839 0751                  l2807 0602                  l2815 0634                  l2831 066A  
+                l2823 064F                  l1881 07BD                  l1873 07A9                  l1865 0797  
+                l1857 0783                  l1849 076D                  l2809 0622                  l2825 0655  
+                l2817 0642                  l1891 07DF                  l1883 07C6                  l1875 07B1  
+                l1867 079D                  l1859 078B                  l2771 0682                  l2827 065C  
+                l2819 0645                  l1893 07E3                  l1885 07CA                  l1877 07B5  
+                l1869 07A1                  l2781 06A5                  l2773 0683                  l2829 0662  
+                l1895 07E7                  l1887 07CE                  l1879 07B9                  l2783 06AA  
+                l2775 0688                  l2767 0676                  l2791 06C0                  l1897 07EC  
+                l1889 07D2                  l2785 06AD                  l2777 068B                  l2769 0679  
+                l2793 06C1                  l1899 07FF                  l2779 06A4                  l2795 06C6  
+                l2787 06B4                  l2797 06C9                  l2789 06B7                  l2799 06E2  
+                ?_key 0070                  STR_1 0009                  u2740 0640                  u2725 0699  
+                u2741 063F                  u2735 06D7                  _WREN 0C62                  dat@b 0074  
+                cmd@a 0074                  _main 0642                  _show 0621                  btemp 007E  
+                start 0000                 ??_dat 0072                 ??_cmd 0072                 ??_key 0070  
+               ?_main 0070                 _EEADR 010D                 ?_show 0070                 _CARRY 0018  
+               _PORTB 0006                 _PORTD 0008                 _TRISB 0086                 _TRISD 0088  
+     __end_of_keyinit 05AD                 main@b 0078                 pclath 000A                 show@s 0076  
+               status 0003                 wtemp0 007E          __end_of_main 0675          __end_of_show 0642  
+  lcd_delay@lcd_delay 0070                ??_main 0077                ??_show 0075                _EEDATA 010C  
+              _EECON1 018C                _EECON2 018D      __end_of_lcd_init 0621                _colloc 0079  
+              _keypad 0020                _rowloc 007A             ??_keyinit 0070        __pcstackCOMMON 0070  
+        __pidataBANK0 05AD    __size_of_lcd_delay 001E            __pmaintext 0642             ?_lcd_init 0070  
+   __end_of_lcd_delay 0602          __size_of_dat 003E          __size_of_cmd 003E          __size_of_key 010F  
+             _keyinit 05A4            ??_lcd_init 0075  end_of_initialization 05E0               init_ram 05C1  
+ start_initialization 05D0           __end_of_dat 06F1           __end_of_cmd 06B3           __end_of_key 0800  
+         __pdataBANK0 0020           __pbssCOMMON 0079     __size_of_lcd_init 001F             __ptext131 0621  
+           __ptext132 0602             __ptext133 06B3             __ptext134 0675             __ptext135 05E4  
+           __ptext136 06F1             __ptext137 05A4             __ptext138 0000             _lcd_delay 05E4  
+           __pstrings 0003              ?_keyinit 0070            ?_lcd_delay 0070           __stringbase 0008  
+           init_fetch 05BD      __size_of_keyinit 0009              _lcd_init 0602         __size_of_main 0033  
+       __size_of_show 0021           ??_lcd_delay 0070             stringcode 0003            _OPTION_REG 0081  
+            stringdir 0003              stringtab 0003  
