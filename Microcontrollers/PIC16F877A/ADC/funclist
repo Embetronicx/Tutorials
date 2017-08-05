@@ -1,0 +1,9 @@
+_dat: CODE, 1669 0 50
+_main: CODE, 1586 0 33
+___lwdiv: CODE, 1787 0 78
+_adc: CODE, 1865 0 183
+_lcd_int: CODE, 1528 0 25
+_show: CODE, 1553 0 33
+___lwmod: CODE, 1719 0 68
+_cmd: CODE, 1619 0 50
+Total: 520
