@@ -1,0 +1,16 @@
+_convup: CODE, 1455 0 13
+_rtc_nak: CODE, 1445 0 10
+_dat: CODE, 1645 0 48
+_rtc_stop: CODE, 1427 0 9
+_main: CODE, 1755 0 293
+_rtc_read: CODE, 1468 0 13
+_waitmssp: CODE, 1418 0 9
+_rtc_send: CODE, 1494 0 19
+_rtc_read_byte: CODE, 1693 0 62
+_show: CODE, 1564 0 33
+_convd: CODE, 1412 0 6
+_rtc_res: CODE, 1436 0 9
+_cmd: CODE, 1597 0 48
+_rtc_int: CODE, 1513 0 22
+_lcd_init: CODE, 1535 0 29
+Total: 623
