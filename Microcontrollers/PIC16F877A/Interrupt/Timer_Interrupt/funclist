@@ -1,0 +1,10 @@
+_dat: CODE, 440 0 48
+_main: CODE, 521 0 26
+_timer_init: CODE, 561 0 11
+_intr_init: CODE, 572 0 7
+i1_cmd: CODE, 392 0 48
+_show: CODE, 488 0 33
+_tmr0: CODE, 21 0 208
+_cmd: CODE, 344 0 48
+_lcd_init: CODE, 229 0 58
+Total: 487
