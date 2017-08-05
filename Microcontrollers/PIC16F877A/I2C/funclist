@@ -1,0 +1,17 @@
+_i2c_send_byte: CODE, 1727 0 61
+_i2c_start: CODE, 1413 0 9
+_i2c_restart: CODE, 1431 0 9
+_dat: CODE, 1620 0 48
+_main: CODE, 1856 0 192
+_waitmssp: CODE, 1404 0 9
+_show: CODE, 1505 0 33
+_i2c_nak: CODE, 1440 0 10
+_i2c_stop: CODE, 1422 0 9
+_cmd: CODE, 1572 0 48
+_i2c_read: CODE, 1450 0 13
+_i2c_init: CODE, 1483 0 22
+_i2c_send: CODE, 1463 0 20
+_i2c_read_byte: CODE, 1788 0 68
+_lcd_init: CODE, 1538 0 34
+_delay1: CODE, 1668 0 59
+Total: 644

@@ -1,0 +1,2383 @@
+
+
+HI-TECH Software PIC LITE Macro Assembler V9.83 build 10920 
+                                                                                               Sat Aug 05 17:22:50 2017
+
+HI-TECH Software Omniscient Code Generator (Lite mode) build 10920
+     1  0000                     opt subtitle "HI-TECH Software Omniscient Code Generator (Lite mode) build 10920"
+     2                           
+     3                           opt pagewidth 120
+     4                           
+     5                           	opt lm
+     6                           
+     7                           	processor	16F877A
+     8                           clrc	macro
+     9                           	bcf	3,0
+    10  0000                     	endm
+    11                           clrz	macro
+    12                           	bcf	3,2
+    13  0000                     	endm
+    14                           setc	macro
+    15                           	bsf	3,0
+    16  0000                     	endm
+    17                           setz	macro
+    18                           	bsf	3,2
+    19  0000                     	endm
+    20                           skipc	macro
+    21                           	btfss	3,0
+    22  0000                     	endm
+    23                           skipz	macro
+    24                           	btfss	3,2
+    25  0000                     	endm
+    26                           skipnc	macro
+    27                           	btfsc	3,0
+    28  0000                     	endm
+    29                           skipnz	macro
+    30                           	btfsc	3,2
+    31  0000                     	endm
+    32  0000                     indf	equ	0
+    33  0000                     indf0	equ	0
+    34  0002                     pc	equ	2
+    35  0002                     pcl	equ	2
+    36  0003                     status	equ	3
+    37  0004                     fsr	equ	4
+    38  0004                     fsr0	equ	4
+    39  0001                     c	equ	1
+    40  0000                     z	equ	0
+    41  000A                     pclath	equ	10
+    42                           # 5 "D:\SLR\Interlogicx\codes\Practise\PIC\MP lab\I2C\EEPROM\Page write\code.c"
+    43                           	psect config,class=CONFIG,delta=2 ;#
+    44                           # 5 "D:\SLR\Interlogicx\codes\Practise\PIC\MP lab\I2C\EEPROM\Page write\code.c"
+    45  2007  FF7A               	dw 0xFFFE & 0xFFFB & 0xFFFF & 0xFFFF & 0xFFFF & 0xFF7F & 0xFFFF & 0xFFFF & 0xFFFF ;#
+    46                           	FNCALL	_main,_lcd_init
+    47                           	FNCALL	_main,_i2c_init
+    48                           	FNCALL	_main,_show
+    49                           	FNCALL	_main,_cmd
+    50                           	FNCALL	_main,_i2c_send_byte
+    51                           	FNCALL	_main,_delay1
+    52                           	FNCALL	_main,_i2c_read_byte
+    53                           	FNCALL	_main,_dat
+    54                           	FNCALL	_i2c_read_byte,_i2c_restart
+    55                           	FNCALL	_i2c_read_byte,_waitmssp
+    56                           	FNCALL	_i2c_read_byte,_i2c_send
+    57                           	FNCALL	_i2c_read_byte,_i2c_read
+    58                           	FNCALL	_i2c_read_byte,_i2c_nak
+    59                           	FNCALL	_i2c_read_byte,_i2c_stop
+    60                           	FNCALL	_i2c_send_byte,_i2c_start
+    61                           	FNCALL	_i2c_send_byte,_i2c_send
+    62                           	FNCALL	_i2c_send_byte,_i2c_stop
+    63                           	FNCALL	_i2c_read,_waitmssp
+    64                           	FNCALL	_i2c_send,_waitmssp
+    65                           	FNCALL	_i2c_nak,_waitmssp
+    66                           	FNCALL	_i2c_restart,_waitmssp
+    67                           	FNCALL	_i2c_stop,_waitmssp
+    68                           	FNCALL	_i2c_start,_waitmssp
+    69                           	FNCALL	_show,_dat
+    70                           	FNCALL	_lcd_init,_cmd
+    71                           	FNROOT	_main
+    72                           	global	_i
+    73                           	global	_PORTB
+    74                           psect	text222,local,class=CODE,delta=2
+    75                           global __ptext222
+    76  0000                     __ptext222:
+    77  0006                     _PORTB	set	6
+    78                           	global	_SSPBUF
+    79  0013                     _SSPBUF	set	19
+    80                           	global	_SSPCON
+    81  0014                     _SSPCON	set	20
+    82                           	global	_CARRY
+    83  0018                     _CARRY	set	24
+    84                           	global	_GIE
+    85  005F                     _GIE	set	95
+    86                           	global	_RC0
+    87  0038                     _RC0	set	56
+    88                           	global	_RC1
+    89  0039                     _RC1	set	57
+    90                           	global	_RC2
+    91  003A                     _RC2	set	58
+    92                           	global	_SSPIF
+    93  0063                     _SSPIF	set	99
+    94                           	global	_SSPADD
+    95  0093                     _SSPADD	set	147
+    96                           	global	_TRISB
+    97  0086                     _TRISB	set	134
+    98                           	global	_ACKDT
+    99  048D                     _ACKDT	set	1165
+   100                           	global	_ACKEN
+   101  048C                     _ACKEN	set	1164
+   102                           	global	_ACKSTAT
+   103  048E                     _ACKSTAT	set	1166
+   104                           	global	_PEN
+   105  048A                     _PEN	set	1162
+   106                           	global	_RCEN
+   107  048B                     _RCEN	set	1163
+   108                           	global	_RSEN
+   109  0489                     _RSEN	set	1161
+   110                           	global	_SEN
+   111  0488                     _SEN	set	1160
+   112                           	global	_TRISC0
+   113  0438                     _TRISC0	set	1080
+   114                           	global	_TRISC1
+   115  0439                     _TRISC1	set	1081
+   116                           	global	_TRISC2
+   117  043A                     _TRISC2	set	1082
+   118                           	global	_TRISC3
+   119  043B                     _TRISC3	set	1083
+   120                           	global	_TRISC4
+   121  043C                     _TRISC4	set	1084
+   122                           	global	_EEADR
+   123  010D                     _EEADR	set	269
+   124                           	global	_EEDATA
+   125  010C                     _EEDATA	set	268
+   126                           	global	_EECON1
+   127  018C                     _EECON1	set	396
+   128                           	global	_EECON2
+   129  018D                     _EECON2	set	397
+   130                           	global	_RD
+   131  0C60                     _RD	set	3168
+   132                           	global	_WR
+   133  0C61                     _WR	set	3169
+   134                           	global	_WREN
+   135  0C62                     _WREN	set	3170
+   136                           psect	strings,class=STRING,delta=2
+   137                           global __pstrings
+   138  0003                     __pstrings:
+   139                           ;	global	stringdir,stringtab,__stringbase
+   140  0003                     stringtab:
+   141                           ;	String table - string pointers are 1 byte each
+   142  0003                     stringcode:stringdir:
+      + 0003                     stringdir:	
+   143  0003  3000               movlw high(stringdir)
+   144  0004  008A               movwf pclath
+   145  0005  0804               movf fsr,w
+   146  0006  0A84               incf fsr
+   147  0007  0782               	addwf pc
+   148  0008                     __stringbase:
+   149  0008  3400               	retlw	0
+   150                           psect	strings
+   151                           	
+   152  0009                     STR_1:	
+   153  0009  3420               	retlw	32	;' '
+   154  000A  3420               	retlw	32	;' '
+   155  000B  3449               	retlw	73	;'I'
+   156  000C  3432               	retlw	50	;'2'
+   157  000D  3443               	retlw	67	;'C'
+   158  000E  3420               	retlw	32	;' '
+   159  000F  3454               	retlw	84	;'T'
+   160  0010  3475               	retlw	117	;'u'
+   161  0011  3454               	retlw	84	;'T'
+   162  0012  346F               	retlw	111	;'o'
+   163  0013  3472               	retlw	114	;'r'
+   164  0014  3469               	retlw	105	;'i'
+   165  0015  3461               	retlw	97	;'a'
+   166  0016  346C               	retlw	108	;'l'
+   167  0017  3420               	retlw	32	;' '
+   168  0018  3420               	retlw	32	;' '
+   169  0019  3400               	retlw	0
+   170                           psect	strings
+   171                           	
+   172  001A                     STR_3:	
+   173  001A  3445               	retlw	69	;'E'
+   174  001B  346D               	retlw	109	;'m'
+   175  001C  3462               	retlw	98	;'b'
+   176  001D  3465               	retlw	101	;'e'
+   177  001E  3454               	retlw	84	;'T'
+   178  001F  3472               	retlw	114	;'r'
+   179  0020  346F               	retlw	111	;'o'
+   180  0021  346E               	retlw	110	;'n'
+   181  0022  3469               	retlw	105	;'i'
+   182  0023  3463               	retlw	99	;'c'
+   183  0024  3458               	retlw	88	;'X'
+   184  0025  3400               	retlw	0
+   185                           psect	strings
+   186                           	
+   187  0026                     STR_4:	
+   188  0026  3452               	retlw	82	;'R'
+   189  0027  3465               	retlw	101	;'e'
+   190  0028  3461               	retlw	97	;'a'
+   191  0029  3464               	retlw	100	;'d'
+   192  002A  3469               	retlw	105	;'i'
+   193  002B  346E               	retlw	110	;'n'
+   194  002C  3467               	retlw	103	;'g'
+   195  002D  342E               	retlw	46	;'.'
+   196  002E  342E               	retlw	46	;'.'
+   197  002F  342E               	retlw	46	;'.'
+   198  0030  3400               	retlw	0
+   199                           psect	strings
+   200                           	
+   201  0031                     STR_2:	
+   202  0031  3457               	retlw	87	;'W'
+   203  0032  3472               	retlw	114	;'r'
+   204  0033  3469               	retlw	105	;'i'
+   205  0034  3474               	retlw	116	;'t'
+   206  0035  3469               	retlw	105	;'i'
+   207  0036  346E               	retlw	110	;'n'
+   208  0037  3467               	retlw	103	;'g'
+   209  0038  342E               	retlw	46	;'.'
+   210  0039  342E               	retlw	46	;'.'
+   211  003A  342E               	retlw	46	;'.'
+   212  003B  3400               	retlw	0
+   213                           psect	strings
+   214                           	file	"project.as"
+   215                           	line	#
+   216                           psect cinit,class=CODE,delta=2
+   217                           global start_initialization
+   218  0576                     start_initialization:
+   219                           
+   220                           psect	bssCOMMON,class=COMMON,space=1
+   221                           global __pbssCOMMON
+   222  0075                     __pbssCOMMON:
+   223  0075                     _i:
+   224  0075                            ds      2
+   225                           
+   226                           ; Clear objects allocated to COMMON
+   227                           psect cinit,class=CODE,delta=2
+   228  0576  01F5               	clrf	((__pbssCOMMON)+0)&07Fh
+   229  0577  01F6               	clrf	((__pbssCOMMON)+1)&07Fh
+   230                           psect cinit,class=CODE,delta=2
+   231                           global end_of_initialization
+   232                           
+   233                           ;End of C runtime variable initialization code
+   234                           
+   235  0578                     end_of_initialization:
+   236  0578  0183               clrf status
+   237  0579  120A  118A  2F40   ljmp _main	;jump to C main() function
+   238                           psect	cstackCOMMON,class=COMMON,space=1
+   239                           global __pcstackCOMMON
+   240  0070                     __pcstackCOMMON:
+   241                           	global	?_cmd
+   242  0070                     ?_cmd:	; 0 bytes @ 0x0
+   243                           	global	??_cmd
+   244  0070                     ??_cmd:	; 0 bytes @ 0x0
+   245                           	global	?_waitmssp
+   246  0070                     ?_waitmssp:	; 0 bytes @ 0x0
+   247                           	global	??_waitmssp
+   248  0070                     ??_waitmssp:	; 0 bytes @ 0x0
+   249                           	global	?_delay1
+   250  0070                     ?_delay1:	; 0 bytes @ 0x0
+   251                           	global	??_delay1
+   252  0070                     ??_delay1:	; 0 bytes @ 0x0
+   253                           	global	?_lcd_init
+   254  0070                     ?_lcd_init:	; 0 bytes @ 0x0
+   255                           	global	?_dat
+   256  0070                     ?_dat:	; 0 bytes @ 0x0
+   257                           	global	??_dat
+   258  0070                     ??_dat:	; 0 bytes @ 0x0
+   259                           	global	?_show
+   260  0070                     ?_show:	; 0 bytes @ 0x0
+   261                           	global	?_i2c_init
+   262  0070                     ?_i2c_init:	; 0 bytes @ 0x0
+   263                           	global	??_i2c_init
+   264  0070                     ??_i2c_init:	; 0 bytes @ 0x0
+   265                           	global	?_i2c_start
+   266  0070                     ?_i2c_start:	; 0 bytes @ 0x0
+   267                           	global	??_i2c_start
+   268  0070                     ??_i2c_start:	; 0 bytes @ 0x0
+   269                           	global	?_i2c_stop
+   270  0070                     ?_i2c_stop:	; 0 bytes @ 0x0
+   271                           	global	??_i2c_stop
+   272  0070                     ??_i2c_stop:	; 0 bytes @ 0x0
+   273                           	global	?_i2c_restart
+   274  0070                     ?_i2c_restart:	; 0 bytes @ 0x0
+   275                           	global	??_i2c_restart
+   276  0070                     ??_i2c_restart:	; 0 bytes @ 0x0
+   277                           	global	?_i2c_nak
+   278  0070                     ?_i2c_nak:	; 0 bytes @ 0x0
+   279                           	global	??_i2c_nak
+   280  0070                     ??_i2c_nak:	; 0 bytes @ 0x0
+   281                           	global	?_i2c_send
+   282  0070                     ?_i2c_send:	; 0 bytes @ 0x0
+   283                           	global	??_i2c_send
+   284  0070                     ??_i2c_send:	; 0 bytes @ 0x0
+   285                           	global	??_i2c_read
+   286  0070                     ??_i2c_read:	; 0 bytes @ 0x0
+   287                           	global	?_main
+   288  0070                     ?_main:	; 0 bytes @ 0x0
+   289                           	global	?_i2c_read
+   290  0070                     ?_i2c_read:	; 1 bytes @ 0x0
+   291                           	global	?_i2c_read_byte
+   292  0070                     ?_i2c_read_byte:	; 1 bytes @ 0x0
+   293                           	global	cmd@a
+   294  0070                     cmd@a:	; 1 bytes @ 0x0
+   295                           	global	dat@b
+   296  0070                     dat@b:	; 1 bytes @ 0x0
+   297                           	global	i2c_send@dat
+   298  0070                     i2c_send@dat:	; 1 bytes @ 0x0
+   299                           	global	delay1@j
+   300  0070                     delay1@j:	; 2 bytes @ 0x0
+   301  0070                     	ds	1
+   302                           	global	??_lcd_init
+   303  0071                     ??_lcd_init:	; 0 bytes @ 0x1
+   304                           	global	??_show
+   305  0071                     ??_show:	; 0 bytes @ 0x1
+   306                           	global	?_i2c_send_byte
+   307  0071                     ?_i2c_send_byte:	; 0 bytes @ 0x1
+   308                           	global	??_i2c_read_byte
+   309  0071                     ??_i2c_read_byte:	; 0 bytes @ 0x1
+   310                           	global	i2c_send_byte@count
+   311  0071                     i2c_send_byte@count:	; 1 bytes @ 0x1
+   312  0071                     	ds	1
+   313                           	global	??_i2c_send_byte
+   314  0072                     ??_i2c_send_byte:	; 0 bytes @ 0x2
+   315                           	global	show@s
+   316  0072                     show@s:	; 1 bytes @ 0x2
+   317                           	global	i2c_read_byte@addr
+   318  0072                     i2c_read_byte@addr:	; 1 bytes @ 0x2
+   319                           	global	delay1@k
+   320  0072                     delay1@k:	; 2 bytes @ 0x2
+   321  0072                     	ds	1
+   322                           	global	i2c_send_byte@addr
+   323  0073                     i2c_send_byte@addr:	; 1 bytes @ 0x3
+   324                           	global	i2c_read_byte@rec
+   325  0073                     i2c_read_byte@rec:	; 1 bytes @ 0x3
+   326  0073                     	ds	1
+   327                           	global	??_main
+   328  0074                     ??_main:	; 0 bytes @ 0x4
+   329  0074                     	ds	1
+   330 ;;Data sizes: Strings 51, constant 0, data 0, bss 2, persistent 0 stack 0
+   331 ;;Auto spaces:   Size  Autos    Used
+   332 ;; COMMON          14      5       7
+   333 ;; BANK0           80      0       0
+   334 ;; BANK1           80      0       0
+   335 ;; BANK3           96      0       0
+   336 ;; BANK2           96      0       0
+   337                           
+   338 ;;
+   339 ;; Pointer list with targets:
+   340                           
+   341 ;; i2c_send_byte@count	PTR unsigned char  size(1) Largest target is 12
+   342 ;;		 -> STR_3(CODE[12]), 
+   343 ;;
+   344 ;; show@s	PTR unsigned char  size(1) Largest target is 17
+   345 ;;		 -> STR_4(CODE[11]), STR_2(CODE[11]), STR_1(CODE[17]), 
+   346 ;;
+   347                           
+   348                           
+   349 ;;
+   350 ;; Critical Paths under _main in COMMON
+   351 ;;
+   352 ;;   _main->_i2c_send_byte
+   353 ;;   _main->_delay1
+   354 ;;   _main->_i2c_read_byte
+   355 ;;   _i2c_read_byte->_i2c_send
+   356 ;;   _i2c_send_byte->_i2c_send
+   357 ;;   _show->_dat
+   358 ;;   _lcd_init->_cmd
+   359 ;;
+   360 ;; Critical Paths under _main in BANK0
+   361 ;;
+   362 ;;   None.
+   363 ;;
+   364 ;; Critical Paths under _main in BANK1
+   365 ;;
+   366 ;;   None.
+   367 ;;
+   368 ;; Critical Paths under _main in BANK3
+   369 ;;
+   370 ;;   None.
+   371 ;;
+   372 ;; Critical Paths under _main in BANK2
+   373 ;;
+   374 ;;   None.
+   375                           
+   376 ;;
+   377 ;;Main: autosize = 0, tempsize = 1, incstack = 0, save=0
+   378 ;;
+   379                           
+   380 ;;
+   381 ;;Call Graph Tables:
+   382 ;;
+   383 ;; ---------------------------------------------------------------------------------
+   384 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   385 ;; ---------------------------------------------------------------------------------
+   386 ;; (0) _main                                                 1     1      0     255
+   387 ;;                                              4 COMMON     1     1      0
+   388 ;;                           _lcd_init
+   389 ;;                           _i2c_init
+   390 ;;                               _show
+   391 ;;                                _cmd
+   392 ;;                      _i2c_send_byte
+   393 ;;                             _delay1
+   394 ;;                      _i2c_read_byte
+   395 ;;                                _dat
+   396 ;; ---------------------------------------------------------------------------------
+   397 ;; (1) _i2c_read_byte                                        3     3      0      45
+   398 ;;                                              1 COMMON     3     3      0
+   399 ;;                        _i2c_restart
+   400 ;;                           _waitmssp
+   401 ;;                           _i2c_send
+   402 ;;                           _i2c_read
+   403 ;;                            _i2c_nak
+   404 ;;                           _i2c_stop
+   405 ;; ---------------------------------------------------------------------------------
+   406 ;; (1) _i2c_send_byte                                        3     2      1      60
+   407 ;;                                              1 COMMON     3     2      1
+   408 ;;                          _i2c_start
+   409 ;;                           _i2c_send
+   410 ;;                           _i2c_stop
+   411 ;; ---------------------------------------------------------------------------------
+   412 ;; (2) _i2c_read                                             0     0      0       0
+   413 ;;                           _waitmssp
+   414 ;; ---------------------------------------------------------------------------------
+   415 ;; (2) _i2c_send                                             1     1      0      15
+   416 ;;                                              0 COMMON     1     1      0
+   417 ;;                           _waitmssp
+   418 ;; ---------------------------------------------------------------------------------
+   419 ;; (2) _i2c_nak                                              0     0      0       0
+   420 ;;                           _waitmssp
+   421 ;; ---------------------------------------------------------------------------------
+   422 ;; (2) _i2c_restart                                          0     0      0       0
+   423 ;;                           _waitmssp
+   424 ;; ---------------------------------------------------------------------------------
+   425 ;; (2) _i2c_stop                                             0     0      0       0
+   426 ;;                           _waitmssp
+   427 ;; ---------------------------------------------------------------------------------
+   428 ;; (2) _i2c_start                                            0     0      0       0
+   429 ;;                           _waitmssp
+   430 ;; ---------------------------------------------------------------------------------
+   431 ;; (1) _show                                                 2     2      0      45
+   432 ;;                                              1 COMMON     2     2      0
+   433 ;;                                _dat
+   434 ;; ---------------------------------------------------------------------------------
+   435 ;; (1) _lcd_init                                             0     0      0      15
+   436 ;;                                _cmd
+   437 ;; ---------------------------------------------------------------------------------
+   438 ;; (1) _delay1                                               4     4      0      60
+   439 ;;                                              0 COMMON     4     4      0
+   440 ;; ---------------------------------------------------------------------------------
+   441 ;; (3) _waitmssp                                             0     0      0       0
+   442 ;; ---------------------------------------------------------------------------------
+   443 ;; (1) _i2c_init                                             0     0      0       0
+   444 ;; ---------------------------------------------------------------------------------
+   445 ;; (1) _dat                                                  1     1      0      15
+   446 ;;                                              0 COMMON     1     1      0
+   447 ;; ---------------------------------------------------------------------------------
+   448 ;; (1) _cmd                                                  1     1      0      15
+   449 ;;                                              0 COMMON     1     1      0
+   450 ;; ---------------------------------------------------------------------------------
+   451 ;; Estimated maximum stack depth 3
+   452 ;; ---------------------------------------------------------------------------------
+   453                           
+   454 ;; Call Graph Graphs:
+   455                           
+   456 ;; _main (ROOT)
+   457 ;;   _lcd_init
+   458 ;;     _cmd
+   459 ;;   _i2c_init
+   460 ;;   _show
+   461 ;;     _dat
+   462 ;;   _cmd
+   463 ;;   _i2c_send_byte
+   464 ;;     _i2c_start
+   465 ;;       _waitmssp
+   466 ;;     _i2c_send
+   467 ;;       _waitmssp
+   468 ;;     _i2c_stop
+   469 ;;       _waitmssp
+   470 ;;   _delay1
+   471 ;;   _i2c_read_byte
+   472 ;;     _i2c_restart
+   473 ;;       _waitmssp
+   474 ;;     _waitmssp
+   475 ;;     _i2c_send
+   476 ;;       _waitmssp
+   477 ;;     _i2c_read
+   478 ;;       _waitmssp
+   479 ;;     _i2c_nak
+   480 ;;       _waitmssp
+   481 ;;     _i2c_stop
+   482 ;;       _waitmssp
+   483 ;;   _dat
+   484 ;;
+   485                           
+   486 ;; Address spaces:
+   487                           
+   488 ;;Name               Size   Autos  Total    Cost      Usage
+   489 ;;BITCOMMON            E      0       0       0        0.0%
+   490 ;;EEDATA             100      0       0       0        0.0%
+   491 ;;NULL                 0      0       0       0        0.0%
+   492 ;;CODE                 0      0       0       0        0.0%
+   493 ;;COMMON               E      5       7       1       50.0%
+   494 ;;BITSFR0              0      0       0       1        0.0%
+   495 ;;SFR0                 0      0       0       1        0.0%
+   496 ;;BITSFR1              0      0       0       2        0.0%
+   497 ;;SFR1                 0      0       0       2        0.0%
+   498 ;;STACK                0      0       3       2        0.0%
+   499 ;;ABS                  0      0       7       3        0.0%
+   500 ;;BITBANK0            50      0       0       4        0.0%
+   501 ;;BITSFR3              0      0       0       4        0.0%
+   502 ;;SFR3                 0      0       0       4        0.0%
+   503 ;;BANK0               50      0       0       5        0.0%
+   504 ;;BITSFR2              0      0       0       5        0.0%
+   505 ;;SFR2                 0      0       0       5        0.0%
+   506 ;;BITBANK1            50      0       0       6        0.0%
+   507 ;;BANK1               50      0       0       7        0.0%
+   508 ;;BITBANK3            60      0       0       8        0.0%
+   509 ;;BANK3               60      0       0       9        0.0%
+   510 ;;BITBANK2            60      0       0      10        0.0%
+   511 ;;BANK2               60      0       0      11        0.0%
+   512 ;;DATA                 0      0       A      12        0.0%
+   513                           
+   514                           	global	_main
+   515                           psect	maintext,global,class=CODE,delta=2
+   516                           global __pmaintext
+   517  0740                     __pmaintext:
+   518                           
+   519 ;; *************** function _main *****************
+   520 ;; Defined at:
+   521 ;;		line 10 in file "D:\SLR\Interlogicx\codes\Practise\PIC\MP lab\I2C\EEPROM\Page write\code.c"
+   522 ;; Parameters:    Size  Location     Type
+   523 ;;		None
+   524 ;; Auto vars:     Size  Location     Type
+   525 ;;		None
+   526 ;; Return value:  Size  Location     Type
+   527 ;;		None               void
+   528 ;; Registers used:
+   529 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
+   530 ;; Tracked objects:
+   531 ;;		On entry : 17F/0
+   532 ;;		On exit  : 0/0
+   533 ;;		Unchanged: 0/0
+   534 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   535 ;;      Params:         0       0       0       0       0
+   536 ;;      Locals:         0       0       0       0       0
+   537 ;;      Temps:          1       0       0       0       0
+   538 ;;      Totals:         1       0       0       0       0
+   539 ;;Total ram usage:        1 bytes
+   540 ;; Hardware stack levels required when called:    3
+   541 ;; This function calls:
+   542 ;;		_lcd_init
+   543 ;;		_i2c_init
+   544 ;;		_show
+   545 ;;		_cmd
+   546 ;;		_i2c_send_byte
+   547 ;;		_delay1
+   548 ;;		_i2c_read_byte
+   549 ;;		_dat
+   550 ;; This function is called by:
+   551 ;;		Startup code after reset
+   552 ;; This function uses a non-reentrant model
+   553 ;;
+   554                           psect	maintext
+   555                           	file	"D:\SLR\Interlogicx\codes\Practise\PIC\MP lab\I2C\EEPROM\Page write\code.c"
+   556                           	line	10
+   557                           	global	__size_of_main
+   558  00C0                     	__size_of_main	equ	__end_of_main-_main
+   559                           	
+   560  0740                     _main:	
+   561                           	opt	stack 5
+   562                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
+   563                           	line	11
+   564                           	
+   565  0740                     l2818:	
+   566                           ;code.c: 11: lcd_init();
+   567  0740  120A  118A  2602   	fcall	_lcd_init
+              120A  118A         
+   568                           	line	12
+   569                           	
+   570  0745                     l2820:	
+   571                           ;code.c: 12: i2c_init();
+   572  0745  120A  118A  25CB   	fcall	_i2c_init
+              120A  118A         
+   573                           	line	13
+   574                           	
+   575  074A                     l2822:	
+   576                           ;code.c: 13: show("  I2C TuTorial  ");
+   577  074A  3001               	movlw	((STR_1-__stringbase))&0ffh
+   578  074B  120A  118A  25E1   	fcall	_show
+              120A  118A         
+   579                           	line	14
+   580                           	
+   581  0750                     l2824:	
+   582                           ;code.c: 14: cmd(0xc2);
+   583  0750  30C2               	movlw	(0C2h)
+   584  0751  120A  118A  2624   	fcall	_cmd
+              120A  118A         
+   585                           	line	15
+   586                           	
+   587  0756                     l2826:	
+   588                           ;code.c: 15: show("Writing...");
+   589  0756  3029               	movlw	((STR_2-__stringbase))&0ffh
+   590  0757  120A  118A  25E1   	fcall	_show
+              120A  118A         
+   591                           	line	16
+   592                           	
+   593  075C                     l2828:	
+   594                           ;code.c: 16: i2c_send_byte(0x0000,"EmbeTronicX");
+   595  075C  3012               	movlw	((STR_3-__stringbase))&0ffh
+   596  075D  00F4               	movwf	(??_main+0)+0
+   597  075E  0874               	movf	(??_main+0)+0,w
+   598  075F  00F1               	movwf	(?_i2c_send_byte)
+   599  0760  3000               	movlw	(0)
+   600  0761  120A  118A  26BF   	fcall	_i2c_send_byte
+              120A  118A         
+   601                           	line	17
+   602                           	
+   603  0766                     l2830:	
+   604                           ;code.c: 17: delay1();
+   605  0766  120A  118A  2684   	fcall	_delay1
+              120A  118A         
+   606                           	line	18
+   607                           	
+   608  076B                     l2832:	
+   609                           ;code.c: 18: cmd(0xc2);
+   610  076B  30C2               	movlw	(0C2h)
+   611  076C  120A  118A  2624   	fcall	_cmd
+              120A  118A         
+   612                           	line	19
+   613                           	
+   614  0771                     l2834:	
+   615                           ;code.c: 19: show("Reading...");
+   616  0771  301E               	movlw	((STR_4-__stringbase))&0ffh
+   617  0772  120A  118A  25E1   	fcall	_show
+              120A  118A         
+   618                           	line	20
+   619                           ;code.c: 20: delay1();
+   620  0777  120A  118A  2684   	fcall	_delay1
+              120A  118A         
+   621                           	line	21
+   622                           	
+   623  077C                     l2836:	
+   624                           ;code.c: 21: cmd(0xc2);
+   625  077C  30C2               	movlw	(0C2h)
+   626  077D  120A  118A  2624   	fcall	_cmd
+              120A  118A         
+   627                           	line	22
+   628                           	
+   629  0782                     l2838:	
+   630                           ;code.c: 22: dat(i2c_read_byte(0x0000));
+   631  0782  3000               	movlw	(0)
+   632  0783  120A  118A  26FC   	fcall	_i2c_read_byte
+              120A  118A         
+   633  0788  120A  118A  2654   	fcall	_dat
+              120A  118A         
+   634                           	line	23
+   635                           	
+   636  078D                     l2840:	
+   637                           ;code.c: 23: dat(i2c_read_byte(0x0001));
+   638  078D  3001               	movlw	(01h)
+   639  078E  120A  118A  26FC   	fcall	_i2c_read_byte
+              120A  118A         
+   640  0793  120A  118A  2654   	fcall	_dat
+              120A  118A         
+   641                           	line	24
+   642                           	
+   643  0798                     l2842:	
+   644                           ;code.c: 24: dat(i2c_read_byte(0x0002));
+   645  0798  3002               	movlw	(02h)
+   646  0799  120A  118A  26FC   	fcall	_i2c_read_byte
+              120A  118A         
+   647  079E  120A  118A  2654   	fcall	_dat
+              120A  118A         
+   648                           	line	25
+   649                           	
+   650  07A3                     l2844:	
+   651                           ;code.c: 25: dat(i2c_read_byte(0x0003));
+   652  07A3  3003               	movlw	(03h)
+   653  07A4  120A  118A  26FC   	fcall	_i2c_read_byte
+              120A  118A         
+   654  07A9  120A  118A  2654   	fcall	_dat
+              120A  118A         
+   655                           	line	26
+   656                           	
+   657  07AE                     l2846:	
+   658                           ;code.c: 26: dat(i2c_read_byte(0x0004));
+   659  07AE  3004               	movlw	(04h)
+   660  07AF  120A  118A  26FC   	fcall	_i2c_read_byte
+              120A  118A         
+   661  07B4  120A  118A  2654   	fcall	_dat
+              120A  118A         
+   662                           	line	27
+   663                           	
+   664  07B9                     l2848:	
+   665                           ;code.c: 27: dat(i2c_read_byte(0x0005));
+   666  07B9  3005               	movlw	(05h)
+   667  07BA  120A  118A  26FC   	fcall	_i2c_read_byte
+              120A  118A         
+   668  07BF  120A  118A  2654   	fcall	_dat
+              120A  118A         
+   669                           	line	28
+   670                           	
+   671  07C4                     l2850:	
+   672                           ;code.c: 28: dat(i2c_read_byte(0x0006));
+   673  07C4  3006               	movlw	(06h)
+   674  07C5  120A  118A  26FC   	fcall	_i2c_read_byte
+              120A  118A         
+   675  07CA  120A  118A  2654   	fcall	_dat
+              120A  118A         
+   676                           	line	29
+   677                           	
+   678  07CF                     l2852:	
+   679                           ;code.c: 29: dat(i2c_read_byte(0x0007));
+   680  07CF  3007               	movlw	(07h)
+   681  07D0  120A  118A  26FC   	fcall	_i2c_read_byte
+              120A  118A         
+   682  07D5  120A  118A  2654   	fcall	_dat
+              120A  118A         
+   683                           	line	30
+   684                           	
+   685  07DA                     l2854:	
+   686                           ;code.c: 30: dat(i2c_read_byte(0x0008));
+   687  07DA  3008               	movlw	(08h)
+   688  07DB  120A  118A  26FC   	fcall	_i2c_read_byte
+              120A  118A         
+   689  07E0  120A  118A  2654   	fcall	_dat
+              120A  118A         
+   690                           	line	31
+   691                           	
+   692  07E5                     l2856:	
+   693                           ;code.c: 31: dat(i2c_read_byte(0x0009));
+   694  07E5  3009               	movlw	(09h)
+   695  07E6  120A  118A  26FC   	fcall	_i2c_read_byte
+              120A  118A         
+   696  07EB  120A  118A  2654   	fcall	_dat
+              120A  118A         
+   697                           	line	32
+   698                           	
+   699  07F0                     l2858:	
+   700                           ;code.c: 32: dat(i2c_read_byte(0x000a));
+   701  07F0  300A               	movlw	(0Ah)
+   702  07F1  120A  118A  26FC   	fcall	_i2c_read_byte
+              120A  118A         
+   703  07F6  120A  118A  2654   	fcall	_dat
+              120A  118A         
+   704  07FB  2FFC               	goto	l760
+   705                           	line	34
+   706                           ;code.c: 34: while(1);
+   707                           	
+   708  07FC                     l759:	
+   709                           	
+   710  07FC                     l760:	
+   711  07FC  2FFC               	goto	l760
+   712                           	
+   713  07FD                     l761:	
+   714                           	line	35
+   715                           	
+   716  07FD                     l762:	
+   717                           	global	start
+   718  07FD  120A  118A  2800   	ljmp	start
+   719                           	opt stack 0
+   720                           GLOBAL	__end_of_main
+   721  0800                     	__end_of_main:
+   722 ;; =============== function _main ends ============
+   723                           
+   724                           	signat	_main,88
+   725                           	global	_i2c_read_byte
+   726                           psect	text223,local,class=CODE,delta=2
+   727                           global __ptext223
+   728  06FC                     __ptext223:
+   729                           
+   730 ;; *************** function _i2c_read_byte *****************
+   731 ;; Defined at:
+   732 ;;		line 88 in file "D:\SLR\Interlogicx\codes\Practise\PIC\MP lab\I2C\EEPROM\Page write\i2c.h"
+   733 ;; Parameters:    Size  Location     Type
+   734 ;;  addr            1    wreg     unsigned char 
+   735 ;; Auto vars:     Size  Location     Type
+   736 ;;  addr            1    2[COMMON] unsigned char 
+   737 ;;  rec             1    3[COMMON] unsigned char 
+   738 ;; Return value:  Size  Location     Type
+   739 ;;                  1    wreg      unsigned char 
+   740 ;; Registers used:
+   741 ;;		wreg, status,2, status,0, pclath, cstack
+   742 ;; Tracked objects:
+   743 ;;		On entry : 0/0
+   744 ;;		On exit  : 0/0
+   745 ;;		Unchanged: 0/0
+   746 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   747 ;;      Params:         0       0       0       0       0
+   748 ;;      Locals:         2       0       0       0       0
+   749 ;;      Temps:          1       0       0       0       0
+   750 ;;      Totals:         3       0       0       0       0
+   751 ;;Total ram usage:        3 bytes
+   752 ;; Hardware stack levels used:    1
+   753 ;; Hardware stack levels required when called:    2
+   754 ;; This function calls:
+   755 ;;		_i2c_restart
+   756 ;;		_waitmssp
+   757 ;;		_i2c_send
+   758 ;;		_i2c_read
+   759 ;;		_i2c_nak
+   760 ;;		_i2c_stop
+   761 ;; This function is called by:
+   762 ;;		_main
+   763 ;; This function uses a non-reentrant model
+   764 ;;
+   765                           psect	text223
+   766                           	file	"D:\SLR\Interlogicx\codes\Practise\PIC\MP lab\I2C\EEPROM\Page write\i2c.h"
+   767                           	line	88
+   768                           	global	__size_of_i2c_read_byte
+   769  0044                     	__size_of_i2c_read_byte	equ	__end_of_i2c_read_byte-_i2c_read_byte
+   770                           	
+   771  06FC                     _i2c_read_byte:	
+   772                           	opt	stack 5
+   773                           ; Regs used in _i2c_read_byte: [wreg+status,2+status,0+pclath+cstack]
+   774                           ;i2c_read_byte@addr stored from wreg
+   775  06FC  00F2               	movwf	(i2c_read_byte@addr)
+   776                           	line	90
+   777                           ;i2c.h: 89: unsigned char rec;
+   778                           ;i2c.h: 90: L: i2c_restart();
+   779                           	
+   780  06FD                     l752:	
+   781                           	
+   782  06FD                     l2798:	
+   783  06FD  120A  118A  2597   	fcall	_i2c_restart
+              120A  118A         
+   784                           	line	91
+   785                           	
+   786  0702                     l2800:	
+   787                           ;i2c.h: 91: SSPBUF=0xA0;
+   788  0702  30A0               	movlw	(0A0h)
+   789  0703  1283               	bcf	status, 5	;RP0=0, select bank0
+   790  0704  1303               	bcf	status, 6	;RP1=0, select bank0
+   791  0705  0093               	movwf	(19)	;volatile
+   792                           	line	92
+   793                           	
+   794  0706                     l2802:	
+   795                           ;i2c.h: 92: waitmssp();
+   796  0706  120A  118A  257C   	fcall	_waitmssp
+              120A  118A         
+   797                           	line	93
+   798                           ;i2c.h: 93: while(ACKSTAT){goto L;}
+   799  070B  2F0D               	goto	l753
+   800                           	
+   801  070C                     l754:	
+   802  070C  2EFD               	goto	l752
+   803                           	
+   804  070D                     l753:	
+   805  070D  1683               	bsf	status, 5	;RP0=1, select bank1
+   806  070E  1303               	bcf	status, 6	;RP1=0, select bank1
+   807  070F  1B11               	btfsc	(1166/8)^080h,(1166)&7
+   808  0710  2F12               	goto	u2361
+   809  0711  2F13               	goto	u2360
+   810  0712                     u2361:
+   811  0712  2EFD               	goto	l752
+   812  0713                     u2360:
+   813  0713  2F14               	goto	l2804
+   814                           	
+   815  0714                     l755:	
+   816                           	line	94
+   817                           	
+   818  0714                     l2804:	
+   819                           ;i2c.h: 94: i2c_send(addr>>8);
+   820  0714  3000               	movlw	(0)
+   821  0715  120A  118A  25B7   	fcall	_i2c_send
+              120A  118A         
+   822                           	line	95
+   823                           ;i2c.h: 95: i2c_send(addr);
+   824  071A  0872               	movf	(i2c_read_byte@addr),w
+   825  071B  120A  118A  25B7   	fcall	_i2c_send
+              120A  118A         
+   826                           	line	96
+   827                           	
+   828  0720                     l2806:	
+   829                           ;i2c.h: 96: i2c_restart();
+   830  0720  120A  118A  2597   	fcall	_i2c_restart
+              120A  118A         
+   831                           	line	97
+   832                           	
+   833  0725                     l2808:	
+   834                           ;i2c.h: 97: i2c_send(0xA1);
+   835  0725  30A1               	movlw	(0A1h)
+   836  0726  120A  118A  25B7   	fcall	_i2c_send
+              120A  118A         
+   837                           	line	98
+   838                           	
+   839  072B                     l2810:	
+   840                           ;i2c.h: 98: rec=i2c_read();
+   841  072B  120A  118A  25AA   	fcall	_i2c_read
+              120A  118A         
+   842  0730  00F1               	movwf	(??_i2c_read_byte+0)+0
+   843  0731  0871               	movf	(??_i2c_read_byte+0)+0,w
+   844  0732  00F3               	movwf	(i2c_read_byte@rec)
+   845                           	line	99
+   846                           	
+   847  0733                     l2812:	
+   848                           ;i2c.h: 99: i2c_nak();
+   849  0733  120A  118A  25A0   	fcall	_i2c_nak
+              120A  118A         
+   850                           	line	100
+   851                           	
+   852  0738                     l2814:	
+   853                           ;i2c.h: 100: i2c_stop();
+   854  0738  120A  118A  258E   	fcall	_i2c_stop
+              120A  118A         
+   855                           	line	101
+   856                           ;i2c.h: 101: return rec;
+   857  073D  0873               	movf	(i2c_read_byte@rec),w
+   858  073E  2F3F               	goto	l756
+   859                           	
+   860  073F                     l2816:	
+   861                           	line	102
+   862                           	
+   863  073F                     l756:	
+   864  073F  0008               	return
+   865                           	opt stack 0
+   866                           GLOBAL	__end_of_i2c_read_byte
+   867  0740                     	__end_of_i2c_read_byte:
+   868 ;; =============== function _i2c_read_byte ends ============
+   869                           
+   870                           	signat	_i2c_read_byte,4217
+   871                           	global	_i2c_send_byte
+   872                           psect	text224,local,class=CODE,delta=2
+   873                           global __ptext224
+   874  06BF                     __ptext224:
+   875                           
+   876 ;; *************** function _i2c_send_byte *****************
+   877 ;; Defined at:
+   878 ;;		line 69 in file "D:\SLR\Interlogicx\codes\Practise\PIC\MP lab\I2C\EEPROM\Page write\i2c.h"
+   879 ;; Parameters:    Size  Location     Type
+   880 ;;  addr            1    wreg     unsigned char 
+   881 ;;  count           1    1[COMMON] PTR unsigned char 
+   882 ;;		 -> STR_3(12), 
+   883 ;; Auto vars:     Size  Location     Type
+   884 ;;  addr            1    3[COMMON] unsigned char 
+   885 ;; Return value:  Size  Location     Type
+   886 ;;		None               void
+   887 ;; Registers used:
+   888 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   889 ;; Tracked objects:
+   890 ;;		On entry : 0/0
+   891 ;;		On exit  : 0/0
+   892 ;;		Unchanged: 0/0
+   893 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   894 ;;      Params:         1       0       0       0       0
+   895 ;;      Locals:         1       0       0       0       0
+   896 ;;      Temps:          1       0       0       0       0
+   897 ;;      Totals:         3       0       0       0       0
+   898 ;;Total ram usage:        3 bytes
+   899 ;; Hardware stack levels used:    1
+   900 ;; Hardware stack levels required when called:    2
+   901 ;; This function calls:
+   902 ;;		_i2c_start
+   903 ;;		_i2c_send
+   904 ;;		_i2c_stop
+   905 ;; This function is called by:
+   906 ;;		_main
+   907 ;; This function uses a non-reentrant model
+   908 ;;
+   909                           psect	text224
+   910                           	file	"D:\SLR\Interlogicx\codes\Practise\PIC\MP lab\I2C\EEPROM\Page write\i2c.h"
+   911                           	line	69
+   912                           	global	__size_of_i2c_send_byte
+   913  003D                     	__size_of_i2c_send_byte	equ	__end_of_i2c_send_byte-_i2c_send_byte
+   914                           	
+   915  06BF                     _i2c_send_byte:	
+   916                           	opt	stack 5
+   917                           ; Regs used in _i2c_send_byte: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   918                           ;i2c_send_byte@addr stored from wreg
+   919  06BF  00F3               	movwf	(i2c_send_byte@addr)
+   920                           	line	70
+   921                           	
+   922  06C0                     l2782:	
+   923                           ;i2c.h: 70: i2c_start();
+   924  06C0  120A  118A  2585   	fcall	_i2c_start
+              120A  118A         
+   925                           	line	71
+   926                           	
+   927  06C5                     l2784:	
+   928                           ;i2c.h: 71: i2c_send(0xA0);
+   929  06C5  30A0               	movlw	(0A0h)
+   930  06C6  120A  118A  25B7   	fcall	_i2c_send
+              120A  118A         
+   931                           	line	72
+   932                           	
+   933  06CB                     l2786:	
+   934                           ;i2c.h: 72: i2c_send(addr>>8);
+   935  06CB  3000               	movlw	(0)
+   936  06CC  120A  118A  25B7   	fcall	_i2c_send
+              120A  118A         
+   937                           	line	73
+   938                           	
+   939  06D1                     l2788:	
+   940                           ;i2c.h: 73: i2c_send(addr);
+   941  06D1  0873               	movf	(i2c_send_byte@addr),w
+   942  06D2  120A  118A  25B7   	fcall	_i2c_send
+              120A  118A         
+   943                           	line	74
+   944                           ;i2c.h: 74: while(*count) {
+   945  06D7  2EE9               	goto	l2794
+   946                           	
+   947  06D8                     l744:	
+   948                           	line	75
+   949                           	
+   950  06D8                     l2790:	
+   951                           ;i2c.h: 75: i2c_send(*count++);
+   952  06D8  0871               	movf	(i2c_send_byte@count),w
+   953  06D9  0084               	movwf	fsr0
+   954  06DA  120A  118A  2003   	fcall	stringdir
+              120A  118A         
+   955  06DF  120A  118A  25B7   	fcall	_i2c_send
+              120A  118A         
+   956                           	
+   957  06E4                     l2792:	
+   958  06E4  3001               	movlw	(01h)
+   959  06E5  00F2               	movwf	(??_i2c_send_byte+0)+0
+   960  06E6  0872               	movf	(??_i2c_send_byte+0)+0,w
+   961  06E7  07F1               	addwf	(i2c_send_byte@count),f
+   962  06E8  2EE9               	goto	l2794
+   963                           	line	76
+   964                           	
+   965  06E9                     l743:	
+   966                           	line	74
+   967                           	
+   968  06E9                     l2794:	
+   969  06E9  0871               	movf	(i2c_send_byte@count),w
+   970  06EA  0084               	movwf	fsr0
+   971  06EB  120A  118A  2003   	fcall	stringdir
+              120A  118A         
+   972  06F0  3800               	iorlw	0
+   973  06F1  1D03               	skipz
+   974  06F2  2EF4               	goto	u2351
+   975  06F3  2EF5               	goto	u2350
+   976  06F4                     u2351:
+   977  06F4  2ED8               	goto	l2790
+   978  06F5                     u2350:
+   979  06F5  2EF6               	goto	l2796
+   980                           	
+   981  06F6                     l745:	
+   982                           	line	77
+   983                           	
+   984  06F6                     l2796:	
+   985                           ;i2c.h: 76: }
+   986                           ;i2c.h: 77: i2c_stop();
+   987  06F6  120A  118A  258E   	fcall	_i2c_stop
+              120A  118A         
+   988                           	line	78
+   989                           	
+   990  06FB                     l746:	
+   991  06FB  0008               	return
+   992                           	opt stack 0
+   993                           GLOBAL	__end_of_i2c_send_byte
+   994  06FC                     	__end_of_i2c_send_byte:
+   995 ;; =============== function _i2c_send_byte ends ============
+   996                           
+   997                           	signat	_i2c_send_byte,8312
+   998                           	global	_i2c_read
+   999                           psect	text225,local,class=CODE,delta=2
+  1000                           global __ptext225
+  1001  05AA                     __ptext225:
+  1002                           
+  1003 ;; *************** function _i2c_read *****************
+  1004 ;; Defined at:
+  1005 ;;		line 81 in file "D:\SLR\Interlogicx\codes\Practise\PIC\MP lab\I2C\EEPROM\Page write\i2c.h"
+  1006 ;; Parameters:    Size  Location     Type
+  1007 ;;		None
+  1008 ;; Auto vars:     Size  Location     Type
+  1009 ;;		None
+  1010 ;; Return value:  Size  Location     Type
+  1011 ;;                  1    wreg      unsigned char 
+  1012 ;; Registers used:
+  1013 ;;		wreg, status,2, status,0, pclath, cstack
+  1014 ;; Tracked objects:
+  1015 ;;		On entry : 0/0
+  1016 ;;		On exit  : 0/0
+  1017 ;;		Unchanged: 0/0
+  1018 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1019 ;;      Params:         0       0       0       0       0
+  1020 ;;      Locals:         0       0       0       0       0
+  1021 ;;      Temps:          0       0       0       0       0
+  1022 ;;      Totals:         0       0       0       0       0
+  1023 ;;Total ram usage:        0 bytes
+  1024 ;; Hardware stack levels used:    1
+  1025 ;; Hardware stack levels required when called:    1
+  1026 ;; This function calls:
+  1027 ;;		_waitmssp
+  1028 ;; This function is called by:
+  1029 ;;		_i2c_read_byte
+  1030 ;; This function uses a non-reentrant model
+  1031 ;;
+  1032                           psect	text225
+  1033                           	file	"D:\SLR\Interlogicx\codes\Practise\PIC\MP lab\I2C\EEPROM\Page write\i2c.h"
+  1034                           	line	81
+  1035                           	global	__size_of_i2c_read
+  1036  000D                     	__size_of_i2c_read	equ	__end_of_i2c_read-_i2c_read
+  1037                           	
+  1038  05AA                     _i2c_read:	
+  1039                           	opt	stack 5
+  1040                           ; Regs used in _i2c_read: [wreg+status,2+status,0+pclath+cstack]
+  1041                           	line	82
+  1042                           	
+  1043  05AA                     l2774:	
+  1044                           ;i2c.h: 82: RCEN=1;
+  1045  05AA  1683               	bsf	status, 5	;RP0=1, select bank1
+  1046  05AB  1303               	bcf	status, 6	;RP1=0, select bank1
+  1047  05AC  1591               	bsf	(1163/8)^080h,(1163)&7
+  1048                           	line	83
+  1049                           	
+  1050  05AD                     l2776:	
+  1051                           ;i2c.h: 83: waitmssp();
+  1052  05AD  120A  118A  257C   	fcall	_waitmssp
+              120A  118A         
+  1053                           	line	84
+  1054                           	
+  1055  05B2                     l2778:	
+  1056                           ;i2c.h: 84: return SSPBUF;
+  1057  05B2  1283               	bcf	status, 5	;RP0=0, select bank0
+  1058  05B3  1303               	bcf	status, 6	;RP1=0, select bank0
+  1059  05B4  0813               	movf	(19),w	;volatile
+  1060  05B5  2DB6               	goto	l749
+  1061                           	
+  1062  05B6                     l2780:	
+  1063                           	line	85
+  1064                           	
+  1065  05B6                     l749:	
+  1066  05B6  0008               	return
+  1067                           	opt stack 0
+  1068                           GLOBAL	__end_of_i2c_read
+  1069  05B7                     	__end_of_i2c_read:
+  1070 ;; =============== function _i2c_read ends ============
+  1071                           
+  1072                           	signat	_i2c_read,89
+  1073                           	global	_i2c_send
+  1074                           psect	text226,local,class=CODE,delta=2
+  1075                           global __ptext226
+  1076  05B7                     __ptext226:
+  1077                           
+  1078 ;; *************** function _i2c_send *****************
+  1079 ;; Defined at:
+  1080 ;;		line 62 in file "D:\SLR\Interlogicx\codes\Practise\PIC\MP lab\I2C\EEPROM\Page write\i2c.h"
+  1081 ;; Parameters:    Size  Location     Type
+  1082 ;;  dat             1    wreg     unsigned char 
+  1083 ;; Auto vars:     Size  Location     Type
+  1084 ;;  dat             1    0[COMMON] unsigned char 
+  1085 ;; Return value:  Size  Location     Type
+  1086 ;;		None               void
+  1087 ;; Registers used:
+  1088 ;;		wreg, status,2, status,0, pclath, cstack
+  1089 ;; Tracked objects:
+  1090 ;;		On entry : 0/0
+  1091 ;;		On exit  : 0/0
+  1092 ;;		Unchanged: 0/0
+  1093 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1094 ;;      Params:         0       0       0       0       0
+  1095 ;;      Locals:         1       0       0       0       0
+  1096 ;;      Temps:          0       0       0       0       0
+  1097 ;;      Totals:         1       0       0       0       0
+  1098 ;;Total ram usage:        1 bytes
+  1099 ;; Hardware stack levels used:    1
+  1100 ;; Hardware stack levels required when called:    1
+  1101 ;; This function calls:
+  1102 ;;		_waitmssp
+  1103 ;; This function is called by:
+  1104 ;;		_i2c_send_byte
+  1105 ;;		_i2c_read_byte
+  1106 ;; This function uses a non-reentrant model
+  1107 ;;
+  1108                           psect	text226
+  1109                           	file	"D:\SLR\Interlogicx\codes\Practise\PIC\MP lab\I2C\EEPROM\Page write\i2c.h"
+  1110                           	line	62
+  1111                           	global	__size_of_i2c_send
+  1112  0014                     	__size_of_i2c_send	equ	__end_of_i2c_send-_i2c_send
+  1113                           	
+  1114  05B7                     _i2c_send:	
+  1115                           	opt	stack 5
+  1116                           ; Regs used in _i2c_send: [wreg+status,2+status,0+pclath+cstack]
+  1117                           ;i2c_send@dat stored from wreg
+  1118  05B7  00F0               	movwf	(i2c_send@dat)
+  1119                           	line	63
+  1120                           ;i2c.h: 63: L1: SSPBUF=dat;
+  1121                           	
+  1122  05B8                     l736:	
+  1123                           	
+  1124  05B8                     l2770:	
+  1125  05B8  0870               	movf	(i2c_send@dat),w
+  1126  05B9  1283               	bcf	status, 5	;RP0=0, select bank0
+  1127  05BA  1303               	bcf	status, 6	;RP1=0, select bank0
+  1128  05BB  0093               	movwf	(19)	;volatile
+  1129                           	line	64
+  1130                           	
+  1131  05BC                     l2772:	
+  1132                           ;i2c.h: 64: waitmssp();
+  1133  05BC  120A  118A  257C   	fcall	_waitmssp
+              120A  118A         
+  1134                           	line	65
+  1135                           ;i2c.h: 65: while(ACKSTAT){i2c_restart;goto L1;}
+  1136  05C1  2DC3               	goto	l737
+  1137                           	
+  1138  05C2                     l738:	
+  1139  05C2  2DB8               	goto	l736
+  1140                           	
+  1141  05C3                     l737:	
+  1142  05C3  1683               	bsf	status, 5	;RP0=1, select bank1
+  1143  05C4  1303               	bcf	status, 6	;RP1=0, select bank1
+  1144  05C5  1B11               	btfsc	(1166/8)^080h,(1166)&7
+  1145  05C6  2DC8               	goto	u2341
+  1146  05C7  2DC9               	goto	u2340
+  1147  05C8                     u2341:
+  1148  05C8  2DB8               	goto	l736
+  1149  05C9                     u2340:
+  1150  05C9  2DCA               	goto	l740
+  1151                           	
+  1152  05CA                     l739:	
+  1153                           	line	66
+  1154                           	
+  1155  05CA                     l740:	
+  1156  05CA  0008               	return
+  1157                           	opt stack 0
+  1158                           GLOBAL	__end_of_i2c_send
+  1159  05CB                     	__end_of_i2c_send:
+  1160 ;; =============== function _i2c_send ends ============
+  1161                           
+  1162                           	signat	_i2c_send,4216
+  1163                           	global	_i2c_nak
+  1164                           psect	text227,local,class=CODE,delta=2
+  1165                           global __ptext227
+  1166  05A0                     __ptext227:
+  1167                           
+  1168 ;; *************** function _i2c_nak *****************
+  1169 ;; Defined at:
+  1170 ;;		line 49 in file "D:\SLR\Interlogicx\codes\Practise\PIC\MP lab\I2C\EEPROM\Page write\i2c.h"
+  1171 ;; Parameters:    Size  Location     Type
+  1172 ;;		None
+  1173 ;; Auto vars:     Size  Location     Type
+  1174 ;;		None
+  1175 ;; Return value:  Size  Location     Type
+  1176 ;;		None               void
+  1177 ;; Registers used:
+  1178 ;;		status,2, status,0, pclath, cstack
+  1179 ;; Tracked objects:
+  1180 ;;		On entry : 0/0
+  1181 ;;		On exit  : 0/0
+  1182 ;;		Unchanged: 0/0
+  1183 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1184 ;;      Params:         0       0       0       0       0
+  1185 ;;      Locals:         0       0       0       0       0
+  1186 ;;      Temps:          0       0       0       0       0
+  1187 ;;      Totals:         0       0       0       0       0
+  1188 ;;Total ram usage:        0 bytes
+  1189 ;; Hardware stack levels used:    1
+  1190 ;; Hardware stack levels required when called:    1
+  1191 ;; This function calls:
+  1192 ;;		_waitmssp
+  1193 ;; This function is called by:
+  1194 ;;		_i2c_read_byte
+  1195 ;; This function uses a non-reentrant model
+  1196 ;;
+  1197                           psect	text227
+  1198                           	file	"D:\SLR\Interlogicx\codes\Practise\PIC\MP lab\I2C\EEPROM\Page write\i2c.h"
+  1199                           	line	49
+  1200                           	global	__size_of_i2c_nak
+  1201  000A                     	__size_of_i2c_nak	equ	__end_of_i2c_nak-_i2c_nak
+  1202                           	
+  1203  05A0                     _i2c_nak:	
+  1204                           	opt	stack 5
+  1205                           ; Regs used in _i2c_nak: [status,2+status,0+pclath+cstack]
+  1206                           	line	50
+  1207                           	
+  1208  05A0                     l2766:	
+  1209                           ;i2c.h: 50: ACKDT=1;
+  1210  05A0  1683               	bsf	status, 5	;RP0=1, select bank1
+  1211  05A1  1303               	bcf	status, 6	;RP1=0, select bank1
+  1212  05A2  1691               	bsf	(1165/8)^080h,(1165)&7
+  1213                           	line	51
+  1214                           ;i2c.h: 51: ACKEN=1;
+  1215  05A3  1611               	bsf	(1164/8)^080h,(1164)&7
+  1216                           	line	52
+  1217                           	
+  1218  05A4                     l2768:	
+  1219                           ;i2c.h: 52: waitmssp();
+  1220  05A4  120A  118A  257C   	fcall	_waitmssp
+              120A  118A         
+  1221                           	line	53
+  1222                           	
+  1223  05A9                     l727:	
+  1224  05A9  0008               	return
+  1225                           	opt stack 0
+  1226                           GLOBAL	__end_of_i2c_nak
+  1227  05AA                     	__end_of_i2c_nak:
+  1228 ;; =============== function _i2c_nak ends ============
+  1229                           
+  1230                           	signat	_i2c_nak,88
+  1231                           	global	_i2c_restart
+  1232                           psect	text228,local,class=CODE,delta=2
+  1233                           global __ptext228
+  1234  0597                     __ptext228:
+  1235                           
+  1236 ;; *************** function _i2c_restart *****************
+  1237 ;; Defined at:
+  1238 ;;		line 36 in file "D:\SLR\Interlogicx\codes\Practise\PIC\MP lab\I2C\EEPROM\Page write\i2c.h"
+  1239 ;; Parameters:    Size  Location     Type
+  1240 ;;		None
+  1241 ;; Auto vars:     Size  Location     Type
+  1242 ;;		None
+  1243 ;; Return value:  Size  Location     Type
+  1244 ;;		None               void
+  1245 ;; Registers used:
+  1246 ;;		status,2, status,0, pclath, cstack
+  1247 ;; Tracked objects:
+  1248 ;;		On entry : 0/0
+  1249 ;;		On exit  : 0/0
+  1250 ;;		Unchanged: 0/0
+  1251 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1252 ;;      Params:         0       0       0       0       0
+  1253 ;;      Locals:         0       0       0       0       0
+  1254 ;;      Temps:          0       0       0       0       0
+  1255 ;;      Totals:         0       0       0       0       0
+  1256 ;;Total ram usage:        0 bytes
+  1257 ;; Hardware stack levels used:    1
+  1258 ;; Hardware stack levels required when called:    1
+  1259 ;; This function calls:
+  1260 ;;		_waitmssp
+  1261 ;; This function is called by:
+  1262 ;;		_i2c_read_byte
+  1263 ;; This function uses a non-reentrant model
+  1264 ;;
+  1265                           psect	text228
+  1266                           	file	"D:\SLR\Interlogicx\codes\Practise\PIC\MP lab\I2C\EEPROM\Page write\i2c.h"
+  1267                           	line	36
+  1268                           	global	__size_of_i2c_restart
+  1269  0009                     	__size_of_i2c_restart	equ	__end_of_i2c_restart-_i2c_restart
+  1270                           	
+  1271  0597                     _i2c_restart:	
+  1272                           	opt	stack 5
+  1273                           ; Regs used in _i2c_restart: [status,2+status,0+pclath+cstack]
+  1274                           	line	37
+  1275                           	
+  1276  0597                     l2762:	
+  1277                           ;i2c.h: 37: RSEN=1;
+  1278  0597  1683               	bsf	status, 5	;RP0=1, select bank1
+  1279  0598  1303               	bcf	status, 6	;RP1=0, select bank1
+  1280  0599  1491               	bsf	(1161/8)^080h,(1161)&7
+  1281                           	line	38
+  1282                           	
+  1283  059A                     l2764:	
+  1284                           ;i2c.h: 38: waitmssp();
+  1285  059A  120A  118A  257C   	fcall	_waitmssp
+              120A  118A         
+  1286                           	line	39
+  1287                           	
+  1288  059F                     l721:	
+  1289  059F  0008               	return
+  1290                           	opt stack 0
+  1291                           GLOBAL	__end_of_i2c_restart
+  1292  05A0                     	__end_of_i2c_restart:
+  1293 ;; =============== function _i2c_restart ends ============
+  1294                           
+  1295                           	signat	_i2c_restart,88
+  1296                           	global	_i2c_stop
+  1297                           psect	text229,local,class=CODE,delta=2
+  1298                           global __ptext229
+  1299  058E                     __ptext229:
+  1300                           
+  1301 ;; *************** function _i2c_stop *****************
+  1302 ;; Defined at:
+  1303 ;;		line 30 in file "D:\SLR\Interlogicx\codes\Practise\PIC\MP lab\I2C\EEPROM\Page write\i2c.h"
+  1304 ;; Parameters:    Size  Location     Type
+  1305 ;;		None
+  1306 ;; Auto vars:     Size  Location     Type
+  1307 ;;		None
+  1308 ;; Return value:  Size  Location     Type
+  1309 ;;		None               void
+  1310 ;; Registers used:
+  1311 ;;		status,2, status,0, pclath, cstack
+  1312 ;; Tracked objects:
+  1313 ;;		On entry : 0/0
+  1314 ;;		On exit  : 0/0
+  1315 ;;		Unchanged: 0/0
+  1316 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1317 ;;      Params:         0       0       0       0       0
+  1318 ;;      Locals:         0       0       0       0       0
+  1319 ;;      Temps:          0       0       0       0       0
+  1320 ;;      Totals:         0       0       0       0       0
+  1321 ;;Total ram usage:        0 bytes
+  1322 ;; Hardware stack levels used:    1
+  1323 ;; Hardware stack levels required when called:    1
+  1324 ;; This function calls:
+  1325 ;;		_waitmssp
+  1326 ;; This function is called by:
+  1327 ;;		_i2c_send_byte
+  1328 ;;		_i2c_read_byte
+  1329 ;; This function uses a non-reentrant model
+  1330 ;;
+  1331                           psect	text229
+  1332                           	file	"D:\SLR\Interlogicx\codes\Practise\PIC\MP lab\I2C\EEPROM\Page write\i2c.h"
+  1333                           	line	30
+  1334                           	global	__size_of_i2c_stop
+  1335  0009                     	__size_of_i2c_stop	equ	__end_of_i2c_stop-_i2c_stop
+  1336                           	
+  1337  058E                     _i2c_stop:	
+  1338                           	opt	stack 5
+  1339                           ; Regs used in _i2c_stop: [status,2+status,0+pclath+cstack]
+  1340                           	line	31
+  1341                           	
+  1342  058E                     l2758:	
+  1343                           ;i2c.h: 31: PEN=1;
+  1344  058E  1683               	bsf	status, 5	;RP0=1, select bank1
+  1345  058F  1303               	bcf	status, 6	;RP1=0, select bank1
+  1346  0590  1511               	bsf	(1162/8)^080h,(1162)&7
+  1347                           	line	32
+  1348                           	
+  1349  0591                     l2760:	
+  1350                           ;i2c.h: 32: waitmssp();
+  1351  0591  120A  118A  257C   	fcall	_waitmssp
+              120A  118A         
+  1352                           	line	33
+  1353                           	
+  1354  0596                     l718:	
+  1355  0596  0008               	return
+  1356                           	opt stack 0
+  1357                           GLOBAL	__end_of_i2c_stop
+  1358  0597                     	__end_of_i2c_stop:
+  1359 ;; =============== function _i2c_stop ends ============
+  1360                           
+  1361                           	signat	_i2c_stop,88
+  1362                           	global	_i2c_start
+  1363                           psect	text230,local,class=CODE,delta=2
+  1364                           global __ptext230
+  1365  0585                     __ptext230:
+  1366                           
+  1367 ;; *************** function _i2c_start *****************
+  1368 ;; Defined at:
+  1369 ;;		line 24 in file "D:\SLR\Interlogicx\codes\Practise\PIC\MP lab\I2C\EEPROM\Page write\i2c.h"
+  1370 ;; Parameters:    Size  Location     Type
+  1371 ;;		None
+  1372 ;; Auto vars:     Size  Location     Type
+  1373 ;;		None
+  1374 ;; Return value:  Size  Location     Type
+  1375 ;;		None               void
+  1376 ;; Registers used:
+  1377 ;;		status,2, status,0, pclath, cstack
+  1378 ;; Tracked objects:
+  1379 ;;		On entry : 0/0
+  1380 ;;		On exit  : 0/0
+  1381 ;;		Unchanged: 0/0
+  1382 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1383 ;;      Params:         0       0       0       0       0
+  1384 ;;      Locals:         0       0       0       0       0
+  1385 ;;      Temps:          0       0       0       0       0
+  1386 ;;      Totals:         0       0       0       0       0
+  1387 ;;Total ram usage:        0 bytes
+  1388 ;; Hardware stack levels used:    1
+  1389 ;; Hardware stack levels required when called:    1
+  1390 ;; This function calls:
+  1391 ;;		_waitmssp
+  1392 ;; This function is called by:
+  1393 ;;		_i2c_send_byte
+  1394 ;; This function uses a non-reentrant model
+  1395 ;;
+  1396                           psect	text230
+  1397                           	file	"D:\SLR\Interlogicx\codes\Practise\PIC\MP lab\I2C\EEPROM\Page write\i2c.h"
+  1398                           	line	24
+  1399                           	global	__size_of_i2c_start
+  1400  0009                     	__size_of_i2c_start	equ	__end_of_i2c_start-_i2c_start
+  1401                           	
+  1402  0585                     _i2c_start:	
+  1403                           	opt	stack 5
+  1404                           ; Regs used in _i2c_start: [status,2+status,0+pclath+cstack]
+  1405                           	line	25
+  1406                           	
+  1407  0585                     l2754:	
+  1408                           ;i2c.h: 25: SEN=1;
+  1409  0585  1683               	bsf	status, 5	;RP0=1, select bank1
+  1410  0586  1303               	bcf	status, 6	;RP1=0, select bank1
+  1411  0587  1411               	bsf	(1160/8)^080h,(1160)&7
+  1412                           	line	26
+  1413                           	
+  1414  0588                     l2756:	
+  1415                           ;i2c.h: 26: waitmssp();
+  1416  0588  120A  118A  257C   	fcall	_waitmssp
+              120A  118A         
+  1417                           	line	27
+  1418                           	
+  1419  058D                     l715:	
+  1420  058D  0008               	return
+  1421                           	opt stack 0
+  1422                           GLOBAL	__end_of_i2c_start
+  1423  058E                     	__end_of_i2c_start:
+  1424 ;; =============== function _i2c_start ends ============
+  1425                           
+  1426                           	signat	_i2c_start,88
+  1427                           	global	_show
+  1428                           psect	text231,local,class=CODE,delta=2
+  1429                           global __ptext231
+  1430  05E1                     __ptext231:
+  1431                           
+  1432 ;; *************** function _show *****************
+  1433 ;; Defined at:
+  1434 ;;		line 43 in file "D:\SLR\Interlogicx\codes\Practise\PIC\MP lab\I2C\EEPROM\Page write\lcd.h"
+  1435 ;; Parameters:    Size  Location     Type
+  1436 ;;  s               1    wreg     PTR unsigned char 
+  1437 ;;		 -> STR_4(11), STR_2(11), STR_1(17), 
+  1438 ;; Auto vars:     Size  Location     Type
+  1439 ;;  s               1    2[COMMON] PTR unsigned char 
+  1440 ;;		 -> STR_4(11), STR_2(11), STR_1(17), 
+  1441 ;; Return value:  Size  Location     Type
+  1442 ;;		None               void
+  1443 ;; Registers used:
+  1444 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
+  1445 ;; Tracked objects:
+  1446 ;;		On entry : 0/0
+  1447 ;;		On exit  : 0/0
+  1448 ;;		Unchanged: 0/0
+  1449 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1450 ;;      Params:         0       0       0       0       0
+  1451 ;;      Locals:         1       0       0       0       0
+  1452 ;;      Temps:          1       0       0       0       0
+  1453 ;;      Totals:         2       0       0       0       0
+  1454 ;;Total ram usage:        2 bytes
+  1455 ;; Hardware stack levels used:    1
+  1456 ;; Hardware stack levels required when called:    1
+  1457 ;; This function calls:
+  1458 ;;		_dat
+  1459 ;; This function is called by:
+  1460 ;;		_main
+  1461 ;; This function uses a non-reentrant model
+  1462 ;;
+  1463                           psect	text231
+  1464                           	file	"D:\SLR\Interlogicx\codes\Practise\PIC\MP lab\I2C\EEPROM\Page write\lcd.h"
+  1465                           	line	43
+  1466                           	global	__size_of_show
+  1467  0021                     	__size_of_show	equ	__end_of_show-_show
+  1468                           	
+  1469  05E1                     _show:	
+  1470                           	opt	stack 6
+  1471                           ; Regs used in _show: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
+  1472                           ;show@s stored from wreg
+  1473  05E1  00F2               	movwf	(show@s)
+  1474                           	line	44
+  1475                           	
+  1476  05E2                     l2746:	
+  1477                           ;lcd.h: 44: while(*s) {
+  1478  05E2  2DF4               	goto	l2752
+  1479                           	
+  1480  05E3                     l707:	
+  1481                           	line	45
+  1482                           	
+  1483  05E3                     l2748:	
+  1484                           ;lcd.h: 45: dat(*s++);
+  1485  05E3  0872               	movf	(show@s),w
+  1486  05E4  0084               	movwf	fsr0
+  1487  05E5  120A  118A  2003   	fcall	stringdir
+              120A  118A         
+  1488  05EA  120A  118A  2654   	fcall	_dat
+              120A  118A         
+  1489                           	
+  1490  05EF                     l2750:	
+  1491  05EF  3001               	movlw	(01h)
+  1492  05F0  00F1               	movwf	(??_show+0)+0
+  1493  05F1  0871               	movf	(??_show+0)+0,w
+  1494  05F2  07F2               	addwf	(show@s),f
+  1495  05F3  2DF4               	goto	l2752
+  1496                           	line	46
+  1497                           	
+  1498  05F4                     l706:	
+  1499                           	line	44
+  1500                           	
+  1501  05F4                     l2752:	
+  1502  05F4  0872               	movf	(show@s),w
+  1503  05F5  0084               	movwf	fsr0
+  1504  05F6  120A  118A  2003   	fcall	stringdir
+              120A  118A         
+  1505  05FB  3800               	iorlw	0
+  1506  05FC  1D03               	skipz
+  1507  05FD  2DFF               	goto	u2331
+  1508  05FE  2E00               	goto	u2330
+  1509  05FF                     u2331:
+  1510  05FF  2DE3               	goto	l2748
+  1511  0600                     u2330:
+  1512  0600  2E01               	goto	l709
+  1513                           	
+  1514  0601                     l708:	
+  1515                           	line	47
+  1516                           	
+  1517  0601                     l709:	
+  1518  0601  0008               	return
+  1519                           	opt stack 0
+  1520                           GLOBAL	__end_of_show
+  1521  0602                     	__end_of_show:
+  1522 ;; =============== function _show ends ============
+  1523                           
+  1524                           	signat	_show,4216
+  1525                           	global	_lcd_init
+  1526                           psect	text232,local,class=CODE,delta=2
+  1527                           global __ptext232
+  1528  0602                     __ptext232:
+  1529                           
+  1530 ;; *************** function _lcd_init *****************
+  1531 ;; Defined at:
+  1532 ;;		line 14 in file "D:\SLR\Interlogicx\codes\Practise\PIC\MP lab\I2C\EEPROM\Page write\lcd.h"
+  1533 ;; Parameters:    Size  Location     Type
+  1534 ;;		None
+  1535 ;; Auto vars:     Size  Location     Type
+  1536 ;;		None
+  1537 ;; Return value:  Size  Location     Type
+  1538 ;;		None               void
+  1539 ;; Registers used:
+  1540 ;;		wreg, status,2, status,0, btemp+1, pclath, cstack
+  1541 ;; Tracked objects:
+  1542 ;;		On entry : 0/0
+  1543 ;;		On exit  : 0/0
+  1544 ;;		Unchanged: 0/0
+  1545 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1546 ;;      Params:         0       0       0       0       0
+  1547 ;;      Locals:         0       0       0       0       0
+  1548 ;;      Temps:          0       0       0       0       0
+  1549 ;;      Totals:         0       0       0       0       0
+  1550 ;;Total ram usage:        0 bytes
+  1551 ;; Hardware stack levels used:    1
+  1552 ;; Hardware stack levels required when called:    1
+  1553 ;; This function calls:
+  1554 ;;		_cmd
+  1555 ;; This function is called by:
+  1556 ;;		_main
+  1557 ;; This function uses a non-reentrant model
+  1558 ;;
+  1559                           psect	text232
+  1560                           	file	"D:\SLR\Interlogicx\codes\Practise\PIC\MP lab\I2C\EEPROM\Page write\lcd.h"
+  1561                           	line	14
+  1562                           	global	__size_of_lcd_init
+  1563  0022                     	__size_of_lcd_init	equ	__end_of_lcd_init-_lcd_init
+  1564                           	
+  1565  0602                     _lcd_init:	
+  1566                           	opt	stack 6
+  1567                           ; Regs used in _lcd_init: [wreg+status,2+status,0+btemp+1+pclath+cstack]
+  1568                           	line	15
+  1569                           	
+  1570  0602                     l2736:	
+  1571                           ;lcd.h: 15: TRISB=TRISC0=TRISC1=TRISC2=0;
+  1572  0602  1683               	bsf	status, 5	;RP0=1, select bank1
+  1573  0603  1303               	bcf	status, 6	;RP1=0, select bank1
+  1574  0604  1107               	bcf	(1082/8)^080h,(1082)&7
+  1575  0605  1087               	bcf	(1081/8)^080h,(1081)&7
+  1576  0606  1007               	bcf	(1080/8)^080h,(1080)&7
+  1577  0607  3000               	movlw	0
+  1578  0608  1807               	btfsc	(1080/8)^080h,(1080)&7
+  1579  0609  3001               	movlw	1
+  1580  060A  0086               	movwf	(134)^080h	;volatile
+  1581                           	line	16
+  1582                           	
+  1583  060B                     l2738:	
+  1584                           ;lcd.h: 16: cmd(0x38);
+  1585  060B  3038               	movlw	(038h)
+  1586  060C  120A  118A  2624   	fcall	_cmd
+              120A  118A         
+  1587                           	line	17
+  1588                           	
+  1589  0611                     l2740:	
+  1590                           ;lcd.h: 17: cmd(0x0c);
+  1591  0611  300C               	movlw	(0Ch)
+  1592  0612  120A  118A  2624   	fcall	_cmd
+              120A  118A         
+  1593                           	line	18
+  1594                           	
+  1595  0617                     l2742:	
+  1596                           ;lcd.h: 18: cmd(0x06);
+  1597  0617  3006               	movlw	(06h)
+  1598  0618  120A  118A  2624   	fcall	_cmd
+              120A  118A         
+  1599                           	line	19
+  1600                           	
+  1601  061D                     l2744:	
+  1602                           ;lcd.h: 19: cmd(0x80);
+  1603  061D  3080               	movlw	(080h)
+  1604  061E  120A  118A  2624   	fcall	_cmd
+              120A  118A         
+  1605                           	line	20
+  1606                           	
+  1607  0623                     l693:	
+  1608  0623  0008               	return
+  1609                           	opt stack 0
+  1610                           GLOBAL	__end_of_lcd_init
+  1611  0624                     	__end_of_lcd_init:
+  1612 ;; =============== function _lcd_init ends ============
+  1613                           
+  1614                           	signat	_lcd_init,88
+  1615                           	global	_delay1
+  1616                           psect	text233,local,class=CODE,delta=2
+  1617                           global __ptext233
+  1618  0684                     __ptext233:
+  1619                           
+  1620 ;; *************** function _delay1 *****************
+  1621 ;; Defined at:
+  1622 ;;		line 38 in file "D:\SLR\Interlogicx\codes\Practise\PIC\MP lab\I2C\EEPROM\Page write\code.c"
+  1623 ;; Parameters:    Size  Location     Type
+  1624 ;;		None
+  1625 ;; Auto vars:     Size  Location     Type
+  1626 ;;  k               2    2[COMMON] unsigned int 
+  1627 ;;  j               2    0[COMMON] unsigned int 
+  1628 ;; Return value:  Size  Location     Type
+  1629 ;;		None               void
+  1630 ;; Registers used:
+  1631 ;;		wreg, status,2
+  1632 ;; Tracked objects:
+  1633 ;;		On entry : 0/0
+  1634 ;;		On exit  : 0/0
+  1635 ;;		Unchanged: 0/0
+  1636 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1637 ;;      Params:         0       0       0       0       0
+  1638 ;;      Locals:         4       0       0       0       0
+  1639 ;;      Temps:          0       0       0       0       0
+  1640 ;;      Totals:         4       0       0       0       0
+  1641 ;;Total ram usage:        4 bytes
+  1642 ;; Hardware stack levels used:    1
+  1643 ;; This function calls:
+  1644 ;;		Nothing
+  1645 ;; This function is called by:
+  1646 ;;		_main
+  1647 ;; This function uses a non-reentrant model
+  1648 ;;
+  1649                           psect	text233
+  1650                           	file	"D:\SLR\Interlogicx\codes\Practise\PIC\MP lab\I2C\EEPROM\Page write\code.c"
+  1651                           	line	38
+  1652                           	global	__size_of_delay1
+  1653  003B                     	__size_of_delay1	equ	__end_of_delay1-_delay1
+  1654                           	
+  1655  0684                     _delay1:	
+  1656                           	opt	stack 7
+  1657                           ; Regs used in _delay1: [wreg+status,2]
+  1658                           	line	40
+  1659                           	
+  1660  0684                     l1862:	
+  1661                           ;code.c: 39: unsigned int j,k;
+  1662                           ;code.c: 40: for(j=0;j<60000;j++) {
+  1663  0684  01F0               	clrf	(delay1@j)
+  1664  0685  01F1               	clrf	(delay1@j+1)
+  1665                           	
+  1666  0686                     l1864:	
+  1667  0686  30EA               	movlw	high(0EA60h)
+  1668  0687  0271               	subwf	(delay1@j+1),w
+  1669  0688  3060               	movlw	low(0EA60h)
+  1670  0689  1903               	skipnz
+  1671  068A  0270               	subwf	(delay1@j),w
+  1672  068B  1C03               	skipc
+  1673  068C  2E8E               	goto	u81
+  1674  068D  2E8F               	goto	u80
+  1675  068E                     u81:
+  1676  068E  2E91               	goto	l1868
+  1677  068F                     u80:
+  1678  068F  2EBE               	goto	l769
+  1679                           	
+  1680  0690                     l1866:	
+  1681  0690  2EBE               	goto	l769
+  1682                           	
+  1683  0691                     l765:	
+  1684                           	line	41
+  1685                           	
+  1686  0691                     l1868:	
+  1687                           ;code.c: 41: for(k=0;k<2;k++);
+  1688  0691  01F2               	clrf	(delay1@k)
+  1689  0692  01F3               	clrf	(delay1@k+1)
+  1690                           	
+  1691  0693                     l1870:	
+  1692  0693  3000               	movlw	high(02h)
+  1693  0694  0273               	subwf	(delay1@k+1),w
+  1694  0695  3002               	movlw	low(02h)
+  1695  0696  1903               	skipnz
+  1696  0697  0272               	subwf	(delay1@k),w
+  1697  0698  1C03               	skipc
+  1698  0699  2E9B               	goto	u91
+  1699  069A  2E9C               	goto	u90
+  1700  069B                     u91:
+  1701  069B  2E9E               	goto	l1874
+  1702  069C                     u90:
+  1703  069C  2EAE               	goto	l1876
+  1704                           	
+  1705  069D                     l1872:	
+  1706  069D  2EAE               	goto	l1876
+  1707                           	
+  1708  069E                     l767:	
+  1709                           	
+  1710  069E                     l1874:	
+  1711  069E  3001               	movlw	low(01h)
+  1712  069F  07F2               	addwf	(delay1@k),f
+  1713  06A0  1803               	skipnc
+  1714  06A1  0AF3               	incf	(delay1@k+1),f
+  1715  06A2  3000               	movlw	high(01h)
+  1716  06A3  07F3               	addwf	(delay1@k+1),f
+  1717  06A4  3000               	movlw	high(02h)
+  1718  06A5  0273               	subwf	(delay1@k+1),w
+  1719  06A6  3002               	movlw	low(02h)
+  1720  06A7  1903               	skipnz
+  1721  06A8  0272               	subwf	(delay1@k),w
+  1722  06A9  1C03               	skipc
+  1723  06AA  2EAC               	goto	u101
+  1724  06AB  2EAD               	goto	u100
+  1725  06AC                     u101:
+  1726  06AC  2E9E               	goto	l1874
+  1727  06AD                     u100:
+  1728  06AD  2EAE               	goto	l1876
+  1729                           	
+  1730  06AE                     l768:	
+  1731                           	line	40
+  1732                           	
+  1733  06AE                     l1876:	
+  1734  06AE  3001               	movlw	low(01h)
+  1735  06AF  07F0               	addwf	(delay1@j),f
+  1736  06B0  1803               	skipnc
+  1737  06B1  0AF1               	incf	(delay1@j+1),f
+  1738  06B2  3000               	movlw	high(01h)
+  1739  06B3  07F1               	addwf	(delay1@j+1),f
+  1740  06B4  30EA               	movlw	high(0EA60h)
+  1741  06B5  0271               	subwf	(delay1@j+1),w
+  1742  06B6  3060               	movlw	low(0EA60h)
+  1743  06B7  1903               	skipnz
+  1744  06B8  0270               	subwf	(delay1@j),w
+  1745  06B9  1C03               	skipc
+  1746  06BA  2EBC               	goto	u111
+  1747  06BB  2EBD               	goto	u110
+  1748  06BC                     u111:
+  1749  06BC  2E91               	goto	l1868
+  1750  06BD                     u110:
+  1751  06BD  2EBE               	goto	l769
+  1752                           	
+  1753  06BE                     l766:	
+  1754                           	line	43
+  1755                           	
+  1756  06BE                     l769:	
+  1757  06BE  0008               	return
+  1758                           	opt stack 0
+  1759                           GLOBAL	__end_of_delay1
+  1760  06BF                     	__end_of_delay1:
+  1761 ;; =============== function _delay1 ends ============
+  1762                           
+  1763                           	signat	_delay1,88
+  1764                           	global	_waitmssp
+  1765                           psect	text234,local,class=CODE,delta=2
+  1766                           global __ptext234
+  1767  057C                     __ptext234:
+  1768                           
+  1769 ;; *************** function _waitmssp *****************
+  1770 ;; Defined at:
+  1771 ;;		line 56 in file "D:\SLR\Interlogicx\codes\Practise\PIC\MP lab\I2C\EEPROM\Page write\i2c.h"
+  1772 ;; Parameters:    Size  Location     Type
+  1773 ;;		None
+  1774 ;; Auto vars:     Size  Location     Type
+  1775 ;;		None
+  1776 ;; Return value:  Size  Location     Type
+  1777 ;;		None               void
+  1778 ;; Registers used:
+  1779 ;;		None
+  1780 ;; Tracked objects:
+  1781 ;;		On entry : 0/0
+  1782 ;;		On exit  : 0/0
+  1783 ;;		Unchanged: 0/0
+  1784 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1785 ;;      Params:         0       0       0       0       0
+  1786 ;;      Locals:         0       0       0       0       0
+  1787 ;;      Temps:          0       0       0       0       0
+  1788 ;;      Totals:         0       0       0       0       0
+  1789 ;;Total ram usage:        0 bytes
+  1790 ;; Hardware stack levels used:    1
+  1791 ;; This function calls:
+  1792 ;;		Nothing
+  1793 ;; This function is called by:
+  1794 ;;		_i2c_start
+  1795 ;;		_i2c_stop
+  1796 ;;		_i2c_restart
+  1797 ;;		_i2c_nak
+  1798 ;;		_i2c_send
+  1799 ;;		_i2c_read
+  1800 ;;		_i2c_read_byte
+  1801 ;;		_i2c_ack
+  1802 ;; This function uses a non-reentrant model
+  1803 ;;
+  1804                           psect	text234
+  1805                           	file	"D:\SLR\Interlogicx\codes\Practise\PIC\MP lab\I2C\EEPROM\Page write\i2c.h"
+  1806                           	line	56
+  1807                           	global	__size_of_waitmssp
+  1808  0009                     	__size_of_waitmssp	equ	__end_of_waitmssp-_waitmssp
+  1809                           	
+  1810  057C                     _waitmssp:	
+  1811                           	opt	stack 5
+  1812                           ; Regs used in _waitmssp: []
+  1813                           	line	57
+  1814                           	
+  1815  057C                     l1856:	
+  1816                           ;i2c.h: 57: while(!SSPIF);
+  1817  057C  2D7D               	goto	l730
+  1818                           	
+  1819  057D                     l731:	
+  1820                           	
+  1821  057D                     l730:	
+  1822  057D  1283               	bcf	status, 5	;RP0=0, select bank0
+  1823  057E  1303               	bcf	status, 6	;RP1=0, select bank0
+  1824  057F  1D8C               	btfss	(99/8),(99)&7
+  1825  0580  2D82               	goto	u71
+  1826  0581  2D83               	goto	u70
+  1827  0582                     u71:
+  1828  0582  2D7D               	goto	l730
+  1829  0583                     u70:
+  1830                           	
+  1831  0583                     l732:	
+  1832                           	line	58
+  1833                           ;i2c.h: 58: SSPIF=0;
+  1834  0583  118C               	bcf	(99/8),(99)&7
+  1835                           	line	59
+  1836                           	
+  1837  0584                     l733:	
+  1838  0584  0008               	return
+  1839                           	opt stack 0
+  1840                           GLOBAL	__end_of_waitmssp
+  1841  0585                     	__end_of_waitmssp:
+  1842 ;; =============== function _waitmssp ends ============
+  1843                           
+  1844                           	signat	_waitmssp,88
+  1845                           	global	_i2c_init
+  1846                           psect	text235,local,class=CODE,delta=2
+  1847                           global __ptext235
+  1848  05CB                     __ptext235:
+  1849                           
+  1850 ;; *************** function _i2c_init *****************
+  1851 ;; Defined at:
+  1852 ;;		line 17 in file "D:\SLR\Interlogicx\codes\Practise\PIC\MP lab\I2C\EEPROM\Page write\i2c.h"
+  1853 ;; Parameters:    Size  Location     Type
+  1854 ;;		None
+  1855 ;; Auto vars:     Size  Location     Type
+  1856 ;;		None
+  1857 ;; Return value:  Size  Location     Type
+  1858 ;;		None               void
+  1859 ;; Registers used:
+  1860 ;;		wreg
+  1861 ;; Tracked objects:
+  1862 ;;		On entry : 0/0
+  1863 ;;		On exit  : 0/0
+  1864 ;;		Unchanged: 0/0
+  1865 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1866 ;;      Params:         0       0       0       0       0
+  1867 ;;      Locals:         0       0       0       0       0
+  1868 ;;      Temps:          0       0       0       0       0
+  1869 ;;      Totals:         0       0       0       0       0
+  1870 ;;Total ram usage:        0 bytes
+  1871 ;; Hardware stack levels used:    1
+  1872 ;; This function calls:
+  1873 ;;		Nothing
+  1874 ;; This function is called by:
+  1875 ;;		_main
+  1876 ;; This function uses a non-reentrant model
+  1877 ;;
+  1878                           psect	text235
+  1879                           	file	"D:\SLR\Interlogicx\codes\Practise\PIC\MP lab\I2C\EEPROM\Page write\i2c.h"
+  1880                           	line	17
+  1881                           	global	__size_of_i2c_init
+  1882  0016                     	__size_of_i2c_init	equ	__end_of_i2c_init-_i2c_init
+  1883                           	
+  1884  05CB                     _i2c_init:	
+  1885                           	opt	stack 7
+  1886                           ; Regs used in _i2c_init: [wreg]
+  1887                           	line	18
+  1888                           	
+  1889  05CB                     l1852:	
+  1890                           ;i2c.h: 18: TRISC3=TRISC4=1;
+  1891  05CB  1683               	bsf	status, 5	;RP0=1, select bank1
+  1892  05CC  1303               	bcf	status, 6	;RP1=0, select bank1
+  1893  05CD  1607               	bsf	(1084/8)^080h,(1084)&7
+  1894  05CE  1A07               	btfsc	(1084/8)^080h,(1084)&7
+  1895  05CF  2DD1               	goto	u51
+  1896  05D0  2DD5               	goto	u50
+  1897                           	
+  1898  05D1                     u51:
+  1899  05D1  1683               	bsf	status, 5	;RP0=1, select bank1
+  1900  05D2  1303               	bcf	status, 6	;RP1=0, select bank1
+  1901  05D3  1587               	bsf	(1083/8)^080h,(1083)&7
+  1902  05D4  2DD8               	goto	u64
+  1903  05D5                     u50:
+  1904  05D5  1683               	bsf	status, 5	;RP0=1, select bank1
+  1905  05D6  1303               	bcf	status, 6	;RP1=0, select bank1
+  1906  05D7  1187               	bcf	(1083/8)^080h,(1083)&7
+  1907  05D8                     u64:
+  1908                           	line	19
+  1909                           	
+  1910  05D8                     l1854:	
+  1911                           ;i2c.h: 19: SSPCON=0x28;
+  1912  05D8  3028               	movlw	(028h)
+  1913  05D9  1283               	bcf	status, 5	;RP0=0, select bank0
+  1914  05DA  1303               	bcf	status, 6	;RP1=0, select bank0
+  1915  05DB  0094               	movwf	(20)	;volatile
+  1916                           	line	20
+  1917                           ;i2c.h: 20: SSPADD=((11059200/4)/100)-1;
+  1918  05DC  30FF               	movlw	(0FFh)
+  1919  05DD  1683               	bsf	status, 5	;RP0=1, select bank1
+  1920  05DE  1303               	bcf	status, 6	;RP1=0, select bank1
+  1921  05DF  0093               	movwf	(147)^080h	;volatile
+  1922                           	line	21
+  1923                           	
+  1924  05E0                     l712:	
+  1925  05E0  0008               	return
+  1926                           	opt stack 0
+  1927                           GLOBAL	__end_of_i2c_init
+  1928  05E1                     	__end_of_i2c_init:
+  1929 ;; =============== function _i2c_init ends ============
+  1930                           
+  1931                           	signat	_i2c_init,88
+  1932                           	global	_dat
+  1933                           psect	text236,local,class=CODE,delta=2
+  1934                           global __ptext236
+  1935  0654                     __ptext236:
+  1936                           
+  1937 ;; *************** function _dat *****************
+  1938 ;; Defined at:
+  1939 ;;		line 33 in file "D:\SLR\Interlogicx\codes\Practise\PIC\MP lab\I2C\EEPROM\Page write\lcd.h"
+  1940 ;; Parameters:    Size  Location     Type
+  1941 ;;  b               1    wreg     unsigned char 
+  1942 ;; Auto vars:     Size  Location     Type
+  1943 ;;  b               1    0[COMMON] unsigned char 
+  1944 ;; Return value:  Size  Location     Type
+  1945 ;;		None               void
+  1946 ;; Registers used:
+  1947 ;;		wreg, status,2, btemp+1
+  1948 ;; Tracked objects:
+  1949 ;;		On entry : 0/0
+  1950 ;;		On exit  : 0/0
+  1951 ;;		Unchanged: 0/0
+  1952 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1953 ;;      Params:         0       0       0       0       0
+  1954 ;;      Locals:         1       0       0       0       0
+  1955 ;;      Temps:          0       0       0       0       0
+  1956 ;;      Totals:         1       0       0       0       0
+  1957 ;;Total ram usage:        1 bytes
+  1958 ;; Hardware stack levels used:    1
+  1959 ;; This function calls:
+  1960 ;;		Nothing
+  1961 ;; This function is called by:
+  1962 ;;		_show
+  1963 ;;		_main
+  1964 ;; This function uses a non-reentrant model
+  1965 ;;
+  1966                           psect	text236
+  1967                           	file	"D:\SLR\Interlogicx\codes\Practise\PIC\MP lab\I2C\EEPROM\Page write\lcd.h"
+  1968                           	line	33
+  1969                           	global	__size_of_dat
+  1970  0030                     	__size_of_dat	equ	__end_of_dat-_dat
+  1971                           	
+  1972  0654                     _dat:	
+  1973                           	opt	stack 7
+  1974                           ; Regs used in _dat: [wreg+status,2+btemp+1]
+  1975                           ;dat@b stored from wreg
+  1976  0654  00F0               	movwf	(dat@b)
+  1977                           	line	34
+  1978                           	
+  1979  0655                     l1834:	
+  1980                           ;lcd.h: 34: PORTB=b;
+  1981  0655  0870               	movf	(dat@b),w
+  1982  0656  1283               	bcf	status, 5	;RP0=0, select bank0
+  1983  0657  1303               	bcf	status, 6	;RP1=0, select bank0
+  1984  0658  0086               	movwf	(6)	;volatile
+  1985                           	line	35
+  1986                           	
+  1987  0659                     l1836:	
+  1988                           ;lcd.h: 35: RC0=1;
+  1989  0659  1407               	bsf	(56/8),(56)&7
+  1990                           	line	36
+  1991                           	
+  1992  065A                     l1838:	
+  1993                           ;lcd.h: 36: RC1=0;
+  1994  065A  1087               	bcf	(57/8),(57)&7
+  1995                           	line	37
+  1996                           	
+  1997  065B                     l1840:	
+  1998                           ;lcd.h: 37: RC2=1;
+  1999  065B  1507               	bsf	(58/8),(58)&7
+  2000                           	line	38
+  2001                           	
+  2002  065C                     l1842:	
+  2003                           ;lcd.h: 38: for(i=0;i<1000;i++);
+  2004  065C  01F5               	clrf	(_i)
+  2005  065D  01F6               	clrf	(_i+1)
+  2006                           	
+  2007  065E                     l1844:	
+  2008  065E  0876               	movf	(_i+1),w
+  2009  065F  3A80               	xorlw	80h
+  2010  0660  00FF               	movwf	btemp+1
+  2011  0661  3083               	movlw	(high(03E8h))^80h
+  2012  0662  027F               	subwf	btemp+1,w
+  2013  0663  1D03               	skipz
+  2014  0664  2E67               	goto	u35
+  2015  0665  30E8               	movlw	low(03E8h)
+  2016  0666  0275               	subwf	(_i),w
+  2017  0667                     u35:
+  2018                           
+  2019  0667  1C03               	skipc
+  2020  0668  2E6A               	goto	u31
+  2021  0669  2E6B               	goto	u30
+  2022  066A                     u31:
+  2023  066A  2E6D               	goto	l1848
+  2024  066B                     u30:
+  2025  066B  2E80               	goto	l702
+  2026                           	
+  2027  066C                     l1846:	
+  2028  066C  2E80               	goto	l702
+  2029                           	
+  2030  066D                     l701:	
+  2031                           	
+  2032  066D                     l1848:	
+  2033  066D  3001               	movlw	low(01h)
+  2034  066E  07F5               	addwf	(_i),f
+  2035  066F  1803               	skipnc
+  2036  0670  0AF6               	incf	(_i+1),f
+  2037  0671  3000               	movlw	high(01h)
+  2038  0672  07F6               	addwf	(_i+1),f
+  2039                           	
+  2040  0673                     l1850:	
+  2041  0673  0876               	movf	(_i+1),w
+  2042  0674  3A80               	xorlw	80h
+  2043  0675  00FF               	movwf	btemp+1
+  2044  0676  3083               	movlw	(high(03E8h))^80h
+  2045  0677  027F               	subwf	btemp+1,w
+  2046  0678  1D03               	skipz
+  2047  0679  2E7C               	goto	u45
+  2048  067A  30E8               	movlw	low(03E8h)
+  2049  067B  0275               	subwf	(_i),w
+  2050  067C                     u45:
+  2051                           
+  2052  067C  1C03               	skipc
+  2053  067D  2E7F               	goto	u41
+  2054  067E  2E80               	goto	u40
+  2055  067F                     u41:
+  2056  067F  2E6D               	goto	l1848
+  2057  0680                     u40:
+  2058                           	
+  2059  0680                     l702:	
+  2060                           	line	39
+  2061                           ;lcd.h: 39: RC2=0;
+  2062  0680  1283               	bcf	status, 5	;RP0=0, select bank0
+  2063  0681  1303               	bcf	status, 6	;RP1=0, select bank0
+  2064  0682  1107               	bcf	(58/8),(58)&7
+  2065                           	line	40
+  2066                           	
+  2067  0683                     l703:	
+  2068  0683  0008               	return
+  2069                           	opt stack 0
+  2070                           GLOBAL	__end_of_dat
+  2071  0684                     	__end_of_dat:
+  2072 ;; =============== function _dat ends ============
+  2073                           
+  2074                           	signat	_dat,4216
+  2075                           	global	_cmd
+  2076                           psect	text237,local,class=CODE,delta=2
+  2077                           global __ptext237
+  2078  0624                     __ptext237:
+  2079                           
+  2080 ;; *************** function _cmd *****************
+  2081 ;; Defined at:
+  2082 ;;		line 23 in file "D:\SLR\Interlogicx\codes\Practise\PIC\MP lab\I2C\EEPROM\Page write\lcd.h"
+  2083 ;; Parameters:    Size  Location     Type
+  2084 ;;  a               1    wreg     unsigned char 
+  2085 ;; Auto vars:     Size  Location     Type
+  2086 ;;  a               1    0[COMMON] unsigned char 
+  2087 ;; Return value:  Size  Location     Type
+  2088 ;;		None               void
+  2089 ;; Registers used:
+  2090 ;;		wreg, status,2, btemp+1
+  2091 ;; Tracked objects:
+  2092 ;;		On entry : 0/0
+  2093 ;;		On exit  : 0/0
+  2094 ;;		Unchanged: 0/0
+  2095 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  2096 ;;      Params:         0       0       0       0       0
+  2097 ;;      Locals:         1       0       0       0       0
+  2098 ;;      Temps:          0       0       0       0       0
+  2099 ;;      Totals:         1       0       0       0       0
+  2100 ;;Total ram usage:        1 bytes
+  2101 ;; Hardware stack levels used:    1
+  2102 ;; This function calls:
+  2103 ;;		Nothing
+  2104 ;; This function is called by:
+  2105 ;;		_lcd_init
+  2106 ;;		_main
+  2107 ;; This function uses a non-reentrant model
+  2108 ;;
+  2109                           psect	text237
+  2110                           	file	"D:\SLR\Interlogicx\codes\Practise\PIC\MP lab\I2C\EEPROM\Page write\lcd.h"
+  2111                           	line	23
+  2112                           	global	__size_of_cmd
+  2113  0030                     	__size_of_cmd	equ	__end_of_cmd-_cmd
+  2114                           	
+  2115  0624                     _cmd:	
+  2116                           	opt	stack 7
+  2117                           ; Regs used in _cmd: [wreg+status,2+btemp+1]
+  2118                           ;cmd@a stored from wreg
+  2119  0624  00F0               	movwf	(cmd@a)
+  2120                           	line	24
+  2121                           	
+  2122  0625                     l1816:	
+  2123                           ;lcd.h: 24: PORTB=a;
+  2124  0625  0870               	movf	(cmd@a),w
+  2125  0626  1283               	bcf	status, 5	;RP0=0, select bank0
+  2126  0627  1303               	bcf	status, 6	;RP1=0, select bank0
+  2127  0628  0086               	movwf	(6)	;volatile
+  2128                           	line	25
+  2129                           	
+  2130  0629                     l1818:	
+  2131                           ;lcd.h: 25: RC0=0;
+  2132  0629  1007               	bcf	(56/8),(56)&7
+  2133                           	line	26
+  2134                           	
+  2135  062A                     l1820:	
+  2136                           ;lcd.h: 26: RC1=0;
+  2137  062A  1087               	bcf	(57/8),(57)&7
+  2138                           	line	27
+  2139                           	
+  2140  062B                     l1822:	
+  2141                           ;lcd.h: 27: RC2=1;
+  2142  062B  1507               	bsf	(58/8),(58)&7
+  2143                           	line	28
+  2144                           	
+  2145  062C                     l1824:	
+  2146                           ;lcd.h: 28: for(i=0;i<1000;i++);
+  2147  062C  01F5               	clrf	(_i)
+  2148  062D  01F6               	clrf	(_i+1)
+  2149                           	
+  2150  062E                     l1826:	
+  2151  062E  0876               	movf	(_i+1),w
+  2152  062F  3A80               	xorlw	80h
+  2153  0630  00FF               	movwf	btemp+1
+  2154  0631  3083               	movlw	(high(03E8h))^80h
+  2155  0632  027F               	subwf	btemp+1,w
+  2156  0633  1D03               	skipz
+  2157  0634  2E37               	goto	u15
+  2158  0635  30E8               	movlw	low(03E8h)
+  2159  0636  0275               	subwf	(_i),w
+  2160  0637                     u15:
+  2161                           
+  2162  0637  1C03               	skipc
+  2163  0638  2E3A               	goto	u11
+  2164  0639  2E3B               	goto	u10
+  2165  063A                     u11:
+  2166  063A  2E3D               	goto	l1830
+  2167  063B                     u10:
+  2168  063B  2E50               	goto	l697
+  2169                           	
+  2170  063C                     l1828:	
+  2171  063C  2E50               	goto	l697
+  2172                           	
+  2173  063D                     l696:	
+  2174                           	
+  2175  063D                     l1830:	
+  2176  063D  3001               	movlw	low(01h)
+  2177  063E  07F5               	addwf	(_i),f
+  2178  063F  1803               	skipnc
+  2179  0640  0AF6               	incf	(_i+1),f
+  2180  0641  3000               	movlw	high(01h)
+  2181  0642  07F6               	addwf	(_i+1),f
+  2182                           	
+  2183  0643                     l1832:	
+  2184  0643  0876               	movf	(_i+1),w
+  2185  0644  3A80               	xorlw	80h
+  2186  0645  00FF               	movwf	btemp+1
+  2187  0646  3083               	movlw	(high(03E8h))^80h
+  2188  0647  027F               	subwf	btemp+1,w
+  2189  0648  1D03               	skipz
+  2190  0649  2E4C               	goto	u25
+  2191  064A  30E8               	movlw	low(03E8h)
+  2192  064B  0275               	subwf	(_i),w
+  2193  064C                     u25:
+  2194                           
+  2195  064C  1C03               	skipc
+  2196  064D  2E4F               	goto	u21
+  2197  064E  2E50               	goto	u20
+  2198  064F                     u21:
+  2199  064F  2E3D               	goto	l1830
+  2200  0650                     u20:
+  2201                           	
+  2202  0650                     l697:	
+  2203                           	line	29
+  2204                           ;lcd.h: 29: RC2=0;
+  2205  0650  1283               	bcf	status, 5	;RP0=0, select bank0
+  2206  0651  1303               	bcf	status, 6	;RP1=0, select bank0
+  2207  0652  1107               	bcf	(58/8),(58)&7
+  2208                           	line	30
+  2209                           	
+  2210  0653                     l698:	
+  2211  0653  0008               	return
+  2212                           	opt stack 0
+  2213                           GLOBAL	__end_of_cmd
+  2214  0654                     	__end_of_cmd:
+  2215 ;; =============== function _cmd ends ============
+  2216                           
+  2217                           	signat	_cmd,4216
+  2218                           psect	text238,local,class=CODE,delta=2
+  2219                           global __ptext238
+  2220  0000                     __ptext238:
+  2221                           	global	btemp
+  2222  007E                     	btemp set 07Eh
+  2223                           
+  2224                           	DABS	1,126,2	;btemp
+  2225                           	global	wtemp0
+  2226  007E                     	wtemp0 set btemp
+
+
+HI-TECH Software PICC Macro Assembler V9.83 build 10920 
+Symbol Table                                                                                   Sat Aug 05 17:22:50 2017
+
+                     _i 0075                       pc 0002                      _RD 0C60                      u10 063B  
+                    u11 063A                      u20 0650                      u21 064F                      u30 066B  
+                    u15 0637                      u31 066A                      u40 0680                      u25 064C  
+                    u41 067F                      u50 05D5                      u35 0667                      u51 05D1  
+                    u45 067C                      u70 0583                      u71 0582                      u64 05D8  
+                    u80 068F                      u81 068E                      u90 069C                      u91 069B  
+                    _WR 0C61                      fsr 0004                     l701 066D                     l702 0680  
+                   l703 0683                     l712 05E0                     l721 059F                     l730 057D  
+                   l706 05F4                     l731 057D                     l707 05E3                     l715 058D  
+                   l732 0583                     l708 0601                     l740 05CA                     l733 0584  
+                   l709 0601                     l718 0596                     l727 05A9                     l743 06E9  
+                   l736 05B8                     l744 06D8                     l752 06FD                     l760 07FC  
+                   l737 05C3                     l745 06F6                     l753 070D                     l761 07FD  
+                   l738 05C2                     l746 06FB                     l754 070C                     l762 07FD  
+                   l739 05CA                     l755 0714                     l756 073F                     l765 0691  
+                   l693 0623                     l749 05B6                     l766 06BE                     l767 069E  
+                   l759 07FC                     l696 063D                     l768 06AE                     l697 0650  
+                   l769 06BE                     l698 0653                     _GIE 005F                     _RC0 0038  
+                   _RC1 0039                     _RC2 003A                     u100 06AD                     u101 06AC  
+                   u110 06BD                     u111 06BC                     _PEN 048A                     _SEN 0488  
+                   _dat 0654                     _cmd 0624                     fsr0 0004                    ?_dat 0070  
+                  ?_cmd 0070                    l1820 062A                    l1830 063D                    l1822 062B  
+                  l1832 0643                    l1824 062C                    l1816 0625                    l1840 065B  
+                  l2800 0702                    l1826 062E                    l1818 0629                    l1850 0673  
+                  l1842 065C                    l1834 0655                    l2810 072B                    l2802 0706  
+                  l1828 063C                    l1844 065E                    l1836 0659                    l1852 05CB  
+                  l2740 0611                    l2812 0733                    l2804 0714                    l2820 0745  
+                  l1846 066C                    l1838 065A                    l1854 05D8                    l1870 0693  
+                  l1862 0684                    l2742 0617                    l2750 05EF                    l2814 0738  
+                  l2806 0720                    l2830 0766                    l2822 074A                    l1848 066D  
+                  l1856 057C                    l1872 069D                    l1864 0686                    l2744 061D  
+                  l2736 0602                    l2752 05F4                    l2760 0591                    l2816 073F  
+                  l2808 0725                    l2840 078D                    l2832 076B                    l2824 0750  
+                  l1874 069E                    l1866 0690                    l2738 060B                    l2746 05E2  
+                  l2754 0585                    l2762 0597                    l2770 05B8                    l2850 07C4  
+                  l2842 0798                    l2834 0771                    l2826 0756                    l2818 0740  
+                  l1876 06AE                    l1868 0691                    l2748 05E3                    l2756 0588  
+                  l2764 059A                    l2772 05BC                    l2780 05B6                    l2852 07CF  
+                  l2844 07A3                    l2836 077C                    l2828 075C                    l2758 058E  
+                  l2766 05A0                    l2774 05AA                    l2790 06D8                    l2782 06C0  
+                  l2854 07DA                    l2846 07AE                    l2838 0782                    l2768 05A4  
+                  l2776 05AD                    l2792 06E4                    l2784 06C5                    l2856 07E5  
+                  l2848 07B9                    l2778 05B2                    l2794 06E9                    l2786 06CB  
+                  l2858 07F0                    l2796 06F6                    l2788 06D1                    l2798 06FD  
+                  STR_1 0009                    STR_2 0031                    STR_3 001A                    STR_4 0026  
+                  u2330 0600                    u2331 05FF                    u2340 05C9                    u2341 05C8  
+                  u2350 06F5                    u2351 06F4                    u2360 0713                    u2361 0712  
+                  _RCEN 048B                    _RSEN 0489                    _WREN 0C62           _i2c_read_byte 06FC  
+                  dat@b 0070                    cmd@a 0070                    _main 0740                    _show 05E1  
+                  btemp 007E                    start 0000           ??_i2c_restart 0070           _i2c_send_byte 06BF  
+       __end_of_i2c_nak 05AA                   ??_dat 0070                   ??_cmd 0070                   ?_main 0070  
+                 _ACKEN 048C                   _ACKDT 048D                   _EEADR 010D                   ?_show 0070  
+                 _CARRY 0018                   _PORTB 0006                   _TRISB 0086                   _SSPIF 0063  
+           i2c_send@dat 0070      i2c_send_byte@count 0071                   pclath 000A          ?_i2c_read_byte 0070  
+                 show@s 0072                   status 0003                   wtemp0 007E          ?_i2c_send_byte 0071  
+          __end_of_main 0800            __end_of_show 0602        __end_of_i2c_init 05E1        __end_of_i2c_read 05B7  
+      __end_of_i2c_send 05CB        __end_of_i2c_stop 0597     __end_of_i2c_restart 05A0                  ??_main 0074  
+                ??_show 0071                  _EEDATA 010C                  _EECON1 018C                  _EECON2 018D  
+                _SSPADD 0093                  _TRISC0 0438                  _TRISC1 0439                  _TRISC2 043A  
+                _TRISC3 043B                  _TRISC4 043C                  _SSPCON 0014                  _SSPBUF 0013  
+    __size_of_i2c_start 0009               ??_i2c_nak 0070        __end_of_lcd_init 0624                  _delay1 0684  
+      __end_of_waitmssp 0585         ??_i2c_read_byte 0071         ??_i2c_send_byte 0072          __pcstackCOMMON 0070  
+           _i2c_restart 0597       __end_of_i2c_start 058E               ?_i2c_init 0070               ?_i2c_read 0070  
+             ?_i2c_send 0070               ?_i2c_stop 0070              __pmaintext 0740                 ?_delay1 0070  
+               _ACKSTAT 048E               ?_lcd_init 0070              ??_i2c_init 0070              ??_i2c_read 0070  
+            ??_i2c_send 0070              ??_i2c_stop 0070                 _i2c_nak 05A0               ?_waitmssp 0070  
+       __size_of_delay1 003B                 delay1@j 0070                 delay1@k 0072            __size_of_dat 0030  
+          __size_of_cmd 0030              ??_lcd_init 0071    end_of_initialization 0578              ??_waitmssp 0070  
+          ?_i2c_restart 0070          __end_of_delay1 06BF       i2c_send_byte@addr 0073     start_initialization 0576  
+           __end_of_dat 0684             __end_of_cmd 0654               _i2c_start 0585   __end_of_i2c_read_byte 0740  
+     __size_of_i2c_init 0016       __size_of_i2c_read 000D       __size_of_i2c_send 0014       __size_of_i2c_stop 0009  
+ __end_of_i2c_send_byte 06FC                ??_delay1 0070             __pbssCOMMON 0075              ?_i2c_start 0070  
+     __size_of_lcd_init 0022                ?_i2c_nak 0070               __ptext230 0585               __ptext222 0000  
+             __ptext231 05E1               __ptext223 06FC               __ptext232 0602               __ptext224 06BF  
+             __ptext233 0684               __ptext225 05AA               __ptext234 057C               __ptext226 05B7  
+             __ptext235 05CB               __ptext227 05A0               __ptext236 0654               __ptext228 0597  
+             __ptext237 0624               __ptext229 058E               __ptext238 0000       __size_of_waitmssp 0009  
+             __pstrings 0003    __size_of_i2c_restart 0009             __stringbase 0008             ??_i2c_start 0070  
+              _i2c_init 05CB                _i2c_read 05AA                _i2c_send 05B7                _i2c_stop 058E  
+      __size_of_i2c_nak 000A                _lcd_init 0602           __size_of_main 00C0           __size_of_show 0021  
+              _waitmssp 057C               stringcode 0003  __size_of_i2c_read_byte 0044                stringdir 0003  
+              stringtab 0003  __size_of_i2c_send_byte 003D       i2c_read_byte@addr 0072        i2c_read_byte@rec 0073  
