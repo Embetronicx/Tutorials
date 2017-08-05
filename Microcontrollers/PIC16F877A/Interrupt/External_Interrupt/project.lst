@@ -1,0 +1,551 @@
+
+
+HI-TECH Software PIC LITE Macro Assembler V9.83 build 10920 
+                                                                                               Sat Aug 05 22:35:01 2017
+
+HI-TECH Software Omniscient Code Generator (Lite mode) build 10920
+     1  0000                     opt subtitle "HI-TECH Software Omniscient Code Generator (Lite mode) build 10920"
+     2                           
+     3                           opt pagewidth 120
+     4                           
+     5                           	opt lm
+     6                           
+     7                           	processor	16F877A
+     8                           clrc	macro
+     9                           	bcf	3,0
+    10  0000                     	endm
+    11                           clrz	macro
+    12                           	bcf	3,2
+    13  0000                     	endm
+    14                           setc	macro
+    15                           	bsf	3,0
+    16  0000                     	endm
+    17                           setz	macro
+    18                           	bsf	3,2
+    19  0000                     	endm
+    20                           skipc	macro
+    21                           	btfss	3,0
+    22  0000                     	endm
+    23                           skipz	macro
+    24                           	btfss	3,2
+    25  0000                     	endm
+    26                           skipnc	macro
+    27                           	btfsc	3,0
+    28  0000                     	endm
+    29                           skipnz	macro
+    30                           	btfsc	3,2
+    31  0000                     	endm
+    32  0000                     indf	equ	0
+    33  0000                     indf0	equ	0
+    34  0002                     pc	equ	2
+    35  0002                     pcl	equ	2
+    36  0003                     status	equ	3
+    37  0004                     fsr	equ	4
+    38  0004                     fsr0	equ	4
+    39  0001                     c	equ	1
+    40  0000                     z	equ	0
+    41  000A                     pclath	equ	10
+    42                           	FNROOT	_main
+    43                           	FNCALL	intlevel1,_ISR
+    44                           	global	intlevel1
+    45                           	FNROOT	intlevel1
+    46                           	global	_INTCON
+    47                           psect	maintext,global,class=CODE,delta=2
+    48                           global __pmaintext
+    49  005C                     __pmaintext:
+    50  000B                     _INTCON	set	11
+    51                           	global	_PORTD
+    52  0008                     _PORTD	set	8
+    53                           	global	_CARRY
+    54  0018                     _CARRY	set	24
+    55                           	global	_GIE
+    56  005F                     _GIE	set	95
+    57                           	global	_INTF
+    58  0059                     _INTF	set	89
+    59                           	global	_OPTION_REG
+    60  0081                     _OPTION_REG	set	129
+    61                           	global	_TRISD
+    62  0088                     _TRISD	set	136
+    63                           	global	_TRISB0
+    64  0430                     _TRISB0	set	1072
+    65                           	global	_EEADR
+    66  010D                     _EEADR	set	269
+    67                           	global	_EEDATA
+    68  010C                     _EEDATA	set	268
+    69                           	global	_EECON1
+    70  018C                     _EECON1	set	396
+    71                           	global	_EECON2
+    72  018D                     _EECON2	set	397
+    73                           	global	_RD
+    74  0C60                     _RD	set	3168
+    75                           	global	_WR
+    76  0C61                     _WR	set	3169
+    77                           	global	_WREN
+    78  0C62                     _WREN	set	3170
+    79                           	file	"project.as"
+    80                           	line	#
+    81                           psect cinit,class=CODE,delta=2
+    82                           global start_initialization
+    83  0071                     start_initialization:
+    84                           
+    85                           psect cinit,class=CODE,delta=2
+    86                           global end_of_initialization
+    87                           
+    88                           ;End of C runtime variable initialization code
+    89                           
+    90  0071                     end_of_initialization:
+    91  0071  0183               clrf status
+    92  0072  120A  118A  285C   ljmp _main	;jump to C main() function
+    93                           psect	cstackCOMMON,class=COMMON,space=1
+    94                           global __pcstackCOMMON
+    95  0070                     __pcstackCOMMON:
+    96                           	global	?_ISR
+    97  0070                     ?_ISR:	; 0 bytes @ 0x0
+    98                           	global	??_ISR
+    99  0070                     ??_ISR:	; 0 bytes @ 0x0
+   100                           	global	?_main
+   101  0070                     ?_main:	; 0 bytes @ 0x0
+   102  0070                     	ds	4
+   103                           	global	ISR@i
+   104  0074                     ISR@i:	; 2 bytes @ 0x4
+   105  0074                     	ds	2
+   106                           	global	ISR@j
+   107  0076                     ISR@j:	; 2 bytes @ 0x6
+   108  0076                     	ds	2
+   109                           psect	cstackBANK0,class=BANK0,space=1
+   110                           global __pcstackBANK0
+   111  0020                     __pcstackBANK0:
+   112                           	global	??_main
+   113  0020                     ??_main:	; 0 bytes @ 0x0
+   114  0020                     	ds	1
+   115 ;;Data sizes: Strings 0, constant 0, data 0, bss 0, persistent 0 stack 0
+   116 ;;Auto spaces:   Size  Autos    Used
+   117 ;; COMMON          14      8       8
+   118 ;; BANK0           80      1       1
+   119 ;; BANK1           80      0       0
+   120 ;; BANK3           96      0       0
+   121 ;; BANK2           96      0       0
+   122                           
+   123 ;;
+   124 ;; Pointer list with targets:
+   125                           
+   126                           
+   127                           
+   128 ;;
+   129 ;; Critical Paths under _main in COMMON
+   130 ;;
+   131 ;;   None.
+   132 ;;
+   133 ;; Critical Paths under _ISR in COMMON
+   134 ;;
+   135 ;;   None.
+   136 ;;
+   137 ;; Critical Paths under _main in BANK0
+   138 ;;
+   139 ;;   None.
+   140 ;;
+   141 ;; Critical Paths under _ISR in BANK0
+   142 ;;
+   143 ;;   None.
+   144 ;;
+   145 ;; Critical Paths under _main in BANK1
+   146 ;;
+   147 ;;   None.
+   148 ;;
+   149 ;; Critical Paths under _ISR in BANK1
+   150 ;;
+   151 ;;   None.
+   152 ;;
+   153 ;; Critical Paths under _main in BANK3
+   154 ;;
+   155 ;;   None.
+   156 ;;
+   157 ;; Critical Paths under _ISR in BANK3
+   158 ;;
+   159 ;;   None.
+   160 ;;
+   161 ;; Critical Paths under _main in BANK2
+   162 ;;
+   163 ;;   None.
+   164 ;;
+   165 ;; Critical Paths under _ISR in BANK2
+   166 ;;
+   167 ;;   None.
+   168                           
+   169 ;;
+   170 ;;Main: autosize = 0, tempsize = 1, incstack = 0, save=0
+   171 ;;
+   172                           
+   173 ;;
+   174 ;;Call Graph Tables:
+   175 ;;
+   176 ;; ---------------------------------------------------------------------------------
+   177 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   178 ;; ---------------------------------------------------------------------------------
+   179 ;; (0) _main                                                 1     1      0       0
+   180 ;;                                              0 BANK0      1     1      0
+   181 ;; ---------------------------------------------------------------------------------
+   182 ;; Estimated maximum stack depth 0
+   183 ;; ---------------------------------------------------------------------------------
+   184 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   185 ;; ---------------------------------------------------------------------------------
+   186 ;; (1) _ISR                                                  8     8      0      60
+   187 ;;                                              0 COMMON     8     8      0
+   188 ;; ---------------------------------------------------------------------------------
+   189 ;; Estimated maximum stack depth 1
+   190 ;; ---------------------------------------------------------------------------------
+   191                           
+   192 ;; Call Graph Graphs:
+   193                           
+   194 ;; _main (ROOT)
+   195 ;;
+   196 ;; _ISR (ROOT)
+   197 ;;
+   198                           
+   199 ;; Address spaces:
+   200                           
+   201 ;;Name               Size   Autos  Total    Cost      Usage
+   202 ;;BITCOMMON            E      0       0       0        0.0%
+   203 ;;EEDATA             100      0       0       0        0.0%
+   204 ;;NULL                 0      0       0       0        0.0%
+   205 ;;CODE                 0      0       0       0        0.0%
+   206 ;;COMMON               E      8       8       1       57.1%
+   207 ;;BITSFR0              0      0       0       1        0.0%
+   208 ;;SFR0                 0      0       0       1        0.0%
+   209 ;;BITSFR1              0      0       0       2        0.0%
+   210 ;;SFR1                 0      0       0       2        0.0%
+   211 ;;STACK                0      0       0       2        0.0%
+   212 ;;ABS                  0      0       0       3        0.0%
+   213 ;;BITBANK0            50      0       0       4        0.0%
+   214 ;;BITSFR3              0      0       0       4        0.0%
+   215 ;;SFR3                 0      0       0       4        0.0%
+   216 ;;BANK0               50      1       1       5        1.3%
+   217 ;;BITSFR2              0      0       0       5        0.0%
+   218 ;;SFR2                 0      0       0       5        0.0%
+   219 ;;BITBANK1            50      0       0       6        0.0%
+   220 ;;BANK1               50      0       0       7        0.0%
+   221 ;;BITBANK3            60      0       0       8        0.0%
+   222 ;;BANK3               60      0       0       9        0.0%
+   223 ;;BITBANK2            60      0       0      10        0.0%
+   224 ;;BANK2               60      0       0      11        0.0%
+   225 ;;DATA                 0      0       0      12        0.0%
+   226                           
+   227                           	global	_main
+   228                           psect	maintext
+   229                           
+   230 ;; *************** function _main *****************
+   231 ;; Defined at:
+   232 ;;		line 16 in file "D:\SLR\Interlogicx\codes\Practise\PIC\MP lab\Interrupts\Ext\code new.c"
+   233 ;; Parameters:    Size  Location     Type
+   234 ;;		None
+   235 ;; Auto vars:     Size  Location     Type
+   236 ;;		None
+   237 ;; Return value:  Size  Location     Type
+   238 ;;		None               void
+   239 ;; Registers used:
+   240 ;;		wreg, status,2, status,0
+   241 ;; Tracked objects:
+   242 ;;		On entry : 17F/0
+   243 ;;		On exit  : 0/0
+   244 ;;		Unchanged: 0/0
+   245 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   246 ;;      Params:         0       0       0       0       0
+   247 ;;      Locals:         0       0       0       0       0
+   248 ;;      Temps:          0       1       0       0       0
+   249 ;;      Totals:         0       1       0       0       0
+   250 ;;Total ram usage:        1 bytes
+   251 ;; Hardware stack levels required when called:    1
+   252 ;; This function calls:
+   253 ;;		Nothing
+   254 ;; This function is called by:
+   255 ;;		Startup code after reset
+   256 ;; This function uses a non-reentrant model
+   257 ;;
+   258                           psect	maintext
+   259                           	file	"D:\SLR\Interlogicx\codes\Practise\PIC\MP lab\Interrupts\Ext\code new.c"
+   260                           	line	16
+   261                           	global	__size_of_main
+   262  0015                     	__size_of_main	equ	__end_of_main-_main
+   263                           	
+   264  005C                     _main:	
+   265                           	opt	stack 7
+   266                           ; Regs used in _main: [wreg+status,2+status,0]
+   267                           	line	17
+   268                           	
+   269  005C                     l2626:	
+   270                           ;code new.c: 17: PORTD=0;
+   271  005C  1283               	bcf	status, 5	;RP0=0, select bank0
+   272  005D  1303               	bcf	status, 6	;RP1=0, select bank0
+   273  005E  0188               	clrf	(8)	;volatile
+   274                           	line	18
+   275                           	
+   276  005F                     l2628:	
+   277                           ;code new.c: 18: TRISB0=1;
+   278  005F  1683               	bsf	status, 5	;RP0=1, select bank1
+   279  0060  1303               	bcf	status, 6	;RP1=0, select bank1
+   280  0061  1406               	bsf	(1072/8)^080h,(1072)&7
+   281                           	line	19
+   282                           ;code new.c: 19: TRISD=0;
+   283  0062  0188               	clrf	(136)^080h	;volatile
+   284                           	line	20
+   285                           ;code new.c: 20: OPTION_REG=0X00;
+   286  0063  0181               	clrf	(129)^080h	;volatile
+   287                           	line	21
+   288                           	
+   289  0064                     l2630:	
+   290                           ;code new.c: 21: INTCON|=0Xd0;
+   291  0064  30D0               	movlw	(0D0h)
+   292  0065  1283               	bcf	status, 5	;RP0=0, select bank0
+   293  0066  1303               	bcf	status, 6	;RP1=0, select bank0
+   294  0067  00A0               	movwf	(??_main+0)+0
+   295  0068  0820               	movf	(??_main+0)+0,w
+   296  0069  048B               	iorwf	(11),f	;volatile
+   297  006A  286B               	goto	l2632
+   298                           	line	22
+   299                           ;code new.c: 22: while(1) {
+   300                           	
+   301  006B                     l692:	
+   302                           	line	23
+   303                           	
+   304  006B                     l2632:	
+   305                           ;code new.c: 23: PORTD=0x00;
+   306  006B  0188               	clrf	(8)	;volatile
+   307  006C  286B               	goto	l2632
+   308                           	line	24
+   309                           	
+   310  006D                     l693:	
+   311                           	line	22
+   312  006D  286B               	goto	l2632
+   313                           	
+   314  006E                     l694:	
+   315                           	line	25
+   316                           	
+   317  006E                     l695:	
+   318                           	global	start
+   319  006E  120A  118A  2812   	ljmp	start
+   320                           	opt stack 0
+   321                           GLOBAL	__end_of_main
+   322  0071                     	__end_of_main:
+   323 ;; =============== function _main ends ============
+   324                           
+   325                           	signat	_main,88
+   326                           	global	_ISR
+   327                           psect	text88,local,class=CODE,delta=2
+   328                           global __ptext88
+   329  0015                     __ptext88:
+   330                           
+   331 ;; *************** function _ISR *****************
+   332 ;; Defined at:
+   333 ;;		line 6 in file "D:\SLR\Interlogicx\codes\Practise\PIC\MP lab\Interrupts\Ext\code new.c"
+   334 ;; Parameters:    Size  Location     Type
+   335 ;;		None
+   336 ;; Auto vars:     Size  Location     Type
+   337 ;;  j               2    6[COMMON] unsigned int 
+   338 ;;  i               2    4[COMMON] unsigned int 
+   339 ;; Return value:  Size  Location     Type
+   340 ;;		None               void
+   341 ;; Registers used:
+   342 ;;		wreg, status,2
+   343 ;; Tracked objects:
+   344 ;;		On entry : 0/0
+   345 ;;		On exit  : 0/0
+   346 ;;		Unchanged: 0/0
+   347 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   348 ;;      Params:         0       0       0       0       0
+   349 ;;      Locals:         4       0       0       0       0
+   350 ;;      Temps:          4       0       0       0       0
+   351 ;;      Totals:         8       0       0       0       0
+   352 ;;Total ram usage:        8 bytes
+   353 ;; Hardware stack levels used:    1
+   354 ;; This function calls:
+   355 ;;		Nothing
+   356 ;; This function is called by:
+   357 ;;		Interrupt level 1
+   358 ;; This function uses a non-reentrant model
+   359 ;;
+   360                           psect	text88
+   361                           	file	"D:\SLR\Interlogicx\codes\Practise\PIC\MP lab\Interrupts\Ext\code new.c"
+   362                           	line	6
+   363                           	global	__size_of_ISR
+   364  0047                     	__size_of_ISR	equ	__end_of_ISR-_ISR
+   365                           	
+   366  0015                     _ISR:	
+   367                           	opt	stack 7
+   368                           ; Regs used in _ISR: [wreg+status,2]
+   369                           psect	intentry,class=CODE,delta=2
+   370                           global __pintentry
+   371  0004                     __pintentry:
+   372                           global interrupt_function
+   373  0004                     interrupt_function:
+   374                           	global saved_w
+   375  007E                     	saved_w	set	btemp+0
+   376  0004  00FE               	movwf	saved_w
+   377  0005  0E03               	swapf	status,w
+   378  0006  00F0               	movwf	(??_ISR+0)
+   379  0007  0804               	movf	fsr0,w
+   380  0008  00F1               	movwf	(??_ISR+1)
+   381  0009  080A               	movf	pclath,w
+   382  000A  00F2               	movwf	(??_ISR+2)
+   383  000B  1283               	bcf	status, 5	;RP0=0, select bank0
+   384  000C  1303               	bcf	status, 6	;RP1=0, select bank0
+   385  000D  087F               	movf	btemp+1,w
+   386  000E  00F3               	movwf	(??_ISR+3)
+   387  000F  120A  118A  2815   	ljmp	_ISR
+   388                           psect	text88
+   389                           	line	8
+   390                           	
+   391  0015                     i1l1742:	
+   392                           ;code new.c: 7: unsigned int i,j;
+   393                           ;code new.c: 8: PORTD=0X55;
+   394  0015  3055               	movlw	(055h)
+   395  0016  0088               	movwf	(8)	;volatile
+   396                           	line	9
+   397                           	
+   398  0017                     i1l1744:	
+   399                           ;code new.c: 9: for(i=0;i<600;i++)
+   400  0017  01F4               	clrf	(ISR@i)
+   401  0018  01F5               	clrf	(ISR@i+1)
+   402                           	
+   403  0019                     i1l1746:	
+   404  0019  3002               	movlw	high(0258h)
+   405  001A  0275               	subwf	(ISR@i+1),w
+   406  001B  3058               	movlw	low(0258h)
+   407  001C  1903               	skipnz
+   408  001D  0274               	subwf	(ISR@i),w
+   409  001E  1C03               	skipc
+   410  001F  2821               	goto	u1_21
+   411  0020  2822               	goto	u1_20
+   412  0021                     u1_21:
+   413  0021  2824               	goto	i1l1750
+   414  0022                     u1_20:
+   415  0022  2850               	goto	i1l686
+   416                           	
+   417  0023                     i1l1748:	
+   418  0023  2850               	goto	i1l686
+   419                           	line	10
+   420                           	
+   421  0024                     i1l685:	
+   422                           	
+   423  0024                     i1l1750:	
+   424                           ;code new.c: 10: for(j=0;j<200;j++);
+   425  0024  01F6               	clrf	(ISR@j)
+   426  0025  01F7               	clrf	(ISR@j+1)
+   427                           	
+   428  0026                     i1l1752:	
+   429  0026  3000               	movlw	high(0C8h)
+   430  0027  0277               	subwf	(ISR@j+1),w
+   431  0028  30C8               	movlw	low(0C8h)
+   432  0029  1903               	skipnz
+   433  002A  0276               	subwf	(ISR@j),w
+   434  002B  1C03               	skipc
+   435  002C  282E               	goto	u2_21
+   436  002D  282F               	goto	u2_20
+   437  002E                     u2_21:
+   438  002E  2831               	goto	i1l1756
+   439  002F                     u2_20:
+   440  002F  2841               	goto	i1l1758
+   441                           	
+   442  0030                     i1l1754:	
+   443  0030  2841               	goto	i1l1758
+   444                           	
+   445  0031                     i1l687:	
+   446                           	
+   447  0031                     i1l1756:	
+   448  0031  3001               	movlw	low(01h)
+   449  0032  07F6               	addwf	(ISR@j),f
+   450  0033  1803               	skipnc
+   451  0034  0AF7               	incf	(ISR@j+1),f
+   452  0035  3000               	movlw	high(01h)
+   453  0036  07F7               	addwf	(ISR@j+1),f
+   454  0037  3000               	movlw	high(0C8h)
+   455  0038  0277               	subwf	(ISR@j+1),w
+   456  0039  30C8               	movlw	low(0C8h)
+   457  003A  1903               	skipnz
+   458  003B  0276               	subwf	(ISR@j),w
+   459  003C  1C03               	skipc
+   460  003D  283F               	goto	u3_21
+   461  003E  2840               	goto	u3_20
+   462  003F                     u3_21:
+   463  003F  2831               	goto	i1l1756
+   464  0040                     u3_20:
+   465  0040  2841               	goto	i1l1758
+   466                           	
+   467  0041                     i1l688:	
+   468                           	line	9
+   469                           	
+   470  0041                     i1l1758:	
+   471  0041  3001               	movlw	low(01h)
+   472  0042  07F4               	addwf	(ISR@i),f
+   473  0043  1803               	skipnc
+   474  0044  0AF5               	incf	(ISR@i+1),f
+   475  0045  3000               	movlw	high(01h)
+   476  0046  07F5               	addwf	(ISR@i+1),f
+   477  0047  3002               	movlw	high(0258h)
+   478  0048  0275               	subwf	(ISR@i+1),w
+   479  0049  3058               	movlw	low(0258h)
+   480  004A  1903               	skipnz
+   481  004B  0274               	subwf	(ISR@i),w
+   482  004C  1C03               	skipc
+   483  004D  284F               	goto	u4_21
+   484  004E  2850               	goto	u4_20
+   485  004F                     u4_21:
+   486  004F  2824               	goto	i1l1750
+   487  0050                     u4_20:
+   488                           	
+   489  0050                     i1l686:	
+   490                           	line	11
+   491                           ;code new.c: 11: INTF=0;
+   492  0050  108B               	bcf	(89/8),(89)&7
+   493                           	line	12
+   494                           	
+   495  0051                     i1l689:	
+   496  0051  0873               	movf	(??_ISR+3),w
+   497  0052  00FF               	movwf	btemp+1
+   498  0053  0872               	movf	(??_ISR+2),w
+   499  0054  008A               	movwf	pclath
+   500  0055  0871               	movf	(??_ISR+1),w
+   501  0056  0084               	movwf	fsr0
+   502  0057  0E70               	swapf	(??_ISR+0)^0FFFFFF80h,w
+   503  0058  0083               	movwf	status
+   504  0059  0EFE               	swapf	saved_w,f
+   505  005A  0E7E               	swapf	saved_w,w
+   506  005B  0009               	retfie
+   507                           	opt stack 0
+   508                           GLOBAL	__end_of_ISR
+   509  005C                     	__end_of_ISR:
+   510 ;; =============== function _ISR ends ============
+   511                           
+   512                           	signat	_ISR,88
+   513                           psect	text89,local,class=CODE,delta=2
+   514                           global __ptext89
+   515  0000                     __ptext89:
+   516                           	global	btemp
+   517  007E                     	btemp set 07Eh
+   518                           
+   519                           	DABS	1,126,2	;btemp
+   520                           	global	wtemp0
+   521  007E                     	wtemp0 set btemp
+
+
+HI-TECH Software PICC Macro Assembler V9.83 build 10920 
+Symbol Table                                                                                   Sat Aug 05 22:35:01 2017
+
+                  _RD 0C60                    _WR 0C61                   l692 006B                   l693 006D  
+                 l694 006E                   l695 006E                   _GIE 005F                   _ISR 0015  
+                 fsr0 0004                  ?_ISR 0070                  ISR@i 0074                  ISR@j 0076  
+                l2630 0064                  l2632 006B                  l2626 005C                  l2628 005F  
+                _INTF 0059                  _WREN 0C62                  u1_20 0022                  u1_21 0021  
+                u2_20 002F                  u2_21 002E                  u3_20 0040                  u3_21 003F  
+                u4_20 0050                  u4_21 004F                  _main 005C                  btemp 007E  
+                start 0012                 ??_ISR 0070                 ?_main 0070                 _EEADR 010D  
+               _CARRY 0018                 i1l685 0024                 i1l686 0050                 i1l687 0031  
+               i1l688 0041                 i1l689 0051                 _PORTD 0008                 _TRISD 0088  
+               pclath 000A                 status 0003                 wtemp0 007E          __end_of_main 0071  
+              ??_main 0020                _EEDATA 010C                _EECON1 018C                _EECON2 018D  
+              i1l1750 0024                i1l1742 0015                i1l1752 0026                i1l1744 0017  
+              i1l1754 0030                i1l1746 0019                i1l1756 0031                i1l1748 0023  
+              i1l1758 0041                _INTCON 000B                _TRISB0 0430                saved_w 007E  
+      __pcstackCOMMON 0070            __pmaintext 005C            __pintentry 0004          __size_of_ISR 0047  
+end_of_initialization 0071   start_initialization 0071           __end_of_ISR 005C         __pcstackBANK0 0020  
+   interrupt_function 0004              __ptext88 0015              __ptext89 0000         __size_of_main 0015  
+            intlevel1 0000            _OPTION_REG 0081  

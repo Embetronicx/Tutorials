@@ -1,0 +1,24 @@
+#include<pic.h>
+
+#define LED PORTD
+
+void interrupt ISR(void);
+
+void interrupt  ISR(void)
+{
+LED=0X55;
+INTF=0;
+}
+
+
+void main(void)
+{
+LED=0;
+TRISB0=1;
+TRISD=0;
+OPTION_REG|=0X40;		//rising edge int
+INTCON|=0Xd0;
+while(1)
+{
+}
+}
