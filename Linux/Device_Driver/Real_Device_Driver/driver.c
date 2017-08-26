@@ -119,6 +119,6 @@ module_exit(hello_world_exit);
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("EmbeTronicX <embetronicx@gmail.com or admin@embetronicx.com>");
-MODULE_DESCRIPTION("A simple hello world driver");
+MODULE_DESCRIPTION("A simple linux device driver");
 MODULE_VERSION("1.0");
 
