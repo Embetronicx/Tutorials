@@ -16,8 +16,8 @@ static struct class *dev_class;
 static struct cdev etx_cdev;
 uint8_t *kernel_buffer;
 
-static int __init hello_world_init(void);
-static void __exit hello_world_exit(void);
+static int __init etx_driver_init(void);
+static void __exit etx_driver_exit(void);
 static int etx_open(struct inode *inode, struct file *file);
 static int etx_release(struct inode *inode, struct file *file);
 static ssize_t etx_read(struct file *filp, char __user *buf, size_t len,loff_t * off);
@@ -64,7 +64,7 @@ static ssize_t etx_write(struct file *filp, const char __user *buf, size_t len, 
 }
 
 
-static int __init hello_world_init(void)
+static int __init etx_driver_init(void)
 {
         /*Allocating Major number*/
         if((alloc_chrdev_region(&dev, 0, 1, "etx_Dev")) <0){
@@ -105,7 +105,7 @@ r_class:
         return -1;
 }
 
-void __exit hello_world_exit(void)
+void __exit etx_driver_exit(void)
 {
         device_destroy(dev_class,dev);
         class_destroy(dev_class);
@@ -114,11 +114,11 @@ void __exit hello_world_exit(void)
 	printk(KERN_INFO "Device Driver Remove...Done!!!\n");
 }
 
-module_init(hello_world_init);
-module_exit(hello_world_exit);
+module_init(etx_driver_init);
+module_exit(etx_driver_exit);
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("EmbeTronicX <embetronicx@gmail.com or admin@embetronicx.com>");
-MODULE_DESCRIPTION("A simple linux device driver");
+MODULE_DESCRIPTION("A simple device driver");
 MODULE_VERSION("1.0");
 
