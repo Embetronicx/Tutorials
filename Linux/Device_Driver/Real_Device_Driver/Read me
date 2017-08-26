@@ -1,0 +1,11 @@
+This directory contains three files.
+1.Driver
+2.Make File
+3.User Application
+
+Driver is running on kernel space
+Makefile is used to build the kernel linux device driver
+User application will running on the user space and communicate to driver on kernel space.
+
+If you want to see the explanation of this driver, please visit below link.
+http://www.embetronicx.com/tutorials/linux/device-drivers/linux-device-driver-tutorial-programming/
