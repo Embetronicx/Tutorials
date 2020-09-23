@@ -1,11 +1,11 @@
 /***************************************************************************//**
 *  \file       driver.c
 *
-*  \details    Simple linux driver (Interrupts)
+*  \details    Simple Linux device driver (Global Workqueue - Dynamic method)
 *
 *  \author     EmbeTronicX
 *
-* *******************************************************************************/
+*******************************************************************************/
 #include <linux/kernel.h>
 #include <linux/init.h>
 #include <linux/module.h>
@@ -19,18 +19,32 @@
 #include<linux/kobject.h> 
 #include <linux/interrupt.h>
 #include <asm/io.h>
+#include <linux/workqueue.h>            // Required for workqueues
  
-// Interrupt Request number
+ 
 #define IRQ_NO 11
+ 
+/* Work structure */
+static struct work_struct workqueue;
+ 
+void workqueue_fn(struct work_struct *work); 
+ 
+/*Workqueue Function*/
+void workqueue_fn(struct work_struct *work)
+{
+        printk(KERN_INFO "Executing Workqueue Function\n");
+}
  
 //Interrupt handler for IRQ 11. 
 static irqreturn_t irq_handler(int irq,void *dev_id) {
-  printk(KERN_INFO "Shared IRQ: Interrupt Occurred");
-  return IRQ_HANDLED;
+        printk(KERN_INFO "Shared IRQ: Interrupt Occurred");
+        /*Allocating work to queue*/
+        schedule_work(&workqueue);
+        
+        return IRQ_HANDLED;
 }
  
 volatile int etx_value = 0;
- 
 dev_t dev = 0;
 static struct class *dev_class;
 static struct cdev etx_cdev;
@@ -39,28 +53,28 @@ struct kobject *kobj_ref;
 /*
 ** Function Prototypes
 */
-static int      __init etx_driver_init(void);
-static void     __exit etx_driver_exit(void);
+static int __init etx_driver_init(void);
+static void __exit etx_driver_exit(void);
  
 /*************** Driver Fuctions **********************/
-static int      etx_open(struct inode *inode, struct file *file);
-static int      etx_release(struct inode *inode, struct file *file);
-static ssize_t  etx_read(struct file *filp, 
-                        char __user *buf, size_t len,loff_t * off);
-static ssize_t  etx_write(struct file *filp, 
-                        const char *buf, size_t len, loff_t * off);
+static int etx_open(struct inode *inode, struct file *file);
+static int etx_release(struct inode *inode, struct file *file);
+static ssize_t etx_read(struct file *filp, 
+                char __user *buf, size_t len,loff_t * off);
+static ssize_t etx_write(struct file *filp, 
+                const char *buf, size_t len, loff_t * off);
  
 /*************** Sysfs Fuctions **********************/
-static ssize_t  sysfs_show(struct kobject *kobj, 
-                        struct kobj_attribute *attr, char *buf);
-static ssize_t  sysfs_store(struct kobject *kobj, 
-                        struct kobj_attribute *attr,const char *buf, size_t count);
+static ssize_t sysfs_show(struct kobject *kobj, 
+                struct kobj_attribute *attr, char *buf);
+static ssize_t sysfs_store(struct kobject *kobj, 
+                struct kobj_attribute *attr,const char *buf, size_t count);
  
 struct kobj_attribute etx_attr = __ATTR(etx_value, 0660, sysfs_show, sysfs_store);
 
 /*
 ** File operation sturcture
-*/
+*/ 
 static struct file_operations fops =
 {
         .owner          = THIS_MODULE,
@@ -72,17 +86,17 @@ static struct file_operations fops =
 
 /*
 ** This fuction will be called when we read the sysfs file
-*/ 
+*/
 static ssize_t sysfs_show(struct kobject *kobj, 
                 struct kobj_attribute *attr, char *buf)
 {
         printk(KERN_INFO "Sysfs - Read!!!\n");
         return sprintf(buf, "%d", etx_value);
 }
-
+ 
 /*
-** This fuction will be called when we write the sysfs file
-*/ 
+** This fuction will be called when we write the sysfsfs file
+*/
 static ssize_t sysfs_store(struct kobject *kobj, 
                 struct kobj_attribute *attr,const char *buf, size_t count)
 {
@@ -90,19 +104,19 @@ static ssize_t sysfs_store(struct kobject *kobj,
         sscanf(buf,"%d",&etx_value);
         return count;
 }
- 
+
 /*
 ** This fuction will be called when we open the Device file
-*/
+*/  
 static int etx_open(struct inode *inode, struct file *file)
 {
         printk(KERN_INFO "Device File Opened...!!!\n");
         return 0;
 }
- 
+
 /*
 ** This fuction will be called when we close the Device file
-*/
+*/  
 static int etx_release(struct inode *inode, struct file *file)
 {
         printk(KERN_INFO "Device File Closed...!!!\n");
@@ -111,9 +125,9 @@ static int etx_release(struct inode *inode, struct file *file)
 
 /*
 ** This fuction will be called when we read the Device file
-*/
+*/ 
 static ssize_t etx_read(struct file *filp, 
-                        char __user *buf, size_t len, loff_t *off)
+                char __user *buf, size_t len, loff_t *off)
 {
         printk(KERN_INFO "Read function\n");
         asm("int $0x3B");  // Corresponding to irq 11
@@ -122,9 +136,9 @@ static ssize_t etx_read(struct file *filp,
 
 /*
 ** This fuction will be called when we write the Device file
-*/ 
+*/
 static ssize_t etx_write(struct file *filp, 
-                        const char __user *buf, size_t len, loff_t *off)
+                const char __user *buf, size_t len, loff_t *off)
 {
         printk(KERN_INFO "Write Function\n");
         return 0;
@@ -132,7 +146,7 @@ static ssize_t etx_write(struct file *filp,
  
 /*
 ** Module Init function
-*/
+*/ 
 static int __init etx_driver_init(void)
 {
         /*Allocating Major number*/
@@ -175,6 +189,10 @@ static int __init etx_driver_init(void)
             printk(KERN_INFO "my_device: cannot register IRQ ");
                     goto irq;
         }
+ 
+        /*Creating work by Dynamic Method */
+        INIT_WORK(&workqueue,workqueue_fn);
+ 
         printk(KERN_INFO "Device Driver Insert...Done!!!\n");
         return 0;
  
@@ -213,5 +231,5 @@ module_exit(etx_driver_exit);
  
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("EmbeTronicX <embetronicx@gmail.com>");
-MODULE_DESCRIPTION("A simple device driver - Interrupts");
-MODULE_VERSION("1.9");
+MODULE_DESCRIPTION("Simple Linux device driver (Global Workqueue - Dynamic method)");
+MODULE_VERSION("1.11");

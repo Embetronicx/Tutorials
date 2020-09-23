@@ -209,7 +209,7 @@ r_class:
 /*
 ** Module exit function
 */
-void __exit etx_driver_exit(void)
+static void __exit etx_driver_exit(void)
 {
         free_irq(IRQ_NO,(void *)(irq_handler));
         kobject_put(kobj_ref); 
