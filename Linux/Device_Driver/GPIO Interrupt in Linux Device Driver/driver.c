@@ -262,7 +262,7 @@ r_unreg:
   return -1;
 }
  
-void __exit etx_driver_exit(void)
+static void __exit etx_driver_exit(void)
 {
   free_irq(GPIO_irqNumber,NULL);
   gpio_free(GPIO_25_IN);
