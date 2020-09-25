@@ -1,7 +1,7 @@
 /***************************************************************************//**
 *  \file       driver.c
 *
-*  \details    Simple Linux device driver (Atomic Variables)
+*  \details    Simple Linux device driver (Seqlock)
 *
 *  \author     EmbeTronicX
 *
@@ -18,10 +18,12 @@
 #include <linux/kthread.h>             //kernel threads
 #include <linux/sched.h>               //task_struct 
 #include <linux/delay.h>
+#include <linux/seqlock.h>
  
-atomic_t etx_global_variable = ATOMIC_INIT(0);      //Atomic integer variable
-unsigned int etc_bit_check = 0;
+//Seqlock variable
+seqlock_t etx_seq_lock;
  
+unsigned long etx_global_variable = 0;
 dev_t dev = 0;
 static struct class *dev_class;
 static struct cdev etx_cdev;
@@ -44,26 +46,29 @@ static ssize_t etx_write(struct file *filp,
 int thread_function1(void *pv);
 int thread_function2(void *pv);
  
+//Thread used for writing
 int thread_function1(void *pv)
 {
-    unsigned int prev_value = 0;
-    
-    while(!kthread_should_stop()) {
-        atomic_inc(&etx_global_variable);
-        prev_value = test_and_change_bit(1, (void*)&etc_bit_check);
-        printk(KERN_INFO "Function1 [value : %u] [bit:%u]\n", atomic_read(&etx_global_variable), prev_value);
+    while(!kthread_should_stop()) {  
+        write_seqlock(&etx_seq_lock);
+        etx_global_variable++;
+        write_sequnlock(&etx_seq_lock);
         msleep(1000);
     }
     return 0;
 }
  
+//Thread used for reading
 int thread_function2(void *pv)
 {
-    unsigned int prev_value = 0;
+    unsigned int seq_no;
+    unsigned long read_value;
     while(!kthread_should_stop()) {
-        atomic_inc(&etx_global_variable);
-        prev_value = test_and_change_bit(1,(void*) &etc_bit_check);
-        printk(KERN_INFO "Function2 [value : %u] [bit:%u]\n", atomic_read(&etx_global_variable), prev_value);
+        do {
+            seq_no = read_seqbegin(&etx_seq_lock);
+        read_value = etx_global_variable;
+    } while (read_seqretry(&etx_seq_lock, seq_no));
+        printk(KERN_INFO "In EmbeTronicX Thread Function2 : Read value %lu\n", read_value);
         msleep(1000);
     }
     return 0;
@@ -153,6 +158,9 @@ static int __init etx_driver_init(void)
             printk(KERN_ERR "Cannot create kthread2\n");
              goto r_device;
         }
+ 
+        //Initialize the seqlock
+        seqlock_init(&etx_seq_lock);
         
         printk(KERN_INFO "Device Driver Insert...Done!!!\n");
         return 0;
@@ -182,5 +190,5 @@ module_exit(etx_driver_exit);
  
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("EmbeTronicX <embetronicx@gmail.com>");
-MODULE_DESCRIPTION("A simple device driver - Atomic Variables");
-MODULE_VERSION("1.27");
+MODULE_DESCRIPTION("A simple device driver - Seqlock");
+MODULE_VERSION("1.28");
