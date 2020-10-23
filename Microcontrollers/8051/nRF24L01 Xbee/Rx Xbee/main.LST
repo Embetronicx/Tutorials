@@ -1,0 +1,37 @@
+C51 COMPILER V8.08   MAIN                                                                  08/20/2016 15:34:41 PAGE 1   
+
+
+C51 COMPILER V8.08, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include"nRF24L01.H"
+   2          
+   3          
+   4          void main()
+   5          {
+   6   1      unsigned char *rec;
+   7   1      ser_init();
+   8   1      nRF_config();    
+   9   1      while(1)
+  10   1      {
+  11   2      rec=RX_PL();
+  12   2      tx_str(rec);
+  13   2      }
+  14   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    401    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      9      12
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

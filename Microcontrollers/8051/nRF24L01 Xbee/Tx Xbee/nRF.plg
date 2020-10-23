@@ -1,0 +1,27 @@
+<html>
+<body>
+<pre>
+<h1>µVision3 Build Log</h1>
+<h2>Project:</h2>
+E:\SLR\Practise\8051\Embedded c\SPI\nRF24L01 Xbee\Tx Xbee\nRF.uv2
+Project File Date:  08/13/2016
+
+<h2>Output:</h2>
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_TX_STR?MAIN
+Program Size: data=33.0 xdata=0 code=607
+creating hex file from "nRF"...
+"nRF" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_TX_STR?MAIN
+Program Size: data=33.0 xdata=0 code=607
+creating hex file from "nRF"...
+"nRF" - 0 Error(s), 1 Warning(s).

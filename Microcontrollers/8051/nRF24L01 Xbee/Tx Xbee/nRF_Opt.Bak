@@ -1,0 +1,40 @@
+### uVision2 Project, (C) Keil Software
+### Do not modify !
+
+ cExt (*.c)
+ aExt (*.s*; *.src; *.a*)
+ oExt (*.obj)
+ lExt (*.lib)
+ tExt (*.txt; *.h; *.inc)
+ pExt (*.plm)
+ CppX (*.cpp)
+ DaveTm { 0,0,0,0,0,0,0,0 }
+
+Target (Target 1), 0x0000 // Tools: 'MCS-51'
+GRPOPT 1,(Source Group 1),1,0,0
+
+OPTFFF 1,1,2,0,0,0,0,0,<.\STARTUP.A51><STARTUP.A51> 
+OPTFFF 1,2,1,251658241,0,1,11,0,<.\main.c><main.c> { 44,0,0,0,0,0,0,0,1,0,0,0,255,255,255,255,255,255,255,255,252,255,255,255,222,255,255,255,22,0,0,0,33,0,0,0,54,4,0,0,67,1,0,0 }
+
+ExtF <E:\SLR\Practise\8051\Embedded c\SPI\nRF24L01 Xbee\Tx Xbee\NRF24L01.H> 211,211,0,{ 44,0,0,0,2,0,0,0,3,0,0,0,255,255,255,255,255,255,255,255,252,255,255,255,222,255,255,255,66,0,0,0,99,0,0,0,112,4,0,0,137,1,0,0 }
+
+TARGOPT 1, (Target 1)
+ CLK51=11059200
+  OPTTT 1,1,1,0
+  OPTHX 0,65535,0,0,0
+  OPTLX 120,65,8,<.\>
+  OPTOX 16
+  OPTLT 1,1,1,0,1,1,0,1,0,0,0,0
+  OPTXL 1,1,1,1,1,1,1,0,0
+  OPTFL 1,0,1
+  OPTAX 255
+  OPTBL 0,(Data Sheet)<DATASHTS\ATMEL\AT89C51_DS.PDF>
+  OPTBL 1,(Instruction Set Manual)<DATASHTS\ATMEL\AT_C51ISM.PDF>
+  OPTDL (S8051.DLL)()(DP51.DLL)(-p51)(S8051.DLL)()(TP51.DLL)(-p51)
+  OPTDBG 48125,-1,()()()()()()()()()() ()()()()
+  OPTKEY 0,(DLGDP51)((98=-1,-1,-1,-1,0)(82=-1,-1,-1,-1,0)(83=-1,-1,-1,-1,0)(84=-1,-1,-1,-1,0)(85=-1,-1,-1,-1,0)(80=-1,-1,-1,-1,0)(91=-1,-1,-1,-1,0)(92=-1,-1,-1,-1,0))
+  OPTDF 0x40000096
+  OPTLE <>
+  OPTLC <>
+EndOpt
+
