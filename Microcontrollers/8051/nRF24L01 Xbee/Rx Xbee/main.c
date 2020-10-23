@@ -5,7 +5,7 @@ void main()
 {
   unsigned char *rec;
   ser_init();
-  nRF_config();	 
+  nRF_config();
   while(1)
   {
     rec=RX_PL();

@@ -1,0 +1,1 @@
+Find the explanation on https://embetronicx.com/tutorials/microcontrollers/8051/nrf24l01-interfacing-with-8051-wireless-xbee
