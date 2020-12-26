@@ -23,21 +23,19 @@
 */
 __NO_RETURN static void LED_Blink_PortD( void *arg ) 
 {
-  (void)arg;
-	//Enable the AHB clock all GPIO Port-D
-  SET_BIT(RCC->AHB1ENR, RCC_AHB1ENR_GPIODEN);
+  (void)arg;                            //unused variable
   //set Port D as output
   GPIOD->MODER = 0x55555555;
-	
-  for (;;) 															//infinite for loop
-	{
-		//Turn ON the LED of Port-D
+  
+  for (;;)                              //infinite for loop
+  {
+    //Turn ON the LED of Port-D
     GPIOD->BSRR = 0x0000FFFF;
-    osDelay(1000);											//1sec delay
+    osDelay(1000);                      //1sec delay
     //Turn OFF the LED of Port-D
     GPIOD->BSRR = 0xFFFF0000;
-    osDelay(1000);											//1sec delay
-	}
+    osDelay(1000);                      //1sec delay
+  }
 }
 
 /*
@@ -49,21 +47,18 @@ __NO_RETURN static void LED_Blink_PortD( void *arg )
 */
 __NO_RETURN static void LED_Blink_PortE( void *arg ) 
 {
-  (void)arg;
-	//Enable the AHB clock all GPIO Port-E
-  SET_BIT(RCC->AHB1ENR, RCC_AHB1ENR_GPIOEEN);
+  (void)arg;                            //unused variable
   //set Port E as output
   GPIOE->MODER = 0x55555555;
-	
-  for (;;) 															//infinite for loop
-	{
-		//Turn ON the LED of Port-E
+  for (;;)                              //infinite for loop
+  {
+    //Turn ON the LED of Port-E
     GPIOE->BSRR = 0x0000FFFF;
-    osDelay(3000);											//3sec delay
+    osDelay(3000);                      //3sec delay
     //Turn OFF the LED of Port-E
     GPIOE->BSRR = 0xFFFF0000;
-    osDelay(3000);											//3sec delay
-	}
+    osDelay(3000);                      //3sec delay
+  }
 }
 
 /*
@@ -75,16 +70,20 @@ __NO_RETURN static void LED_Blink_PortE( void *arg )
 */ 
 int main (void) 
 {
- 
+  //Enable the AHB clock all GPIO Port-D
+  SET_BIT(RCC->AHB1ENR, RCC_AHB1ENR_GPIODEN);
+  //Enable the AHB clock all GPIO Port-E
+  SET_BIT(RCC->AHB1ENR, RCC_AHB1ENR_GPIOEEN);
+  
   // System Initialization
   SystemCoreClockUpdate();
  
-  osKernelInitialize();                 			// Initialize CMSIS-RTOS
+  osKernelInitialize();                       // Initialize CMSIS-RTOS
   osThreadNew(LED_Blink_PortD, NULL, NULL);   // Create application main thread
   osThreadNew(LED_Blink_PortE, NULL, NULL);   // Create application main thread
-  osKernelStart();                      			// Start thread execution
+  osKernelStart();                            // Start thread execution
   for (;;) 
-	{
-		//Dummy infinite for loop.
-	}
+  {
+    //Dummy infinite for loop.
+  }
 }

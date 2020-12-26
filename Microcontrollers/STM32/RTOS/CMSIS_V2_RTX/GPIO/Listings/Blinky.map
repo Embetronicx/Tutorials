@@ -2813,233 +2813,233 @@ Image Symbol Table
     [Anonymous Symbol]                       0x080006dc   Section        0  rtx_thread.o(.text.IsIrqMode)
     IsPrivileged                             0x080006e9   Thumb Code    12  rtx_kernel.o(.text.IsPrivileged)
     [Anonymous Symbol]                       0x080006e8   Section        0  rtx_kernel.o(.text.IsPrivileged)
-    LED_Blink_PortD                          0x080006f5   Thumb Code    66  main.o(.text.LED_Blink_PortD)
+    LED_Blink_PortD                          0x080006f5   Thumb Code    50  main.o(.text.LED_Blink_PortD)
     [Anonymous Symbol]                       0x080006f4   Section        0  main.o(.text.LED_Blink_PortD)
-    LED_Blink_PortE                          0x08000739   Thumb Code    66  main.o(.text.LED_Blink_PortE)
-    [Anonymous Symbol]                       0x08000738   Section        0  main.o(.text.LED_Blink_PortE)
-    MemBlockPtr                              0x0800077d   Thumb Code     4  rtx_memory.o(.text.MemBlockPtr)
-    [Anonymous Symbol]                       0x0800077c   Section        0  rtx_memory.o(.text.MemBlockPtr)
-    MemHeadPtr                               0x08000781   Thumb Code     2  rtx_memory.o(.text.MemHeadPtr)
-    [Anonymous Symbol]                       0x08000780   Section        0  rtx_memory.o(.text.MemHeadPtr)
-    MessageQueueGet                          0x08000785   Thumb Code    42  rtx_msgqueue.o(.text.MessageQueueGet)
-    [Anonymous Symbol]                       0x08000784   Section        0  rtx_msgqueue.o(.text.MessageQueueGet)
-    MessageQueuePut                          0x080007b1   Thumb Code    84  rtx_msgqueue.o(.text.MessageQueuePut)
-    [Anonymous Symbol]                       0x080007b0   Section        0  rtx_msgqueue.o(.text.MessageQueuePut)
-    MessageQueueRemove                       0x08000805   Thumb Code    38  rtx_msgqueue.o(.text.MessageQueueRemove)
-    [Anonymous Symbol]                       0x08000804   Section        0  rtx_msgqueue.o(.text.MessageQueueRemove)
-    [Anonymous Symbol]                       0x0800082c   Section        0  os_systick.o(.text.OS_Tick_AcknowledgeIRQ)
-    [Anonymous Symbol]                       0x08000838   Section        0  os_systick.o(.text.OS_Tick_Enable)
-    [Anonymous Symbol]                       0x0800086c   Section        0  os_systick.o(.text.OS_Tick_GetIRQn)
-    [Anonymous Symbol]                       0x08000874   Section        0  os_systick.o(.text.OS_Tick_Setup)
-    SVC_Setup                                0x080008bd   Thumb Code    48  rtx_kernel.o(.text.SVC_Setup)
-    [Anonymous Symbol]                       0x080008bc   Section        0  rtx_kernel.o(.text.SVC_Setup)
-    SetPendSV                                0x080008ed   Thumb Code    16  rtx_system.o(.text.SetPendSV)
-    [Anonymous Symbol]                       0x080008ec   Section        0  rtx_system.o(.text.SetPendSV)
-    StackOffsetR0                            0x080008fd   Thumb Code    12  rtx_thread.o(.text.StackOffsetR0)
-    [Anonymous Symbol]                       0x080008fc   Section        0  rtx_thread.o(.text.StackOffsetR0)
-    [Anonymous Symbol]                       0x08000908   Section        0  system_stm32f4xx.o(.text.SystemCoreClockUpdate)
-    [Anonymous Symbol]                       0x08000988   Section        0  system_stm32f4xx.o(.text.SystemInit)
-    ThreadFlagsCheck                         0x080009a5   Thumb Code    64  rtx_thread.o(.text.ThreadFlagsCheck)
-    [Anonymous Symbol]                       0x080009a4   Section        0  rtx_thread.o(.text.ThreadFlagsCheck)
-    TimerInsert                              0x080009e5   Thumb Code   104  rtx_timer.o(.text.TimerInsert)
-    [Anonymous Symbol]                       0x080009e4   Section        0  rtx_timer.o(.text.TimerInsert)
-    TimerUnlink                              0x08000a4d   Thumb Code    24  rtx_timer.o(.text.TimerUnlink)
-    [Anonymous Symbol]                       0x08000a4c   Section        0  rtx_timer.o(.text.TimerUnlink)
-    __NVIC_GetPriorityGrouping               0x08000a65   Thumb Code    16  rtx_kernel.o(.text.__NVIC_GetPriorityGrouping)
-    [Anonymous Symbol]                       0x08000a64   Section        0  rtx_kernel.o(.text.__NVIC_GetPriorityGrouping)
-    __tagsym$$used.1                         0x08000a74   Number         0  rtx_lib.o(.text._mutex_acquire)
-    [Anonymous Symbol]                       0x08000a74   Section        0  rtx_lib.o(.text._mutex_acquire)
-    __tagsym$$used.3                         0x08000a90   Number         0  rtx_lib.o(.text._mutex_free)
-    [Anonymous Symbol]                       0x08000a90   Section        0  rtx_lib.o(.text._mutex_free)
-    __tagsym$$used.0                         0x08000a9c   Number         0  rtx_lib.o(.text._mutex_initialize)
-    [Anonymous Symbol]                       0x08000a9c   Section        0  rtx_lib.o(.text._mutex_initialize)
-    __tagsym$$used.2                         0x08000abc   Number         0  rtx_lib.o(.text._mutex_release)
-    [Anonymous Symbol]                       0x08000abc   Section        0  rtx_lib.o(.text._mutex_release)
-    [Anonymous Symbol]                       0x08000ad4   Section        0  rtx_lib.o(.text._platform_post_stackheap_init)
-    atomic_chk32_all                         0x08000add   Thumb Code    38  rtx_thread.o(.text.atomic_chk32_all)
-    [Anonymous Symbol]                       0x08000adc   Section        0  rtx_thread.o(.text.atomic_chk32_all)
-    atomic_chk32_any                         0x08000b05   Thumb Code    34  rtx_thread.o(.text.atomic_chk32_any)
-    [Anonymous Symbol]                       0x08000b04   Section        0  rtx_thread.o(.text.atomic_chk32_any)
-    atomic_dec16_nz                          0x08000b29   Thumb Code    36  rtx_system.o(.text.atomic_dec16_nz)
-    [Anonymous Symbol]                       0x08000b28   Section        0  rtx_system.o(.text.atomic_dec16_nz)
-    atomic_dec32                             0x08000b4d   Thumb Code    16  rtx_mempool.o(.text.atomic_dec32)
-    [Anonymous Symbol]                       0x08000b4c   Section        0  rtx_mempool.o(.text.atomic_dec32)
-    atomic_dec32_nz                          0x08000b5d   Thumb Code    26  rtx_msgqueue.o(.text.atomic_dec32_nz)
-    [Anonymous Symbol]                       0x08000b5c   Section        0  rtx_msgqueue.o(.text.atomic_dec32_nz)
-    atomic_inc16_lim                         0x08000b79   Thumb Code    26  rtx_system.o(.text.atomic_inc16_lim)
-    [Anonymous Symbol]                       0x08000b78   Section        0  rtx_system.o(.text.atomic_inc16_lim)
-    atomic_inc16_lt                          0x08000b95   Thumb Code    40  rtx_system.o(.text.atomic_inc16_lt)
-    [Anonymous Symbol]                       0x08000b94   Section        0  rtx_system.o(.text.atomic_inc16_lt)
-    atomic_inc32                             0x08000bbd   Thumb Code    16  rtx_mempool.o(.text.atomic_inc32)
-    [Anonymous Symbol]                       0x08000bbc   Section        0  rtx_mempool.o(.text.atomic_inc32)
-    atomic_inc32                             0x08000bcd   Thumb Code    16  rtx_msgqueue.o(.text.atomic_inc32)
-    [Anonymous Symbol]                       0x08000bcc   Section        0  rtx_msgqueue.o(.text.atomic_inc32)
-    atomic_link_get                          0x08000bdd   Thumb Code    26  rtx_mempool.o(.text.atomic_link_get)
-    [Anonymous Symbol]                       0x08000bdc   Section        0  rtx_mempool.o(.text.atomic_link_get)
-    atomic_link_put                          0x08000bf9   Thumb Code    30  rtx_mempool.o(.text.atomic_link_put)
-    [Anonymous Symbol]                       0x08000bf8   Section        0  rtx_mempool.o(.text.atomic_link_put)
-    atomic_wr8                               0x08000c19   Thumb Code    18  rtx_msgqueue.o(.text.atomic_wr8)
-    [Anonymous Symbol]                       0x08000c18   Section        0  rtx_msgqueue.o(.text.atomic_wr8)
-    isrRtxMessageQueueGet                    0x08000c2d   Thumb Code   116  rtx_msgqueue.o(.text.isrRtxMessageQueueGet)
-    [Anonymous Symbol]                       0x08000c2c   Section        0  rtx_msgqueue.o(.text.isrRtxMessageQueueGet)
-    isrRtxMessageQueuePut                    0x08000ca1   Thumb Code   126  rtx_msgqueue.o(.text.isrRtxMessageQueuePut)
-    [Anonymous Symbol]                       0x08000ca0   Section        0  rtx_msgqueue.o(.text.isrRtxMessageQueuePut)
-    isr_queue_get                            0x08000d21   Thumb Code    46  rtx_system.o(.text.isr_queue_get)
-    [Anonymous Symbol]                       0x08000d20   Section        0  rtx_system.o(.text.isr_queue_get)
-    isr_queue_put                            0x08000d51   Thumb Code    50  rtx_system.o(.text.isr_queue_put)
-    [Anonymous Symbol]                       0x08000d50   Section        0  rtx_system.o(.text.isr_queue_put)
-    [Anonymous Symbol]                       0x08000d84   Section        0  main.o(.text.main)
-    [Anonymous Symbol]                       0x08000db4   Section        0  rtx_delay.o(.text.osDelay)
-    [Anonymous Symbol]                       0x08000de8   Section        0  rtx_kernel.o(.text.osKernelGetState)
-    [Anonymous Symbol]                       0x08000e10   Section        0  rtx_kernel.o(.text.osKernelInitialize)
-    [Anonymous Symbol]                       0x08000e44   Section        0  rtx_kernel.o(.text.osKernelStart)
-    [Anonymous Symbol]                       0x08000e74   Section        0  rtx_msgqueue.o(.text.osMessageQueueGet)
-    [Anonymous Symbol]                       0x08000eb8   Section        0  rtx_msgqueue.o(.text.osMessageQueueNew)
-    [Anonymous Symbol]                       0x08000ef4   Section        0  rtx_msgqueue.o(.text.osMessageQueuePut)
-    [Anonymous Symbol]                       0x08000f38   Section        0  rtx_mutex.o(.text.osMutexAcquire)
-    [Anonymous Symbol]                       0x08000f70   Section        0  rtx_mutex.o(.text.osMutexDelete)
-    [Anonymous Symbol]                       0x08000fa4   Section        0  rtx_mutex.o(.text.osMutexNew)
-    [Anonymous Symbol]                       0x08000fd8   Section        0  rtx_mutex.o(.text.osMutexRelease)
-    [Anonymous Symbol]                       0x0800100c   Section        0  rtx_config.o(.text.osRtxErrorNotify)
-    osRtxEventFlagsObject                    0x08001011   Thumb Code     2  rtx_system.o(.text.osRtxEventFlagsObject)
-    [Anonymous Symbol]                       0x08001010   Section        0  rtx_system.o(.text.osRtxEventFlagsObject)
-    osRtxEventFlagsObject                    0x08001015   Thumb Code     2  rtx_thread.o(.text.osRtxEventFlagsObject)
-    [Anonymous Symbol]                       0x08001014   Section        0  rtx_thread.o(.text.osRtxEventFlagsObject)
-    [Anonymous Symbol]                       0x08001018   Section        0  rtx_config.o(.text.osRtxIdleThread)
-    osRtxKernelGetState                      0x0800101d   Thumb Code    12  rtx_system.o(.text.osRtxKernelGetState)
-    [Anonymous Symbol]                       0x0800101c   Section        0  rtx_system.o(.text.osRtxKernelGetState)
-    osRtxKernelGetState                      0x08001029   Thumb Code    12  rtx_thread.o(.text.osRtxKernelGetState)
-    [Anonymous Symbol]                       0x08001028   Section        0  rtx_thread.o(.text.osRtxKernelGetState)
-    [Anonymous Symbol]                       0x08001034   Section        0  rtx_kernel.o(.text.osRtxKernelPreInit)
-    osRtxKernelState                         0x08001039   Thumb Code    12  rtx_kernel.o(.text.osRtxKernelState)
-    [Anonymous Symbol]                       0x08001038   Section        0  rtx_kernel.o(.text.osRtxKernelState)
-    [Anonymous Symbol]                       0x08001044   Section        0  rtx_memory.o(.text.osRtxMemoryAlloc)
-    [Anonymous Symbol]                       0x08001114   Section        0  rtx_memory.o(.text.osRtxMemoryFree)
-    [Anonymous Symbol]                       0x0800118c   Section        0  rtx_memory.o(.text.osRtxMemoryInit)
-    [Anonymous Symbol]                       0x080011f0   Section        0  rtx_mempool.o(.text.osRtxMemoryPoolAlloc)
-    [Anonymous Symbol]                       0x0800121c   Section        0  rtx_mempool.o(.text.osRtxMemoryPoolFree)
-    [Anonymous Symbol]                       0x08001260   Section        0  rtx_mempool.o(.text.osRtxMemoryPoolInit)
-    osRtxMemoryPoolObject                    0x080012c1   Thumb Code     2  rtx_system.o(.text.osRtxMemoryPoolObject)
-    [Anonymous Symbol]                       0x080012c0   Section        0  rtx_system.o(.text.osRtxMemoryPoolObject)
-    osRtxMemoryPoolObject                    0x080012c5   Thumb Code     2  rtx_thread.o(.text.osRtxMemoryPoolObject)
-    [Anonymous Symbol]                       0x080012c4   Section        0  rtx_thread.o(.text.osRtxMemoryPoolObject)
-    osRtxMessageObject                       0x080012c9   Thumb Code     2  rtx_system.o(.text.osRtxMessageObject)
-    [Anonymous Symbol]                       0x080012c8   Section        0  rtx_system.o(.text.osRtxMessageObject)
-    osRtxMessageQueueId                      0x080012cd   Thumb Code     2  rtx_msgqueue.o(.text.osRtxMessageQueueId)
-    [Anonymous Symbol]                       0x080012cc   Section        0  rtx_msgqueue.o(.text.osRtxMessageQueueId)
-    osRtxMessageQueueId                      0x080012d1   Thumb Code     2  rtx_timer.o(.text.osRtxMessageQueueId)
-    [Anonymous Symbol]                       0x080012d0   Section        0  rtx_timer.o(.text.osRtxMessageQueueId)
-    osRtxMessageQueueObject                  0x080012d5   Thumb Code     2  rtx_thread.o(.text.osRtxMessageQueueObject)
-    [Anonymous Symbol]                       0x080012d4   Section        0  rtx_thread.o(.text.osRtxMessageQueueObject)
-    osRtxMessageQueuePostProcess             0x080012d9   Thumb Code   258  rtx_msgqueue.o(.text.osRtxMessageQueuePostProcess)
-    [Anonymous Symbol]                       0x080012d8   Section        0  rtx_msgqueue.o(.text.osRtxMessageQueuePostProcess)
-    osRtxMutexId                             0x080013dd   Thumb Code     2  rtx_mutex.o(.text.osRtxMutexId)
-    [Anonymous Symbol]                       0x080013dc   Section        0  rtx_mutex.o(.text.osRtxMutexId)
-    osRtxMutexObject                         0x080013e1   Thumb Code     2  rtx_thread.o(.text.osRtxMutexObject)
-    [Anonymous Symbol]                       0x080013e0   Section        0  rtx_thread.o(.text.osRtxMutexObject)
-    [Anonymous Symbol]                       0x080013e4   Section        0  rtx_mutex.o(.text.osRtxMutexOwnerRelease)
-    [Anonymous Symbol]                       0x08001450   Section        0  rtx_mutex.o(.text.osRtxMutexOwnerRestore)
-    osRtxObject                              0x0800149d   Thumb Code     2  rtx_msgqueue.o(.text.osRtxObject)
-    [Anonymous Symbol]                       0x0800149c   Section        0  rtx_msgqueue.o(.text.osRtxObject)
-    osRtxObject                              0x080014a1   Thumb Code     2  rtx_mutex.o(.text.osRtxObject)
-    [Anonymous Symbol]                       0x080014a0   Section        0  rtx_mutex.o(.text.osRtxObject)
-    osRtxObject                              0x080014a5   Thumb Code     2  rtx_system.o(.text.osRtxObject)
-    [Anonymous Symbol]                       0x080014a4   Section        0  rtx_system.o(.text.osRtxObject)
-    osRtxObject                              0x080014a9   Thumb Code     2  rtx_thread.o(.text.osRtxObject)
-    [Anonymous Symbol]                       0x080014a8   Section        0  rtx_thread.o(.text.osRtxObject)
-    [Anonymous Symbol]                       0x080014ac   Section        0  rtx_system.o(.text.osRtxPendSV_Handler)
-    [Anonymous Symbol]                       0x08001510   Section        0  rtx_system.o(.text.osRtxPostProcess)
-    osRtxSemaphoreObject                     0x0800153d   Thumb Code     2  rtx_system.o(.text.osRtxSemaphoreObject)
-    [Anonymous Symbol]                       0x0800153c   Section        0  rtx_system.o(.text.osRtxSemaphoreObject)
-    osRtxSemaphoreObject                     0x08001541   Thumb Code     2  rtx_thread.o(.text.osRtxSemaphoreObject)
-    [Anonymous Symbol]                       0x08001540   Section        0  rtx_thread.o(.text.osRtxSemaphoreObject)
-    osRtxThreadBlock                         0x08001545   Thumb Code    72  rtx_thread.o(.text.osRtxThreadBlock)
-    [Anonymous Symbol]                       0x08001544   Section        0  rtx_thread.o(.text.osRtxThreadBlock)
-    osRtxThreadDelayInsert                   0x0800158d   Thumb Code   160  rtx_thread.o(.text.osRtxThreadDelayInsert)
-    [Anonymous Symbol]                       0x0800158c   Section        0  rtx_thread.o(.text.osRtxThreadDelayInsert)
-    osRtxThreadDelayRemove                   0x0800162d   Thumb Code    72  rtx_thread.o(.text.osRtxThreadDelayRemove)
-    [Anonymous Symbol]                       0x0800162c   Section        0  rtx_thread.o(.text.osRtxThreadDelayRemove)
-    [Anonymous Symbol]                       0x08001674   Section        0  rtx_thread.o(.text.osRtxThreadDelayTick)
-    [Anonymous Symbol]                       0x0800176c   Section        0  rtx_thread.o(.text.osRtxThreadDispatch)
-    osRtxThreadFree                          0x080017cd   Thumb Code    96  rtx_thread.o(.text.osRtxThreadFree)
-    [Anonymous Symbol]                       0x080017cc   Section        0  rtx_thread.o(.text.osRtxThreadFree)
-    osRtxThreadGetRunning                    0x0800182d   Thumb Code    12  rtx_delay.o(.text.osRtxThreadGetRunning)
-    [Anonymous Symbol]                       0x0800182c   Section        0  rtx_delay.o(.text.osRtxThreadGetRunning)
-    osRtxThreadGetRunning                    0x08001839   Thumb Code    12  rtx_msgqueue.o(.text.osRtxThreadGetRunning)
-    [Anonymous Symbol]                       0x08001838   Section        0  rtx_msgqueue.o(.text.osRtxThreadGetRunning)
-    osRtxThreadGetRunning                    0x08001845   Thumb Code    12  rtx_mutex.o(.text.osRtxThreadGetRunning)
-    [Anonymous Symbol]                       0x08001844   Section        0  rtx_mutex.o(.text.osRtxThreadGetRunning)
-    osRtxThreadGetRunning                    0x08001851   Thumb Code    12  rtx_thread.o(.text.osRtxThreadGetRunning)
-    [Anonymous Symbol]                       0x08001850   Section        0  rtx_thread.o(.text.osRtxThreadGetRunning)
-    osRtxThreadId                            0x0800185d   Thumb Code     2  rtx_thread.o(.text.osRtxThreadId)
-    [Anonymous Symbol]                       0x0800185c   Section        0  rtx_thread.o(.text.osRtxThreadId)
-    [Anonymous Symbol]                       0x08001860   Section        0  rtx_thread.o(.text.osRtxThreadListGet)
-    [Anonymous Symbol]                       0x08001878   Section        0  rtx_thread.o(.text.osRtxThreadListPut)
-    [Anonymous Symbol]                       0x080018ac   Section        0  rtx_thread.o(.text.osRtxThreadListRemove)
-    osRtxThreadListRoot                      0x080018c9   Thumb Code    18  rtx_thread.o(.text.osRtxThreadListRoot)
-    [Anonymous Symbol]                       0x080018c8   Section        0  rtx_thread.o(.text.osRtxThreadListRoot)
-    [Anonymous Symbol]                       0x080018dc   Section        0  rtx_thread.o(.text.osRtxThreadListSort)
-    osRtxThreadObject                        0x0800190d   Thumb Code     2  rtx_system.o(.text.osRtxThreadObject)
-    [Anonymous Symbol]                       0x0800190c   Section        0  rtx_system.o(.text.osRtxThreadObject)
-    osRtxThreadObject                        0x08001911   Thumb Code     2  rtx_thread.o(.text.osRtxThreadObject)
-    [Anonymous Symbol]                       0x08001910   Section        0  rtx_thread.o(.text.osRtxThreadObject)
-    osRtxThreadPostProcess                   0x08001915   Thumb Code    56  rtx_thread.o(.text.osRtxThreadPostProcess)
-    [Anonymous Symbol]                       0x08001914   Section        0  rtx_thread.o(.text.osRtxThreadPostProcess)
-    [Anonymous Symbol]                       0x0800194c   Section        0  rtx_thread.o(.text.osRtxThreadReadyPut)
-    [Anonymous Symbol]                       0x08001964   Section        0  rtx_thread.o(.text.osRtxThreadRegPtr)
-    osRtxThreadSetRunning                    0x08001975   Thumb Code    14  rtx_thread.o(.text.osRtxThreadSetRunning)
-    [Anonymous Symbol]                       0x08001974   Section        0  rtx_thread.o(.text.osRtxThreadSetRunning)
-    [Anonymous Symbol]                       0x08001984   Section        0  rtx_thread.o(.text.osRtxThreadStackCheck)
-    [Anonymous Symbol]                       0x080019b0   Section        0  rtx_thread.o(.text.osRtxThreadStartup)
-    [Anonymous Symbol]                       0x08001a00   Section        0  rtx_thread.o(.text.osRtxThreadSwitch)
-    [Anonymous Symbol]                       0x08001a20   Section        0  rtx_thread.o(.text.osRtxThreadWaitEnter)
-    [Anonymous Symbol]                       0x08001a7c   Section        0  rtx_thread.o(.text.osRtxThreadWaitExit)
-    [Anonymous Symbol]                       0x08001aa8   Section        0  rtx_system.o(.text.osRtxTick_Handler)
-    [Anonymous Symbol]                       0x08001b2c   Section        0  rtx_timer.o(.text.osRtxTimerThread)
-    osRtxTimerTick                           0x08001b81   Thumb Code    86  rtx_timer.o(.text.osRtxTimerTick)
-    [Anonymous Symbol]                       0x08001b80   Section        0  rtx_timer.o(.text.osRtxTimerTick)
-    [Anonymous Symbol]                       0x08001bd8   Section        0  rtx_thread.o(.text.osThreadExit)
-    [Anonymous Symbol]                       0x08001bf4   Section        0  rtx_thread.o(.text.osThreadNew)
-    os_kernel_is_active                      0x08001c31   Thumb Code    30  rtx_lib.o(.text.os_kernel_is_active)
-    [Anonymous Symbol]                       0x08001c30   Section        0  rtx_lib.o(.text.os_kernel_is_active)
-    svcRtxDelay                              0x08001c51   Thumb Code    38  rtx_delay.o(.text.svcRtxDelay)
-    [Anonymous Symbol]                       0x08001c50   Section        0  rtx_delay.o(.text.svcRtxDelay)
-    svcRtxKernelGetState                     0x08001c79   Thumb Code    16  rtx_kernel.o(.text.svcRtxKernelGetState)
-    [Anonymous Symbol]                       0x08001c78   Section        0  rtx_kernel.o(.text.svcRtxKernelGetState)
-    svcRtxKernelInitialize                   0x08001c89   Thumb Code   354  rtx_kernel.o(.text.svcRtxKernelInitialize)
-    [Anonymous Symbol]                       0x08001c88   Section        0  rtx_kernel.o(.text.svcRtxKernelInitialize)
-    svcRtxKernelStart                        0x08001ded   Thumb Code   128  rtx_kernel.o(.text.svcRtxKernelStart)
-    [Anonymous Symbol]                       0x08001dec   Section        0  rtx_kernel.o(.text.svcRtxKernelStart)
-    svcRtxMessageQueueGet                    0x08001e6d   Thumb Code   306  rtx_msgqueue.o(.text.svcRtxMessageQueueGet)
-    [Anonymous Symbol]                       0x08001e6c   Section        0  rtx_msgqueue.o(.text.svcRtxMessageQueueGet)
-    svcRtxMessageQueueNew                    0x08001fa1   Thumb Code   422  rtx_msgqueue.o(.text.svcRtxMessageQueueNew)
-    [Anonymous Symbol]                       0x08001fa0   Section        0  rtx_msgqueue.o(.text.svcRtxMessageQueueNew)
-    svcRtxMessageQueuePut                    0x08002149   Thumb Code   276  rtx_msgqueue.o(.text.svcRtxMessageQueuePut)
-    [Anonymous Symbol]                       0x08002148   Section        0  rtx_msgqueue.o(.text.svcRtxMessageQueuePut)
-    svcRtxMutexAcquire                       0x0800225d   Thumb Code   230  rtx_mutex.o(.text.svcRtxMutexAcquire)
-    [Anonymous Symbol]                       0x0800225c   Section        0  rtx_mutex.o(.text.svcRtxMutexAcquire)
-    svcRtxMutexDelete                        0x08002345   Thumb Code   220  rtx_mutex.o(.text.svcRtxMutexDelete)
-    [Anonymous Symbol]                       0x08002344   Section        0  rtx_mutex.o(.text.svcRtxMutexDelete)
-    svcRtxMutexNew                           0x08002421   Thumb Code   144  rtx_mutex.o(.text.svcRtxMutexNew)
-    [Anonymous Symbol]                       0x08002420   Section        0  rtx_mutex.o(.text.svcRtxMutexNew)
-    svcRtxMutexRelease                       0x080024b1   Thumb Code   250  rtx_mutex.o(.text.svcRtxMutexRelease)
-    [Anonymous Symbol]                       0x080024b0   Section        0  rtx_mutex.o(.text.svcRtxMutexRelease)
-    svcRtxThreadExit                         0x080025ad   Thumb Code   120  rtx_thread.o(.text.svcRtxThreadExit)
-    [Anonymous Symbol]                       0x080025ac   Section        0  rtx_thread.o(.text.svcRtxThreadExit)
-    svcRtxThreadNew                          0x08002625   Thumb Code   574  rtx_thread.o(.text.svcRtxThreadNew)
-    [Anonymous Symbol]                       0x08002624   Section        0  rtx_thread.o(.text.svcRtxThreadNew)
-    $v0                                      0x08002862   Number         0  fpinit.o(x$fpl$fpinit)
-    x$fpl$fpinit                             0x08002862   Section       26  fpinit.o(x$fpl$fpinit)
-    __tagsym$$used.4                         0x0800287c   Number         0  rtx_lib.o(.rodata)
-    __tagsym$$used.5                         0x080028e4   Number         0  rtx_lib.o(.rodata)
-    os_idle_thread_attr                      0x08002930   Data          36  rtx_lib.o(.rodata.os_idle_thread_attr)
-    [Anonymous Symbol]                       0x08002930   Section        0  rtx_lib.o(.rodata.os_idle_thread_attr)
-    os_timer_mq_attr                         0x08002954   Data          24  rtx_lib.o(.rodata.os_timer_mq_attr)
-    [Anonymous Symbol]                       0x08002954   Section        0  rtx_lib.o(.rodata.os_timer_mq_attr)
-    os_timer_thread_attr                     0x0800296c   Data          36  rtx_lib.o(.rodata.os_timer_thread_attr)
-    [Anonymous Symbol]                       0x0800296c   Section        0  rtx_lib.o(.rodata.os_timer_thread_attr)
-    .L.str                                   0x08002990   Data          11  rtx_kernel.o(.rodata.str1.4)
-    [Anonymous Symbol]                       0x08002990   Section        0  rtx_kernel.o(.rodata.str1.4)
+    LED_Blink_PortE                          0x08000729   Thumb Code    50  main.o(.text.LED_Blink_PortE)
+    [Anonymous Symbol]                       0x08000728   Section        0  main.o(.text.LED_Blink_PortE)
+    MemBlockPtr                              0x0800075d   Thumb Code     4  rtx_memory.o(.text.MemBlockPtr)
+    [Anonymous Symbol]                       0x0800075c   Section        0  rtx_memory.o(.text.MemBlockPtr)
+    MemHeadPtr                               0x08000761   Thumb Code     2  rtx_memory.o(.text.MemHeadPtr)
+    [Anonymous Symbol]                       0x08000760   Section        0  rtx_memory.o(.text.MemHeadPtr)
+    MessageQueueGet                          0x08000765   Thumb Code    42  rtx_msgqueue.o(.text.MessageQueueGet)
+    [Anonymous Symbol]                       0x08000764   Section        0  rtx_msgqueue.o(.text.MessageQueueGet)
+    MessageQueuePut                          0x08000791   Thumb Code    84  rtx_msgqueue.o(.text.MessageQueuePut)
+    [Anonymous Symbol]                       0x08000790   Section        0  rtx_msgqueue.o(.text.MessageQueuePut)
+    MessageQueueRemove                       0x080007e5   Thumb Code    38  rtx_msgqueue.o(.text.MessageQueueRemove)
+    [Anonymous Symbol]                       0x080007e4   Section        0  rtx_msgqueue.o(.text.MessageQueueRemove)
+    [Anonymous Symbol]                       0x0800080c   Section        0  os_systick.o(.text.OS_Tick_AcknowledgeIRQ)
+    [Anonymous Symbol]                       0x08000818   Section        0  os_systick.o(.text.OS_Tick_Enable)
+    [Anonymous Symbol]                       0x0800084c   Section        0  os_systick.o(.text.OS_Tick_GetIRQn)
+    [Anonymous Symbol]                       0x08000854   Section        0  os_systick.o(.text.OS_Tick_Setup)
+    SVC_Setup                                0x0800089d   Thumb Code    48  rtx_kernel.o(.text.SVC_Setup)
+    [Anonymous Symbol]                       0x0800089c   Section        0  rtx_kernel.o(.text.SVC_Setup)
+    SetPendSV                                0x080008cd   Thumb Code    16  rtx_system.o(.text.SetPendSV)
+    [Anonymous Symbol]                       0x080008cc   Section        0  rtx_system.o(.text.SetPendSV)
+    StackOffsetR0                            0x080008dd   Thumb Code    12  rtx_thread.o(.text.StackOffsetR0)
+    [Anonymous Symbol]                       0x080008dc   Section        0  rtx_thread.o(.text.StackOffsetR0)
+    [Anonymous Symbol]                       0x080008e8   Section        0  system_stm32f4xx.o(.text.SystemCoreClockUpdate)
+    [Anonymous Symbol]                       0x08000968   Section        0  system_stm32f4xx.o(.text.SystemInit)
+    ThreadFlagsCheck                         0x08000985   Thumb Code    64  rtx_thread.o(.text.ThreadFlagsCheck)
+    [Anonymous Symbol]                       0x08000984   Section        0  rtx_thread.o(.text.ThreadFlagsCheck)
+    TimerInsert                              0x080009c5   Thumb Code   104  rtx_timer.o(.text.TimerInsert)
+    [Anonymous Symbol]                       0x080009c4   Section        0  rtx_timer.o(.text.TimerInsert)
+    TimerUnlink                              0x08000a2d   Thumb Code    24  rtx_timer.o(.text.TimerUnlink)
+    [Anonymous Symbol]                       0x08000a2c   Section        0  rtx_timer.o(.text.TimerUnlink)
+    __NVIC_GetPriorityGrouping               0x08000a45   Thumb Code    16  rtx_kernel.o(.text.__NVIC_GetPriorityGrouping)
+    [Anonymous Symbol]                       0x08000a44   Section        0  rtx_kernel.o(.text.__NVIC_GetPriorityGrouping)
+    __tagsym$$used.1                         0x08000a54   Number         0  rtx_lib.o(.text._mutex_acquire)
+    [Anonymous Symbol]                       0x08000a54   Section        0  rtx_lib.o(.text._mutex_acquire)
+    __tagsym$$used.3                         0x08000a70   Number         0  rtx_lib.o(.text._mutex_free)
+    [Anonymous Symbol]                       0x08000a70   Section        0  rtx_lib.o(.text._mutex_free)
+    __tagsym$$used.0                         0x08000a7c   Number         0  rtx_lib.o(.text._mutex_initialize)
+    [Anonymous Symbol]                       0x08000a7c   Section        0  rtx_lib.o(.text._mutex_initialize)
+    __tagsym$$used.2                         0x08000a9c   Number         0  rtx_lib.o(.text._mutex_release)
+    [Anonymous Symbol]                       0x08000a9c   Section        0  rtx_lib.o(.text._mutex_release)
+    [Anonymous Symbol]                       0x08000ab4   Section        0  rtx_lib.o(.text._platform_post_stackheap_init)
+    atomic_chk32_all                         0x08000abd   Thumb Code    38  rtx_thread.o(.text.atomic_chk32_all)
+    [Anonymous Symbol]                       0x08000abc   Section        0  rtx_thread.o(.text.atomic_chk32_all)
+    atomic_chk32_any                         0x08000ae5   Thumb Code    34  rtx_thread.o(.text.atomic_chk32_any)
+    [Anonymous Symbol]                       0x08000ae4   Section        0  rtx_thread.o(.text.atomic_chk32_any)
+    atomic_dec16_nz                          0x08000b09   Thumb Code    36  rtx_system.o(.text.atomic_dec16_nz)
+    [Anonymous Symbol]                       0x08000b08   Section        0  rtx_system.o(.text.atomic_dec16_nz)
+    atomic_dec32                             0x08000b2d   Thumb Code    16  rtx_mempool.o(.text.atomic_dec32)
+    [Anonymous Symbol]                       0x08000b2c   Section        0  rtx_mempool.o(.text.atomic_dec32)
+    atomic_dec32_nz                          0x08000b3d   Thumb Code    26  rtx_msgqueue.o(.text.atomic_dec32_nz)
+    [Anonymous Symbol]                       0x08000b3c   Section        0  rtx_msgqueue.o(.text.atomic_dec32_nz)
+    atomic_inc16_lim                         0x08000b59   Thumb Code    26  rtx_system.o(.text.atomic_inc16_lim)
+    [Anonymous Symbol]                       0x08000b58   Section        0  rtx_system.o(.text.atomic_inc16_lim)
+    atomic_inc16_lt                          0x08000b75   Thumb Code    40  rtx_system.o(.text.atomic_inc16_lt)
+    [Anonymous Symbol]                       0x08000b74   Section        0  rtx_system.o(.text.atomic_inc16_lt)
+    atomic_inc32                             0x08000b9d   Thumb Code    16  rtx_mempool.o(.text.atomic_inc32)
+    [Anonymous Symbol]                       0x08000b9c   Section        0  rtx_mempool.o(.text.atomic_inc32)
+    atomic_inc32                             0x08000bad   Thumb Code    16  rtx_msgqueue.o(.text.atomic_inc32)
+    [Anonymous Symbol]                       0x08000bac   Section        0  rtx_msgqueue.o(.text.atomic_inc32)
+    atomic_link_get                          0x08000bbd   Thumb Code    26  rtx_mempool.o(.text.atomic_link_get)
+    [Anonymous Symbol]                       0x08000bbc   Section        0  rtx_mempool.o(.text.atomic_link_get)
+    atomic_link_put                          0x08000bd9   Thumb Code    30  rtx_mempool.o(.text.atomic_link_put)
+    [Anonymous Symbol]                       0x08000bd8   Section        0  rtx_mempool.o(.text.atomic_link_put)
+    atomic_wr8                               0x08000bf9   Thumb Code    18  rtx_msgqueue.o(.text.atomic_wr8)
+    [Anonymous Symbol]                       0x08000bf8   Section        0  rtx_msgqueue.o(.text.atomic_wr8)
+    isrRtxMessageQueueGet                    0x08000c0d   Thumb Code   116  rtx_msgqueue.o(.text.isrRtxMessageQueueGet)
+    [Anonymous Symbol]                       0x08000c0c   Section        0  rtx_msgqueue.o(.text.isrRtxMessageQueueGet)
+    isrRtxMessageQueuePut                    0x08000c81   Thumb Code   126  rtx_msgqueue.o(.text.isrRtxMessageQueuePut)
+    [Anonymous Symbol]                       0x08000c80   Section        0  rtx_msgqueue.o(.text.isrRtxMessageQueuePut)
+    isr_queue_get                            0x08000d01   Thumb Code    46  rtx_system.o(.text.isr_queue_get)
+    [Anonymous Symbol]                       0x08000d00   Section        0  rtx_system.o(.text.isr_queue_get)
+    isr_queue_put                            0x08000d31   Thumb Code    50  rtx_system.o(.text.isr_queue_put)
+    [Anonymous Symbol]                       0x08000d30   Section        0  rtx_system.o(.text.isr_queue_put)
+    [Anonymous Symbol]                       0x08000d64   Section        0  main.o(.text.main)
+    [Anonymous Symbol]                       0x08000dac   Section        0  rtx_delay.o(.text.osDelay)
+    [Anonymous Symbol]                       0x08000de0   Section        0  rtx_kernel.o(.text.osKernelGetState)
+    [Anonymous Symbol]                       0x08000e08   Section        0  rtx_kernel.o(.text.osKernelInitialize)
+    [Anonymous Symbol]                       0x08000e3c   Section        0  rtx_kernel.o(.text.osKernelStart)
+    [Anonymous Symbol]                       0x08000e6c   Section        0  rtx_msgqueue.o(.text.osMessageQueueGet)
+    [Anonymous Symbol]                       0x08000eb0   Section        0  rtx_msgqueue.o(.text.osMessageQueueNew)
+    [Anonymous Symbol]                       0x08000eec   Section        0  rtx_msgqueue.o(.text.osMessageQueuePut)
+    [Anonymous Symbol]                       0x08000f30   Section        0  rtx_mutex.o(.text.osMutexAcquire)
+    [Anonymous Symbol]                       0x08000f68   Section        0  rtx_mutex.o(.text.osMutexDelete)
+    [Anonymous Symbol]                       0x08000f9c   Section        0  rtx_mutex.o(.text.osMutexNew)
+    [Anonymous Symbol]                       0x08000fd0   Section        0  rtx_mutex.o(.text.osMutexRelease)
+    [Anonymous Symbol]                       0x08001004   Section        0  rtx_config.o(.text.osRtxErrorNotify)
+    osRtxEventFlagsObject                    0x08001009   Thumb Code     2  rtx_system.o(.text.osRtxEventFlagsObject)
+    [Anonymous Symbol]                       0x08001008   Section        0  rtx_system.o(.text.osRtxEventFlagsObject)
+    osRtxEventFlagsObject                    0x0800100d   Thumb Code     2  rtx_thread.o(.text.osRtxEventFlagsObject)
+    [Anonymous Symbol]                       0x0800100c   Section        0  rtx_thread.o(.text.osRtxEventFlagsObject)
+    [Anonymous Symbol]                       0x08001010   Section        0  rtx_config.o(.text.osRtxIdleThread)
+    osRtxKernelGetState                      0x08001015   Thumb Code    12  rtx_system.o(.text.osRtxKernelGetState)
+    [Anonymous Symbol]                       0x08001014   Section        0  rtx_system.o(.text.osRtxKernelGetState)
+    osRtxKernelGetState                      0x08001021   Thumb Code    12  rtx_thread.o(.text.osRtxKernelGetState)
+    [Anonymous Symbol]                       0x08001020   Section        0  rtx_thread.o(.text.osRtxKernelGetState)
+    [Anonymous Symbol]                       0x0800102c   Section        0  rtx_kernel.o(.text.osRtxKernelPreInit)
+    osRtxKernelState                         0x08001031   Thumb Code    12  rtx_kernel.o(.text.osRtxKernelState)
+    [Anonymous Symbol]                       0x08001030   Section        0  rtx_kernel.o(.text.osRtxKernelState)
+    [Anonymous Symbol]                       0x0800103c   Section        0  rtx_memory.o(.text.osRtxMemoryAlloc)
+    [Anonymous Symbol]                       0x0800110c   Section        0  rtx_memory.o(.text.osRtxMemoryFree)
+    [Anonymous Symbol]                       0x08001184   Section        0  rtx_memory.o(.text.osRtxMemoryInit)
+    [Anonymous Symbol]                       0x080011e8   Section        0  rtx_mempool.o(.text.osRtxMemoryPoolAlloc)
+    [Anonymous Symbol]                       0x08001214   Section        0  rtx_mempool.o(.text.osRtxMemoryPoolFree)
+    [Anonymous Symbol]                       0x08001258   Section        0  rtx_mempool.o(.text.osRtxMemoryPoolInit)
+    osRtxMemoryPoolObject                    0x080012b9   Thumb Code     2  rtx_system.o(.text.osRtxMemoryPoolObject)
+    [Anonymous Symbol]                       0x080012b8   Section        0  rtx_system.o(.text.osRtxMemoryPoolObject)
+    osRtxMemoryPoolObject                    0x080012bd   Thumb Code     2  rtx_thread.o(.text.osRtxMemoryPoolObject)
+    [Anonymous Symbol]                       0x080012bc   Section        0  rtx_thread.o(.text.osRtxMemoryPoolObject)
+    osRtxMessageObject                       0x080012c1   Thumb Code     2  rtx_system.o(.text.osRtxMessageObject)
+    [Anonymous Symbol]                       0x080012c0   Section        0  rtx_system.o(.text.osRtxMessageObject)
+    osRtxMessageQueueId                      0x080012c5   Thumb Code     2  rtx_msgqueue.o(.text.osRtxMessageQueueId)
+    [Anonymous Symbol]                       0x080012c4   Section        0  rtx_msgqueue.o(.text.osRtxMessageQueueId)
+    osRtxMessageQueueId                      0x080012c9   Thumb Code     2  rtx_timer.o(.text.osRtxMessageQueueId)
+    [Anonymous Symbol]                       0x080012c8   Section        0  rtx_timer.o(.text.osRtxMessageQueueId)
+    osRtxMessageQueueObject                  0x080012cd   Thumb Code     2  rtx_thread.o(.text.osRtxMessageQueueObject)
+    [Anonymous Symbol]                       0x080012cc   Section        0  rtx_thread.o(.text.osRtxMessageQueueObject)
+    osRtxMessageQueuePostProcess             0x080012d1   Thumb Code   258  rtx_msgqueue.o(.text.osRtxMessageQueuePostProcess)
+    [Anonymous Symbol]                       0x080012d0   Section        0  rtx_msgqueue.o(.text.osRtxMessageQueuePostProcess)
+    osRtxMutexId                             0x080013d5   Thumb Code     2  rtx_mutex.o(.text.osRtxMutexId)
+    [Anonymous Symbol]                       0x080013d4   Section        0  rtx_mutex.o(.text.osRtxMutexId)
+    osRtxMutexObject                         0x080013d9   Thumb Code     2  rtx_thread.o(.text.osRtxMutexObject)
+    [Anonymous Symbol]                       0x080013d8   Section        0  rtx_thread.o(.text.osRtxMutexObject)
+    [Anonymous Symbol]                       0x080013dc   Section        0  rtx_mutex.o(.text.osRtxMutexOwnerRelease)
+    [Anonymous Symbol]                       0x08001448   Section        0  rtx_mutex.o(.text.osRtxMutexOwnerRestore)
+    osRtxObject                              0x08001495   Thumb Code     2  rtx_msgqueue.o(.text.osRtxObject)
+    [Anonymous Symbol]                       0x08001494   Section        0  rtx_msgqueue.o(.text.osRtxObject)
+    osRtxObject                              0x08001499   Thumb Code     2  rtx_mutex.o(.text.osRtxObject)
+    [Anonymous Symbol]                       0x08001498   Section        0  rtx_mutex.o(.text.osRtxObject)
+    osRtxObject                              0x0800149d   Thumb Code     2  rtx_system.o(.text.osRtxObject)
+    [Anonymous Symbol]                       0x0800149c   Section        0  rtx_system.o(.text.osRtxObject)
+    osRtxObject                              0x080014a1   Thumb Code     2  rtx_thread.o(.text.osRtxObject)
+    [Anonymous Symbol]                       0x080014a0   Section        0  rtx_thread.o(.text.osRtxObject)
+    [Anonymous Symbol]                       0x080014a4   Section        0  rtx_system.o(.text.osRtxPendSV_Handler)
+    [Anonymous Symbol]                       0x08001508   Section        0  rtx_system.o(.text.osRtxPostProcess)
+    osRtxSemaphoreObject                     0x08001535   Thumb Code     2  rtx_system.o(.text.osRtxSemaphoreObject)
+    [Anonymous Symbol]                       0x08001534   Section        0  rtx_system.o(.text.osRtxSemaphoreObject)
+    osRtxSemaphoreObject                     0x08001539   Thumb Code     2  rtx_thread.o(.text.osRtxSemaphoreObject)
+    [Anonymous Symbol]                       0x08001538   Section        0  rtx_thread.o(.text.osRtxSemaphoreObject)
+    osRtxThreadBlock                         0x0800153d   Thumb Code    72  rtx_thread.o(.text.osRtxThreadBlock)
+    [Anonymous Symbol]                       0x0800153c   Section        0  rtx_thread.o(.text.osRtxThreadBlock)
+    osRtxThreadDelayInsert                   0x08001585   Thumb Code   160  rtx_thread.o(.text.osRtxThreadDelayInsert)
+    [Anonymous Symbol]                       0x08001584   Section        0  rtx_thread.o(.text.osRtxThreadDelayInsert)
+    osRtxThreadDelayRemove                   0x08001625   Thumb Code    72  rtx_thread.o(.text.osRtxThreadDelayRemove)
+    [Anonymous Symbol]                       0x08001624   Section        0  rtx_thread.o(.text.osRtxThreadDelayRemove)
+    [Anonymous Symbol]                       0x0800166c   Section        0  rtx_thread.o(.text.osRtxThreadDelayTick)
+    [Anonymous Symbol]                       0x08001764   Section        0  rtx_thread.o(.text.osRtxThreadDispatch)
+    osRtxThreadFree                          0x080017c5   Thumb Code    96  rtx_thread.o(.text.osRtxThreadFree)
+    [Anonymous Symbol]                       0x080017c4   Section        0  rtx_thread.o(.text.osRtxThreadFree)
+    osRtxThreadGetRunning                    0x08001825   Thumb Code    12  rtx_delay.o(.text.osRtxThreadGetRunning)
+    [Anonymous Symbol]                       0x08001824   Section        0  rtx_delay.o(.text.osRtxThreadGetRunning)
+    osRtxThreadGetRunning                    0x08001831   Thumb Code    12  rtx_msgqueue.o(.text.osRtxThreadGetRunning)
+    [Anonymous Symbol]                       0x08001830   Section        0  rtx_msgqueue.o(.text.osRtxThreadGetRunning)
+    osRtxThreadGetRunning                    0x0800183d   Thumb Code    12  rtx_mutex.o(.text.osRtxThreadGetRunning)
+    [Anonymous Symbol]                       0x0800183c   Section        0  rtx_mutex.o(.text.osRtxThreadGetRunning)
+    osRtxThreadGetRunning                    0x08001849   Thumb Code    12  rtx_thread.o(.text.osRtxThreadGetRunning)
+    [Anonymous Symbol]                       0x08001848   Section        0  rtx_thread.o(.text.osRtxThreadGetRunning)
+    osRtxThreadId                            0x08001855   Thumb Code     2  rtx_thread.o(.text.osRtxThreadId)
+    [Anonymous Symbol]                       0x08001854   Section        0  rtx_thread.o(.text.osRtxThreadId)
+    [Anonymous Symbol]                       0x08001858   Section        0  rtx_thread.o(.text.osRtxThreadListGet)
+    [Anonymous Symbol]                       0x08001870   Section        0  rtx_thread.o(.text.osRtxThreadListPut)
+    [Anonymous Symbol]                       0x080018a4   Section        0  rtx_thread.o(.text.osRtxThreadListRemove)
+    osRtxThreadListRoot                      0x080018c1   Thumb Code    18  rtx_thread.o(.text.osRtxThreadListRoot)
+    [Anonymous Symbol]                       0x080018c0   Section        0  rtx_thread.o(.text.osRtxThreadListRoot)
+    [Anonymous Symbol]                       0x080018d4   Section        0  rtx_thread.o(.text.osRtxThreadListSort)
+    osRtxThreadObject                        0x08001905   Thumb Code     2  rtx_system.o(.text.osRtxThreadObject)
+    [Anonymous Symbol]                       0x08001904   Section        0  rtx_system.o(.text.osRtxThreadObject)
+    osRtxThreadObject                        0x08001909   Thumb Code     2  rtx_thread.o(.text.osRtxThreadObject)
+    [Anonymous Symbol]                       0x08001908   Section        0  rtx_thread.o(.text.osRtxThreadObject)
+    osRtxThreadPostProcess                   0x0800190d   Thumb Code    56  rtx_thread.o(.text.osRtxThreadPostProcess)
+    [Anonymous Symbol]                       0x0800190c   Section        0  rtx_thread.o(.text.osRtxThreadPostProcess)
+    [Anonymous Symbol]                       0x08001944   Section        0  rtx_thread.o(.text.osRtxThreadReadyPut)
+    [Anonymous Symbol]                       0x0800195c   Section        0  rtx_thread.o(.text.osRtxThreadRegPtr)
+    osRtxThreadSetRunning                    0x0800196d   Thumb Code    14  rtx_thread.o(.text.osRtxThreadSetRunning)
+    [Anonymous Symbol]                       0x0800196c   Section        0  rtx_thread.o(.text.osRtxThreadSetRunning)
+    [Anonymous Symbol]                       0x0800197c   Section        0  rtx_thread.o(.text.osRtxThreadStackCheck)
+    [Anonymous Symbol]                       0x080019a8   Section        0  rtx_thread.o(.text.osRtxThreadStartup)
+    [Anonymous Symbol]                       0x080019f8   Section        0  rtx_thread.o(.text.osRtxThreadSwitch)
+    [Anonymous Symbol]                       0x08001a18   Section        0  rtx_thread.o(.text.osRtxThreadWaitEnter)
+    [Anonymous Symbol]                       0x08001a74   Section        0  rtx_thread.o(.text.osRtxThreadWaitExit)
+    [Anonymous Symbol]                       0x08001aa0   Section        0  rtx_system.o(.text.osRtxTick_Handler)
+    [Anonymous Symbol]                       0x08001b24   Section        0  rtx_timer.o(.text.osRtxTimerThread)
+    osRtxTimerTick                           0x08001b79   Thumb Code    86  rtx_timer.o(.text.osRtxTimerTick)
+    [Anonymous Symbol]                       0x08001b78   Section        0  rtx_timer.o(.text.osRtxTimerTick)
+    [Anonymous Symbol]                       0x08001bd0   Section        0  rtx_thread.o(.text.osThreadExit)
+    [Anonymous Symbol]                       0x08001bec   Section        0  rtx_thread.o(.text.osThreadNew)
+    os_kernel_is_active                      0x08001c29   Thumb Code    30  rtx_lib.o(.text.os_kernel_is_active)
+    [Anonymous Symbol]                       0x08001c28   Section        0  rtx_lib.o(.text.os_kernel_is_active)
+    svcRtxDelay                              0x08001c49   Thumb Code    38  rtx_delay.o(.text.svcRtxDelay)
+    [Anonymous Symbol]                       0x08001c48   Section        0  rtx_delay.o(.text.svcRtxDelay)
+    svcRtxKernelGetState                     0x08001c71   Thumb Code    16  rtx_kernel.o(.text.svcRtxKernelGetState)
+    [Anonymous Symbol]                       0x08001c70   Section        0  rtx_kernel.o(.text.svcRtxKernelGetState)
+    svcRtxKernelInitialize                   0x08001c81   Thumb Code   354  rtx_kernel.o(.text.svcRtxKernelInitialize)
+    [Anonymous Symbol]                       0x08001c80   Section        0  rtx_kernel.o(.text.svcRtxKernelInitialize)
+    svcRtxKernelStart                        0x08001de5   Thumb Code   128  rtx_kernel.o(.text.svcRtxKernelStart)
+    [Anonymous Symbol]                       0x08001de4   Section        0  rtx_kernel.o(.text.svcRtxKernelStart)
+    svcRtxMessageQueueGet                    0x08001e65   Thumb Code   306  rtx_msgqueue.o(.text.svcRtxMessageQueueGet)
+    [Anonymous Symbol]                       0x08001e64   Section        0  rtx_msgqueue.o(.text.svcRtxMessageQueueGet)
+    svcRtxMessageQueueNew                    0x08001f99   Thumb Code   422  rtx_msgqueue.o(.text.svcRtxMessageQueueNew)
+    [Anonymous Symbol]                       0x08001f98   Section        0  rtx_msgqueue.o(.text.svcRtxMessageQueueNew)
+    svcRtxMessageQueuePut                    0x08002141   Thumb Code   276  rtx_msgqueue.o(.text.svcRtxMessageQueuePut)
+    [Anonymous Symbol]                       0x08002140   Section        0  rtx_msgqueue.o(.text.svcRtxMessageQueuePut)
+    svcRtxMutexAcquire                       0x08002255   Thumb Code   230  rtx_mutex.o(.text.svcRtxMutexAcquire)
+    [Anonymous Symbol]                       0x08002254   Section        0  rtx_mutex.o(.text.svcRtxMutexAcquire)
+    svcRtxMutexDelete                        0x0800233d   Thumb Code   220  rtx_mutex.o(.text.svcRtxMutexDelete)
+    [Anonymous Symbol]                       0x0800233c   Section        0  rtx_mutex.o(.text.svcRtxMutexDelete)
+    svcRtxMutexNew                           0x08002419   Thumb Code   144  rtx_mutex.o(.text.svcRtxMutexNew)
+    [Anonymous Symbol]                       0x08002418   Section        0  rtx_mutex.o(.text.svcRtxMutexNew)
+    svcRtxMutexRelease                       0x080024a9   Thumb Code   250  rtx_mutex.o(.text.svcRtxMutexRelease)
+    [Anonymous Symbol]                       0x080024a8   Section        0  rtx_mutex.o(.text.svcRtxMutexRelease)
+    svcRtxThreadExit                         0x080025a5   Thumb Code   120  rtx_thread.o(.text.svcRtxThreadExit)
+    [Anonymous Symbol]                       0x080025a4   Section        0  rtx_thread.o(.text.svcRtxThreadExit)
+    svcRtxThreadNew                          0x0800261d   Thumb Code   574  rtx_thread.o(.text.svcRtxThreadNew)
+    [Anonymous Symbol]                       0x0800261c   Section        0  rtx_thread.o(.text.svcRtxThreadNew)
+    $v0                                      0x0800285a   Number         0  fpinit.o(x$fpl$fpinit)
+    x$fpl$fpinit                             0x0800285a   Section       26  fpinit.o(x$fpl$fpinit)
+    __tagsym$$used.4                         0x08002874   Number         0  rtx_lib.o(.rodata)
+    __tagsym$$used.5                         0x080028dc   Number         0  rtx_lib.o(.rodata)
+    os_idle_thread_attr                      0x08002928   Data          36  rtx_lib.o(.rodata.os_idle_thread_attr)
+    [Anonymous Symbol]                       0x08002928   Section        0  rtx_lib.o(.rodata.os_idle_thread_attr)
+    os_timer_mq_attr                         0x0800294c   Data          24  rtx_lib.o(.rodata.os_timer_mq_attr)
+    [Anonymous Symbol]                       0x0800294c   Section        0  rtx_lib.o(.rodata.os_timer_mq_attr)
+    os_timer_thread_attr                     0x08002964   Data          36  rtx_lib.o(.rodata.os_timer_thread_attr)
+    [Anonymous Symbol]                       0x08002964   Section        0  rtx_lib.o(.rodata.os_timer_thread_attr)
+    .L.str                                   0x08002988   Data          11  rtx_kernel.o(.rodata.str1.4)
+    [Anonymous Symbol]                       0x08002988   Section        0  rtx_kernel.o(.rodata.str1.4)
     .bss                                     0x200000a8   Section       96  libspace.o(.bss)
     PendST                                   0x20000108   Data           1  os_systick.o(.bss.PendST)
     [Anonymous Symbol]                       0x20000108   Section        0  os_systick.o(.bss.PendST)
@@ -3310,68 +3310,68 @@ Image Symbol Table
     EvrRtxThreadSwitched                     0x08000629   Thumb Code     2  rtx_evr.o(.text.EvrRtxThreadSwitched)
     EvrRtxThreadUnblocked                    0x0800062d   Thumb Code     2  rtx_evr.o(.text.EvrRtxThreadUnblocked)
     EvrRtxTimerCallback                      0x08000631   Thumb Code     2  rtx_evr.o(.text.EvrRtxTimerCallback)
-    OS_Tick_AcknowledgeIRQ                   0x0800082d   Thumb Code    12  os_systick.o(.text.OS_Tick_AcknowledgeIRQ)
-    OS_Tick_Enable                           0x08000839   Thumb Code    50  os_systick.o(.text.OS_Tick_Enable)
-    OS_Tick_GetIRQn                          0x0800086d   Thumb Code     6  os_systick.o(.text.OS_Tick_GetIRQn)
-    OS_Tick_Setup                            0x08000875   Thumb Code    72  os_systick.o(.text.OS_Tick_Setup)
-    SystemCoreClockUpdate                    0x08000909   Thumb Code   126  system_stm32f4xx.o(.text.SystemCoreClockUpdate)
-    SystemInit                               0x08000989   Thumb Code    26  system_stm32f4xx.o(.text.SystemInit)
-    _mutex_acquire                           0x08000a75   Thumb Code    26  rtx_lib.o(.text._mutex_acquire)
-    _mutex_free                              0x08000a91   Thumb Code    10  rtx_lib.o(.text._mutex_free)
-    _mutex_initialize                        0x08000a9d   Thumb Code    32  rtx_lib.o(.text._mutex_initialize)
-    _mutex_release                           0x08000abd   Thumb Code    22  rtx_lib.o(.text._mutex_release)
-    _platform_post_stackheap_init            0x08000ad5   Thumb Code     8  rtx_lib.o(.text._platform_post_stackheap_init)
-    main                                     0x08000d85   Thumb Code    46  main.o(.text.main)
-    osDelay                                  0x08000db5   Thumb Code    50  rtx_delay.o(.text.osDelay)
-    osKernelGetState                         0x08000de9   Thumb Code    38  rtx_kernel.o(.text.osKernelGetState)
-    osKernelInitialize                       0x08000e11   Thumb Code    50  rtx_kernel.o(.text.osKernelInitialize)
-    osKernelStart                            0x08000e45   Thumb Code    46  rtx_kernel.o(.text.osKernelStart)
-    osMessageQueueGet                        0x08000e75   Thumb Code    66  rtx_msgqueue.o(.text.osMessageQueueGet)
-    osMessageQueueNew                        0x08000eb9   Thumb Code    58  rtx_msgqueue.o(.text.osMessageQueueNew)
-    osMessageQueuePut                        0x08000ef5   Thumb Code    66  rtx_msgqueue.o(.text.osMessageQueuePut)
-    osMutexAcquire                           0x08000f39   Thumb Code    56  rtx_mutex.o(.text.osMutexAcquire)
-    osMutexDelete                            0x08000f71   Thumb Code    52  rtx_mutex.o(.text.osMutexDelete)
-    osMutexNew                               0x08000fa5   Thumb Code    50  rtx_mutex.o(.text.osMutexNew)
-    osMutexRelease                           0x08000fd9   Thumb Code    52  rtx_mutex.o(.text.osMutexRelease)
-    osRtxErrorNotify                         0x0800100d   Thumb Code     2  rtx_config.o(.text.osRtxErrorNotify)
-    osRtxIdleThread                          0x08001019   Thumb Code     2  rtx_config.o(.text.osRtxIdleThread)
-    osRtxKernelPreInit                       0x08001035   Thumb Code     2  rtx_kernel.o(.text.osRtxKernelPreInit)
-    osRtxMemoryAlloc                         0x08001045   Thumb Code   206  rtx_memory.o(.text.osRtxMemoryAlloc)
-    osRtxMemoryFree                          0x08001115   Thumb Code   120  rtx_memory.o(.text.osRtxMemoryFree)
-    osRtxMemoryInit                          0x0800118d   Thumb Code   100  rtx_memory.o(.text.osRtxMemoryInit)
-    osRtxMemoryPoolAlloc                     0x080011f1   Thumb Code    42  rtx_mempool.o(.text.osRtxMemoryPoolAlloc)
-    osRtxMemoryPoolFree                      0x0800121d   Thumb Code    66  rtx_mempool.o(.text.osRtxMemoryPoolFree)
-    osRtxMemoryPoolInit                      0x08001261   Thumb Code    96  rtx_mempool.o(.text.osRtxMemoryPoolInit)
-    osRtxMutexOwnerRelease                   0x080013e5   Thumb Code   106  rtx_mutex.o(.text.osRtxMutexOwnerRelease)
-    osRtxMutexOwnerRestore                   0x08001451   Thumb Code    74  rtx_mutex.o(.text.osRtxMutexOwnerRestore)
-    osRtxPendSV_Handler                      0x080014ad   Thumb Code   100  rtx_system.o(.text.osRtxPendSV_Handler)
-    osRtxPostProcess                         0x08001511   Thumb Code    44  rtx_system.o(.text.osRtxPostProcess)
-    osRtxThreadDelayTick                     0x08001675   Thumb Code   246  rtx_thread.o(.text.osRtxThreadDelayTick)
-    osRtxThreadDispatch                      0x0800176d   Thumb Code    94  rtx_thread.o(.text.osRtxThreadDispatch)
-    osRtxThreadListGet                       0x08001861   Thumb Code    24  rtx_thread.o(.text.osRtxThreadListGet)
-    osRtxThreadListPut                       0x08001879   Thumb Code    52  rtx_thread.o(.text.osRtxThreadListPut)
-    osRtxThreadListRemove                    0x080018ad   Thumb Code    28  rtx_thread.o(.text.osRtxThreadListRemove)
-    osRtxThreadListSort                      0x080018dd   Thumb Code    48  rtx_thread.o(.text.osRtxThreadListSort)
-    osRtxThreadReadyPut                      0x0800194d   Thumb Code    24  rtx_thread.o(.text.osRtxThreadReadyPut)
-    osRtxThreadRegPtr                        0x08001965   Thumb Code    16  rtx_thread.o(.text.osRtxThreadRegPtr)
-    osRtxThreadStackCheck                    0x08001985   Thumb Code    42  rtx_thread.o(.text.osRtxThreadStackCheck)
-    osRtxThreadStartup                       0x080019b1   Thumb Code    78  rtx_thread.o(.text.osRtxThreadStartup)
-    osRtxThreadSwitch                        0x08001a01   Thumb Code    30  rtx_thread.o(.text.osRtxThreadSwitch)
-    osRtxThreadWaitEnter                     0x08001a21   Thumb Code    92  rtx_thread.o(.text.osRtxThreadWaitEnter)
-    osRtxThreadWaitExit                      0x08001a7d   Thumb Code    42  rtx_thread.o(.text.osRtxThreadWaitExit)
-    osRtxTick_Handler                        0x08001aa9   Thumb Code   132  rtx_system.o(.text.osRtxTick_Handler)
-    osRtxTimerThread                         0x08001b2d   Thumb Code    82  rtx_timer.o(.text.osRtxTimerThread)
-    osThreadExit                             0x08001bd9   Thumb Code    26  rtx_thread.o(.text.osThreadExit)
-    osThreadNew                              0x08001bf5   Thumb Code    58  rtx_thread.o(.text.osThreadNew)
-    _fp_init                                 0x08002863   Thumb Code    26  fpinit.o(x$fpl$fpinit)
-    __fplib_config_fpu_vfp                   0x0800287b   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    __fplib_config_pureend_doubles           0x0800287b   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    osRtxConfig                              0x0800287c   Data         104  rtx_lib.o(.rodata)
-    os_cb_sections                           0x080028e4   Data          56  rtx_lib.o(.rodata)
-    AHBPrescTable                            0x0800291c   Data          16  system_stm32f4xx.o(.rodata.AHBPrescTable)
-    osRtxUserSVC                             0x0800292c   Data           4  rtx_lib.o(.rodata.osRtxUserSVC)
-    Region$$Table$$Base                      0x0800299c   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x080029bc   Number         0  anon$$obj.o(Region$$Table)
+    OS_Tick_AcknowledgeIRQ                   0x0800080d   Thumb Code    12  os_systick.o(.text.OS_Tick_AcknowledgeIRQ)
+    OS_Tick_Enable                           0x08000819   Thumb Code    50  os_systick.o(.text.OS_Tick_Enable)
+    OS_Tick_GetIRQn                          0x0800084d   Thumb Code     6  os_systick.o(.text.OS_Tick_GetIRQn)
+    OS_Tick_Setup                            0x08000855   Thumb Code    72  os_systick.o(.text.OS_Tick_Setup)
+    SystemCoreClockUpdate                    0x080008e9   Thumb Code   126  system_stm32f4xx.o(.text.SystemCoreClockUpdate)
+    SystemInit                               0x08000969   Thumb Code    26  system_stm32f4xx.o(.text.SystemInit)
+    _mutex_acquire                           0x08000a55   Thumb Code    26  rtx_lib.o(.text._mutex_acquire)
+    _mutex_free                              0x08000a71   Thumb Code    10  rtx_lib.o(.text._mutex_free)
+    _mutex_initialize                        0x08000a7d   Thumb Code    32  rtx_lib.o(.text._mutex_initialize)
+    _mutex_release                           0x08000a9d   Thumb Code    22  rtx_lib.o(.text._mutex_release)
+    _platform_post_stackheap_init            0x08000ab5   Thumb Code     8  rtx_lib.o(.text._platform_post_stackheap_init)
+    main                                     0x08000d65   Thumb Code    70  main.o(.text.main)
+    osDelay                                  0x08000dad   Thumb Code    50  rtx_delay.o(.text.osDelay)
+    osKernelGetState                         0x08000de1   Thumb Code    38  rtx_kernel.o(.text.osKernelGetState)
+    osKernelInitialize                       0x08000e09   Thumb Code    50  rtx_kernel.o(.text.osKernelInitialize)
+    osKernelStart                            0x08000e3d   Thumb Code    46  rtx_kernel.o(.text.osKernelStart)
+    osMessageQueueGet                        0x08000e6d   Thumb Code    66  rtx_msgqueue.o(.text.osMessageQueueGet)
+    osMessageQueueNew                        0x08000eb1   Thumb Code    58  rtx_msgqueue.o(.text.osMessageQueueNew)
+    osMessageQueuePut                        0x08000eed   Thumb Code    66  rtx_msgqueue.o(.text.osMessageQueuePut)
+    osMutexAcquire                           0x08000f31   Thumb Code    56  rtx_mutex.o(.text.osMutexAcquire)
+    osMutexDelete                            0x08000f69   Thumb Code    52  rtx_mutex.o(.text.osMutexDelete)
+    osMutexNew                               0x08000f9d   Thumb Code    50  rtx_mutex.o(.text.osMutexNew)
+    osMutexRelease                           0x08000fd1   Thumb Code    52  rtx_mutex.o(.text.osMutexRelease)
+    osRtxErrorNotify                         0x08001005   Thumb Code     2  rtx_config.o(.text.osRtxErrorNotify)
+    osRtxIdleThread                          0x08001011   Thumb Code     2  rtx_config.o(.text.osRtxIdleThread)
+    osRtxKernelPreInit                       0x0800102d   Thumb Code     2  rtx_kernel.o(.text.osRtxKernelPreInit)
+    osRtxMemoryAlloc                         0x0800103d   Thumb Code   206  rtx_memory.o(.text.osRtxMemoryAlloc)
+    osRtxMemoryFree                          0x0800110d   Thumb Code   120  rtx_memory.o(.text.osRtxMemoryFree)
+    osRtxMemoryInit                          0x08001185   Thumb Code   100  rtx_memory.o(.text.osRtxMemoryInit)
+    osRtxMemoryPoolAlloc                     0x080011e9   Thumb Code    42  rtx_mempool.o(.text.osRtxMemoryPoolAlloc)
+    osRtxMemoryPoolFree                      0x08001215   Thumb Code    66  rtx_mempool.o(.text.osRtxMemoryPoolFree)
+    osRtxMemoryPoolInit                      0x08001259   Thumb Code    96  rtx_mempool.o(.text.osRtxMemoryPoolInit)
+    osRtxMutexOwnerRelease                   0x080013dd   Thumb Code   106  rtx_mutex.o(.text.osRtxMutexOwnerRelease)
+    osRtxMutexOwnerRestore                   0x08001449   Thumb Code    74  rtx_mutex.o(.text.osRtxMutexOwnerRestore)
+    osRtxPendSV_Handler                      0x080014a5   Thumb Code   100  rtx_system.o(.text.osRtxPendSV_Handler)
+    osRtxPostProcess                         0x08001509   Thumb Code    44  rtx_system.o(.text.osRtxPostProcess)
+    osRtxThreadDelayTick                     0x0800166d   Thumb Code   246  rtx_thread.o(.text.osRtxThreadDelayTick)
+    osRtxThreadDispatch                      0x08001765   Thumb Code    94  rtx_thread.o(.text.osRtxThreadDispatch)
+    osRtxThreadListGet                       0x08001859   Thumb Code    24  rtx_thread.o(.text.osRtxThreadListGet)
+    osRtxThreadListPut                       0x08001871   Thumb Code    52  rtx_thread.o(.text.osRtxThreadListPut)
+    osRtxThreadListRemove                    0x080018a5   Thumb Code    28  rtx_thread.o(.text.osRtxThreadListRemove)
+    osRtxThreadListSort                      0x080018d5   Thumb Code    48  rtx_thread.o(.text.osRtxThreadListSort)
+    osRtxThreadReadyPut                      0x08001945   Thumb Code    24  rtx_thread.o(.text.osRtxThreadReadyPut)
+    osRtxThreadRegPtr                        0x0800195d   Thumb Code    16  rtx_thread.o(.text.osRtxThreadRegPtr)
+    osRtxThreadStackCheck                    0x0800197d   Thumb Code    42  rtx_thread.o(.text.osRtxThreadStackCheck)
+    osRtxThreadStartup                       0x080019a9   Thumb Code    78  rtx_thread.o(.text.osRtxThreadStartup)
+    osRtxThreadSwitch                        0x080019f9   Thumb Code    30  rtx_thread.o(.text.osRtxThreadSwitch)
+    osRtxThreadWaitEnter                     0x08001a19   Thumb Code    92  rtx_thread.o(.text.osRtxThreadWaitEnter)
+    osRtxThreadWaitExit                      0x08001a75   Thumb Code    42  rtx_thread.o(.text.osRtxThreadWaitExit)
+    osRtxTick_Handler                        0x08001aa1   Thumb Code   132  rtx_system.o(.text.osRtxTick_Handler)
+    osRtxTimerThread                         0x08001b25   Thumb Code    82  rtx_timer.o(.text.osRtxTimerThread)
+    osThreadExit                             0x08001bd1   Thumb Code    26  rtx_thread.o(.text.osThreadExit)
+    osThreadNew                              0x08001bed   Thumb Code    58  rtx_thread.o(.text.osThreadNew)
+    _fp_init                                 0x0800285b   Thumb Code    26  fpinit.o(x$fpl$fpinit)
+    __fplib_config_fpu_vfp                   0x08002873   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    __fplib_config_pureend_doubles           0x08002873   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    osRtxConfig                              0x08002874   Data         104  rtx_lib.o(.rodata)
+    os_cb_sections                           0x080028dc   Data          56  rtx_lib.o(.rodata)
+    AHBPrescTable                            0x08002914   Data          16  system_stm32f4xx.o(.rodata.AHBPrescTable)
+    osRtxUserSVC                             0x08002924   Data           4  rtx_lib.o(.rodata.osRtxUserSVC)
+    Region$$Table$$Base                      0x08002994   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x080029b4   Number         0  anon$$obj.o(Region$$Table)
     SystemCoreClock                          0x20000000   Data           4  system_stm32f4xx.o(.data.SystemCoreClock)
     osRtxInfo                                0x20000004   Data         164  rtx_kernel.o(.data.os)
     __libspace_start                         0x200000a8   Data          96  libspace.o(.bss)
@@ -3389,9 +3389,9 @@ Memory Map of the image
 
   Image Entry point : 0x08000301
 
-  Load Region LR_1 (Base: 0x08000000, Size: 0x00002a64, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x08000000, Size: 0x00002a5c, Max: 0xffffffff, ABSOLUTE)
 
-    Execution Region ER_RO (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x000029bc, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x000029b4, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -3586,251 +3586,251 @@ Memory Map of the image
     0x080006d0   0x080006d0   0x0000000c   Code   RO          760    .text.IsIrqMode     rtx_mutex.o
     0x080006dc   0x080006dc   0x0000000c   Code   RO          954    .text.IsIrqMode     rtx_thread.o
     0x080006e8   0x080006e8   0x0000000c   Code   RO          473    .text.IsPrivileged  rtx_kernel.o
-    0x080006f4   0x080006f4   0x00000042   Code   RO            4    .text.LED_Blink_PortD  main.o
-    0x08000736   0x08000736   0x00000002   PAD
-    0x08000738   0x08000738   0x00000042   Code   RO            6    .text.LED_Blink_PortE  main.o
-    0x0800077a   0x0800077a   0x00000002   PAD
-    0x0800077c   0x0800077c   0x00000004   Code   RO          588    .text.MemBlockPtr   rtx_memory.o
-    0x08000780   0x08000780   0x00000002   Code   RO          586    .text.MemHeadPtr    rtx_memory.o
-    0x08000782   0x08000782   0x00000002   PAD
-    0x08000784   0x08000784   0x0000002a   Code   RO          732    .text.MessageQueueGet  rtx_msgqueue.o
-    0x080007ae   0x080007ae   0x00000002   PAD
-    0x080007b0   0x080007b0   0x00000054   Code   RO          720    .text.MessageQueuePut  rtx_msgqueue.o
-    0x08000804   0x08000804   0x00000026   Code   RO          716    .text.MessageQueueRemove  rtx_msgqueue.o
-    0x0800082a   0x0800082a   0x00000002   PAD
-    0x0800082c   0x0800082c   0x0000000c   Code   RO         1130    .text.OS_Tick_AcknowledgeIRQ  os_systick.o
-    0x08000838   0x08000838   0x00000032   Code   RO         1126    .text.OS_Tick_Enable  os_systick.o
-    0x0800086a   0x0800086a   0x00000002   PAD
-    0x0800086c   0x0800086c   0x00000006   Code   RO         1132    .text.OS_Tick_GetIRQn  os_systick.o
-    0x08000872   0x08000872   0x00000002   PAD
-    0x08000874   0x08000874   0x00000048   Code   RO         1124    .text.OS_Tick_Setup  os_systick.o
-    0x080008bc   0x080008bc   0x00000030   Code   RO          515    .text.SVC_Setup     rtx_kernel.o
-    0x080008ec   0x080008ec   0x00000010   Code   RO          876    .text.SetPendSV     rtx_system.o
-    0x080008fc   0x080008fc   0x0000000c   Code   RO          924    .text.StackOffsetR0  rtx_thread.o
-    0x08000908   0x08000908   0x0000007e   Code   RO         1171    .text.SystemCoreClockUpdate  system_stm32f4xx.o
-    0x08000986   0x08000986   0x00000002   PAD
-    0x08000988   0x08000988   0x0000001a   Code   RO         1169    .text.SystemInit    system_stm32f4xx.o
-    0x080009a2   0x080009a2   0x00000002   PAD
-    0x080009a4   0x080009a4   0x00000040   Code   RO         1004    .text.ThreadFlagsCheck  rtx_thread.o
-    0x080009e4   0x080009e4   0x00000068   Code   RO         1098    .text.TimerInsert   rtx_timer.o
-    0x08000a4c   0x08000a4c   0x00000018   Code   RO         1096    .text.TimerUnlink   rtx_timer.o
-    0x08000a64   0x08000a64   0x00000010   Code   RO          517    .text.__NVIC_GetPriorityGrouping  rtx_kernel.o
-    0x08000a74   0x08000a74   0x0000001a   Code   RO          557    .text._mutex_acquire  rtx_lib.o
-    0x08000a8e   0x08000a8e   0x00000002   PAD
-    0x08000a90   0x08000a90   0x0000000a   Code   RO          561    .text._mutex_free   rtx_lib.o
-    0x08000a9a   0x08000a9a   0x00000002   PAD
-    0x08000a9c   0x08000a9c   0x00000020   Code   RO          555    .text._mutex_initialize  rtx_lib.o
-    0x08000abc   0x08000abc   0x00000016   Code   RO          559    .text._mutex_release  rtx_lib.o
-    0x08000ad2   0x08000ad2   0x00000002   PAD
-    0x08000ad4   0x08000ad4   0x00000008   Code   RO          549    .text._platform_post_stackheap_init  rtx_lib.o
-    0x08000adc   0x08000adc   0x00000026   Code   RO         1006    .text.atomic_chk32_all  rtx_thread.o
-    0x08000b02   0x08000b02   0x00000002   PAD
-    0x08000b04   0x08000b04   0x00000022   Code   RO         1008    .text.atomic_chk32_any  rtx_thread.o
-    0x08000b26   0x08000b26   0x00000002   PAD
-    0x08000b28   0x08000b28   0x00000024   Code   RO          878    .text.atomic_dec16_nz  rtx_system.o
-    0x08000b4c   0x08000b4c   0x00000010   Code   RO          614    .text.atomic_dec32  rtx_mempool.o
-    0x08000b5c   0x08000b5c   0x0000001a   Code   RO          734    .text.atomic_dec32_nz  rtx_msgqueue.o
-    0x08000b76   0x08000b76   0x00000002   PAD
-    0x08000b78   0x08000b78   0x0000001a   Code   RO          880    .text.atomic_inc16_lim  rtx_system.o
-    0x08000b92   0x08000b92   0x00000002   PAD
-    0x08000b94   0x08000b94   0x00000028   Code   RO          884    .text.atomic_inc16_lt  rtx_system.o
-    0x08000bbc   0x08000bbc   0x00000010   Code   RO          608    .text.atomic_inc32  rtx_mempool.o
-    0x08000bcc   0x08000bcc   0x00000010   Code   RO          722    .text.atomic_inc32  rtx_msgqueue.o
-    0x08000bdc   0x08000bdc   0x0000001a   Code   RO          606    .text.atomic_link_get  rtx_mempool.o
+    0x080006f4   0x080006f4   0x00000032   Code   RO            4    .text.LED_Blink_PortD  main.o
+    0x08000726   0x08000726   0x00000002   PAD
+    0x08000728   0x08000728   0x00000032   Code   RO            6    .text.LED_Blink_PortE  main.o
+    0x0800075a   0x0800075a   0x00000002   PAD
+    0x0800075c   0x0800075c   0x00000004   Code   RO          588    .text.MemBlockPtr   rtx_memory.o
+    0x08000760   0x08000760   0x00000002   Code   RO          586    .text.MemHeadPtr    rtx_memory.o
+    0x08000762   0x08000762   0x00000002   PAD
+    0x08000764   0x08000764   0x0000002a   Code   RO          732    .text.MessageQueueGet  rtx_msgqueue.o
+    0x0800078e   0x0800078e   0x00000002   PAD
+    0x08000790   0x08000790   0x00000054   Code   RO          720    .text.MessageQueuePut  rtx_msgqueue.o
+    0x080007e4   0x080007e4   0x00000026   Code   RO          716    .text.MessageQueueRemove  rtx_msgqueue.o
+    0x0800080a   0x0800080a   0x00000002   PAD
+    0x0800080c   0x0800080c   0x0000000c   Code   RO         1130    .text.OS_Tick_AcknowledgeIRQ  os_systick.o
+    0x08000818   0x08000818   0x00000032   Code   RO         1126    .text.OS_Tick_Enable  os_systick.o
+    0x0800084a   0x0800084a   0x00000002   PAD
+    0x0800084c   0x0800084c   0x00000006   Code   RO         1132    .text.OS_Tick_GetIRQn  os_systick.o
+    0x08000852   0x08000852   0x00000002   PAD
+    0x08000854   0x08000854   0x00000048   Code   RO         1124    .text.OS_Tick_Setup  os_systick.o
+    0x0800089c   0x0800089c   0x00000030   Code   RO          515    .text.SVC_Setup     rtx_kernel.o
+    0x080008cc   0x080008cc   0x00000010   Code   RO          876    .text.SetPendSV     rtx_system.o
+    0x080008dc   0x080008dc   0x0000000c   Code   RO          924    .text.StackOffsetR0  rtx_thread.o
+    0x080008e8   0x080008e8   0x0000007e   Code   RO         1171    .text.SystemCoreClockUpdate  system_stm32f4xx.o
+    0x08000966   0x08000966   0x00000002   PAD
+    0x08000968   0x08000968   0x0000001a   Code   RO         1169    .text.SystemInit    system_stm32f4xx.o
+    0x08000982   0x08000982   0x00000002   PAD
+    0x08000984   0x08000984   0x00000040   Code   RO         1004    .text.ThreadFlagsCheck  rtx_thread.o
+    0x080009c4   0x080009c4   0x00000068   Code   RO         1098    .text.TimerInsert   rtx_timer.o
+    0x08000a2c   0x08000a2c   0x00000018   Code   RO         1096    .text.TimerUnlink   rtx_timer.o
+    0x08000a44   0x08000a44   0x00000010   Code   RO          517    .text.__NVIC_GetPriorityGrouping  rtx_kernel.o
+    0x08000a54   0x08000a54   0x0000001a   Code   RO          557    .text._mutex_acquire  rtx_lib.o
+    0x08000a6e   0x08000a6e   0x00000002   PAD
+    0x08000a70   0x08000a70   0x0000000a   Code   RO          561    .text._mutex_free   rtx_lib.o
+    0x08000a7a   0x08000a7a   0x00000002   PAD
+    0x08000a7c   0x08000a7c   0x00000020   Code   RO          555    .text._mutex_initialize  rtx_lib.o
+    0x08000a9c   0x08000a9c   0x00000016   Code   RO          559    .text._mutex_release  rtx_lib.o
+    0x08000ab2   0x08000ab2   0x00000002   PAD
+    0x08000ab4   0x08000ab4   0x00000008   Code   RO          549    .text._platform_post_stackheap_init  rtx_lib.o
+    0x08000abc   0x08000abc   0x00000026   Code   RO         1006    .text.atomic_chk32_all  rtx_thread.o
+    0x08000ae2   0x08000ae2   0x00000002   PAD
+    0x08000ae4   0x08000ae4   0x00000022   Code   RO         1008    .text.atomic_chk32_any  rtx_thread.o
+    0x08000b06   0x08000b06   0x00000002   PAD
+    0x08000b08   0x08000b08   0x00000024   Code   RO          878    .text.atomic_dec16_nz  rtx_system.o
+    0x08000b2c   0x08000b2c   0x00000010   Code   RO          614    .text.atomic_dec32  rtx_mempool.o
+    0x08000b3c   0x08000b3c   0x0000001a   Code   RO          734    .text.atomic_dec32_nz  rtx_msgqueue.o
+    0x08000b56   0x08000b56   0x00000002   PAD
+    0x08000b58   0x08000b58   0x0000001a   Code   RO          880    .text.atomic_inc16_lim  rtx_system.o
+    0x08000b72   0x08000b72   0x00000002   PAD
+    0x08000b74   0x08000b74   0x00000028   Code   RO          884    .text.atomic_inc16_lt  rtx_system.o
+    0x08000b9c   0x08000b9c   0x00000010   Code   RO          608    .text.atomic_inc32  rtx_mempool.o
+    0x08000bac   0x08000bac   0x00000010   Code   RO          722    .text.atomic_inc32  rtx_msgqueue.o
+    0x08000bbc   0x08000bbc   0x0000001a   Code   RO          606    .text.atomic_link_get  rtx_mempool.o
+    0x08000bd6   0x08000bd6   0x00000002   PAD
+    0x08000bd8   0x08000bd8   0x0000001e   Code   RO          612    .text.atomic_link_put  rtx_mempool.o
     0x08000bf6   0x08000bf6   0x00000002   PAD
-    0x08000bf8   0x08000bf8   0x0000001e   Code   RO          612    .text.atomic_link_put  rtx_mempool.o
-    0x08000c16   0x08000c16   0x00000002   PAD
-    0x08000c18   0x08000c18   0x00000012   Code   RO          736    .text.atomic_wr8    rtx_msgqueue.o
-    0x08000c2a   0x08000c2a   0x00000002   PAD
-    0x08000c2c   0x08000c2c   0x00000074   Code   RO          690    .text.isrRtxMessageQueueGet  rtx_msgqueue.o
-    0x08000ca0   0x08000ca0   0x0000007e   Code   RO          686    .text.isrRtxMessageQueuePut  rtx_msgqueue.o
-    0x08000d1e   0x08000d1e   0x00000002   PAD
-    0x08000d20   0x08000d20   0x0000002e   Code   RO          860    .text.isr_queue_get  rtx_system.o
-    0x08000d4e   0x08000d4e   0x00000002   PAD
-    0x08000d50   0x08000d50   0x00000032   Code   RO          874    .text.isr_queue_put  rtx_system.o
-    0x08000d82   0x08000d82   0x00000002   PAD
-    0x08000d84   0x08000d84   0x0000002e   Code   RO            2    .text.main          main.o
-    0x08000db2   0x08000db2   0x00000002   PAD
-    0x08000db4   0x08000db4   0x00000032   Code   RO           24    .text.osDelay       rtx_delay.o
-    0x08000de6   0x08000de6   0x00000002   PAD
-    0x08000de8   0x08000de8   0x00000026   Code   RO          477    .text.osKernelGetState  rtx_kernel.o
-    0x08000e0e   0x08000e0e   0x00000002   PAD
-    0x08000e10   0x08000e10   0x00000032   Code   RO          465    .text.osKernelInitialize  rtx_kernel.o
-    0x08000e42   0x08000e42   0x00000002   PAD
-    0x08000e44   0x08000e44   0x0000002e   Code   RO          481    .text.osKernelStart  rtx_kernel.o
-    0x08000e72   0x08000e72   0x00000002   PAD
-    0x08000e74   0x08000e74   0x00000042   Code   RO          688    .text.osMessageQueueGet  rtx_msgqueue.o
-    0x08000eb6   0x08000eb6   0x00000002   PAD
-    0x08000eb8   0x08000eb8   0x0000003a   Code   RO          676    .text.osMessageQueueNew  rtx_msgqueue.o
-    0x08000ef2   0x08000ef2   0x00000002   PAD
-    0x08000ef4   0x08000ef4   0x00000042   Code   RO          684    .text.osMessageQueuePut  rtx_msgqueue.o
-    0x08000f36   0x08000f36   0x00000002   PAD
-    0x08000f38   0x08000f38   0x00000038   Code   RO          766    .text.osMutexAcquire  rtx_mutex.o
-    0x08000f70   0x08000f70   0x00000034   Code   RO          772    .text.osMutexDelete  rtx_mutex.o
-    0x08000fa4   0x08000fa4   0x00000032   Code   RO          758    .text.osMutexNew    rtx_mutex.o
-    0x08000fd6   0x08000fd6   0x00000002   PAD
-    0x08000fd8   0x08000fd8   0x00000034   Code   RO          768    .text.osMutexRelease  rtx_mutex.o
-    0x0800100c   0x0800100c   0x00000002   Code   RO         1153    .text.osRtxErrorNotify  rtx_config.o
+    0x08000bf8   0x08000bf8   0x00000012   Code   RO          736    .text.atomic_wr8    rtx_msgqueue.o
+    0x08000c0a   0x08000c0a   0x00000002   PAD
+    0x08000c0c   0x08000c0c   0x00000074   Code   RO          690    .text.isrRtxMessageQueueGet  rtx_msgqueue.o
+    0x08000c80   0x08000c80   0x0000007e   Code   RO          686    .text.isrRtxMessageQueuePut  rtx_msgqueue.o
+    0x08000cfe   0x08000cfe   0x00000002   PAD
+    0x08000d00   0x08000d00   0x0000002e   Code   RO          860    .text.isr_queue_get  rtx_system.o
+    0x08000d2e   0x08000d2e   0x00000002   PAD
+    0x08000d30   0x08000d30   0x00000032   Code   RO          874    .text.isr_queue_put  rtx_system.o
+    0x08000d62   0x08000d62   0x00000002   PAD
+    0x08000d64   0x08000d64   0x00000046   Code   RO            2    .text.main          main.o
+    0x08000daa   0x08000daa   0x00000002   PAD
+    0x08000dac   0x08000dac   0x00000032   Code   RO           24    .text.osDelay       rtx_delay.o
+    0x08000dde   0x08000dde   0x00000002   PAD
+    0x08000de0   0x08000de0   0x00000026   Code   RO          477    .text.osKernelGetState  rtx_kernel.o
+    0x08000e06   0x08000e06   0x00000002   PAD
+    0x08000e08   0x08000e08   0x00000032   Code   RO          465    .text.osKernelInitialize  rtx_kernel.o
+    0x08000e3a   0x08000e3a   0x00000002   PAD
+    0x08000e3c   0x08000e3c   0x0000002e   Code   RO          481    .text.osKernelStart  rtx_kernel.o
+    0x08000e6a   0x08000e6a   0x00000002   PAD
+    0x08000e6c   0x08000e6c   0x00000042   Code   RO          688    .text.osMessageQueueGet  rtx_msgqueue.o
+    0x08000eae   0x08000eae   0x00000002   PAD
+    0x08000eb0   0x08000eb0   0x0000003a   Code   RO          676    .text.osMessageQueueNew  rtx_msgqueue.o
+    0x08000eea   0x08000eea   0x00000002   PAD
+    0x08000eec   0x08000eec   0x00000042   Code   RO          684    .text.osMessageQueuePut  rtx_msgqueue.o
+    0x08000f2e   0x08000f2e   0x00000002   PAD
+    0x08000f30   0x08000f30   0x00000038   Code   RO          766    .text.osMutexAcquire  rtx_mutex.o
+    0x08000f68   0x08000f68   0x00000034   Code   RO          772    .text.osMutexDelete  rtx_mutex.o
+    0x08000f9c   0x08000f9c   0x00000032   Code   RO          758    .text.osMutexNew    rtx_mutex.o
+    0x08000fce   0x08000fce   0x00000002   PAD
+    0x08000fd0   0x08000fd0   0x00000034   Code   RO          768    .text.osMutexRelease  rtx_mutex.o
+    0x08001004   0x08001004   0x00000002   Code   RO         1153    .text.osRtxErrorNotify  rtx_config.o
+    0x08001006   0x08001006   0x00000002   PAD
+    0x08001008   0x08001008   0x00000002   Code   RO          864    .text.osRtxEventFlagsObject  rtx_system.o
+    0x0800100a   0x0800100a   0x00000002   PAD
+    0x0800100c   0x0800100c   0x00000002   Code   RO          912    .text.osRtxEventFlagsObject  rtx_thread.o
     0x0800100e   0x0800100e   0x00000002   PAD
-    0x08001010   0x08001010   0x00000002   Code   RO          864    .text.osRtxEventFlagsObject  rtx_system.o
+    0x08001010   0x08001010   0x00000002   Code   RO         1151    .text.osRtxIdleThread  rtx_config.o
     0x08001012   0x08001012   0x00000002   PAD
-    0x08001014   0x08001014   0x00000002   Code   RO          912    .text.osRtxEventFlagsObject  rtx_thread.o
-    0x08001016   0x08001016   0x00000002   PAD
-    0x08001018   0x08001018   0x00000002   Code   RO         1151    .text.osRtxIdleThread  rtx_config.o
-    0x0800101a   0x0800101a   0x00000002   PAD
-    0x0800101c   0x0800101c   0x0000000c   Code   RO          856    .text.osRtxKernelGetState  rtx_system.o
-    0x08001028   0x08001028   0x0000000c   Code   RO          932    .text.osRtxKernelGetState  rtx_thread.o
-    0x08001034   0x08001034   0x00000002   Code   RO          463    .text.osRtxKernelPreInit  rtx_kernel.o
-    0x08001036   0x08001036   0x00000002   PAD
-    0x08001038   0x08001038   0x0000000c   Code   RO          511    .text.osRtxKernelState  rtx_kernel.o
-    0x08001044   0x08001044   0x000000ce   Code   RO          590    .text.osRtxMemoryAlloc  rtx_memory.o
-    0x08001112   0x08001112   0x00000002   PAD
-    0x08001114   0x08001114   0x00000078   Code   RO          592    .text.osRtxMemoryFree  rtx_memory.o
-    0x0800118c   0x0800118c   0x00000064   Code   RO          584    .text.osRtxMemoryInit  rtx_memory.o
-    0x080011f0   0x080011f0   0x0000002a   Code   RO          604    .text.osRtxMemoryPoolAlloc  rtx_mempool.o
-    0x0800121a   0x0800121a   0x00000002   PAD
-    0x0800121c   0x0800121c   0x00000042   Code   RO          610    .text.osRtxMemoryPoolFree  rtx_mempool.o
-    0x0800125e   0x0800125e   0x00000002   PAD
-    0x08001260   0x08001260   0x00000060   Code   RO          602    .text.osRtxMemoryPoolInit  rtx_mempool.o
-    0x080012c0   0x080012c0   0x00000002   Code   RO          868    .text.osRtxMemoryPoolObject  rtx_system.o
+    0x08001014   0x08001014   0x0000000c   Code   RO          856    .text.osRtxKernelGetState  rtx_system.o
+    0x08001020   0x08001020   0x0000000c   Code   RO          932    .text.osRtxKernelGetState  rtx_thread.o
+    0x0800102c   0x0800102c   0x00000002   Code   RO          463    .text.osRtxKernelPreInit  rtx_kernel.o
+    0x0800102e   0x0800102e   0x00000002   PAD
+    0x08001030   0x08001030   0x0000000c   Code   RO          511    .text.osRtxKernelState  rtx_kernel.o
+    0x0800103c   0x0800103c   0x000000ce   Code   RO          590    .text.osRtxMemoryAlloc  rtx_memory.o
+    0x0800110a   0x0800110a   0x00000002   PAD
+    0x0800110c   0x0800110c   0x00000078   Code   RO          592    .text.osRtxMemoryFree  rtx_memory.o
+    0x08001184   0x08001184   0x00000064   Code   RO          584    .text.osRtxMemoryInit  rtx_memory.o
+    0x080011e8   0x080011e8   0x0000002a   Code   RO          604    .text.osRtxMemoryPoolAlloc  rtx_mempool.o
+    0x08001212   0x08001212   0x00000002   PAD
+    0x08001214   0x08001214   0x00000042   Code   RO          610    .text.osRtxMemoryPoolFree  rtx_mempool.o
+    0x08001256   0x08001256   0x00000002   PAD
+    0x08001258   0x08001258   0x00000060   Code   RO          602    .text.osRtxMemoryPoolInit  rtx_mempool.o
+    0x080012b8   0x080012b8   0x00000002   Code   RO          868    .text.osRtxMemoryPoolObject  rtx_system.o
+    0x080012ba   0x080012ba   0x00000002   PAD
+    0x080012bc   0x080012bc   0x00000002   Code   RO          918    .text.osRtxMemoryPoolObject  rtx_thread.o
+    0x080012be   0x080012be   0x00000002   PAD
+    0x080012c0   0x080012c0   0x00000002   Code   RO          870    .text.osRtxMessageObject  rtx_system.o
     0x080012c2   0x080012c2   0x00000002   PAD
-    0x080012c4   0x080012c4   0x00000002   Code   RO          918    .text.osRtxMemoryPoolObject  rtx_thread.o
+    0x080012c4   0x080012c4   0x00000002   Code   RO          726    .text.osRtxMessageQueueId  rtx_msgqueue.o
     0x080012c6   0x080012c6   0x00000002   PAD
-    0x080012c8   0x080012c8   0x00000002   Code   RO          870    .text.osRtxMessageObject  rtx_system.o
+    0x080012c8   0x080012c8   0x00000002   Code   RO         1076    .text.osRtxMessageQueueId  rtx_timer.o
     0x080012ca   0x080012ca   0x00000002   PAD
-    0x080012cc   0x080012cc   0x00000002   Code   RO          726    .text.osRtxMessageQueueId  rtx_msgqueue.o
+    0x080012cc   0x080012cc   0x00000002   Code   RO          920    .text.osRtxMessageQueueObject  rtx_thread.o
     0x080012ce   0x080012ce   0x00000002   PAD
-    0x080012d0   0x080012d0   0x00000002   Code   RO         1076    .text.osRtxMessageQueueId  rtx_timer.o
-    0x080012d2   0x080012d2   0x00000002   PAD
-    0x080012d4   0x080012d4   0x00000002   Code   RO          920    .text.osRtxMessageQueueObject  rtx_thread.o
-    0x080012d6   0x080012d6   0x00000002   PAD
-    0x080012d8   0x080012d8   0x00000102   Code   RO          714    .text.osRtxMessageQueuePostProcess  rtx_msgqueue.o
+    0x080012d0   0x080012d0   0x00000102   Code   RO          714    .text.osRtxMessageQueuePostProcess  rtx_msgqueue.o
+    0x080013d2   0x080013d2   0x00000002   PAD
+    0x080013d4   0x080013d4   0x00000002   Code   RO          778    .text.osRtxMutexId  rtx_mutex.o
+    0x080013d6   0x080013d6   0x00000002   PAD
+    0x080013d8   0x080013d8   0x00000002   Code   RO          914    .text.osRtxMutexObject  rtx_thread.o
     0x080013da   0x080013da   0x00000002   PAD
-    0x080013dc   0x080013dc   0x00000002   Code   RO          778    .text.osRtxMutexId  rtx_mutex.o
-    0x080013de   0x080013de   0x00000002   PAD
-    0x080013e0   0x080013e0   0x00000002   Code   RO          914    .text.osRtxMutexObject  rtx_thread.o
-    0x080013e2   0x080013e2   0x00000002   PAD
-    0x080013e4   0x080013e4   0x0000006a   Code   RO          752    .text.osRtxMutexOwnerRelease  rtx_mutex.o
-    0x0800144e   0x0800144e   0x00000002   PAD
-    0x08001450   0x08001450   0x0000004a   Code   RO          756    .text.osRtxMutexOwnerRestore  rtx_mutex.o
+    0x080013dc   0x080013dc   0x0000006a   Code   RO          752    .text.osRtxMutexOwnerRelease  rtx_mutex.o
+    0x08001446   0x08001446   0x00000002   PAD
+    0x08001448   0x08001448   0x0000004a   Code   RO          756    .text.osRtxMutexOwnerRestore  rtx_mutex.o
+    0x08001492   0x08001492   0x00000002   PAD
+    0x08001494   0x08001494   0x00000002   Code   RO          718    .text.osRtxObject   rtx_msgqueue.o
+    0x08001496   0x08001496   0x00000002   PAD
+    0x08001498   0x08001498   0x00000002   Code   RO          754    .text.osRtxObject   rtx_mutex.o
     0x0800149a   0x0800149a   0x00000002   PAD
-    0x0800149c   0x0800149c   0x00000002   Code   RO          718    .text.osRtxObject   rtx_msgqueue.o
+    0x0800149c   0x0800149c   0x00000002   Code   RO          882    .text.osRtxObject   rtx_system.o
     0x0800149e   0x0800149e   0x00000002   PAD
-    0x080014a0   0x080014a0   0x00000002   Code   RO          754    .text.osRtxObject   rtx_mutex.o
+    0x080014a0   0x080014a0   0x00000002   Code   RO          902    .text.osRtxObject   rtx_thread.o
     0x080014a2   0x080014a2   0x00000002   PAD
-    0x080014a4   0x080014a4   0x00000002   Code   RO          882    .text.osRtxObject   rtx_system.o
-    0x080014a6   0x080014a6   0x00000002   PAD
-    0x080014a8   0x080014a8   0x00000002   Code   RO          902    .text.osRtxObject   rtx_thread.o
-    0x080014aa   0x080014aa   0x00000002   PAD
-    0x080014ac   0x080014ac   0x00000064   Code   RO          858    .text.osRtxPendSV_Handler  rtx_system.o
-    0x08001510   0x08001510   0x0000002c   Code   RO          872    .text.osRtxPostProcess  rtx_system.o
-    0x0800153c   0x0800153c   0x00000002   Code   RO          866    .text.osRtxSemaphoreObject  rtx_system.o
-    0x0800153e   0x0800153e   0x00000002   PAD
-    0x08001540   0x08001540   0x00000002   Code   RO          916    .text.osRtxSemaphoreObject  rtx_thread.o
-    0x08001542   0x08001542   0x00000002   PAD
-    0x08001544   0x08001544   0x00000048   Code   RO          936    .text.osRtxThreadBlock  rtx_thread.o
-    0x0800158c   0x0800158c   0x000000a0   Code   RO          944    .text.osRtxThreadDelayInsert  rtx_thread.o
-    0x0800162c   0x0800162c   0x00000048   Code   RO          940    .text.osRtxThreadDelayRemove  rtx_thread.o
-    0x08001674   0x08001674   0x000000f6   Code   RO          908    .text.osRtxThreadDelayTick  rtx_thread.o
-    0x0800176a   0x0800176a   0x00000002   PAD
-    0x0800176c   0x0800176c   0x0000005e   Code   RO          930    .text.osRtxThreadDispatch  rtx_thread.o
-    0x080017ca   0x080017ca   0x00000002   PAD
-    0x080017cc   0x080017cc   0x00000060   Code   RO         1036    .text.osRtxThreadFree  rtx_thread.o
-    0x0800182c   0x0800182c   0x0000000c   Code   RO           34    .text.osRtxThreadGetRunning  rtx_delay.o
-    0x08001838   0x08001838   0x0000000c   Code   RO          730    .text.osRtxThreadGetRunning  rtx_msgqueue.o
-    0x08001844   0x08001844   0x0000000c   Code   RO          782    .text.osRtxThreadGetRunning  rtx_mutex.o
-    0x08001850   0x08001850   0x0000000c   Code   RO          934    .text.osRtxThreadGetRunning  rtx_thread.o
-    0x0800185c   0x0800185c   0x00000002   Code   RO          948    .text.osRtxThreadId  rtx_thread.o
-    0x0800185e   0x0800185e   0x00000002   PAD
-    0x08001860   0x08001860   0x00000018   Code   RO          898    .text.osRtxThreadListGet  rtx_thread.o
-    0x08001878   0x08001878   0x00000034   Code   RO          894    .text.osRtxThreadListPut  rtx_thread.o
-    0x080018ac   0x080018ac   0x0000001c   Code   RO          904    .text.osRtxThreadListRemove  rtx_thread.o
-    0x080018c8   0x080018c8   0x00000012   Code   RO          910    .text.osRtxThreadListRoot  rtx_thread.o
-    0x080018da   0x080018da   0x00000002   PAD
-    0x080018dc   0x080018dc   0x00000030   Code   RO          900    .text.osRtxThreadListSort  rtx_thread.o
-    0x0800190c   0x0800190c   0x00000002   Code   RO          862    .text.osRtxThreadObject  rtx_system.o
-    0x0800190e   0x0800190e   0x00000002   PAD
-    0x08001910   0x08001910   0x00000002   Code   RO          896    .text.osRtxThreadObject  rtx_thread.o
-    0x08001912   0x08001912   0x00000002   PAD
-    0x08001914   0x08001914   0x00000038   Code   RO         1002    .text.osRtxThreadPostProcess  rtx_thread.o
-    0x0800194c   0x0800194c   0x00000018   Code   RO          906    .text.osRtxThreadReadyPut  rtx_thread.o
-    0x08001964   0x08001964   0x00000010   Code   RO          922    .text.osRtxThreadRegPtr  rtx_thread.o
-    0x08001974   0x08001974   0x0000000e   Code   RO         1042    .text.osRtxThreadSetRunning  rtx_thread.o
-    0x08001982   0x08001982   0x00000002   PAD
-    0x08001984   0x08001984   0x0000002a   Code   RO          928    .text.osRtxThreadStackCheck  rtx_thread.o
-    0x080019ae   0x080019ae   0x00000002   PAD
-    0x080019b0   0x080019b0   0x0000004e   Code   RO          946    .text.osRtxThreadStartup  rtx_thread.o
-    0x080019fe   0x080019fe   0x00000002   PAD
-    0x08001a00   0x08001a00   0x0000001e   Code   RO          926    .text.osRtxThreadSwitch  rtx_thread.o
-    0x08001a1e   0x08001a1e   0x00000002   PAD
-    0x08001a20   0x08001a20   0x0000005c   Code   RO          942    .text.osRtxThreadWaitEnter  rtx_thread.o
-    0x08001a7c   0x08001a7c   0x0000002a   Code   RO          938    .text.osRtxThreadWaitExit  rtx_thread.o
-    0x08001aa6   0x08001aa6   0x00000002   PAD
-    0x08001aa8   0x08001aa8   0x00000084   Code   RO          854    .text.osRtxTick_Handler  rtx_system.o
-    0x08001b2c   0x08001b2c   0x00000052   Code   RO         1074    .text.osRtxTimerThread  rtx_timer.o
-    0x08001b7e   0x08001b7e   0x00000002   PAD
-    0x08001b80   0x08001b80   0x00000056   Code   RO         1078    .text.osRtxTimerTick  rtx_timer.o
-    0x08001bd6   0x08001bd6   0x00000002   PAD
-    0x08001bd8   0x08001bd8   0x0000001a   Code   RO          984    .text.osThreadExit  rtx_thread.o
-    0x08001bf2   0x08001bf2   0x00000002   PAD
-    0x08001bf4   0x08001bf4   0x0000003a   Code   RO          952    .text.osThreadNew   rtx_thread.o
-    0x08001c2e   0x08001c2e   0x00000002   PAD
-    0x08001c30   0x08001c30   0x0000001e   Code   RO          553    .text.os_kernel_is_active  rtx_lib.o
-    0x08001c4e   0x08001c4e   0x00000002   PAD
-    0x08001c50   0x08001c50   0x00000026   Code   RO           32    .text.svcRtxDelay   rtx_delay.o
-    0x08001c76   0x08001c76   0x00000002   PAD
-    0x08001c78   0x08001c78   0x00000010   Code   RO          479    .text.svcRtxKernelGetState  rtx_kernel.o
-    0x08001c88   0x08001c88   0x00000162   Code   RO          509    .text.svcRtxKernelInitialize  rtx_kernel.o
-    0x08001dea   0x08001dea   0x00000002   PAD
-    0x08001dec   0x08001dec   0x00000080   Code   RO          513    .text.svcRtxKernelStart  rtx_kernel.o
-    0x08001e6c   0x08001e6c   0x00000132   Code   RO          738    .text.svcRtxMessageQueueGet  rtx_msgqueue.o
-    0x08001f9e   0x08001f9e   0x00000002   PAD
-    0x08001fa0   0x08001fa0   0x000001a6   Code   RO          712    .text.svcRtxMessageQueueNew  rtx_msgqueue.o
-    0x08002146   0x08002146   0x00000002   PAD
-    0x08002148   0x08002148   0x00000114   Code   RO          728    .text.svcRtxMessageQueuePut  rtx_msgqueue.o
-    0x0800225c   0x0800225c   0x000000e6   Code   RO          780    .text.svcRtxMutexAcquire  rtx_mutex.o
-    0x08002342   0x08002342   0x00000002   PAD
-    0x08002344   0x08002344   0x000000dc   Code   RO          788    .text.svcRtxMutexDelete  rtx_mutex.o
-    0x08002420   0x08002420   0x00000090   Code   RO          774    .text.svcRtxMutexNew  rtx_mutex.o
-    0x080024b0   0x080024b0   0x000000fa   Code   RO          784    .text.svcRtxMutexRelease  rtx_mutex.o
-    0x080025aa   0x080025aa   0x00000002   PAD
-    0x080025ac   0x080025ac   0x00000078   Code   RO         1040    .text.svcRtxThreadExit  rtx_thread.o
-    0x08002624   0x08002624   0x0000023e   Code   RO          950    .text.svcRtxThreadNew  rtx_thread.o
-    0x08002862   0x08002862   0x0000001a   Code   RO         1282    x$fpl$fpinit        fz_wm.l(fpinit.o)
-    0x0800287c   0x0800287c   0x000000a0   Data   RO          567    .rodata             rtx_lib.o
-    0x0800291c   0x0800291c   0x00000010   Data   RO         1174    .rodata.AHBPrescTable  system_stm32f4xx.o
-    0x0800292c   0x0800292c   0x00000004   Data   RO          569    .rodata.osRtxUserSVC  rtx_lib.o
-    0x08002930   0x08002930   0x00000024   Data   RO          564    .rodata.os_idle_thread_attr  rtx_lib.o
-    0x08002954   0x08002954   0x00000018   Data   RO          566    .rodata.os_timer_mq_attr  rtx_lib.o
-    0x0800296c   0x0800296c   0x00000024   Data   RO          565    .rodata.os_timer_thread_attr  rtx_lib.o
-    0x08002990   0x08002990   0x0000000b   Data   RO          539    .rodata.str1.4      rtx_kernel.o
-    0x0800299b   0x0800299b   0x00000001   PAD
-    0x0800299c   0x0800299c   0x00000020   Data   RO         1357    Region$$Table       anon$$obj.o
+    0x080014a4   0x080014a4   0x00000064   Code   RO          858    .text.osRtxPendSV_Handler  rtx_system.o
+    0x08001508   0x08001508   0x0000002c   Code   RO          872    .text.osRtxPostProcess  rtx_system.o
+    0x08001534   0x08001534   0x00000002   Code   RO          866    .text.osRtxSemaphoreObject  rtx_system.o
+    0x08001536   0x08001536   0x00000002   PAD
+    0x08001538   0x08001538   0x00000002   Code   RO          916    .text.osRtxSemaphoreObject  rtx_thread.o
+    0x0800153a   0x0800153a   0x00000002   PAD
+    0x0800153c   0x0800153c   0x00000048   Code   RO          936    .text.osRtxThreadBlock  rtx_thread.o
+    0x08001584   0x08001584   0x000000a0   Code   RO          944    .text.osRtxThreadDelayInsert  rtx_thread.o
+    0x08001624   0x08001624   0x00000048   Code   RO          940    .text.osRtxThreadDelayRemove  rtx_thread.o
+    0x0800166c   0x0800166c   0x000000f6   Code   RO          908    .text.osRtxThreadDelayTick  rtx_thread.o
+    0x08001762   0x08001762   0x00000002   PAD
+    0x08001764   0x08001764   0x0000005e   Code   RO          930    .text.osRtxThreadDispatch  rtx_thread.o
+    0x080017c2   0x080017c2   0x00000002   PAD
+    0x080017c4   0x080017c4   0x00000060   Code   RO         1036    .text.osRtxThreadFree  rtx_thread.o
+    0x08001824   0x08001824   0x0000000c   Code   RO           34    .text.osRtxThreadGetRunning  rtx_delay.o
+    0x08001830   0x08001830   0x0000000c   Code   RO          730    .text.osRtxThreadGetRunning  rtx_msgqueue.o
+    0x0800183c   0x0800183c   0x0000000c   Code   RO          782    .text.osRtxThreadGetRunning  rtx_mutex.o
+    0x08001848   0x08001848   0x0000000c   Code   RO          934    .text.osRtxThreadGetRunning  rtx_thread.o
+    0x08001854   0x08001854   0x00000002   Code   RO          948    .text.osRtxThreadId  rtx_thread.o
+    0x08001856   0x08001856   0x00000002   PAD
+    0x08001858   0x08001858   0x00000018   Code   RO          898    .text.osRtxThreadListGet  rtx_thread.o
+    0x08001870   0x08001870   0x00000034   Code   RO          894    .text.osRtxThreadListPut  rtx_thread.o
+    0x080018a4   0x080018a4   0x0000001c   Code   RO          904    .text.osRtxThreadListRemove  rtx_thread.o
+    0x080018c0   0x080018c0   0x00000012   Code   RO          910    .text.osRtxThreadListRoot  rtx_thread.o
+    0x080018d2   0x080018d2   0x00000002   PAD
+    0x080018d4   0x080018d4   0x00000030   Code   RO          900    .text.osRtxThreadListSort  rtx_thread.o
+    0x08001904   0x08001904   0x00000002   Code   RO          862    .text.osRtxThreadObject  rtx_system.o
+    0x08001906   0x08001906   0x00000002   PAD
+    0x08001908   0x08001908   0x00000002   Code   RO          896    .text.osRtxThreadObject  rtx_thread.o
+    0x0800190a   0x0800190a   0x00000002   PAD
+    0x0800190c   0x0800190c   0x00000038   Code   RO         1002    .text.osRtxThreadPostProcess  rtx_thread.o
+    0x08001944   0x08001944   0x00000018   Code   RO          906    .text.osRtxThreadReadyPut  rtx_thread.o
+    0x0800195c   0x0800195c   0x00000010   Code   RO          922    .text.osRtxThreadRegPtr  rtx_thread.o
+    0x0800196c   0x0800196c   0x0000000e   Code   RO         1042    .text.osRtxThreadSetRunning  rtx_thread.o
+    0x0800197a   0x0800197a   0x00000002   PAD
+    0x0800197c   0x0800197c   0x0000002a   Code   RO          928    .text.osRtxThreadStackCheck  rtx_thread.o
+    0x080019a6   0x080019a6   0x00000002   PAD
+    0x080019a8   0x080019a8   0x0000004e   Code   RO          946    .text.osRtxThreadStartup  rtx_thread.o
+    0x080019f6   0x080019f6   0x00000002   PAD
+    0x080019f8   0x080019f8   0x0000001e   Code   RO          926    .text.osRtxThreadSwitch  rtx_thread.o
+    0x08001a16   0x08001a16   0x00000002   PAD
+    0x08001a18   0x08001a18   0x0000005c   Code   RO          942    .text.osRtxThreadWaitEnter  rtx_thread.o
+    0x08001a74   0x08001a74   0x0000002a   Code   RO          938    .text.osRtxThreadWaitExit  rtx_thread.o
+    0x08001a9e   0x08001a9e   0x00000002   PAD
+    0x08001aa0   0x08001aa0   0x00000084   Code   RO          854    .text.osRtxTick_Handler  rtx_system.o
+    0x08001b24   0x08001b24   0x00000052   Code   RO         1074    .text.osRtxTimerThread  rtx_timer.o
+    0x08001b76   0x08001b76   0x00000002   PAD
+    0x08001b78   0x08001b78   0x00000056   Code   RO         1078    .text.osRtxTimerTick  rtx_timer.o
+    0x08001bce   0x08001bce   0x00000002   PAD
+    0x08001bd0   0x08001bd0   0x0000001a   Code   RO          984    .text.osThreadExit  rtx_thread.o
+    0x08001bea   0x08001bea   0x00000002   PAD
+    0x08001bec   0x08001bec   0x0000003a   Code   RO          952    .text.osThreadNew   rtx_thread.o
+    0x08001c26   0x08001c26   0x00000002   PAD
+    0x08001c28   0x08001c28   0x0000001e   Code   RO          553    .text.os_kernel_is_active  rtx_lib.o
+    0x08001c46   0x08001c46   0x00000002   PAD
+    0x08001c48   0x08001c48   0x00000026   Code   RO           32    .text.svcRtxDelay   rtx_delay.o
+    0x08001c6e   0x08001c6e   0x00000002   PAD
+    0x08001c70   0x08001c70   0x00000010   Code   RO          479    .text.svcRtxKernelGetState  rtx_kernel.o
+    0x08001c80   0x08001c80   0x00000162   Code   RO          509    .text.svcRtxKernelInitialize  rtx_kernel.o
+    0x08001de2   0x08001de2   0x00000002   PAD
+    0x08001de4   0x08001de4   0x00000080   Code   RO          513    .text.svcRtxKernelStart  rtx_kernel.o
+    0x08001e64   0x08001e64   0x00000132   Code   RO          738    .text.svcRtxMessageQueueGet  rtx_msgqueue.o
+    0x08001f96   0x08001f96   0x00000002   PAD
+    0x08001f98   0x08001f98   0x000001a6   Code   RO          712    .text.svcRtxMessageQueueNew  rtx_msgqueue.o
+    0x0800213e   0x0800213e   0x00000002   PAD
+    0x08002140   0x08002140   0x00000114   Code   RO          728    .text.svcRtxMessageQueuePut  rtx_msgqueue.o
+    0x08002254   0x08002254   0x000000e6   Code   RO          780    .text.svcRtxMutexAcquire  rtx_mutex.o
+    0x0800233a   0x0800233a   0x00000002   PAD
+    0x0800233c   0x0800233c   0x000000dc   Code   RO          788    .text.svcRtxMutexDelete  rtx_mutex.o
+    0x08002418   0x08002418   0x00000090   Code   RO          774    .text.svcRtxMutexNew  rtx_mutex.o
+    0x080024a8   0x080024a8   0x000000fa   Code   RO          784    .text.svcRtxMutexRelease  rtx_mutex.o
+    0x080025a2   0x080025a2   0x00000002   PAD
+    0x080025a4   0x080025a4   0x00000078   Code   RO         1040    .text.svcRtxThreadExit  rtx_thread.o
+    0x0800261c   0x0800261c   0x0000023e   Code   RO          950    .text.svcRtxThreadNew  rtx_thread.o
+    0x0800285a   0x0800285a   0x0000001a   Code   RO         1282    x$fpl$fpinit        fz_wm.l(fpinit.o)
+    0x08002874   0x08002874   0x000000a0   Data   RO          567    .rodata             rtx_lib.o
+    0x08002914   0x08002914   0x00000010   Data   RO         1174    .rodata.AHBPrescTable  system_stm32f4xx.o
+    0x08002924   0x08002924   0x00000004   Data   RO          569    .rodata.osRtxUserSVC  rtx_lib.o
+    0x08002928   0x08002928   0x00000024   Data   RO          564    .rodata.os_idle_thread_attr  rtx_lib.o
+    0x0800294c   0x0800294c   0x00000018   Data   RO          566    .rodata.os_timer_mq_attr  rtx_lib.o
+    0x08002964   0x08002964   0x00000024   Data   RO          565    .rodata.os_timer_thread_attr  rtx_lib.o
+    0x08002988   0x08002988   0x0000000b   Data   RO          539    .rodata.str1.4      rtx_kernel.o
+    0x08002993   0x08002993   0x00000001   PAD
+    0x08002994   0x08002994   0x00000020   Data   RO         1357    Region$$Table       anon$$obj.o
 
 
-    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x080029bc, Size: 0x000000a8, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x080029b4, Size: 0x000000a8, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x080029bc   0x00000004   Data   RW         1173    .data.SystemCoreClock  system_stm32f4xx.o
-    0x20000004   0x080029c0   0x000000a4   Data   RW          540    .data.os            rtx_kernel.o
+    0x20000000   0x080029b4   0x00000004   Data   RW         1173    .data.SystemCoreClock  system_stm32f4xx.o
+    0x20000004   0x080029b8   0x000000a4   Data   RW          540    .data.os            rtx_kernel.o
 
 
-    Execution Region ER_ZI (Exec base: 0x200000a8, Load base: 0x08002a64, Size: 0x00008bc0, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_ZI (Exec base: 0x200000a8, Load base: 0x08002a5c, Size: 0x00008bc0, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x200000a8        -       0x00000060   Zero   RW         1224    .bss                c_w.l(libspace.o)
     0x20000108        -       0x00000001   Zero   RW         1142    .bss.PendST         os_systick.o
-    0x20000109   0x08002a64   0x00000007   PAD
+    0x20000109   0x08002a5c   0x00000007   PAD
     0x20000110        -       0x00008040   Zero   RW          563    .bss.os             rtx_lib.o
     0x20008150        -       0x00000034   Zero   RW          573    .bss.os.msgqueue.cb  rtx_lib.o
     0x20008184        -       0x00000050   Zero   RW          574    .bss.os.msgqueue.mem  rtx_lib.o
     0x200081d4        -       0x00000088   Zero   RW          571    .bss.os.thread.cb   rtx_lib.o
-    0x2000825c   0x08002a64   0x00000004   PAD
+    0x2000825c   0x08002a5c   0x00000004   PAD
     0x20008260        -       0x00000400   Zero   RW          572    .bss.os.thread.stack  rtx_lib.o
     0x20008660        -       0x00000001   Zero   RW          575    .bss.os_kernel_is_active.os_kernel_active  rtx_lib.o
-    0x20008661   0x08002a64   0x00000007   PAD
+    0x20008661   0x08002a5c   0x00000007   PAD
     0x20008668        -       0x00000200   Zero   RW         1162    HEAP                startup_stm32f401xe.o
     0x20008868        -       0x00000400   Zero   RW         1161    STACK               startup_stm32f401xe.o
 
@@ -3843,7 +3843,7 @@ Image component sizes
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
        196         12          0          0          0        700   irq_cm4f.o
-       178          0          0          0          0       2055   main.o
+       170          0          0          0          0       2051   main.o
        140          0          0          0          1       4303   os_systick.o
          4          0          0          0          0        698   rtx_config.o
        136          0          0          0          0       4206   rtx_delay.o
@@ -3861,7 +3861,7 @@ Image component sizes
        152          0         16          4          0       2814   system_stm32f4xx.o
 
     ----------------------------------------------------------------------
-      9242         58        724        168      35680     159544   Object Totals
+      9234         58        724        168      35680     159540   Object Totals
          0          0         32          0          0          0   (incl. Generated)
        272          0          1          0         18          0   (incl. Padding)
 
@@ -3917,15 +3917,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      9960         74        724        168      35776     159868   Grand Totals
-      9960         74        724        168      35776     159868   ELF Image Totals
-      9960         74        724        168          0          0   ROM Totals
+      9952         74        724        168      35776     159864   Grand Totals
+      9952         74        724        168      35776     159864   ELF Image Totals
+      9952         74        724        168          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                10684 (  10.43kB)
+    Total RO  Size (Code + RO Data)                10676 (  10.43kB)
     Total RW  Size (RW Data + ZI Data)             35944 (  35.10kB)
-    Total ROM Size (Code + RO Data + RW Data)      10852 (  10.60kB)
+    Total ROM Size (Code + RO Data + RW Data)      10844 (  10.59kB)
 
 ==============================================================================
 
