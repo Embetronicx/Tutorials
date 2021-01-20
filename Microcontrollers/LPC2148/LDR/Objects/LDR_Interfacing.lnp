@@ -1,0 +1,6 @@
+--cpu ARM7TDMI
+".\objects\startup.o"
+".\objects\main.o"
+--ro-base 0x00000000 --entry 0x00000000 --rw-base 0x40000000 --strict --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\LDR_Interfacing.map" -o .\Objects\LDR_Interfacing.axf
