@@ -113,6 +113,7 @@ static int etx_open(struct inode *inode, struct file *file)
   pr_info("Device File Opened...!!!\n");
   return 0;
 }
+
 /*
 ** This fuction will be called when we close the Device file
 */
@@ -151,6 +152,9 @@ static ssize_t etx_write(struct file *filp, const char __user *buf, size_t len, 
   return len;
 }
 
+/*
+** This fuction will be called when app calls the poll function
+*/
 static unsigned int etx_poll(struct file *filp, struct poll_table_struct *wait)
 {
   __poll_t mask = 0;

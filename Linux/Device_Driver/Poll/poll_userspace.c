@@ -38,7 +38,7 @@ int main()
   {
     puts("Starting poll...");
     
-    ret = poll(&pfd, (unsigned long)1, -1);
+    ret = poll(&pfd, (unsigned long)1, 5000);   //wait for 5secs
     
     if( ret < 0 ) 
     {
