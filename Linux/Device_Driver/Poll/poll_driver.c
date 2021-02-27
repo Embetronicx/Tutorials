@@ -78,6 +78,7 @@ static ssize_t sysfs_show(struct kobject *kobj,
   pr_info("Sysfs Show - Write Permission Granted!!!\n");
   
   can_write = true;
+  
   //wake up the waitqueue
   wake_up(&wait_queue_etx_data);
   
@@ -97,6 +98,7 @@ static ssize_t sysfs_store(struct kobject *kobj,
   strcpy(etx_value, buf);
   
   can_read = true;
+
   //wake up the waitqueue
   wake_up(&wait_queue_etx_data);
   
