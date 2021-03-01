@@ -60,4 +60,6 @@ int main()
       printf("POLLOUT : Kernel_val = %s\n", kernel_val);
     }
   }
+  
+  return 0;
 }
