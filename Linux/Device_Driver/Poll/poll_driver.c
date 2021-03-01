@@ -132,10 +132,14 @@ static ssize_t etx_read(struct file *filp, char __user *buf, size_t len, loff_t 
   
   len = strlen(etx_value);
   
+  strcpy(buf, etx_value);
+  
+#if 0  
   if( copy_to_user(buf, etx_value, len) > 0)
   {
     pr_err("ERROR: Not all the bytes have been copied to user\n");
   }
+#endif
   
   return 0;
 }
@@ -152,9 +156,6 @@ static ssize_t etx_write(struct file *filp, const char __user *buf, size_t len, 
   return len;
 }
 
-/*
-** This fuction will be called when app calls the poll function
-*/
 static unsigned int etx_poll(struct file *filp, struct poll_table_struct *wait)
 {
   __poll_t mask = 0;
