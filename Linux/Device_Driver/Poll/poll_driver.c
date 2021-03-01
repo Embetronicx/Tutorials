@@ -69,7 +69,7 @@ static struct file_operations fops =
 };
 
 /*
-** This fuction will be called when we read the sysfs file
+** This function will be called when we read the sysfs file
 */
 static ssize_t sysfs_show(struct kobject *kobj, 
                           struct kobj_attribute *attr, 
@@ -86,7 +86,7 @@ static ssize_t sysfs_show(struct kobject *kobj,
 }
 
 /*
-** This fuction will be called when we write the sysfsfs file
+** This function will be called when we write the sysfsfs file
 */
 static ssize_t sysfs_store(struct kobject *kobj, 
                            struct kobj_attribute *attr,
@@ -106,7 +106,7 @@ static ssize_t sysfs_store(struct kobject *kobj,
 }
 
 /*
-** This fuction will be called when we open the Device file
+** This function will be called when we open the Device file
 */
 static int etx_open(struct inode *inode, struct file *file)
 {
@@ -115,7 +115,7 @@ static int etx_open(struct inode *inode, struct file *file)
 }
 
 /*
-** This fuction will be called when we close the Device file
+** This function will be called when we close the Device file
 */
 static int etx_release(struct inode *inode, struct file *file)
 {
@@ -124,7 +124,7 @@ static int etx_release(struct inode *inode, struct file *file)
 }
 
 /*
-** This fuction will be called when we read the Device file
+** This function will be called when we read the Device file
 */
 static ssize_t etx_read(struct file *filp, char __user *buf, size_t len, loff_t *off)
 {
@@ -145,7 +145,7 @@ static ssize_t etx_read(struct file *filp, char __user *buf, size_t len, loff_t 
 }
 
 /*
-** This fuction will be called when we write the Device file
+** This function will be called when we write the Device file
 */
 static ssize_t etx_write(struct file *filp, const char __user *buf, size_t len, loff_t *off)
 {
@@ -157,7 +157,7 @@ static ssize_t etx_write(struct file *filp, const char __user *buf, size_t len, 
 }
 
 /*
-** This fuction will be called when app calls the poll function
+** This function will be called when app calls the poll function
 */
 static unsigned int etx_poll(struct file *filp, struct poll_table_struct *wait)
 {
