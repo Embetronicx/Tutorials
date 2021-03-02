@@ -24,8 +24,8 @@ int notify_param(const char *val, const struct kernel_param *kp)
 {
         int res = param_set_int(val, kp); // Use helper for write variable
         if(res==0) {
-                printk(KERN_INFO "Call back function called...\n");
-                printk(KERN_INFO "New value of cb_valueETX = %d\n", cb_valueETX);
+                pr_info("Call back function called...\n");
+                pr_info("New value of cb_valueETX = %d\n", cb_valueETX);
                 return 0;
         }
         return -1;
@@ -46,13 +46,13 @@ module_param_cb(cb_valueETX, &my_param_ops, &cb_valueETX, S_IRUGO|S_IWUSR );
 static int __init hello_world_init(void)
 {
         int i;
-        printk(KERN_INFO "ValueETX = %d  \n", valueETX);
-        printk(KERN_INFO "cb_valueETX = %d  \n", cb_valueETX);
-        printk(KERN_INFO "NameETX = %s \n", nameETX);
+        pr_info("ValueETX = %d  \n", valueETX);
+        pr_info("cb_valueETX = %d  \n", cb_valueETX);
+        pr_info("NameETX = %s \n", nameETX);
         for (i = 0; i < (sizeof arr_valueETX / sizeof (int)); i++) {
-                printk(KERN_INFO "Arr_value[%d] = %d\n", i, arr_valueETX[i]);
+                pr_info("Arr_value[%d] = %d\n", i, arr_valueETX[i]);
         }
-        printk(KERN_INFO "Kernel Module Inserted Successfully...\n");
+        pr_info("Kernel Module Inserted Successfully...\n");
     return 0;
 }
 
@@ -61,7 +61,7 @@ static int __init hello_world_init(void)
 */
 static void __exit hello_world_exit(void)
 {
-    printk(KERN_INFO "Kernel Module Removed Successfully...\n");
+    pr_info("Kernel Module Removed Successfully...\n");
 }
  
 module_init(hello_world_init);

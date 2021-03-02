@@ -44,8 +44,8 @@ static struct file_operations fops =
 //Timer Callback function. This will be called when timer expires
 void timer_callback(struct timer_list * data)
 {
-     /* do your timer stuff here */
-    printk(KERN_INFO "Timer Callback function Called [%d]\n",count++);
+    /* do your timer stuff here */
+    pr_info("Timer Callback function Called [%d]\n",count++);
     
     /*
        Re-enable timer. Because this function will be called only first time. 
@@ -56,54 +56,54 @@ void timer_callback(struct timer_list * data)
  
 static int etx_open(struct inode *inode, struct file *file)
 {
-    printk(KERN_INFO "Device File Opened...!!!\n");
+    pr_info("Device File Opened...!!!\n");
     return 0;
 }
  
 static int etx_release(struct inode *inode, struct file *file)
 {
-    printk(KERN_INFO "Device File Closed...!!!\n");
+    pr_info("Device File Closed...!!!\n");
     return 0;
 }
  
 static ssize_t etx_read(struct file *filp, char __user *buf, size_t len, loff_t *off)
 {
-    printk(KERN_INFO "Read Function\n");
+    pr_info("Read Function\n");
     return 0;
 }
 static ssize_t etx_write(struct file *filp, const char __user *buf, size_t len, loff_t *off)
 {
-    printk(KERN_INFO "Write function\n");
-    return 0;
+    pr_info("Write function\n");
+    return len;
 }
  
 static int __init etx_driver_init(void)
 {
     /*Allocating Major number*/
     if((alloc_chrdev_region(&dev, 0, 1, "etx_Dev")) <0){
-            printk(KERN_INFO "Cannot allocate major number\n");
+            pr_err("Cannot allocate major number\n");
             return -1;
     }
-    printk(KERN_INFO "Major = %d Minor = %d \n",MAJOR(dev), MINOR(dev));
+    pr_info("Major = %d Minor = %d \n",MAJOR(dev), MINOR(dev));
  
     /*Creating cdev structure*/
     cdev_init(&etx_cdev,&fops);
  
     /*Adding character device to the system*/
     if((cdev_add(&etx_cdev,dev,1)) < 0){
-        printk(KERN_INFO "Cannot add the device to the system\n");
+        pr_err("Cannot add the device to the system\n");
         goto r_class;
     }
  
     /*Creating struct class*/
     if((dev_class = class_create(THIS_MODULE,"etx_class")) == NULL){
-        printk(KERN_INFO "Cannot create the struct class\n");
+        pr_err("Cannot create the struct class\n");
         goto r_class;
     }
  
     /*Creating device*/
     if((device_create(dev_class,NULL,dev,NULL,"etx_device")) == NULL){
-        printk(KERN_INFO "Cannot create the Device 1\n");
+        pr_err("Cannot create the Device 1\n");
         goto r_device;
     }
  
@@ -113,7 +113,7 @@ static int __init etx_driver_init(void)
     /* setup timer interval to based on TIMEOUT Macro */
     mod_timer(&etx_timer, jiffies + msecs_to_jiffies(TIMEOUT));
  
-    printk(KERN_INFO "Device Driver Insert...Done!!!\n");
+    pr_info("Device Driver Insert...Done!!!\n");
     return 0;
 r_device:
     class_destroy(dev_class);
@@ -130,7 +130,7 @@ static void __exit etx_driver_exit(void)
     class_destroy(dev_class);
     cdev_del(&etx_cdev);
     unregister_chrdev_region(dev, 1);
-    printk(KERN_INFO "Device Driver Remove...Done!!!\n");
+    pr_info("Device Driver Remove...Done!!!\n");
 }
  
 module_init(etx_driver_init);

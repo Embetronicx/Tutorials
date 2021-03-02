@@ -30,7 +30,7 @@ static int __init etx_driver_init(void);
 static void __exit etx_driver_exit(void);
  
  
-/*************** Driver Fuctions **********************/
+/*************** Driver functions **********************/
 static int etx_open(struct inode *inode, struct file *file);
 static int etx_release(struct inode *inode, struct file *file);
 static ssize_t etx_read(struct file *filp, 
@@ -184,7 +184,7 @@ static void __exit etx_driver_exit(void)
   class_destroy(dev_class);
   cdev_del(&etx_cdev);
   unregister_chrdev_region(dev, 1);
-  pr_info(KERN_INFO "Device Driver Remove...Done!!\n");
+  pr_info("Device Driver Remove...Done!!\n");
 }
  
 module_init(etx_driver_init);

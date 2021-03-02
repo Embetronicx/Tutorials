@@ -52,50 +52,50 @@ static struct file_operations fops =
 };
 
 /*
-** This fuction will be called when we open the Device file
+** This function will be called when we open the Device file
 */
 static int etx_open(struct inode *inode, struct file *file)
 {
-        printk(KERN_INFO "Device File Opened...!!!\n");
+        pr_info("Device File Opened...!!!\n");
         return 0;
 }
 
 /*
-** This fuction will be called when we close the Device file
+** This function will be called when we close the Device file
 */
 static int etx_release(struct inode *inode, struct file *file)
 {
-        printk(KERN_INFO "Device File Closed...!!!\n");
+        pr_info("Device File Closed...!!!\n");
         return 0;
 }
 
 /*
-** This fuction will be called when we read the Device file
+** This function will be called when we read the Device file
 */
 static ssize_t etx_read(struct file *filp, char __user *buf, size_t len, loff_t *off)
 {
-        printk(KERN_INFO "Read Function\n");
+        pr_info("Read Function\n");
         return 0;
 }
 
 /*
-** This fuction will be called when we write the Device file
+** This function will be called when we write the Device file
 */
 static ssize_t etx_write(struct file *filp, const char __user *buf, size_t len, loff_t *off)
 {
-        printk(KERN_INFO "Write function\n");
-        return 0;
+        pr_info("Write function\n");
+        return len;
 }
 
 /*
-** This fuction will be called when we write IOCTL on the Device file
+** This function will be called when we write IOCTL on the Device file
 */
 static long etx_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 {
          switch(cmd) {
                 case WR_VALUE:
                         copy_from_user(&value ,(int32_t*) arg, sizeof(value));
-                        printk(KERN_INFO "Value = %d\n", value);
+                        pr_info("Value = %d\n", value);
                         break;
                 case RD_VALUE:
                         copy_to_user((int32_t*) arg, &value, sizeof(value));
@@ -111,32 +111,32 @@ static int __init etx_driver_init(void)
 {
         /*Allocating Major number*/
         if((alloc_chrdev_region(&dev, 0, 1, "etx_Dev")) <0){
-                printk(KERN_INFO "Cannot allocate major number\n");
+                pr_err("Cannot allocate major number\n");
                 return -1;
         }
-        printk(KERN_INFO "Major = %d Minor = %d \n",MAJOR(dev), MINOR(dev));
+        pr_info("Major = %d Minor = %d \n",MAJOR(dev), MINOR(dev));
  
         /*Creating cdev structure*/
         cdev_init(&etx_cdev,&fops);
  
         /*Adding character device to the system*/
         if((cdev_add(&etx_cdev,dev,1)) < 0){
-            printk(KERN_INFO "Cannot add the device to the system\n");
+            pr_err("Cannot add the device to the system\n");
             goto r_class;
         }
  
         /*Creating struct class*/
         if((dev_class = class_create(THIS_MODULE,"etx_class")) == NULL){
-            printk(KERN_INFO "Cannot create the struct class\n");
+            pr_err("Cannot create the struct class\n");
             goto r_class;
         }
  
         /*Creating device*/
         if((device_create(dev_class,NULL,dev,NULL,"etx_device")) == NULL){
-            printk(KERN_INFO "Cannot create the Device 1\n");
+            pr_err("Cannot create the Device 1\n");
             goto r_device;
         }
-        printk(KERN_INFO "Device Driver Insert...Done!!!\n");
+        pr_info("Device Driver Insert...Done!!!\n");
         return 0;
  
 r_device:
@@ -155,7 +155,7 @@ static void __exit etx_driver_exit(void)
         class_destroy(dev_class);
         cdev_del(&etx_cdev);
         unregister_chrdev_region(dev, 1);
-        printk(KERN_INFO "Device Driver Remove...Done!!!\n");
+        pr_info("Device Driver Remove...Done!!!\n");
 }
  
 module_init(etx_driver_init);

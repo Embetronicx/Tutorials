@@ -28,7 +28,7 @@ static ssize_t etx_write(struct file *filp, const char *buf, size_t len, loff_t 
 int etx_count = 0;
 void etx_shared_func(void)
 {
-        printk(KERN_INFO "Shared function been called!!!\n");
+        pr_info("Shared function been called!!!\n");
     etx_count++;
 }
 //EXPORT_SYMBOL_GPL(etx_shared_func);
@@ -46,25 +46,25 @@ static struct file_operations fops =
  
 static int etx_open(struct inode *inode, struct file *file)
 {
-        printk(KERN_INFO "Device File Opened...!!!\n");
+        pr_info("Device File Opened...!!!\n");
         return 0;
 }
  
 static int etx_release(struct inode *inode, struct file *file)
 {
-        printk(KERN_INFO "Device File Closed...!!!\n");
+        pr_info("Device File Closed...!!!\n");
         return 0;
 }
  
 static ssize_t etx_read(struct file *filp, char __user *buf, size_t len, loff_t *off)
 {
-        printk(KERN_INFO "Data Read : Done!\n");
+        pr_info("Data Read : Done!\n");
         return 1;
 }
 
 static ssize_t etx_write(struct file *filp, const char __user *buf, size_t len, loff_t *off)
 {
-        printk(KERN_INFO "Data Write : Done!\n");
+        pr_info("Data Write : Done!\n");
         return len;
 }
  
@@ -72,32 +72,32 @@ static int __init etx_driver_init(void)
 {
         /*Allocating Major number*/
         if((alloc_chrdev_region(&dev, 0, 1, "etx_Dev1")) <0){
-                printk(KERN_INFO "Cannot allocate major number\n");
+                pr_err("Cannot allocate major number\n");
                 return -1;
         }
-        printk(KERN_INFO "Major = %d Minor = %d \n",MAJOR(dev), MINOR(dev));
+        pr_info("Major = %d Minor = %d \n",MAJOR(dev), MINOR(dev));
  
         /*Creating cdev structure*/
         cdev_init(&etx_cdev,&fops);
  
         /*Adding character device to the system*/
         if((cdev_add(&etx_cdev,dev,1)) < 0){
-            printk(KERN_INFO "Cannot add the device to the system\n");
+            pr_err("Cannot add the device to the system\n");
             goto r_class;
         }
  
         /*Creating struct class*/
         if((dev_class = class_create(THIS_MODULE,"etx_class1")) == NULL){
-            printk(KERN_INFO "Cannot create the struct class\n");
+            pr_err("Cannot create the struct class\n");
             goto r_class;
         }
  
         /*Creating device*/
         if((device_create(dev_class,NULL,dev,NULL,"etx_device1")) == NULL){
-            printk(KERN_INFO "Cannot create the Device 1\n");
+            pr_err("Cannot create the Device 1\n");
             goto r_device;
         }
-        printk(KERN_INFO "Device Driver 1 Insert...Done!!!\n");
+        pr_info("Device Driver 1 Insert...Done!!!\n");
         return 0;
  
 r_device:
@@ -113,7 +113,7 @@ static void __exit etx_driver_exit(void)
         class_destroy(dev_class);
         cdev_del(&etx_cdev);
         unregister_chrdev_region(dev, 1);
-        printk(KERN_INFO "Device Driver 1 Remove...Done!!!\n");
+        pr_info("Device Driver 1 Remove...Done!!!\n");
 }
  
 module_init(etx_driver_init);

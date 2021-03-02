@@ -33,7 +33,7 @@ static void __exit etx_driver_exit(void);
 static struct task_struct *etx_thread1;
 static struct task_struct *etx_thread2; 
  
-/*************** Driver Fuctions **********************/
+/*************** Driver functions **********************/
 static int etx_open(struct inode *inode, struct file *file);
 static int etx_release(struct inode *inode, struct file *file);
 static ssize_t etx_read(struct file *filp, 
@@ -50,14 +50,14 @@ int thread_function1(void *pv)
     
     while(!kthread_should_stop()) {
         if(!spin_is_locked(&etx_spinlock)) {
-            printk(KERN_INFO "Spinlock is not locked in Thread Function1\n");
+            pr_info("Spinlock is not locked in Thread Function1\n");
         }
         spin_lock(&etx_spinlock);
         if(spin_is_locked(&etx_spinlock)) {
-            printk(KERN_INFO "Spinlock is locked in Thread Function1\n");
+            pr_info("Spinlock is locked in Thread Function1\n");
         }
         etx_global_variable++;
-        printk(KERN_INFO "In EmbeTronicX Thread Function1 %lu\n", etx_global_variable);
+        pr_info("In EmbeTronicX Thread Function1 %lu\n", etx_global_variable);
         spin_unlock(&etx_spinlock);
         msleep(1000);
     }
@@ -69,7 +69,7 @@ int thread_function2(void *pv)
     while(!kthread_should_stop()) {
         spin_lock(&etx_spinlock);
         etx_global_variable++;
-        printk(KERN_INFO "In EmbeTronicX Thread Function2 %lu\n", etx_global_variable);
+        pr_info("In EmbeTronicX Thread Function2 %lu\n", etx_global_variable);
         spin_unlock(&etx_spinlock);
         msleep(1000);
     }
@@ -87,27 +87,27 @@ static struct file_operations fops =
  
 static int etx_open(struct inode *inode, struct file *file)
 {
-        printk(KERN_INFO "Device File Opened...!!!\n");
+        pr_info("Device File Opened...!!!\n");
         return 0;
 }
  
 static int etx_release(struct inode *inode, struct file *file)
 {
-        printk(KERN_INFO "Device File Closed...!!!\n");
+        pr_info("Device File Closed...!!!\n");
         return 0;
 }
  
 static ssize_t etx_read(struct file *filp, 
                 char __user *buf, size_t len, loff_t *off)
 {
-        printk(KERN_INFO "Read function\n");
+        pr_info("Read function\n");
  
         return 0;
 }
 static ssize_t etx_write(struct file *filp, 
                 const char __user *buf, size_t len, loff_t *off)
 {
-        printk(KERN_INFO "Write Function\n");
+        pr_info("Write Function\n");
         return len;
 }
  
@@ -115,29 +115,29 @@ static int __init etx_driver_init(void)
 {
         /*Allocating Major number*/
         if((alloc_chrdev_region(&dev, 0, 1, "etx_Dev")) <0){
-                printk(KERN_INFO "Cannot allocate major number\n");
+                pr_info("Cannot allocate major number\n");
                 return -1;
         }
-        printk(KERN_INFO "Major = %d Minor = %d \n",MAJOR(dev), MINOR(dev));
+        pr_info("Major = %d Minor = %d \n",MAJOR(dev), MINOR(dev));
  
         /*Creating cdev structure*/
         cdev_init(&etx_cdev,&fops);
  
         /*Adding character device to the system*/
         if((cdev_add(&etx_cdev,dev,1)) < 0){
-            printk(KERN_INFO "Cannot add the device to the system\n");
+            pr_info("Cannot add the device to the system\n");
             goto r_class;
         }
  
         /*Creating struct class*/
         if((dev_class = class_create(THIS_MODULE,"etx_class")) == NULL){
-            printk(KERN_INFO "Cannot create the struct class\n");
+            pr_info("Cannot create the struct class\n");
             goto r_class;
         }
  
         /*Creating device*/
         if((device_create(dev_class,NULL,dev,NULL,"etx_device")) == NULL){
-            printk(KERN_INFO "Cannot create the Device \n");
+            pr_info("Cannot create the Device \n");
             goto r_device;
         }
  
@@ -145,23 +145,23 @@ static int __init etx_driver_init(void)
         /* Creating Thread 1 */
         etx_thread1 = kthread_run(thread_function1,NULL,"eTx Thread1");
         if(etx_thread1) {
-            printk(KERN_ERR "Kthread1 Created Successfully...\n");
+            pr_err("Kthread1 Created Successfully...\n");
         } else {
-            printk(KERN_ERR "Cannot create kthread1\n");
+            pr_err("Cannot create kthread1\n");
              goto r_device;
         }
  
          /* Creating Thread 2 */
         etx_thread2 = kthread_run(thread_function2,NULL,"eTx Thread2");
         if(etx_thread2) {
-            printk(KERN_ERR "Kthread2 Created Successfully...\n");
+            pr_err("Kthread2 Created Successfully...\n");
         } else {
-            printk(KERN_ERR "Cannot create kthread2\n");
+            pr_err("Cannot create kthread2\n");
              goto r_device;
         }
         //spin_lock_init(&etx_spinlock);
         
-        printk(KERN_INFO "Device Driver Insert...Done!!!\n");
+        pr_info("Device Driver Insert...Done!!!\n");
         return 0;
  
  
@@ -181,7 +181,7 @@ static void __exit etx_driver_exit(void)
         class_destroy(dev_class);
         cdev_del(&etx_cdev);
         unregister_chrdev_region(dev, 1);
-        printk(KERN_INFO "Device Driver Remove...Done!!\n");
+        pr_info("Device Driver Remove...Done!!\n");
 }
  
 module_init(etx_driver_init);
