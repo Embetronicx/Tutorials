@@ -20,7 +20,7 @@
 int main()
 {
   char kernel_val[20];
-  int fd, ret, n;
+  int fd, ret;
   struct pollfd pfd;
   
   fd = open("/dev/etx_device", O_RDWR | O_NONBLOCK);
@@ -59,6 +59,12 @@ int main()
       write(pfd.fd, &kernel_val, strlen(kernel_val));
       printf("POLLOUT : Kernel_val = %s\n", kernel_val);
     }
+  }
+  
+  if(close(fd))
+  {
+    perror("Failed to close file descriptor\n");
+    return 1;
   }
   
   return 0;

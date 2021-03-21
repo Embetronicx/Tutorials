@@ -67,5 +67,11 @@ int main()
     }
   }
   
+  if(close(fd))
+  {
+    perror("Failed to close file descriptor\n");
+    return 1;
+  }
+  
   return 0;
 }

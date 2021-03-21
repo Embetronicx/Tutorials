@@ -1,7 +1,7 @@
 /***************************************************************************//**
 *  \file       poll_driver.c
 *
-*  \details    Poll driver 
+*  \details    Poll / Select / E-Poll driver 
 *
 *  \author     EmbeTronicX
 *
@@ -265,5 +265,5 @@ module_exit(etx_driver_exit);
  
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("EmbeTronicX <embetronicx@gmail.com>");
-MODULE_DESCRIPTION("Simple linux driver (poll)");
+MODULE_DESCRIPTION("Simple linux driver (Poll / Select / E-Poll driver )");
 MODULE_VERSION("1.41");
