@@ -29,7 +29,7 @@ int etx_count = 0;
 void etx_shared_func(void)
 {
         pr_info("Shared function been called!!!\n");
-    etx_count++;
+        etx_count++;
 }
 //EXPORT_SYMBOL_GPL(etx_shared_func);
 EXPORT_SYMBOL(etx_shared_func);
