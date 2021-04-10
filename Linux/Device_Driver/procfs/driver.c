@@ -4,6 +4,8 @@
 *  \details    Simple Linux device driver (procfs)
 *
 *  \author     EmbeTronicX
+* 
+*  \Tested with Linux raspberrypi 5.4.51-v7l+
 *
 * *******************************************************************************/
 #include <linux/kernel.h>
@@ -29,6 +31,7 @@ static int len = 1;
 dev_t dev = 0;
 static struct class *dev_class;
 static struct cdev etx_cdev;
+static struct proc_dir_entry *parent;
 
 /*
 ** Function Prototypes
@@ -202,9 +205,18 @@ static int __init etx_driver_init(void)
             pr_info("Cannot create the Device 1\n");
             goto r_device;
         }
- 
-        /*Creating Proc entry*/
-        proc_create("etx_proc",0666,NULL,&proc_fops);
+        
+        /*Create proc directory. It will create a directory under "/proc" */
+        parent = proc_mkdir("etx",NULL);
+        
+        if( parent == NULL )
+        {
+            pr_info("Error creating proc entry");
+            goto r_device;
+        }
+        
+        /*Creating Proc entry under "/proc/etx/" */
+        proc_create("etx_proc", 0666, parent, &proc_fops);
  
         pr_info("Device Driver Insert...Done!!!\n");
         return 0;
@@ -221,7 +233,12 @@ r_class:
 */
 static void __exit etx_driver_exit(void)
 {
-        remove_proc_entry("etx_proc",NULL);
+        /* Removes single proc entry */
+        //remove_proc_entry("etx/etx_proc", parent);
+        
+        /* remove complete /proc/etx */
+        proc_remove(parent);
+        
         device_destroy(dev_class,dev);
         class_destroy(dev_class);
         cdev_del(&etx_cdev);
