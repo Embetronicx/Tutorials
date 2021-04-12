@@ -84,7 +84,7 @@ static irqreturn_t gpio_irq_handler(int irq,void *dev_id)
 }
 
 /*
-** This fuction is the softirq handler
+** This function is the softirq handler
 */
 static void gpio_interrupt_softirq_handler(struct softirq_action *action)
 {
