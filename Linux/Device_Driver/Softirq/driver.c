@@ -61,7 +61,6 @@ unsigned int GPIO_irqNumber;
 //Interrupt handler for GPIO 25. This will be called whenever there is a raising edge detected. 
 static irqreturn_t gpio_irq_handler(int irq,void *dev_id) 
 {
-  static unsigned long flags = 0;
   
 #ifdef EN_DEBOUNCE
    unsigned long diff = jiffies - old_jiffie;
@@ -72,14 +71,10 @@ static irqreturn_t gpio_irq_handler(int irq,void *dev_id)
   
   old_jiffie = jiffies;
 #endif  
-
-  local_irq_save(flags);
   
   /* Raise the softirq */
   raise_softirq( EMBETRONICX_SOFT_IRQ );
-  
-  local_irq_restore(flags);
-  
+    
   return IRQ_HANDLED;
 }
 
