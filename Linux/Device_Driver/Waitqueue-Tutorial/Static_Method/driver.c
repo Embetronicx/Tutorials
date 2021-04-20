@@ -5,7 +5,9 @@
 *
 *  \author     EmbeTronicX
 *
-* *******************************************************************************/
+*  \Tested with Linux raspberrypi 5.10.27-v7l-embetronicx-custom+
+*
+*******************************************************************************/
 #include <linux/kernel.h>
 #include <linux/init.h>
 #include <linux/module.h>
@@ -145,9 +147,7 @@ static int __init etx_driver_init(void)
             pr_info("Cannot create the Device 1\n");
             goto r_device;
         }
-        
-        //Initialize wait queue
-        init_waitqueue_head(&wait_queue_etx);
+
  
         //Create the kernel thread with name 'mythread'
         wait_thread = kthread_create(wait_function, NULL, "WaitThread");
