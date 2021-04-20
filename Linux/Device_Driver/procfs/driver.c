@@ -5,7 +5,7 @@
 *
 *  \author     EmbeTronicX
 * 
-*  \Tested with Linux raspberrypi 5.4.51-v7l+
+*  \Tested with Linux raspberrypi 5.10.27-v7l-embetronicx-custom+
 *
 * *******************************************************************************/
 #include <linux/kernel.h>
@@ -19,6 +19,15 @@
 #include<linux/uaccess.h>              //copy_to/from_user()
 #include <linux/ioctl.h>
 #include<linux/proc_fs.h>
+
+/* 
+** I am using the kernel 5.10.27-v7l. So I have set this as 510.
+** If you are using the kernel 3.10, then set this as 310,
+** and for kernel 5.1, set this as 501. Because the API proc_create()
+** changed in kernel above v5.5.
+**
+*/ 
+#define LINUX_KERNEL_VERSION  510
  
 #define WR_VALUE _IOW('a','a',int32_t*)
 #define RD_VALUE _IOR('a','b',int32_t*)
@@ -65,6 +74,21 @@ static struct file_operations fops =
         .release        = etx_release,
 };
 
+
+#if ( LINUX_KERNEL_VERSION > 505 )
+
+/*
+** procfs operation sturcture
+*/
+static struct proc_ops proc_fops = {
+        .proc_open = open_proc,
+        .proc_read = read_proc,
+        .proc_write = write_proc,
+        .proc_release = release_proc
+};
+
+#else //LINUX_KERNEL_VERSION > 505
+
 /*
 ** procfs operation sturcture
 */
@@ -74,6 +98,8 @@ static struct file_operations proc_fops = {
         .write = write_proc,
         .release = release_proc
 };
+
+#endif //LINUX_KERNEL_VERSION > 505
 
 /*
 ** This function will be called when we open the procfs file
@@ -100,12 +126,19 @@ static ssize_t read_proc(struct file *filp, char __user *buffer, size_t length,l
 {
     pr_info("proc file read.....\n");
     if(len)
+    {
         len=0;
-    else{
+    }
+    else
+    {
         len=1;
         return 0;
     }
-    copy_to_user(buffer,etx_array,20);
+    
+    if( copy_to_user(buffer,etx_array,20) )
+    {
+        pr_err("Data Send : Err!\n");
+    }
  
     return length;;
 }
@@ -116,7 +149,12 @@ static ssize_t read_proc(struct file *filp, char __user *buffer, size_t length,l
 static ssize_t write_proc(struct file *filp, const char *buff, size_t len, loff_t * off)
 {
     pr_info("proc file wrote.....\n");
-    copy_from_user(etx_array,buff,len);
+    
+    if( copy_from_user(etx_array,buff,len) )
+    {
+        pr_err("Data Write : Err!\n");
+    }
+    
     return len;
 }
 
@@ -163,11 +201,20 @@ static long etx_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 {
          switch(cmd) {
                 case WR_VALUE:
-                        copy_from_user(&value ,(int32_t*) arg, sizeof(value));
+                        if( copy_from_user(&value ,(int32_t*) arg, sizeof(value)) )
+                        {
+                                pr_err("Data Write : Err!\n");
+                        }
                         pr_info("Value = %d\n", value);
                         break;
                 case RD_VALUE:
-                        copy_to_user((int32_t*) arg, &value, sizeof(value));
+                        if( copy_to_user((int32_t*) arg, &value, sizeof(value)) )
+                        {
+                                pr_err("Data Read : Err!\n");
+                        }
+                        break;
+                default:
+                        pr_info("Default\n");
                         break;
         }
         return 0;

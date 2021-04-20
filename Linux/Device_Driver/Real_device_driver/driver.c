@@ -5,7 +5,9 @@
 *
 *  \author     EmbeTronicX
 *
-* *******************************************************************************/
+*  \Tested with Linux raspberrypi 5.10.27-v7l-embetronicx-custom+
+*
+*******************************************************************************/
 #include <linux/kernel.h>
 #include <linux/init.h>
 #include <linux/module.h>
@@ -77,7 +79,10 @@ static int etx_release(struct inode *inode, struct file *file)
 static ssize_t etx_read(struct file *filp, char __user *buf, size_t len, loff_t *off)
 {
         //Copy the data from the kernel space to the user-space
-        copy_to_user(buf, kernel_buffer, mem_size);
+        if( copy_to_user(buf, kernel_buffer, mem_size) )
+        {
+                pr_err("Data Read : Err!\n");
+        }
         pr_info("Data Read : Done!\n");
         return mem_size;
 }
@@ -88,7 +93,10 @@ static ssize_t etx_read(struct file *filp, char __user *buf, size_t len, loff_t 
 static ssize_t etx_write(struct file *filp, const char __user *buf, size_t len, loff_t *off)
 {
         //Copy the data to kernel space from the user-space
-        copy_from_user(kernel_buffer, buf, len);
+        if( copy_from_user(kernel_buffer, buf, len) )
+        {
+                pr_err("Data Write : Err!\n");
+        }
         pr_info("Data Write : Done!\n");
         return len;
 }

@@ -5,7 +5,9 @@
 *
 *  \author     EmbeTronicX
 *
-* *******************************************************************************/
+*  \Tested with Linux raspberrypi 5.10.27-v7l-embetronicx-custom+
+*
+*******************************************************************************/
 #include<linux/kernel.h>
 #include<linux/init.h>
 #include<linux/module.h>
@@ -24,7 +26,7 @@ static int __init hello_world_init(void)
                 pr_err("Cannot allocate major number for device\n");
                 return -1;
         }
-        pr_info("Major = %d Minor = %d \n",MAJOR(dev), MINOR(dev));
+        
         pr_info("Kernel Module Inserted Successfully...\n");
         return 0;
 }

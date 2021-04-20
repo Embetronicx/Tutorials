@@ -5,7 +5,9 @@
 *
 *  \author     EmbeTronicX
 *
-* *******************************************************************************/
+*  \Tested with Linux raspberrypi 5.10.27-v7l-embetronicx-custom+
+*
+*******************************************************************************/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

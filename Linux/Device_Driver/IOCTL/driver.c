@@ -5,7 +5,9 @@
 *
 *  \author     EmbeTronicX
 *
-* *******************************************************************************/
+*  \Tested with Linux raspberrypi 5.10.27-v7l-embetronicx-custom+
+*
+*******************************************************************************/
 #include <linux/kernel.h>
 #include <linux/init.h>
 #include <linux/module.h>
@@ -94,11 +96,20 @@ static long etx_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 {
          switch(cmd) {
                 case WR_VALUE:
-                        copy_from_user(&value ,(int32_t*) arg, sizeof(value));
+                        if( copy_from_user(&value ,(int32_t*) arg, sizeof(value)) )
+                        {
+                                pr_err("Data Write : Err!\n");
+                        }
                         pr_info("Value = %d\n", value);
                         break;
                 case RD_VALUE:
-                        copy_to_user((int32_t*) arg, &value, sizeof(value));
+                        if( copy_to_user((int32_t*) arg, &value, sizeof(value)) )
+                        {
+                                pr_err("Data Read : Err!\n");
+                        }
+                        break;
+                default:
+                        pr_info("Default\n");
                         break;
         }
         return 0;
