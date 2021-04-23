@@ -5,7 +5,9 @@
 *
 *  \author     EmbeTronicX
 *
-* *******************************************************************************/
+*  \Tested with Linux raspberrypi 5.10.27-v7l-embetronicx-custom+
+*
+*******************************************************************************/
 #include <linux/kernel.h>
 #include <linux/init.h>
 #include <linux/module.h>
@@ -148,7 +150,7 @@ static int __init etx_driver_init(void)
             goto r_device;
         }
 #if 0
-        /* You can use this method to create and run the thread */
+        /* You can use this method also to create and run the thread */
         etx_thread = kthread_run(thread_function,NULL,"eTx Thread");
         if(etx_thread) {
             pr_info("Kthread Created Successfully...\n");

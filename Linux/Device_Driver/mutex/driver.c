@@ -5,7 +5,9 @@
 *
 *  \author     EmbeTronicX
 *
-* *******************************************************************************/
+*  \Tested with Linux raspberrypi 5.10.27-v7l-embetronicx-custom+
+*
+*******************************************************************************/
 #include <linux/kernel.h>
 #include <linux/init.h>
 #include <linux/module.h>
@@ -44,7 +46,10 @@ static ssize_t etx_write(struct file *filp,
  
 int thread_function1(void *pv);
 int thread_function2(void *pv);
- 
+
+/*
+** Thread function 1
+*/
 int thread_function1(void *pv)
 {
     
@@ -57,7 +62,10 @@ int thread_function1(void *pv)
     }
     return 0;
 }
- 
+
+/*
+** Thread function 2
+*/
 int thread_function2(void *pv)
 {
     while(!kthread_should_stop()) {
@@ -69,7 +77,8 @@ int thread_function2(void *pv)
     }
     return 0;
 }
- 
+
+//File operation structure
 static struct file_operations fops =
 {
         .owner          = THIS_MODULE,
@@ -78,19 +87,28 @@ static struct file_operations fops =
         .open           = etx_open,
         .release        = etx_release,
 };
- 
+
+/*
+** This function will be called when we open the Device file
+*/ 
 static int etx_open(struct inode *inode, struct file *file)
 {
         pr_info("Device File Opened...!!!\n");
         return 0;
 }
- 
+
+/*
+** This function will be called when we close the Device file
+*/
 static int etx_release(struct inode *inode, struct file *file)
 {
         pr_info("Device File Closed...!!!\n");
         return 0;
 }
- 
+
+/*
+** This function will be called when we read the Device file
+*/ 
 static ssize_t etx_read(struct file *filp, 
                 char __user *buf, size_t len, loff_t *off)
 {
@@ -98,13 +116,20 @@ static ssize_t etx_read(struct file *filp,
  
         return 0;
 }
+
+/*
+** This function will be called when we write the Device file
+*/
 static ssize_t etx_write(struct file *filp, 
                 const char __user *buf, size_t len, loff_t *off)
 {
         pr_info("Write Function\n");
         return len;
 }
- 
+
+/*
+** Module Init function
+*/
 static int __init etx_driver_init(void)
 {
         /*Allocating Major number*/
@@ -166,7 +191,10 @@ r_class:
         cdev_del(&etx_cdev);
         return -1;
 }
- 
+
+/*
+** Module exit function
+*/ 
 static void __exit etx_driver_exit(void)
 {
         kthread_stop(etx_thread1);
