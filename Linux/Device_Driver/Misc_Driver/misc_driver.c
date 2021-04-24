@@ -13,19 +13,28 @@
 #include <linux/kernel.h>
 #include <linux/module.h>
 #include <linux/init.h>
- 
+
+/*
+** This function will be called when we open the Misc device file
+*/
 static int etx_misc_open(struct inode *inode, struct file *file)
 {
     pr_info("EtX misc device open\n");
     return 0;
 }
- 
+
+/*
+** This function will be called when we close the Misc Device file
+*/
 static int etx_misc_close(struct inode *inodep, struct file *filp)
 {
     pr_info("EtX misc device close\n");
     return 0;
 }
- 
+
+/*
+** This function will be called when we write the Misc Device file
+*/
 static ssize_t etx_misc_write(struct file *file, const char __user *buf,
                size_t len, loff_t *ppos)
 {
@@ -36,7 +45,9 @@ static ssize_t etx_misc_write(struct file *file, const char __user *buf,
     return len; 
 }
  
- 
+/*
+** This function will be called when we read the Misc Device file
+*/
 static ssize_t etx_misc_read(struct file *filp, char __user *buf,
                     size_t count, loff_t *f_pos)
 {
@@ -44,7 +55,8 @@ static ssize_t etx_misc_read(struct file *filp, char __user *buf,
  
     return 0;
 }
- 
+
+//File operation structure 
 static const struct file_operations fops = {
     .owner          = THIS_MODULE,
     .write          = etx_misc_write,
@@ -53,13 +65,17 @@ static const struct file_operations fops = {
     .release        = etx_misc_close,
     .llseek         = no_llseek,
 };
- 
+
+//Misc device structure
 struct miscdevice etx_misc_device = {
     .minor = MISC_DYNAMIC_MINOR,
     .name = "simple_etx_misc",
     .fops = &fops,
 };
- 
+
+/*
+** Misc Init function
+*/
 static int __init misc_init(void)
 {
     int error;
@@ -73,7 +89,10 @@ static int __init misc_init(void)
     pr_info("misc_register init done!!!\n");
     return 0;
 }
- 
+
+/*
+** Misc exit function
+*/
 static void __exit misc_exit(void)
 {
     misc_deregister(&etx_misc_device);
