@@ -5,7 +5,9 @@
 *
 *  \author     EmbeTronicX
 *
-* *******************************************************************************/
+*  \Tested with Linux raspberrypi 5.10.27-v7l-embetronicx-custom+
+*
+*******************************************************************************/
 #include <linux/kernel.h>
 #include <linux/init.h>
 #include <linux/module.h>
@@ -20,6 +22,8 @@ static struct cdev etx_cdev;
  
 static int __init etx_driver_init(void);
 static void __exit etx_driver_exit(void);
+
+/*************** Driver Functions **********************/
 static int etx_open(struct inode *inode, struct file *file);
 static int etx_release(struct inode *inode, struct file *file);
 static ssize_t etx_read(struct file *filp, char __user *buf, size_t len,loff_t * off);
@@ -28,6 +32,7 @@ static ssize_t etx_write(struct file *filp, const char *buf, size_t len, loff_t 
 extern int etx_count;
 void etx_shared_func(void); //Function declaration is by defalut extern
  
+//File operation structure
 static struct file_operations fops =
 {
         .owner          = THIS_MODULE,
@@ -36,20 +41,30 @@ static struct file_operations fops =
         .open           = etx_open,
         .release        = etx_release,
 };
- 
+
+/*
+** This function will be called when we open the Device file
+*/ 
 static int etx_open(struct inode *inode, struct file *file)
 {
         pr_info("Device File Opened...!!!\n");
         return 0;
 }
  
+/*
+** This function will be called when we close the Device file
+*/ 
 static int etx_release(struct inode *inode, struct file *file)
 {
         pr_info("Device File Closed...!!!\n");
         return 0;
 }
  
-static ssize_t etx_read(struct file *filp, char __user *buf, size_t len, loff_t *off)
+/*
+** This function will be called when we read the Device file
+*/
+static ssize_t etx_read(struct file *filp, 
+                                char __user *buf, size_t len, loff_t *off)
 {
         etx_shared_func();
         pr_info("%d time(s) shared function called!\n", etx_count);
@@ -57,12 +72,19 @@ static ssize_t etx_read(struct file *filp, char __user *buf, size_t len, loff_t 
         return 0;
 }
 
-static ssize_t etx_write(struct file *filp, const char __user *buf, size_t len, loff_t *off)
+/*
+** This function will be called when we write the Device file
+*/
+static ssize_t etx_write(struct file *filp, 
+                                const char __user *buf, size_t len, loff_t *off)
 {
         pr_info("Data Write : Done!\n");
         return len;
 }
- 
+
+/*
+** Module Init function
+*/
 static int __init etx_driver_init(void)
 {
         /*Allocating Major number*/
@@ -101,7 +123,10 @@ r_class:
         unregister_chrdev_region(dev,1);
         return -1;
 }
- 
+
+/*
+** Module exit function
+*/ 
 static void __exit etx_driver_exit(void)
 {
         device_destroy(dev_class,dev);
