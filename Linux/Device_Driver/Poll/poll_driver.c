@@ -231,7 +231,7 @@ static int __init etx_driver_init(void)
   }
   
   //Initialize wait queue
-  init_waitqueue_head(&wait_queue_etx_data);
+  //init_waitqueue_head(&wait_queue_etx_data);
   
   pr_info("Device Driver Insert...Done!!!\n");
   return 0;
