@@ -7,23 +7,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
   1 .text         00003964  08040200  08040200  00010200  2**4
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .rodata       000000e4  08043b64  08043b64  00013b64  2**2
+  2 .rodata       000000d0  08043b64  08043b64  00013b64  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  3 .ARM.extab    00000000  08043c48  08043c48  00020070  2**0
+  3 .ARM.extab    00000000  08043c34  08043c34  00020070  2**0
                   CONTENTS
-  4 .ARM          00000008  08043c48  08043c48  00013c48  2**2
+  4 .ARM          00000008  08043c34  08043c34  00013c34  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  5 .preinit_array 00000000  08043c50  08043c50  00020070  2**0
+  5 .preinit_array 00000000  08043c3c  08043c3c  00020070  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  6 .init_array   00000004  08043c50  08043c50  00013c50  2**2
+  6 .init_array   00000004  08043c3c  08043c3c  00013c3c  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  7 .fini_array   00000004  08043c54  08043c54  00013c54  2**2
+  7 .fini_array   00000004  08043c40  08043c40  00013c40  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  8 .data         00000070  20000000  08043c58  00020000  2**2
+  8 .data         00000070  20000000  08043c44  00020000  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  9 .bss          000000c0  20000070  08043cc8  00020070  2**2
+  9 .bss          000000c0  20000070  08043cb4  00020070  2**2
                   ALLOC
- 10 ._user_heap_stack 00000600  20000130  08043cc8  00020130  2**0
+ 10 ._user_heap_stack 00000600  20000130  08043cb4  00020130  2**0
                   ALLOC
  11 .ARM.attributes 0000002e  00000000  00000000  00020070  2**0
                   CONTENTS, READONLY
@@ -39,11 +39,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  17 .debug_line   0000880e  00000000  00000000  0005371e  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    000f1d84  00000000  00000000  0005bf2c  2**0
+ 18 .debug_str    000f1dec  00000000  00000000  0005bf2c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000053  00000000  00000000  0014dcb0  2**0
+ 19 .comment      00000053  00000000  00000000  0014dd18  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  000024e0  00000000  00000000  0014dd04  2**2
+ 20 .debug_frame  000024e0  00000000  00000000  0014dd6c  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -412,36 +412,79 @@ Disassembly of section .text:
  80405d6:	bf00      	nop
 
 080405d8 <main>:
+/**
+  * @brief  The application entry point.
+  * @retval int
+  */
+int main(void)
+{
  80405d8:	b580      	push	{r7, lr}
  80405da:	af00      	add	r7, sp, #0
+  /* USER CODE END 1 */
+
+  /* MCU Configuration--------------------------------------------------------*/
+
+  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+  HAL_Init();
  80405dc:	f000 fa8f 	bl	8040afe <HAL_Init>
+  /* USER CODE BEGIN Init */
+
+  /* USER CODE END Init */
+
+  /* Configure the system clock */
+  SystemClock_Config();
  80405e0:	f000 f818 	bl	8040614 <SystemClock_Config>
+  /* USER CODE BEGIN SysInit */
+
+  /* USER CODE END SysInit */
+
+  /* Initialize all configured peripherals */
+  MX_GPIO_Init();
  80405e4:	f000 f8c0 	bl	8040768 <MX_GPIO_Init>
+  MX_USART3_UART_Init();
  80405e8:	f000 f88e 	bl	8040708 <MX_USART3_UART_Init>
+  /* USER CODE BEGIN 2 */
+  printf("Starting Application(%d.%d)\n", APP_Version[0], APP_Version[1] );
  80405ec:	2300      	movs	r3, #0
  80405ee:	2201      	movs	r2, #1
  80405f0:	4619      	mov	r1, r3
  80405f2:	4806      	ldr	r0, [pc, #24]	; (804060c <main+0x34>)
  80405f4:	f002 fb54 	bl	8042ca0 <iprintf>
+  while (1)
+  {
+    /* USER CODE END WHILE */
+
+    /* USER CODE BEGIN 3 */
+    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_7 );
  80405f8:	2180      	movs	r1, #128	; 0x80
  80405fa:	4805      	ldr	r0, [pc, #20]	; (8040610 <main+0x38>)
  80405fc:	f000 fdab 	bl	8041156 <HAL_GPIO_TogglePin>
+    HAL_Delay(500);   //0.5sec delay
  8040600:	f44f 70fa 	mov.w	r0, #500	; 0x1f4
  8040604:	f000 fad8 	bl	8040bb8 <HAL_Delay>
+    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_7 );
  8040608:	e7f6      	b.n	80405f8 <main+0x20>
  804060a:	bf00      	nop
  804060c:	08043b64 	.word	0x08043b64
  8040610:	40020400 	.word	0x40020400
 
 08040614 <SystemClock_Config>:
+/**
+  * @brief System Clock Configuration
+  * @retval None
+  */
+void SystemClock_Config(void)
+{
  8040614:	b580      	push	{r7, lr}
  8040616:	b0b8      	sub	sp, #224	; 0xe0
  8040618:	af00      	add	r7, sp, #0
+  RCC_OscInitTypeDef RCC_OscInitStruct = {0};
  804061a:	f107 03ac 	add.w	r3, r7, #172	; 0xac
  804061e:	2234      	movs	r2, #52	; 0x34
  8040620:	2100      	movs	r1, #0
  8040622:	4618      	mov	r0, r3
  8040624:	f002 fb34 	bl	8042c90 <memset>
+  RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
  8040628:	f107 0398 	add.w	r3, r7, #152	; 0x98
  804062c:	2200      	movs	r2, #0
  804062e:	601a      	str	r2, [r3, #0]
@@ -449,11 +492,16 @@ Disassembly of section .text:
  8040632:	609a      	str	r2, [r3, #8]
  8040634:	60da      	str	r2, [r3, #12]
  8040636:	611a      	str	r2, [r3, #16]
+  RCC_PeriphCLKInitTypeDef PeriphClkInitStruct = {0};
  8040638:	f107 0308 	add.w	r3, r7, #8
  804063c:	2290      	movs	r2, #144	; 0x90
  804063e:	2100      	movs	r1, #0
  8040640:	4618      	mov	r0, r3
  8040642:	f002 fb25 	bl	8042c90 <memset>
+
+  /** Configure the main internal regulator output voltage
+  */
+  __HAL_RCC_PWR_CLK_ENABLE();
  8040646:	4b2e      	ldr	r3, [pc, #184]	; (8040700 <SystemClock_Config+0xec>)
  8040648:	6c1b      	ldr	r3, [r3, #64]	; 0x40
  804064a:	4a2d      	ldr	r2, [pc, #180]	; (8040700 <SystemClock_Config+0xec>)
@@ -464,6 +512,7 @@ Disassembly of section .text:
  8040656:	f003 5380 	and.w	r3, r3, #268435456	; 0x10000000
  804065a:	607b      	str	r3, [r7, #4]
  804065c:	687b      	ldr	r3, [r7, #4]
+  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE3);
  804065e:	4b29      	ldr	r3, [pc, #164]	; (8040704 <SystemClock_Config+0xf0>)
  8040660:	681b      	ldr	r3, [r3, #0]
  8040662:	f423 4340 	bic.w	r3, r3, #49152	; 0xc000
@@ -475,31 +524,52 @@ Disassembly of section .text:
  8040672:	f403 4340 	and.w	r3, r3, #49152	; 0xc000
  8040676:	603b      	str	r3, [r7, #0]
  8040678:	683b      	ldr	r3, [r7, #0]
+  /** Initializes the RCC Oscillators according to the specified parameters
+  * in the RCC_OscInitTypeDef structure.
+  */
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
  804067a:	2302      	movs	r3, #2
  804067c:	f8c7 30ac 	str.w	r3, [r7, #172]	; 0xac
+  RCC_OscInitStruct.HSIState = RCC_HSI_ON;
  8040680:	2301      	movs	r3, #1
  8040682:	f8c7 30b8 	str.w	r3, [r7, #184]	; 0xb8
+  RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
  8040686:	2310      	movs	r3, #16
  8040688:	f8c7 30bc 	str.w	r3, [r7, #188]	; 0xbc
+  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
  804068c:	2300      	movs	r3, #0
  804068e:	f8c7 30c4 	str.w	r3, [r7, #196]	; 0xc4
+  if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
  8040692:	f107 03ac 	add.w	r3, r7, #172	; 0xac
  8040696:	4618      	mov	r0, r3
  8040698:	f000 fd78 	bl	804118c <HAL_RCC_OscConfig>
  804069c:	4603      	mov	r3, r0
  804069e:	2b00      	cmp	r3, #0
  80406a0:	d001      	beq.n	80406a6 <SystemClock_Config+0x92>
+  {
+    Error_Handler();
  80406a2:	f000 f8b1 	bl	8040808 <Error_Handler>
+  }
+  /** Initializes the CPU, AHB and APB buses clocks
+  */
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
  80406a6:	230f      	movs	r3, #15
  80406a8:	f8c7 3098 	str.w	r3, [r7, #152]	; 0x98
+                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSI;
  80406ac:	2300      	movs	r3, #0
  80406ae:	f8c7 309c 	str.w	r3, [r7, #156]	; 0x9c
+  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
  80406b2:	2300      	movs	r3, #0
  80406b4:	f8c7 30a0 	str.w	r3, [r7, #160]	; 0xa0
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
  80406b8:	2300      	movs	r3, #0
  80406ba:	f8c7 30a4 	str.w	r3, [r7, #164]	; 0xa4
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
  80406be:	2300      	movs	r3, #0
  80406c0:	f8c7 30a8 	str.w	r3, [r7, #168]	; 0xa8
+
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
  80406c4:	f107 0398 	add.w	r3, r7, #152	; 0x98
  80406c8:	2100      	movs	r1, #0
  80406ca:	4618      	mov	r0, r3
@@ -507,18 +577,28 @@ Disassembly of section .text:
  80406d0:	4603      	mov	r3, r0
  80406d2:	2b00      	cmp	r3, #0
  80406d4:	d001      	beq.n	80406da <SystemClock_Config+0xc6>
+  {
+    Error_Handler();
  80406d6:	f000 f897 	bl	8040808 <Error_Handler>
+  }
+  PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_USART3;
  80406da:	f44f 7380 	mov.w	r3, #256	; 0x100
  80406de:	60bb      	str	r3, [r7, #8]
+  PeriphClkInitStruct.Usart3ClockSelection = RCC_USART3CLKSOURCE_PCLK1;
  80406e0:	2300      	movs	r3, #0
  80406e2:	657b      	str	r3, [r7, #84]	; 0x54
+  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
  80406e4:	f107 0308 	add.w	r3, r7, #8
  80406e8:	4618      	mov	r0, r3
  80406ea:	f001 f9d3 	bl	8041a94 <HAL_RCCEx_PeriphCLKConfig>
  80406ee:	4603      	mov	r3, r0
  80406f0:	2b00      	cmp	r3, #0
  80406f2:	d001      	beq.n	80406f8 <SystemClock_Config+0xe4>
+  {
+    Error_Handler();
  80406f4:	f000 f888 	bl	8040808 <Error_Handler>
+  }
+}
  80406f8:	bf00      	nop
  80406fa:	37e0      	adds	r7, #224	; 0xe0
  80406fc:	46bd      	mov	sp, r7
@@ -527,44 +607,74 @@ Disassembly of section .text:
  8040704:	40007000 	.word	0x40007000
 
 08040708 <MX_USART3_UART_Init>:
+  * @brief USART3 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_USART3_UART_Init(void)
+{
  8040708:	b580      	push	{r7, lr}
  804070a:	af00      	add	r7, sp, #0
+  /* USER CODE END USART3_Init 0 */
+
+  /* USER CODE BEGIN USART3_Init 1 */
+
+  /* USER CODE END USART3_Init 1 */
+  huart3.Instance = USART3;
  804070c:	4b14      	ldr	r3, [pc, #80]	; (8040760 <MX_USART3_UART_Init+0x58>)
  804070e:	4a15      	ldr	r2, [pc, #84]	; (8040764 <MX_USART3_UART_Init+0x5c>)
  8040710:	601a      	str	r2, [r3, #0]
+  huart3.Init.BaudRate = 115200;
  8040712:	4b13      	ldr	r3, [pc, #76]	; (8040760 <MX_USART3_UART_Init+0x58>)
  8040714:	f44f 32e1 	mov.w	r2, #115200	; 0x1c200
  8040718:	605a      	str	r2, [r3, #4]
+  huart3.Init.WordLength = UART_WORDLENGTH_8B;
  804071a:	4b11      	ldr	r3, [pc, #68]	; (8040760 <MX_USART3_UART_Init+0x58>)
  804071c:	2200      	movs	r2, #0
  804071e:	609a      	str	r2, [r3, #8]
+  huart3.Init.StopBits = UART_STOPBITS_1;
  8040720:	4b0f      	ldr	r3, [pc, #60]	; (8040760 <MX_USART3_UART_Init+0x58>)
  8040722:	2200      	movs	r2, #0
  8040724:	60da      	str	r2, [r3, #12]
+  huart3.Init.Parity = UART_PARITY_NONE;
  8040726:	4b0e      	ldr	r3, [pc, #56]	; (8040760 <MX_USART3_UART_Init+0x58>)
  8040728:	2200      	movs	r2, #0
  804072a:	611a      	str	r2, [r3, #16]
+  huart3.Init.Mode = UART_MODE_TX_RX;
  804072c:	4b0c      	ldr	r3, [pc, #48]	; (8040760 <MX_USART3_UART_Init+0x58>)
  804072e:	220c      	movs	r2, #12
  8040730:	615a      	str	r2, [r3, #20]
+  huart3.Init.HwFlowCtl = UART_HWCONTROL_NONE;
  8040732:	4b0b      	ldr	r3, [pc, #44]	; (8040760 <MX_USART3_UART_Init+0x58>)
  8040734:	2200      	movs	r2, #0
  8040736:	619a      	str	r2, [r3, #24]
+  huart3.Init.OverSampling = UART_OVERSAMPLING_16;
  8040738:	4b09      	ldr	r3, [pc, #36]	; (8040760 <MX_USART3_UART_Init+0x58>)
  804073a:	2200      	movs	r2, #0
  804073c:	61da      	str	r2, [r3, #28]
+  huart3.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
  804073e:	4b08      	ldr	r3, [pc, #32]	; (8040760 <MX_USART3_UART_Init+0x58>)
  8040740:	2200      	movs	r2, #0
  8040742:	621a      	str	r2, [r3, #32]
+  huart3.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
  8040744:	4b06      	ldr	r3, [pc, #24]	; (8040760 <MX_USART3_UART_Init+0x58>)
  8040746:	2200      	movs	r2, #0
  8040748:	625a      	str	r2, [r3, #36]	; 0x24
+  if (HAL_UART_Init(&huart3) != HAL_OK)
  804074a:	4805      	ldr	r0, [pc, #20]	; (8040760 <MX_USART3_UART_Init+0x58>)
  804074c:	f001 fdca 	bl	80422e4 <HAL_UART_Init>
  8040750:	4603      	mov	r3, r0
  8040752:	2b00      	cmp	r3, #0
  8040754:	d001      	beq.n	804075a <MX_USART3_UART_Init+0x52>
+  {
+    Error_Handler();
  8040756:	f000 f857 	bl	8040808 <Error_Handler>
+  }
+  /* USER CODE BEGIN USART3_Init 2 */
+
+  /* USER CODE END USART3_Init 2 */
+
+}
  804075a:	bf00      	nop
  804075c:	bd80      	pop	{r7, pc}
  804075e:	bf00      	nop
@@ -572,9 +682,16 @@ Disassembly of section .text:
  8040764:	40004800 	.word	0x40004800
 
 08040768 <MX_GPIO_Init>:
+  * @brief GPIO Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_GPIO_Init(void)
+{
  8040768:	b580      	push	{r7, lr}
  804076a:	b088      	sub	sp, #32
  804076c:	af00      	add	r7, sp, #0
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
  804076e:	f107 030c 	add.w	r3, r7, #12
  8040772:	2200      	movs	r2, #0
  8040774:	601a      	str	r2, [r3, #0]
@@ -582,6 +699,9 @@ Disassembly of section .text:
  8040778:	609a      	str	r2, [r3, #8]
  804077a:	60da      	str	r2, [r3, #12]
  804077c:	611a      	str	r2, [r3, #16]
+
+  /* GPIO Ports Clock Enable */
+  __HAL_RCC_GPIOD_CLK_ENABLE();
  804077e:	4b17      	ldr	r3, [pc, #92]	; (80407dc <MX_GPIO_Init+0x74>)
  8040780:	6b1b      	ldr	r3, [r3, #48]	; 0x30
  8040782:	4a16      	ldr	r2, [pc, #88]	; (80407dc <MX_GPIO_Init+0x74>)
@@ -592,6 +712,7 @@ Disassembly of section .text:
  804078e:	f003 0308 	and.w	r3, r3, #8
  8040792:	60bb      	str	r3, [r7, #8]
  8040794:	68bb      	ldr	r3, [r7, #8]
+  __HAL_RCC_GPIOB_CLK_ENABLE();
  8040796:	4b11      	ldr	r3, [pc, #68]	; (80407dc <MX_GPIO_Init+0x74>)
  8040798:	6b1b      	ldr	r3, [r3, #48]	; 0x30
  804079a:	4a10      	ldr	r2, [pc, #64]	; (80407dc <MX_GPIO_Init+0x74>)
@@ -602,22 +723,34 @@ Disassembly of section .text:
  80407a6:	f003 0302 	and.w	r3, r3, #2
  80407aa:	607b      	str	r3, [r7, #4]
  80407ac:	687b      	ldr	r3, [r7, #4]
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_RESET);
  80407ae:	2200      	movs	r2, #0
  80407b0:	2180      	movs	r1, #128	; 0x80
  80407b2:	480b      	ldr	r0, [pc, #44]	; (80407e0 <MX_GPIO_Init+0x78>)
  80407b4:	f000 fcb6 	bl	8041124 <HAL_GPIO_WritePin>
+
+  /*Configure GPIO pin : PB7 */
+  GPIO_InitStruct.Pin = GPIO_PIN_7;
  80407b8:	2380      	movs	r3, #128	; 0x80
  80407ba:	60fb      	str	r3, [r7, #12]
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
  80407bc:	2301      	movs	r3, #1
  80407be:	613b      	str	r3, [r7, #16]
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
  80407c0:	2300      	movs	r3, #0
  80407c2:	617b      	str	r3, [r7, #20]
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
  80407c4:	2300      	movs	r3, #0
  80407c6:	61bb      	str	r3, [r7, #24]
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
  80407c8:	f107 030c 	add.w	r3, r7, #12
  80407cc:	4619      	mov	r1, r3
  80407ce:	4804      	ldr	r0, [pc, #16]	; (80407e0 <MX_GPIO_Init+0x78>)
  80407d0:	f000 fafc 	bl	8040dcc <HAL_GPIO_Init>
+
+}
  80407d4:	bf00      	nop
  80407d6:	3720      	adds	r7, #32
  80407d8:	46bd      	mov	sp, r7
@@ -626,16 +759,28 @@ Disassembly of section .text:
  80407e0:	40020400 	.word	0x40020400
 
 080407e4 <__io_putchar>:
+     set to 'Yes') calls __io_putchar() */
+int __io_putchar(int ch)
+#else
+int fputc(int ch, FILE *f)
+#endif /* __GNUC__ */
+{
  80407e4:	b580      	push	{r7, lr}
  80407e6:	b082      	sub	sp, #8
  80407e8:	af00      	add	r7, sp, #0
  80407ea:	6078      	str	r0, [r7, #4]
+  /* Place your implementation of fputc here */
+  /* e.g. write a character to the UART3 and Loop until the end of transmission */
+  HAL_UART_Transmit(&huart3, (uint8_t *)&ch, 1, HAL_MAX_DELAY);
  80407ec:	1d39      	adds	r1, r7, #4
  80407ee:	f04f 33ff 	mov.w	r3, #4294967295
  80407f2:	2201      	movs	r2, #1
  80407f4:	4803      	ldr	r0, [pc, #12]	; (8040804 <__io_putchar+0x20>)
  80407f6:	f001 fdc3 	bl	8042380 <HAL_UART_Transmit>
+
+  return ch;
  80407fa:	687b      	ldr	r3, [r7, #4]
+}
  80407fc:	4618      	mov	r0, r3
  80407fe:	3708      	adds	r7, #8
  8040800:	46bd      	mov	sp, r7
@@ -643,10 +788,27 @@ Disassembly of section .text:
  8040804:	20000098 	.word	0x20000098
 
 08040808 <Error_Handler>:
+/**
+  * @brief  This function is executed in case of error occurrence.
+  * @retval None
+  */
+void Error_Handler(void)
+{
  8040808:	b480      	push	{r7}
  804080a:	af00      	add	r7, sp, #0
+  \details Disables IRQ interrupts by setting the I-bit in the CPSR.
+           Can only be executed in Privileged modes.
+ */
+__STATIC_FORCEINLINE void __disable_irq(void)
+{
+  __ASM volatile ("cpsid i" : : : "memory");
  804080c:	b672      	cpsid	i
+}
  804080e:	bf00      	nop
+  /* USER CODE BEGIN Error_Handler_Debug */
+  /* User can add his own implementation to report the HAL error return state */
+  __disable_irq();
+  while (1)
  8040810:	e7fe      	b.n	8040810 <Error_Handler+0x8>
 	...
 
@@ -962,16 +1124,32 @@ Disassembly of section .text:
  8040a7c:	20000130 	.word	0x20000130
 
 08040a80 <SystemInit>:
+  *         SystemFrequency variable.
+  * @param  None
+  * @retval None
+  */
+void SystemInit(void)
+{
  8040a80:	b480      	push	{r7}
  8040a82:	af00      	add	r7, sp, #0
+  /* FPU settings ------------------------------------------------------------*/
+#if (__FPU_PRESENT == 1) && (__FPU_USED == 1)
+  SCB->CPACR |= ((3UL << 10*2)|(3UL << 11*2));  /* set CP10 and CP11 Full Access */
  8040a84:	4b07      	ldr	r3, [pc, #28]	; (8040aa4 <SystemInit+0x24>)
  8040a86:	f8d3 3088 	ldr.w	r3, [r3, #136]	; 0x88
  8040a8a:	4a06      	ldr	r2, [pc, #24]	; (8040aa4 <SystemInit+0x24>)
  8040a8c:	f443 0370 	orr.w	r3, r3, #15728640	; 0xf00000
  8040a90:	f8c2 3088 	str.w	r3, [r2, #136]	; 0x88
+#endif
+
+  /* Configure the Vector Table location -------------------------------------*/
+#if defined(USER_VECT_TAB_ADDRESS)
+  SCB->VTOR = VECT_TAB_BASE_ADDRESS | VECT_TAB_OFFSET; /* Vector Table Relocation in Internal SRAM */
  8040a94:	4b03      	ldr	r3, [pc, #12]	; (8040aa4 <SystemInit+0x24>)
  8040a96:	4a04      	ldr	r2, [pc, #16]	; (8040aa8 <SystemInit+0x28>)
  8040a98:	609a      	str	r2, [r3, #8]
+#endif /* USER_VECT_TAB_ADDRESS */
+}
  8040a9a:	bf00      	nop
  8040a9c:	46bd      	mov	sp, r7
  8040a9e:	f85d 7b04 	ldr.w	r7, [sp], #4
@@ -1015,7 +1193,7 @@ Disassembly of section .text:
  8040ae4:	20080000 	.word	0x20080000
  8040ae8:	20000000 	.word	0x20000000
  8040aec:	20000070 	.word	0x20000070
- 8040af0:	08043c58 	.word	0x08043c58
+ 8040af0:	08043c44 	.word	0x08043c44
  8040af4:	20000070 	.word	0x20000070
  8040af8:	20000130 	.word	0x20000130
 
@@ -2584,7 +2762,7 @@ Disassembly of section .text:
  80418aa:	bf00      	nop
  80418ac:	40023c00 	.word	0x40023c00
  80418b0:	40023800 	.word	0x40023800
- 80418b4:	08043b98 	.word	0x08043b98
+ 80418b4:	08043b84 	.word	0x08043b84
  80418b8:	20000000 	.word	0x20000000
  80418bc:	20000004 	.word	0x20000004
 
@@ -2758,7 +2936,7 @@ Disassembly of section .text:
  8041a60:	4618      	mov	r0, r3
  8041a62:	bd80      	pop	{r7, pc}
  8041a64:	40023800 	.word	0x40023800
- 8041a68:	08043ba8 	.word	0x08043ba8
+ 8041a68:	08043b94 	.word	0x08043b94
 
 08041a6c <HAL_RCC_GetPCLK2Freq>:
  8041a6c:	b580      	push	{r7, lr}
@@ -2775,7 +2953,7 @@ Disassembly of section .text:
  8041a88:	4618      	mov	r0, r3
  8041a8a:	bd80      	pop	{r7, pc}
  8041a8c:	40023800 	.word	0x40023800
- 8041a90:	08043ba8 	.word	0x08043ba8
+ 8041a90:	08043b94 	.word	0x08043b94
 
 08041a94 <HAL_RCCEx_PeriphCLKConfig>:
  8041a94:	b580      	push	{r7, lr}
@@ -4710,10 +4888,10 @@ Disassembly of section .text:
  8042c7a:	4798      	blx	r3
  8042c7c:	3601      	adds	r6, #1
  8042c7e:	e7f2      	b.n	8042c66 <__libc_init_array+0x1e>
- 8042c80:	08043c50 	.word	0x08043c50
- 8042c84:	08043c50 	.word	0x08043c50
- 8042c88:	08043c50 	.word	0x08043c50
- 8042c8c:	08043c54 	.word	0x08043c54
+ 8042c80:	08043c3c 	.word	0x08043c3c
+ 8042c84:	08043c3c 	.word	0x08043c3c
+ 8042c88:	08043c3c 	.word	0x08043c3c
+ 8042c8c:	08043c40 	.word	0x08043c40
 
 08042c90 <memset>:
  8042c90:	4402      	add	r2, r0
@@ -4869,7 +5047,7 @@ Disassembly of section .text:
  8042de2:	61a3      	str	r3, [r4, #24]
  8042de4:	e7d2      	b.n	8042d8c <__sinit+0xc>
  8042de6:	bf00      	nop
- 8042de8:	08043bb0 	.word	0x08043bb0
+ 8042de8:	08043b9c 	.word	0x08043b9c
  8042dec:	08042d19 	.word	0x08042d19
 
 08042df0 <__sfp>:
@@ -4924,7 +5102,7 @@ Disassembly of section .text:
  8042e6e:	603b      	str	r3, [r7, #0]
  8042e70:	e7ee      	b.n	8042e50 <__sfp+0x60>
  8042e72:	bf00      	nop
- 8042e74:	08043bb0 	.word	0x08043bb0
+ 8042e74:	08043b9c 	.word	0x08043b9c
  8042e78:	ffff0001 	.word	0xffff0001
 
 08042e7c <_fwalk_reent>:
@@ -5324,14 +5502,14 @@ Disassembly of section .text:
  8043200:	f000 f880 	bl	8043304 <_printf_i>
  8043204:	e7e4      	b.n	80431d0 <_vfiprintf_r+0x208>
  8043206:	bf00      	nop
- 8043208:	08043bd4 	.word	0x08043bd4
- 804320c:	08043bf4 	.word	0x08043bf4
- 8043210:	08043bb4 	.word	0x08043bb4
- 8043214:	08043c14 	.word	0x08043c14
- 8043218:	08043c1e 	.word	0x08043c1e
+ 8043208:	08043bc0 	.word	0x08043bc0
+ 804320c:	08043be0 	.word	0x08043be0
+ 8043210:	08043ba0 	.word	0x08043ba0
+ 8043214:	08043c00 	.word	0x08043c00
+ 8043218:	08043c0a 	.word	0x08043c0a
  804321c:	00000000 	.word	0x00000000
  8043220:	08042fa3 	.word	0x08042fa3
- 8043224:	08043c1a 	.word	0x08043c1a
+ 8043224:	08043c06 	.word	0x08043c06
 
 08043228 <_printf_common>:
  8043228:	e92d 47f0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, lr}
@@ -5667,8 +5845,8 @@ Disassembly of section .text:
  8043540:	f104 0619 	add.w	r6, r4, #25
  8043544:	e7f5      	b.n	8043532 <_printf_i+0x22e>
  8043546:	bf00      	nop
- 8043548:	08043c25 	.word	0x08043c25
- 804354c:	08043c36 	.word	0x08043c36
+ 8043548:	08043c11 	.word	0x08043c11
+ 804354c:	08043c22 	.word	0x08043c22
 
 08043550 <_sbrk_r>:
  8043550:	b538      	push	{r3, r4, r5, lr}
@@ -5818,9 +5996,9 @@ Disassembly of section .text:
  8043688:	f04f 37ff 	mov.w	r7, #4294967295
  804368c:	e7ea      	b.n	8043664 <__swbuf_r+0x6c>
  804368e:	bf00      	nop
- 8043690:	08043bd4 	.word	0x08043bd4
- 8043694:	08043bf4 	.word	0x08043bf4
- 8043698:	08043bb4 	.word	0x08043bb4
+ 8043690:	08043bc0 	.word	0x08043bc0
+ 8043694:	08043be0 	.word	0x08043be0
+ 8043698:	08043ba0 	.word	0x08043ba0
 
 0804369c <_write_r>:
  804369c:	b538      	push	{r3, r4, r5, lr}
@@ -5930,9 +6108,9 @@ Disassembly of section .text:
  8043788:	e7f7      	b.n	804377a <__swsetup_r+0xba>
  804378a:	bf00      	nop
  804378c:	2000000c 	.word	0x2000000c
- 8043790:	08043bd4 	.word	0x08043bd4
- 8043794:	08043bf4 	.word	0x08043bf4
- 8043798:	08043bb4 	.word	0x08043bb4
+ 8043790:	08043bc0 	.word	0x08043bc0
+ 8043794:	08043be0 	.word	0x08043be0
+ 8043798:	08043ba0 	.word	0x08043ba0
 
 0804379c <_close_r>:
  804379c:	b538      	push	{r3, r4, r5, lr}
@@ -6124,9 +6302,9 @@ Disassembly of section .text:
  804392e:	bf08      	it	eq
  8043930:	68ec      	ldreq	r4, [r5, #12]
  8043932:	e7da      	b.n	80438ea <_fflush_r+0x22>
- 8043934:	08043bd4 	.word	0x08043bd4
- 8043938:	08043bf4 	.word	0x08043bf4
- 804393c:	08043bb4 	.word	0x08043bb4
+ 8043934:	08043bc0 	.word	0x08043bc0
+ 8043938:	08043be0 	.word	0x08043be0
+ 804393c:	08043ba0 	.word	0x08043ba0
 
 08043940 <_lseek_r>:
  8043940:	b538      	push	{r3, r4, r5, lr}
