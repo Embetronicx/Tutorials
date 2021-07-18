@@ -7,23 +7,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
   1 .text         00003a58  08000200  08000200  00010200  2**4
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .rodata       00000104  08003c58  08003c58  00013c58  2**2
+  2 .rodata       000000ec  08003c58  08003c58  00013c58  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  3 .ARM.extab    00000000  08003d5c  08003d5c  00020070  2**0
+  3 .ARM.extab    00000000  08003d44  08003d44  00020070  2**0
                   CONTENTS
-  4 .ARM          00000008  08003d5c  08003d5c  00013d5c  2**2
+  4 .ARM          00000008  08003d44  08003d44  00013d44  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  5 .preinit_array 00000000  08003d64  08003d64  00020070  2**0
+  5 .preinit_array 00000000  08003d4c  08003d4c  00020070  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  6 .init_array   00000004  08003d64  08003d64  00013d64  2**2
+  6 .init_array   00000004  08003d4c  08003d4c  00013d4c  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  7 .fini_array   00000004  08003d68  08003d68  00013d68  2**2
+  7 .fini_array   00000004  08003d50  08003d50  00013d50  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  8 .data         00000070  20000000  08003d6c  00020000  2**2
+  8 .data         00000070  20000000  08003d54  00020000  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  9 .bss          000000c0  20000070  08003ddc  00020070  2**2
+  9 .bss          000000c0  20000070  08003dc4  00020070  2**2
                   ALLOC
- 10 ._user_heap_stack 00000600  20000130  08003ddc  00020130  2**0
+ 10 ._user_heap_stack 00000600  20000130  08003dc4  00020130  2**0
                   ALLOC
  11 .ARM.attributes 0000002e  00000000  00000000  00020070  2**0
                   CONTENTS, READONLY
@@ -450,7 +450,7 @@ int main(void)
  80005ee:	2101      	movs	r1, #1
  80005f0:	4807      	ldr	r0, [pc, #28]	; (8000610 <main+0x38>)
  80005f2:	f000 fdb5 	bl	8001160 <HAL_GPIO_WritePin>
-  printf("Starting Bootloader [Major No:%d - Minor No:%d]\n", BL_Version[0], BL_Version[1] );
+  printf("Starting Bootloader(%d.%d)\n", BL_Version[0], BL_Version[1] );
  80005f6:	2300      	movs	r3, #0
  80005f8:	2201      	movs	r2, #1
  80005fa:	4619      	mov	r1, r3
@@ -826,7 +826,7 @@ static void goto_application(void)
  800082e:	3708      	adds	r7, #8
  8000830:	46bd      	mov	sp, r7
  8000832:	bd80      	pop	{r7, pc}
- 8000834:	08003c8c 	.word	0x08003c8c
+ 8000834:	08003c74 	.word	0x08003c74
  8000838:	08040004 	.word	0x08040004
  800083c:	40020400 	.word	0x40020400
 
@@ -1029,7 +1029,7 @@ void HardFault_Handler(void)
   /* USER CODE END HardFault_IRQn 0 */
   while (1)
  800092e:	e7fe      	b.n	800092e <HardFault_Handler+0xa>
- 8000930:	08003ca8 	.word	0x08003ca8
+ 8000930:	08003c90 	.word	0x08003c90
 
 08000934 <MemManage_Handler>:
 
@@ -1517,7 +1517,7 @@ LoopFillZerobss:
   ldr r1, =_edata
  8000b28:	20000070 	.word	0x20000070
   ldr r2, =_sidata
- 8000b2c:	08003d6c 	.word	0x08003d6c
+ 8000b2c:	08003d54 	.word	0x08003d54
   ldr r2, =_sbss
  8000b30:	20000070 	.word	0x20000070
   ldr r4, =_ebss
@@ -3887,7 +3887,7 @@ HAL_StatusTypeDef HAL_RCC_ClockConfig(RCC_ClkInitTypeDef  *RCC_ClkInitStruct, ui
  80018b2:	bf00      	nop
  80018b4:	40023c00 	.word	0x40023c00
  80018b8:	40023800 	.word	0x40023800
- 80018bc:	08003cac 	.word	0x08003cac
+ 80018bc:	08003c94 	.word	0x08003c94
  80018c0:	20000000 	.word	0x20000000
  80018c4:	20000004 	.word	0x20000004
 
@@ -4128,7 +4128,7 @@ uint32_t HAL_RCC_GetPCLK1Freq(void)
  8001a68:	4618      	mov	r0, r3
  8001a6a:	bd80      	pop	{r7, pc}
  8001a6c:	40023800 	.word	0x40023800
- 8001a70:	08003cbc 	.word	0x08003cbc
+ 8001a70:	08003ca4 	.word	0x08003ca4
 
 08001a74 <HAL_RCC_GetPCLK2Freq>:
   * @note   Each time PCLK2 changes, this function must be called to update the
@@ -4154,7 +4154,7 @@ uint32_t HAL_RCC_GetPCLK2Freq(void)
  8001a90:	4618      	mov	r0, r3
  8001a92:	bd80      	pop	{r7, pc}
  8001a94:	40023800 	.word	0x40023800
- 8001a98:	08003cbc 	.word	0x08003cbc
+ 8001a98:	08003ca4 	.word	0x08003ca4
 
 08001a9c <HAL_RCCEx_PeriphCLKConfig>:
   *         the backup registers) are set to their reset values.
@@ -7072,10 +7072,10 @@ HAL_StatusTypeDef UART_WaitOnFlagUntilTimeout(UART_HandleTypeDef *huart, uint32_
  8002c82:	4798      	blx	r3
  8002c84:	3601      	adds	r6, #1
  8002c86:	e7f2      	b.n	8002c6e <__libc_init_array+0x1e>
- 8002c88:	08003d64 	.word	0x08003d64
- 8002c8c:	08003d64 	.word	0x08003d64
- 8002c90:	08003d64 	.word	0x08003d64
- 8002c94:	08003d68 	.word	0x08003d68
+ 8002c88:	08003d4c 	.word	0x08003d4c
+ 8002c8c:	08003d4c 	.word	0x08003d4c
+ 8002c90:	08003d4c 	.word	0x08003d4c
+ 8002c94:	08003d50 	.word	0x08003d50
 
 08002c98 <memset>:
  8002c98:	4402      	add	r2, r0
@@ -7204,9 +7204,9 @@ HAL_StatusTypeDef UART_WaitOnFlagUntilTimeout(UART_HandleTypeDef *huart, uint32_
  8002da2:	6022      	str	r2, [r4, #0]
  8002da4:	701d      	strb	r5, [r3, #0]
  8002da6:	e7db      	b.n	8002d60 <_puts_r+0x88>
- 8002da8:	08003ce8 	.word	0x08003ce8
- 8002dac:	08003d08 	.word	0x08003d08
- 8002db0:	08003cc8 	.word	0x08003cc8
+ 8002da8:	08003cd0 	.word	0x08003cd0
+ 8002dac:	08003cf0 	.word	0x08003cf0
+ 8002db0:	08003cb0 	.word	0x08003cb0
 
 08002db4 <puts>:
  8002db4:	4b02      	ldr	r3, [pc, #8]	; (8002dc0 <puts+0xc>)
@@ -7288,9 +7288,9 @@ HAL_StatusTypeDef UART_WaitOnFlagUntilTimeout(UART_HandleTypeDef *huart, uint32_
  8002e54:	f04f 37ff 	mov.w	r7, #4294967295
  8002e58:	e7ea      	b.n	8002e30 <__swbuf_r+0x6c>
  8002e5a:	bf00      	nop
- 8002e5c:	08003ce8 	.word	0x08003ce8
- 8002e60:	08003d08 	.word	0x08003d08
- 8002e64:	08003cc8 	.word	0x08003cc8
+ 8002e5c:	08003cd0 	.word	0x08003cd0
+ 8002e60:	08003cf0 	.word	0x08003cf0
+ 8002e64:	08003cb0 	.word	0x08003cb0
 
 08002e68 <__swsetup_r>:
  8002e68:	4b32      	ldr	r3, [pc, #200]	; (8002f34 <__swsetup_r+0xcc>)
@@ -7382,9 +7382,9 @@ HAL_StatusTypeDef UART_WaitOnFlagUntilTimeout(UART_HandleTypeDef *huart, uint32_
  8002f30:	e7f7      	b.n	8002f22 <__swsetup_r+0xba>
  8002f32:	bf00      	nop
  8002f34:	2000000c 	.word	0x2000000c
- 8002f38:	08003ce8 	.word	0x08003ce8
- 8002f3c:	08003d08 	.word	0x08003d08
- 8002f40:	08003cc8 	.word	0x08003cc8
+ 8002f38:	08003cd0 	.word	0x08003cd0
+ 8002f3c:	08003cf0 	.word	0x08003cf0
+ 8002f40:	08003cb0 	.word	0x08003cb0
 
 08002f44 <__sflush_r>:
  8002f44:	898a      	ldrh	r2, [r1, #12]
@@ -7560,9 +7560,9 @@ HAL_StatusTypeDef UART_WaitOnFlagUntilTimeout(UART_HandleTypeDef *huart, uint32_
  80030b6:	bf08      	it	eq
  80030b8:	68ec      	ldreq	r4, [r5, #12]
  80030ba:	e7da      	b.n	8003072 <_fflush_r+0x22>
- 80030bc:	08003ce8 	.word	0x08003ce8
- 80030c0:	08003d08 	.word	0x08003d08
- 80030c4:	08003cc8 	.word	0x08003cc8
+ 80030bc:	08003cd0 	.word	0x08003cd0
+ 80030c0:	08003cf0 	.word	0x08003cf0
+ 80030c4:	08003cb0 	.word	0x08003cb0
 
 080030c8 <std>:
  80030c8:	2300      	movs	r3, #0
@@ -7687,7 +7687,7 @@ HAL_StatusTypeDef UART_WaitOnFlagUntilTimeout(UART_HandleTypeDef *huart, uint32_
  80031da:	61a3      	str	r3, [r4, #24]
  80031dc:	e7d2      	b.n	8003184 <__sinit+0xc>
  80031de:	bf00      	nop
- 80031e0:	08003cc4 	.word	0x08003cc4
+ 80031e0:	08003cac 	.word	0x08003cac
  80031e4:	08003111 	.word	0x08003111
 
 080031e8 <__sfp>:
@@ -7742,7 +7742,7 @@ HAL_StatusTypeDef UART_WaitOnFlagUntilTimeout(UART_HandleTypeDef *huart, uint32_
  8003266:	603b      	str	r3, [r7, #0]
  8003268:	e7ee      	b.n	8003248 <__sfp+0x60>
  800326a:	bf00      	nop
- 800326c:	08003cc4 	.word	0x08003cc4
+ 800326c:	08003cac 	.word	0x08003cac
  8003270:	ffff0001 	.word	0xffff0001
 
 08003274 <_fwalk_reent>:
@@ -8305,14 +8305,14 @@ HAL_StatusTypeDef UART_WaitOnFlagUntilTimeout(UART_HandleTypeDef *huart, uint32_
  8003760:	f000 f880 	bl	8003864 <_printf_i>
  8003764:	e7e4      	b.n	8003730 <_vfiprintf_r+0x208>
  8003766:	bf00      	nop
- 8003768:	08003ce8 	.word	0x08003ce8
- 800376c:	08003d08 	.word	0x08003d08
- 8003770:	08003cc8 	.word	0x08003cc8
- 8003774:	08003d28 	.word	0x08003d28
- 8003778:	08003d32 	.word	0x08003d32
+ 8003768:	08003cd0 	.word	0x08003cd0
+ 800376c:	08003cf0 	.word	0x08003cf0
+ 8003770:	08003cb0 	.word	0x08003cb0
+ 8003774:	08003d10 	.word	0x08003d10
+ 8003778:	08003d1a 	.word	0x08003d1a
  800377c:	00000000 	.word	0x00000000
  8003780:	08003503 	.word	0x08003503
- 8003784:	08003d2e 	.word	0x08003d2e
+ 8003784:	08003d16 	.word	0x08003d16
 
 08003788 <_printf_common>:
  8003788:	e92d 47f0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, lr}
@@ -8648,8 +8648,8 @@ HAL_StatusTypeDef UART_WaitOnFlagUntilTimeout(UART_HandleTypeDef *huart, uint32_
  8003aa0:	f104 0619 	add.w	r6, r4, #25
  8003aa4:	e7f5      	b.n	8003a92 <_printf_i+0x22e>
  8003aa6:	bf00      	nop
- 8003aa8:	08003d39 	.word	0x08003d39
- 8003aac:	08003d4a 	.word	0x08003d4a
+ 8003aa8:	08003d21 	.word	0x08003d21
+ 8003aac:	08003d32 	.word	0x08003d32
 
 08003ab0 <_sbrk_r>:
  8003ab0:	b538      	push	{r3, r4, r5, lr}

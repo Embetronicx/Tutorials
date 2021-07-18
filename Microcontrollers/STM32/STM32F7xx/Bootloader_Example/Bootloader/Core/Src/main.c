@@ -92,7 +92,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
   // Turn ON the Green Led to tell the user that Bootloader is running
   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_SET );
-  printf("Starting Bootloader [Major No:%d - Minor No:%d]\n", BL_Version[0], BL_Version[1] );
+  printf("Starting Bootloader(%d.%d)\n", BL_Version[0], BL_Version[1] );
   HAL_Delay(2000);   //2sec delay for nothing
 
   // Jump to application
