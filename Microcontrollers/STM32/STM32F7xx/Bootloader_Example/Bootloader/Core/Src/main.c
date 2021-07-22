@@ -35,8 +35,8 @@
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-#define MAJOR 0   // Major version Number
-#define MINOR 1   // Minor version Number
+#define MAJOR 0   // BL Major version Number
+#define MINOR 1   // BL Minor version Number
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -52,7 +52,7 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART3_UART_Init(void);
 /* USER CODE BEGIN PFP */
-static void goto_application(void);
+static void goto_application( void );
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -91,7 +91,7 @@ int main(void)
   MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
   // Turn ON the Green Led to tell the user that Bootloader is running
-  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_SET );
+  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_SET );    //Green LED ON
   printf("Starting Bootloader(%d.%d)\n", BL_Version[0], BL_Version[1] );
   HAL_Delay(2000);   //2sec delay for nothing
 
@@ -249,8 +249,8 @@ static void goto_application(void)
   //__set_MSP(*(volatile uint32_t*) 0x08040000);
 
   // Turn OFF the Green Led to tell the user that Bootloader is not running
-  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_RESET );
-  app_reset_handler();
+  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_RESET );    //Green LED OFF
+  app_reset_handler();    //call the app reset handler
 }
 /* USER CODE END 4 */
 

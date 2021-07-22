@@ -35,8 +35,8 @@
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-#define MAJOR 0   // Major version Number
-#define MINOR 1   // Minor version Number
+#define MAJOR 0   //APP Major version Number
+#define MINOR 1   //APP Minor version Number
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -100,8 +100,10 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_7 );
-    HAL_Delay(500);   //0.5sec delay
+	HAL_GPIO_WritePin( GPIOB, GPIO_PIN_7, GPIO_PIN_SET );
+    HAL_Delay(1000);    //1 Sec delay
+	HAL_GPIO_WritePin( GPIOB, GPIO_PIN_7, GPIO_PIN_RESET );
+	HAL_Delay(1000);	//1 Sec delay
   }
   /* USER CODE END 3 */
 }
