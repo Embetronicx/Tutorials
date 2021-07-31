@@ -90,7 +90,7 @@ int main(void)
   MX_GPIO_Init();
   MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
-  printf("Starting Application(%d.%d)\n", APP_Version[0], APP_Version[1] );
+  printf("Starting Application(%d.%d)\r\n", APP_Version[0], APP_Version[1] );
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -100,10 +100,10 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	HAL_GPIO_WritePin( GPIOB, GPIO_PIN_7, GPIO_PIN_SET );
+    HAL_GPIO_WritePin( GPIOB, GPIO_PIN_7, GPIO_PIN_SET );
     HAL_Delay(5000);    //5 Sec delay
-	HAL_GPIO_WritePin( GPIOB, GPIO_PIN_7, GPIO_PIN_RESET );
-	HAL_Delay(5000);	//5 Sec delay
+    HAL_GPIO_WritePin( GPIOB, GPIO_PIN_7, GPIO_PIN_RESET );
+    HAL_Delay(5000);	//5 Sec delay
   }
   /* USER CODE END 3 */
 }
