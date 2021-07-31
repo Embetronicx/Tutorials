@@ -23,6 +23,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
+#include "etx_ota_update.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -36,11 +37,12 @@
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
 #define MAJOR 0   // BL Major version Number
-#define MINOR 1   // BL Minor version Number
+#define MINOR 2   // BL Minor version Number
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
 
+UART_HandleTypeDef huart2;
 UART_HandleTypeDef huart3;
 
 /* USER CODE BEGIN PV */
@@ -51,6 +53,7 @@ const uint8_t BL_Version[2] = { MAJOR, MINOR };
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART3_UART_Init(void);
+static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
 static void goto_application( void );
 /* USER CODE END PFP */
@@ -89,11 +92,49 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_USART3_UART_Init();
+  MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
   // Turn ON the Green Led to tell the user that Bootloader is running
   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_SET );    //Green LED ON
-  printf("Starting Bootloader(%d.%d)\n", BL_Version[0], BL_Version[1] );
-  HAL_Delay(2000);   //2sec delay for nothing
+  printf("Starting Bootloader(%d.%d)\r\n", BL_Version[0], BL_Version[1] );
+  //HAL_Delay(2000);   //2sec delay for nothing
+
+  /* Check the GPIO for 3 seconds */
+  GPIO_PinState OTA_Pin_state;
+  uint32_t end_tick = HAL_GetTick() + 3000;   // from now to 3 Seconds
+
+  printf("Press the User Button PC13 to trigger OTA update...\r\n");
+  do
+  {
+    OTA_Pin_state = HAL_GPIO_ReadPin( GPIOC, GPIO_PIN_13 );
+    uint32_t current_tick = HAL_GetTick();
+
+    /* Check the button is pressed or not for 3seconds */
+    if( ( OTA_Pin_state != GPIO_PIN_RESET ) || ( current_tick > end_tick ) )
+    {
+      /* Either timeout or Button is pressed */
+      break;
+    }
+  }while( 1 );
+
+  /*Start the Firmware or Application update */
+  if( OTA_Pin_state == GPIO_PIN_SET )
+  {
+    printf("Starting Firmware Download!!!\r\n");
+    /* OTA Request. Receive the data from the UART4 and flash */
+    if( etx_ota_download_and_flash() != ETX_OTA_EX_OK )
+    {
+      /* Error. Don't process. */
+      printf("OTA Update : ERROR!!! HALT!!!\r\n");
+      while( 1 );
+    }
+    else
+    {
+      /* Reset to load the new application */
+      printf("Firmware update is done!!! Rebooting...\r\n");
+      HAL_NVIC_SystemReset();
+    }
+  }
 
   // Jump to application
   goto_application();
@@ -148,12 +189,48 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
-  PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_USART3;
+  PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_USART2|RCC_PERIPHCLK_USART3;
+  PeriphClkInitStruct.Usart2ClockSelection = RCC_USART2CLKSOURCE_PCLK1;
   PeriphClkInitStruct.Usart3ClockSelection = RCC_USART3CLKSOURCE_PCLK1;
   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
   {
     Error_Handler();
   }
+}
+
+/**
+  * @brief USART2 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_USART2_UART_Init(void)
+{
+
+  /* USER CODE BEGIN USART2_Init 0 */
+
+  /* USER CODE END USART2_Init 0 */
+
+  /* USER CODE BEGIN USART2_Init 1 */
+
+  /* USER CODE END USART2_Init 1 */
+  huart2.Instance = USART2;
+  huart2.Init.BaudRate = 115200;
+  huart2.Init.WordLength = UART_WORDLENGTH_8B;
+  huart2.Init.StopBits = UART_STOPBITS_1;
+  huart2.Init.Parity = UART_PARITY_NONE;
+  huart2.Init.Mode = UART_MODE_TX_RX;
+  huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart2.Init.OverSampling = UART_OVERSAMPLING_16;
+  huart2.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
+  huart2.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
+  if (HAL_UART_Init(&huart2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN USART2_Init 2 */
+
+  /* USER CODE END USART2_Init 2 */
+
 }
 
 /**
@@ -201,11 +278,18 @@ static void MX_GPIO_Init(void)
   GPIO_InitTypeDef GPIO_InitStruct = {0};
 
   /* GPIO Ports Clock Enable */
+  __HAL_RCC_GPIOC_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
   __HAL_RCC_GPIOD_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin : PC13 */
+  GPIO_InitStruct.Pin = GPIO_PIN_13;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /*Configure GPIO pin : PB0 */
   GPIO_InitStruct.Pin = GPIO_PIN_0;
@@ -242,7 +326,7 @@ int fputc(int ch, FILE *f)
   */
 static void goto_application(void)
 {
-  printf("Gonna Jump to Application\n");
+  printf("Gonna Jump to Application\r\n");
 
   void (*app_reset_handler)(void) = (void*)(*((volatile uint32_t*) (0x08040000 + 4U)));
 
