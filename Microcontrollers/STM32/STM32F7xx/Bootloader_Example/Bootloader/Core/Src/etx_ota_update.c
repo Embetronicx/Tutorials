@@ -24,6 +24,9 @@ static uint32_t ota_fw_crc;
 /* Firmware Size that we have received */
 static uint32_t ota_fw_received_size;
 
+/* Hardware CRC handle */
+extern CRC_HandleTypeDef hcrc;
+
 static uint16_t etx_receive_chunk( uint8_t *buf, uint16_t max_len );
 static ETX_OTA_EX_ etx_process_data( uint8_t *buf, uint16_t len );
 static void etx_ota_send_resp( uint8_t type );
@@ -186,7 +189,16 @@ static ETX_OTA_EX_ etx_process_data( uint8_t *buf, uint16_t len )
           {
             printf("Received OTA END Command\r\n");
 
-            //TODO: Very full package CRC
+            printf("Validating the received Binary...");
+
+            //Calculate and verify the CRC
+            uint32_t cal_crc = HAL_CRC_Calculate( &hcrc, (uint32_t*)ETX_APP_FLASH_ADDR, ota_fw_total_size);
+            if( cal_crc != ota_fw_crc )
+            {
+              printf("ERROR -FW CRC Mismatch\r\n");
+              break;
+            }
+            printf("Done!!!\r\n");
 
             ota_state = ETX_OTA_STATE_IDLE;
             ret = ETX_OTA_EX_OK;
@@ -216,8 +228,10 @@ static ETX_OTA_EX_ etx_process_data( uint8_t *buf, uint16_t len )
 static uint16_t etx_receive_chunk( uint8_t *buf, uint16_t max_len )
 {
   int16_t  ret;
-  uint16_t index     = 0u;
+  uint16_t index        = 0u;
   uint16_t data_len;
+  uint32_t cal_data_crc = 0u;
+  uint32_t rec_data_crc = 0u;
 
   do
   {
@@ -260,15 +274,19 @@ static uint16_t etx_receive_chunk( uint8_t *buf, uint16_t max_len )
       }
     }
 
+    if( ret != HAL_OK )
+    {
+      break;
+    }
+
     //Get the CRC.
     ret = HAL_UART_Receive( &huart2, &buf[index], 4, HAL_MAX_DELAY );
     if( ret != HAL_OK )
     {
       break;
     }
+    rec_data_crc = *(uint32_t *)&buf[index];
     index += 4u;
-
-    //TODO: Add CRC verification
 
     //receive EOF byte (1byte)
     ret = HAL_UART_Receive( &huart2, &buf[index], 1, HAL_MAX_DELAY );
@@ -280,6 +298,18 @@ static uint16_t etx_receive_chunk( uint8_t *buf, uint16_t max_len )
     if( buf[index++] != ETX_OTA_EOF )
     {
       //Not received end of frame
+      ret = ETX_OTA_EX_ERR;
+      break;
+    }
+
+    //Calculate the received data's CRC
+    cal_data_crc = HAL_CRC_Calculate( &hcrc, (uint32_t*)&buf[4], data_len);
+
+    //Verify the CRC
+    if( cal_data_crc != rec_data_crc )
+    {
+      printf("Chunk's CRC mismatch [Cal CRC = 0x%08lX] [Rec CRC = 0x%08lX]\r\n",
+                                                   cal_data_crc, rec_data_crc );
       ret = ETX_OTA_EX_ERR;
       break;
     }

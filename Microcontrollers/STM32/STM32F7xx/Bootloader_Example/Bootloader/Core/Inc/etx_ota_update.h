@@ -13,12 +13,26 @@
 #define ETX_OTA_ACK  0x00    // ACK
 #define ETX_OTA_NACK 0x01    // NACK
 
-#define ETX_APP_FLASH_ADDR 0x08040000   //Application's Flash Address
+#define ETX_APP_FLASH_ADDR        0x08040000   //Application's Flash Address
+#define ETX_APP_SLOT1_FLASH_ADDR  0x080C0000   //App slot 1 address
+#define ETX_APP_SLOT2_FLASH_ADDR  0x08140000   //App slot 2 address
+#define ETX_CONFIG_FLASH_ADDR     0x08020000   //Configuration's address
+#define ETX_SLOT_TABLE_ADDR       0x08020080   //Slot table address
+
+#define ETX_NO_OF_SLOTS           2            //Number of slots
+#define ETX_SLOT_SIZE             (512 * 1024) //Each slot size (512KB)
 
 #define ETX_OTA_DATA_MAX_SIZE ( 1024 )  //Maximum data Size
 #define ETX_OTA_DATA_OVERHEAD (    9 )  //data overhead
 #define ETX_OTA_PACKET_MAX_SIZE ( ETX_OTA_DATA_MAX_SIZE + ETX_OTA_DATA_OVERHEAD )
 
+/*
+ * Reboot reason
+ */
+#define ETX_FIRST_TIME_BOOT       ( 0xFFFFFFFF )      //First time boot
+#define ETX_NORMAL_BOOT           ( 0xBEEFFEED )      //Normal Boot
+#define ETX_OTA_REQUEST_BOOT      ( 0xDEADBEEF )      //OTA request by application
+#define ETX_LOAD_PREV_APP_BOOT    ( 0xFACEFADE )      //App requests to load the previous version
 /*
  * Exception codes
  */
