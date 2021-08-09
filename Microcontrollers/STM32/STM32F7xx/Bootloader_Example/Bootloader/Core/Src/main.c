@@ -37,7 +37,7 @@
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
 #define MAJOR 0   // BL Major version Number
-#define MINOR 2   // BL Minor version Number
+#define MINOR 3   // BL Minor version Number
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -103,6 +103,46 @@ int main(void)
   printf("Starting Bootloader(%d.%d)\r\n", BL_Version[0], BL_Version[1] );
   //HAL_Delay(2000);   //2sec delay for nothing
 
+
+  //Read the reboot cause and act accordingly
+  printf("Reading the reboot reason...\r\n");
+
+  ETX_GNRL_CFG_ *cfg          = (ETX_GNRL_CFG_*) (ETX_CONFIG_FLASH_ADDR);
+  bool          goto_ota_mode = false;
+
+  switch( cfg->reboot_cause )
+  {
+  case ETX_NORMAL_BOOT:
+    {
+      /*
+       * It is a normal boot. So, do nothing here.
+       */
+      printf("Normal Boot\r\n");
+      break;
+    }
+  case ETX_OTA_REQUEST:
+  case ETX_FIRST_TIME_BOOT:
+    {
+      /*
+       * Application has requested for the OTA update or this is the first
+       * time boot. So, don't wait for the user to press the button.
+       * Directly go to OTA mode.
+       */
+      printf("First time boot / OTA Request...\r\n");
+      printf("Going to OTA mode...\r\n");
+      goto_ota_mode = true;
+      break;
+    }
+  case ETX_LOAD_PREV_APP:
+    {
+      //TODO: Implement
+      break;
+    }
+  default:
+    /* should not get here */
+    break;
+  };
+
   /* Check the GPIO for 3 seconds */
   GPIO_PinState OTA_Pin_state;
   uint32_t end_tick = HAL_GetTick() + 3000;   // from now to 3 Seconds
@@ -119,10 +159,10 @@ int main(void)
       /* Either timeout or Button is pressed */
       break;
     }
-  }while( 1 );
+  }while( !goto_ota_mode );
 
   /*Start the Firmware or Application update */
-  if( OTA_Pin_state == GPIO_PIN_SET )
+  if( ( OTA_Pin_state == GPIO_PIN_SET ) || ( goto_ota_mode ) )
   {
     printf("Starting Firmware Download!!!\r\n");
     /* OTA Request. Receive the data from the UART4 and flash */
@@ -139,6 +179,9 @@ int main(void)
       HAL_NVIC_SystemReset();
     }
   }
+
+  //Load the updated app, if it is available
+  load_new_app();
 
   // Jump to application
   goto_application();
@@ -363,9 +406,9 @@ static void goto_application(void)
 {
   printf("Gonna Jump to Application\r\n");
 
-  void (*app_reset_handler)(void) = (void*)(*((volatile uint32_t*) (0x08040000 + 4U)));
+  void (*app_reset_handler)(void) = (void*)(*((volatile uint32_t*) (ETX_APP_FLASH_ADDR + 4U)));
 
-  //__set_MSP(*(volatile uint32_t*) 0x08040000);
+  //__set_MSP(*(volatile uint32_t*) ETX_APP_FLASH_ADDR);
 
   // Turn OFF the Green Led to tell the user that Bootloader is not running
   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_RESET );    //Green LED OFF

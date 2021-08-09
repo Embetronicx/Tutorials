@@ -8,19 +8,21 @@
 #ifndef INC_ETX_OTA_UPDATE_H_
 #define INC_ETX_OTA_UPDATE_H_
 
+#include <stdbool.h>
+#include "main.h"
+
 #define ETX_OTA_SOF  0xAA    // Start of Frame
 #define ETX_OTA_EOF  0xBB    // End of Frame
 #define ETX_OTA_ACK  0x00    // ACK
 #define ETX_OTA_NACK 0x01    // NACK
 
 #define ETX_APP_FLASH_ADDR        0x08040000   //Application's Flash Address
-#define ETX_APP_SLOT1_FLASH_ADDR  0x080C0000   //App slot 1 address
-#define ETX_APP_SLOT2_FLASH_ADDR  0x08140000   //App slot 2 address
+#define ETX_APP_SLOT0_FLASH_ADDR  0x080C0000   //App slot 0 address
+#define ETX_APP_SLOT1_FLASH_ADDR  0x08140000   //App slot 1 address
 #define ETX_CONFIG_FLASH_ADDR     0x08020000   //Configuration's address
-#define ETX_SLOT_TABLE_ADDR       0x08020080   //Slot table address
 
 #define ETX_NO_OF_SLOTS           2            //Number of slots
-#define ETX_SLOT_SIZE             (512 * 1024) //Each slot size (512KB)
+#define ETX_SLOT_MAX_SIZE        (512 * 1024)  //Each slot size (512KB)
 
 #define ETX_OTA_DATA_MAX_SIZE ( 1024 )  //Maximum data Size
 #define ETX_OTA_DATA_OVERHEAD (    9 )  //data overhead
@@ -31,8 +33,9 @@
  */
 #define ETX_FIRST_TIME_BOOT       ( 0xFFFFFFFF )      //First time boot
 #define ETX_NORMAL_BOOT           ( 0xBEEFFEED )      //Normal Boot
-#define ETX_OTA_REQUEST_BOOT      ( 0xDEADBEEF )      //OTA request by application
-#define ETX_LOAD_PREV_APP_BOOT    ( 0xFACEFADE )      //App requests to load the previous version
+#define ETX_OTA_REQUEST           ( 0xDEADBEEF )      //OTA request by application
+#define ETX_LOAD_PREV_APP         ( 0xFACEFADE )      //App requests to load the previous version
+
 /*
  * Exception codes
  */
@@ -74,6 +77,30 @@ typedef enum
   ETX_OTA_CMD_END   = 1,    // OTA End command
   ETX_OTA_CMD_ABORT = 2,    // OTA Abort command
 }ETX_OTA_CMD_;
+
+/*
+ * Slot table
+ */
+typedef struct
+{
+    uint8_t  is_this_slot_not_valid;  //Is this slot has a valid firmware/application?
+    uint8_t  is_this_slot_active;     //Is this slot's firmware is currently running?
+    uint8_t  should_we_run_this_fw;   //Do we have to run this slot's firmware?
+    uint32_t fw_size;                 //Slot's firmware/application size
+    uint32_t fw_crc;                  //Slot's firmware/application CRC
+    uint32_t reserved1;
+    uint32_t reserved2;
+    uint32_t reserved3;
+}__attribute__((packed)) ETX_SLOT_;
+
+/*
+ * General configuration
+ */
+typedef struct
+{
+    uint32_t  reboot_cause;
+    ETX_SLOT_ slot_table[ETX_NO_OF_SLOTS];
+}__attribute__((packed)) ETX_GNRL_CFG_;
 
 /*
  * OTA meta info
@@ -161,4 +188,5 @@ typedef struct
 }__attribute__((packed)) ETX_OTA_RESP_;
 
 ETX_OTA_EX_ etx_ota_download_and_flash( void );
+void load_new_app( void );
 #endif /* INC_ETX_OTA_UPDATE_H_ */
