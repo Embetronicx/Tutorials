@@ -86,11 +86,13 @@ bool is_ack_resp_received( int comport )
     ETX_OTA_RESP_ *resp = (ETX_OTA_RESP_*) DATA_BUF;
     if( resp->packet_type == ETX_OTA_PACKET_TYPE_RESPONSE )
     {
-      //TODO: Add CRC check
-      if( resp->status == ETX_OTA_ACK )
+      if( resp->crc == CalcCRC(&resp->status, 1) )
       {
-        //ACK received
-        is_ack = true;
+        if( resp->status == ETX_OTA_ACK )
+        {
+          //ACK received
+          is_ack = true;
+        }
       }
     }
   }
