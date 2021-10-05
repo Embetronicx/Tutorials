@@ -12,7 +12,7 @@
 ### ADS-LD Output File: 'gas.axf'
 ### ADS-LD Command File: 'gas.lnp'
 ### Checking for dirty Components...
-### Creating CmdFile 'gas.lnp', Handle=0x00000F0C
+### Creating CmdFile 'gas.lnp', Handle=0x00000F58
 ### Writing '.lnp' file
 ### ADS-LD Command file 'gas.lnp' is ready.
 ### ADS-LD: About to start ADS-LD Thread.
