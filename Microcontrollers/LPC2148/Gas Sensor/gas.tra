@@ -1,0 +1,21 @@
+*** Creating Trace Output File 'gas.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '"startup.o"'
+### List of Objects: adding '"main.o"'
+### ADS-LD Command completed:
+--cpu ARM7TDMI "startup.o" "main.o" 
+--strict --scatter "gas.sct" 
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\gas.map" -o gas.axf### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: 'gas.axf'
+### ADS-LD Command File: 'gas.lnp'
+### Checking for dirty Components...
+### Creating CmdFile 'gas.lnp', Handle=0x00000F0C
+### Writing '.lnp' file
+### ADS-LD Command file 'gas.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.
