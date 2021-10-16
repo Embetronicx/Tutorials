@@ -12,3 +12,8 @@ You can check the video tutorial of this example here (added soon).
 
 Please refer this URL for the complete tutorial of this source code.
 https://embetronicx.com/tutorials/linux/device-drivers/device-file-creation-for-character-drivers/
+
+The Linux Device Driver Video Playlist - https://www.youtube.com/watch?v=BRVGchs9UUQ&list=PLArwqFvBIlwHq8WMKgsXSQdqIvymrEz9k
+
+How to Setup Ubuntu and Raspberry PI - https://www.youtube.com/watch?v=e6gNeje3ljA
+How to Setup BeagleBone and Cross compile the kernel - https://www.youtube.com/watch?v=am-dgmrMgYY&t 
