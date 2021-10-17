@@ -8,7 +8,7 @@ Build for Beaglebone:
 Build for Raspberry Pi or Virtualbox Ubuntu:
 	sudo make
 
-You can check the video tutorial of this example here (added soon).
+You can check the video tutorial of this example here (https://youtu.be/nRG8DdsjQdE).
 
 Please refer this URL for the complete tutorial of this source code.
 https://embetronicx.com/tutorials/linux/device-drivers/device-file-creation-for-character-drivers/
