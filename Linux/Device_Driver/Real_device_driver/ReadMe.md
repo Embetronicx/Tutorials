@@ -8,9 +8,11 @@ Build for Beaglebone:
 Build for Raspberry Pi or Virtualbox Ubuntu:
 	sudo make
 
-Build the application using the below command.
-
+Build the application using the below command for Ubuntu and Raspberry Pi.
 		gcc -o test_app test_app.c
+Build the application using the below command for BeagleBone.	
+		arm-linux-gnueabihf-gcc -o test_app test_app.c
+
 
 Please refer this URL for the complete tutorial of this example source code.
 https://embetronicx.com/tutorials/linux/device-drivers/linux-device-driver-tutorial-programming/
