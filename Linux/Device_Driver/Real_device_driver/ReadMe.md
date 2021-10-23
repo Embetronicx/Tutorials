@@ -17,8 +17,7 @@ Build the application using the below command for BeagleBone.
 Please refer this URL for the complete tutorial of this example source code.
 https://embetronicx.com/tutorials/linux/device-drivers/linux-device-driver-tutorial-programming/
 
-You can check the video tutorial of this project.
-(Added soon)
+You can check the video tutorial of this project - https://youtu.be/xp9HTR6a98I
 
 The Linux Device Driver Video Playlist - https://www.youtube.com/watch?v=BRVGchs9UUQ&list=PLArwqFvBIlwHq8WMKgsXSQdqIvymrEz9k
 
