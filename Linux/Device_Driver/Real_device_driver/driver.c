@@ -54,11 +54,6 @@ static struct file_operations fops =
 */
 static int etx_open(struct inode *inode, struct file *file)
 {
-        /*Creating Physical memory*/
-        if((kernel_buffer = kmalloc(mem_size , GFP_KERNEL)) == 0){
-            pr_info("Cannot allocate memory in kernel\n");
-            return -1;
-        }
         pr_info("Device File Opened...!!!\n");
         return 0;
 }
@@ -68,7 +63,6 @@ static int etx_open(struct inode *inode, struct file *file)
 */
 static int etx_release(struct inode *inode, struct file *file)
 {
-        kfree(kernel_buffer);
         pr_info("Device File Closed...!!!\n");
         return 0;
 }
@@ -133,6 +127,15 @@ static int __init etx_driver_init(void)
             pr_info("Cannot create the Device 1\n");
             goto r_device;
         }
+        
+        /*Creating Physical memory*/
+        if((kernel_buffer = kmalloc(mem_size , GFP_KERNEL)) == 0){
+            pr_info("Cannot allocate memory in kernel\n");
+            goto r_device;
+        }
+        
+        strcpy(kernel_buffer, "Hello_World");
+        
         pr_info("Device Driver Insert...Done!!!\n");
         return 0;
  
@@ -148,6 +151,7 @@ r_class:
 */
 static void __exit etx_driver_exit(void)
 {
+	kfree(kernel_buffer);
         device_destroy(dev_class,dev);
         class_destroy(dev_class);
         cdev_del(&etx_cdev);
