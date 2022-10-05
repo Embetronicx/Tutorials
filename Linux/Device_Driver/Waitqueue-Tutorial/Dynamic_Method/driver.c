@@ -19,7 +19,7 @@
 #include <linux/uaccess.h>              //copy_to/from_user()
 #include <linux/kthread.h>
 #include <linux/wait.h>                 // Required for the wait queues
- 
+#include <linux/err.h>
  
 uint32_t read_count = 0;
 static struct task_struct *wait_thread;
@@ -133,13 +133,13 @@ static int __init etx_driver_init(void)
         }
  
         /*Creating struct class*/
-        if((dev_class = class_create(THIS_MODULE,"etx_class")) == NULL){
+        if(IS_ERR(dev_class = class_create(THIS_MODULE,"etx_class"))){
             pr_info("Cannot create the struct class\n");
             goto r_class;
         }
  
         /*Creating device*/
-        if((device_create(dev_class,NULL,dev,NULL,"etx_device")) == NULL){
+        if(IS_ERR(device_create(dev_class,NULL,dev,NULL,"etx_device"))){
             pr_info("Cannot create the Device 1\n");
             goto r_device;
         }

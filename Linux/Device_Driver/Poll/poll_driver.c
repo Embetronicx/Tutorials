@@ -22,6 +22,7 @@
 #include <linux/poll.h>
 #include <linux/sysfs.h> 
 #include <linux/kobject.h>
+#include <linux/err.h>
 
 //Waitqueue
 DECLARE_WAIT_QUEUE_HEAD(wait_queue_etx_data);
@@ -207,14 +208,14 @@ static int __init etx_driver_init(void)
   }
  
   /*Creating struct class*/
-  if((dev_class = class_create(THIS_MODULE,"etx_class")) == NULL)
+  if(IS_ERR(dev_class = class_create(THIS_MODULE,"etx_class")))
   {
     pr_err("Cannot create the struct class\n");
     goto r_class;
   }
         
   /*Creating device*/
-  if((device_create(dev_class,NULL,dev,NULL,"etx_device")) == NULL)
+  if(IS_ERR(device_create(dev_class,NULL,dev,NULL,"etx_device")))
   {
     pr_err("Cannot create the Device 1\n");
     goto r_device;

@@ -18,7 +18,8 @@
 #include <linux/kthread.h>             //kernel threads
 #include <linux/sched.h>               //task_struct 
 #include <linux/delay.h>
- 
+#include <linux/err.h>
+
 atomic_t etx_global_variable = ATOMIC_INIT(0);      //Atomic integer variable
 unsigned int etc_bit_check = 0;
  
@@ -147,13 +148,13 @@ static int __init etx_driver_init(void)
         }
  
         /*Creating struct class*/
-        if((dev_class = class_create(THIS_MODULE,"etx_class")) == NULL){
+        if(IS_ERR(dev_class = class_create(THIS_MODULE,"etx_class"))){
             pr_info("Cannot create the struct class\n");
             goto r_class;
         }
  
         /*Creating device*/
-        if((device_create(dev_class,NULL,dev,NULL,"etx_device")) == NULL){
+        if(IS_ERR(device_create(dev_class,NULL,dev,NULL,"etx_device"))){
             pr_info("Cannot create the Device \n");
             goto r_device;
         }

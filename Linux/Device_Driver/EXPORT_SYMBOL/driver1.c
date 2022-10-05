@@ -15,7 +15,8 @@
 #include <linux/fs.h>
 #include <linux/cdev.h>
 #include <linux/device.h>
- 
+#include <linux/err.h>
+
 dev_t dev = 0;
 static struct class *dev_class;
 static struct cdev etx_cdev;
@@ -116,13 +117,13 @@ static int __init etx_driver_init(void)
         }
  
         /*Creating struct class*/
-        if((dev_class = class_create(THIS_MODULE,"etx_class1")) == NULL){
+        if(IS_ERR(dev_class = class_create(THIS_MODULE,"etx_class1"))){
             pr_err("Cannot create the struct class\n");
             goto r_class;
         }
  
         /*Creating device*/
-        if((device_create(dev_class,NULL,dev,NULL,"etx_device1")) == NULL){
+        if(IS_ERR(device_create(dev_class,NULL,dev,NULL,"etx_device1"))){
             pr_err("Cannot create the Device 1\n");
             goto r_device;
         }

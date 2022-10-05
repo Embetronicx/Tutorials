@@ -19,7 +19,7 @@
 #include<linux/kobject.h> 
 #include <linux/interrupt.h>
 #include <asm/io.h>
- 
+#include <linux/err.h>
  
 #define IRQ_NO 11
  
@@ -167,13 +167,13 @@ static int __init etx_driver_init(void)
         }
  
         /*Creating struct class*/
-        if((dev_class = class_create(THIS_MODULE,"etx_class")) == NULL){
+        if(IS_ERR(dev_class = class_create(THIS_MODULE,"etx_class"))){
             pr_info("Cannot create the struct class\n");
             goto r_class;
         }
  
         /*Creating device*/
-        if((device_create(dev_class,NULL,dev,NULL,"etx_device")) == NULL){
+        if(IS_ERR(device_create(dev_class,NULL,dev,NULL,"etx_device"))){
             pr_info("Cannot create the Device 1\n");
             goto r_device;
         }

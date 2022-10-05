@@ -19,6 +19,7 @@
 #include <linux/uaccess.h>  //copy_to/from_user()
 #include <linux/gpio.h>     //GPIO
 #include <linux/interrupt.h>
+#include <linux/err.h>
 
 /* Since debounce is not supported in Raspberry pi, I have addded this to disable 
 ** the false detection (multiple IRQ trigger for one interrupt).
@@ -190,13 +191,13 @@ static int __init etx_driver_init(void)
   }
 
   /*Creating struct class*/
-  if((dev_class = class_create(THIS_MODULE,"etx_class")) == NULL){
+  if(IS_ERR(dev_class = class_create(THIS_MODULE,"etx_class"))){
     pr_err("Cannot create the struct class\n");
     goto r_class;
   }
 
   /*Creating device*/
-  if((device_create(dev_class,NULL,dev,NULL,"etx_device")) == NULL){
+  if(IS_ERR(device_create(dev_class,NULL,dev,NULL,"etx_device")))
     pr_err( "Cannot create the Device \n");
     goto r_device;
   }

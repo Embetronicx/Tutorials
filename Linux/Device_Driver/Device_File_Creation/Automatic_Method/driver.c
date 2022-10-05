@@ -13,8 +13,10 @@
 #include <linux/module.h>
 #include <linux/kdev_t.h>
 #include <linux/fs.h>
+#include <linux/err.h>
 #include <linux/device.h>
- 
+#include <linux/err.h>
+
 dev_t dev = 0;
 static struct class *dev_class;
  
@@ -31,13 +33,14 @@ static int __init hello_world_init(void)
         pr_info("Major = %d Minor = %d \n",MAJOR(dev), MINOR(dev));
  
         /*Creating struct class*/
-        if((dev_class = class_create(THIS_MODULE,"etx_class")) == NULL){
+        dev_class = class_create(THIS_MODULE,"etx_class");
+        if(IS_ERR(dev_class)){
             pr_err("Cannot create the struct class for device\n");
             goto r_class;
         }
  
         /*Creating device*/
-        if((device_create(dev_class,NULL,dev,NULL,"etx_device")) == NULL){
+        if(IS_ERR(device_create(dev_class,NULL,dev,NULL,"etx_device"))){
             pr_err("Cannot create the Device\n");
             goto r_device;
         }
