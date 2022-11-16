@@ -20,6 +20,7 @@
 #include <linux/ioctl.h>
 #include <linux/err.h>
  
+ 
 #define WR_VALUE _IOW('a','a',int32_t*)
 #define RD_VALUE _IOR('a','b',int32_t*)
  
@@ -143,7 +144,7 @@ static int __init etx_driver_init(void)
         }
  
         /*Creating device*/
-        if(IS_ERR(device_create(dev_class,NULL,dev,NULL,"etx_device")))
+        if(IS_ERR(device_create(dev_class,NULL,dev,NULL,"etx_device"))){
             pr_err("Cannot create the Device 1\n");
             goto r_device;
         }
