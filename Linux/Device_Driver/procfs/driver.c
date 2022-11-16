@@ -249,7 +249,7 @@ static int __init etx_driver_init(void)
         }
  
         /*Creating device*/
-        if(IS_ERR(device_create(dev_class,NULL,dev,NULL,"etx_device")))
+        if(IS_ERR(device_create(dev_class,NULL,dev,NULL,"etx_device"))){
             pr_info("Cannot create the Device 1\n");
             goto r_device;
         }
