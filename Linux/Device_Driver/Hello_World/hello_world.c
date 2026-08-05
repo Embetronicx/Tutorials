@@ -1,5 +1,5 @@
 /***************************************************************************//**
-*  \file       driver.c
+*  \file       hello_world.c
 *
 *  \details    Simple hello world driver
 *
